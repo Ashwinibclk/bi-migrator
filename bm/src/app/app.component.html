@@ -1,0 +1,84 @@
+<amplify-auth-container>
+  <amplify-authenticator *ngIf="authState !== 'signedin'"></amplify-authenticator>
+  
+  <div *ngIf="authState === 'signedin' && user" class="App">
+    
+
+
+<div class="topnav">
+  <a style="padding:10px 8px;"><amplify-sign-out></amplify-sign-out></a>
+  <a style="font-style:italic; color:rgb(224, 190, 56)">{{user['attributes']['email']}}</a>
+  <a href="https://vaidhyamegha.com/contact/">Contact</a>
+  <a href="https://vaidhyamegha.com/about/">About</a>
+ 
+  <a href="#">Home</a>
+  <a href="#">Dashboard</a>
+  
+    
+   
+  <a href="" style="float:left; font-size: 24px; color:rgb(173, 209, 12); ">Bi-Migrator</a>
+ 
+
+</div>
+
+<div class="main">
+  <router-outlet></router-outlet>
+
+
+<!--<div *ngIf="showapp" style="margin-top: -20px;">
+  <amplify-auth-container>
+  <amplify-authenticator *ngIf="authState !== 'signedin'"></amplify-authenticator>
+  
+  <div *ngIf="authState === 'signedin' && user" class="App">
+    <amplify-sign-out></amplify-sign-out>
+    <div>Hello, {{user.username}}</div>
+   
+  </div>
+  </amplify-auth-container></div>-->
+
+  <div *ngIf="showapp" class="row">
+   
+
+    <div class="column" style="background-color:whitesmoke;border:10px solid white; border-radius: 20px; overflow: scroll; border-right:20px solid white; ">
+      <p style="margin-left:10%; font-size: medium; color:green"></p>
+      <div class="board" *ngFor="let i of tbs">
+        <li>Migration Process {{i.id}} has been completed successfully!!</li>
+      </div>
+    </div>
+    <div class="column" style="background-color:whitesmoke; border:10px solid white;border-left:20px solid white; border-radius: 20px; overflow: scroll;">
+      <button (click)="showm()" style="background-color:rgb(26, 133, 58); width:200px; height:50px; font-size:15px; color:white;  margin-top: 10%; margin-left:30%; border-radius: 20px;">Migrate My Project</button>
+      <p style="font-size:18px; color: rgb(15, 119, 204); margin-left: 2%;">Comments:</p>
+      <form  autocomplete="off"
+      [formGroup]="createFormtb1"
+      (ngSubmit)="onCreatetb1(createFormtb1.value)">
+        <div > 
+        <textarea name="comments" id="comments" formControlName="comments" rows="4" cols="45" style="font-family:sans-serif;font-size: 18px; border:none;border-radius: 10px; margin-left: 2%;">
+      
+        </textarea></div>
+        <input type="submit" value="Post" style="color:white; background-color:green; border-radius: 10px;font-size: 15px; width:80px; height:40px;margin-left: 2%; ">
+        
+       <div *ngFor="let i of tbs1" class="comment" style="overflow:scroll; margin-left: 2%;">
+          <li>{{i.comments}}</li>
+       </div>
+        </form>
+    </div>
+  </div>
+  
+</div>
+
+<div *ngIf="logcred "class="modal"  role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+       <button (click)="method()" style="background-color:rgb(26, 133, 58); width:200px; height:50px; font-size:15px; color:white;   margin-left:25%; border-radius: 20px;">  Please Login!!! </button>
+        
+      </div>
+        </div>
+        </div>
+        </div>
+        
+  </div>
+  </amplify-auth-container>
+<router-outlet></router-outlet>

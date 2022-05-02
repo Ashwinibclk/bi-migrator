@@ -1,0 +1,1816 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateTableaulogin {
+  onCreateTableaulogin {
+    id
+    username
+    password
+    sitename
+    siteurl
+    tenv {
+      name
+      tpid
+      tproject {
+        tpid
+        name
+        Did
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateTableaulogin {
+  onUpdateTableaulogin {
+    id
+    username
+    password
+    sitename
+    siteurl
+    tenv {
+      name
+      tpid
+      tproject {
+        tpid
+        name
+        Did
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteTableaulogin {
+  onDeleteTableaulogin {
+    id
+    username
+    password
+    sitename
+    siteurl
+    tenv {
+      name
+      tpid
+      tproject {
+        tpid
+        name
+        Did
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateQuicksightlogin {
+  onCreateQuicksightlogin {
+    id
+    awsaccountId
+    qenv {
+      name
+      Qpid
+      qproject {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateQuicksightlogin {
+  onUpdateQuicksightlogin {
+    id
+    awsaccountId
+    qenv {
+      name
+      Qpid
+      qproject {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteQuicksightlogin {
+  onDeleteQuicksightlogin {
+    id
+    awsaccountId
+    qenv {
+      name
+      Qpid
+      qproject {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateCustomer {
+  onCreateCustomer {
+    name
+    DName
+    Did
+    department {
+      Did
+      DName
+      customers {
+        nextToken
+      }
+      tprojects {
+        nextToken
+      }
+      qprojects {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateCustomer {
+  onUpdateCustomer {
+    name
+    DName
+    Did
+    department {
+      Did
+      DName
+      customers {
+        nextToken
+      }
+      tprojects {
+        nextToken
+      }
+      qprojects {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteCustomer {
+  onDeleteCustomer {
+    name
+    DName
+    Did
+    department {
+      Did
+      DName
+      customers {
+        nextToken
+      }
+      tprojects {
+        nextToken
+      }
+      qprojects {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateDepartment {
+  onCreateDepartment {
+    Did
+    DName
+    customers {
+      items {
+        name
+        DName
+        Did
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    tprojects {
+      items {
+        tpid
+        name
+        Did
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    qprojects {
+      items {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateDepartment {
+  onUpdateDepartment {
+    Did
+    DName
+    customers {
+      items {
+        name
+        DName
+        Did
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    tprojects {
+      items {
+        tpid
+        name
+        Did
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    qprojects {
+      items {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteDepartment {
+  onDeleteDepartment {
+    Did
+    DName
+    customers {
+      items {
+        name
+        DName
+        Did
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    tprojects {
+      items {
+        tpid
+        name
+        Did
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    qprojects {
+      items {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateBIMProject {
+  onCreateBIMProject {
+    DName
+    UserName
+    Customer {
+      name
+      DName
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+    Pname
+    source
+    destination
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateBIMProject {
+  onUpdateBIMProject {
+    DName
+    UserName
+    Customer {
+      name
+      DName
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+    Pname
+    source
+    destination
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteBIMProject {
+  onDeleteBIMProject {
+    DName
+    UserName
+    Customer {
+      name
+      DName
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+    Pname
+    source
+    destination
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateDataset {
+  onCreateDataset {
+    datasetid
+    name
+    datasources {
+      items {
+        dsid
+        name
+        datasetid
+        databaseserver
+        port
+        databasename
+        username
+        password
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    Files {
+      items {
+        name
+        url
+        datasetid
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateDataset {
+  onUpdateDataset {
+    datasetid
+    name
+    datasources {
+      items {
+        dsid
+        name
+        datasetid
+        databaseserver
+        port
+        databasename
+        username
+        password
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    Files {
+      items {
+        name
+        url
+        datasetid
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteDataset {
+  onDeleteDataset {
+    datasetid
+    name
+    datasources {
+      items {
+        dsid
+        name
+        datasetid
+        databaseserver
+        port
+        databasename
+        username
+        password
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    Files {
+      items {
+        name
+        url
+        datasetid
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateFile {
+  onCreateFile {
+    name
+    url
+    datasetid
+    datasets {
+      datasetid
+      name
+      datasources {
+        nextToken
+      }
+      Files {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateFile {
+  onUpdateFile {
+    name
+    url
+    datasetid
+    datasets {
+      datasetid
+      name
+      datasources {
+        nextToken
+      }
+      Files {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteFile {
+  onDeleteFile {
+    name
+    url
+    datasetid
+    datasets {
+      datasetid
+      name
+      datasources {
+        nextToken
+      }
+      Files {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateDatasources {
+  onCreateDatasources {
+    dsid
+    name
+    datasetid
+    datasets {
+      datasetid
+      name
+      datasources {
+        nextToken
+      }
+      Files {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    table {
+      items {
+        name
+        dsid
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    databaseserver
+    port
+    databasename
+    username
+    password
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateDatasources {
+  onUpdateDatasources {
+    dsid
+    name
+    datasetid
+    datasets {
+      datasetid
+      name
+      datasources {
+        nextToken
+      }
+      Files {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    table {
+      items {
+        name
+        dsid
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    databaseserver
+    port
+    databasename
+    username
+    password
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteDatasources {
+  onDeleteDatasources {
+    dsid
+    name
+    datasetid
+    datasets {
+      datasetid
+      name
+      datasources {
+        nextToken
+      }
+      Files {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    table {
+      items {
+        name
+        dsid
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    databaseserver
+    port
+    databasename
+    username
+    password
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateTableauProject {
+  onCreateTableauProject {
+    tpid
+    name
+    Did
+    department {
+      Did
+      DName
+      customers {
+        nextToken
+      }
+      tprojects {
+        nextToken
+      }
+      qprojects {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateTableauProject {
+  onUpdateTableauProject {
+    tpid
+    name
+    Did
+    department {
+      Did
+      DName
+      customers {
+        nextToken
+      }
+      tprojects {
+        nextToken
+      }
+      qprojects {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteTableauProject {
+  onDeleteTableauProject {
+    tpid
+    name
+    Did
+    department {
+      Did
+      DName
+      customers {
+        nextToken
+      }
+      tprojects {
+        nextToken
+      }
+      qprojects {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateTableauEnv {
+  onCreateTableauEnv {
+    name
+    tpid
+    tproject {
+      tpid
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateTableauEnv {
+  onUpdateTableauEnv {
+    name
+    tpid
+    tproject {
+      tpid
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteTableauEnv {
+  onDeleteTableauEnv {
+    name
+    tpid
+    tproject {
+      tpid
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateTaleauWorkbook {
+  onCreateTaleauWorkbook {
+    name
+    tpid
+    twbid
+    tproject {
+      tpid
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateTaleauWorkbook {
+  onUpdateTaleauWorkbook {
+    name
+    tpid
+    twbid
+    tproject {
+      tpid
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteTaleauWorkbook {
+  onDeleteTaleauWorkbook {
+    name
+    tpid
+    twbid
+    tproject {
+      tpid
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateTableauSheet {
+  onCreateTableauSheet {
+    name
+    twbid
+    tsid
+    tworkbook {
+      name
+      tpid
+      twbid
+      tproject {
+        tpid
+        name
+        Did
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateTableauSheet {
+  onUpdateTableauSheet {
+    name
+    twbid
+    tsid
+    tworkbook {
+      name
+      tpid
+      twbid
+      tproject {
+        tpid
+        name
+        Did
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteTableauSheet {
+  onDeleteTableauSheet {
+    name
+    twbid
+    tsid
+    tworkbook {
+      name
+      tpid
+      twbid
+      tproject {
+        tpid
+        name
+        Did
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateTableauGraph {
+  onCreateTableauGraph {
+    name
+    tsid
+    tsheet {
+      name
+      twbid
+      tsid
+      tworkbook {
+        name
+        tpid
+        twbid
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateTableauGraph {
+  onUpdateTableauGraph {
+    name
+    tsid
+    tsheet {
+      name
+      twbid
+      tsid
+      tworkbook {
+        name
+        tpid
+        twbid
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteTableauGraph {
+  onDeleteTableauGraph {
+    name
+    tsid
+    tsheet {
+      name
+      twbid
+      tsid
+      tworkbook {
+        name
+        tpid
+        twbid
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateQuicksightProject {
+  onCreateQuicksightProject {
+    id
+    name
+    Did
+    department {
+      Did
+      DName
+      customers {
+        nextToken
+      }
+      tprojects {
+        nextToken
+      }
+      qprojects {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    templates {
+      items {
+        id
+        name
+        sourceanalysisId
+        Qpid
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    env {
+      items {
+        name
+        Qpid
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateQuicksightProject {
+  onUpdateQuicksightProject {
+    id
+    name
+    Did
+    department {
+      Did
+      DName
+      customers {
+        nextToken
+      }
+      tprojects {
+        nextToken
+      }
+      qprojects {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    templates {
+      items {
+        id
+        name
+        sourceanalysisId
+        Qpid
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    env {
+      items {
+        name
+        Qpid
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteQuicksightProject {
+  onDeleteQuicksightProject {
+    id
+    name
+    Did
+    department {
+      Did
+      DName
+      customers {
+        nextToken
+      }
+      tprojects {
+        nextToken
+      }
+      qprojects {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    templates {
+      items {
+        id
+        name
+        sourceanalysisId
+        Qpid
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    env {
+      items {
+        name
+        Qpid
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateQuicksightTemplate {
+  onCreateQuicksightTemplate {
+    id
+    name
+    sourceanalysisId
+    Qpid
+    qproject {
+      id
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      templates {
+        nextToken
+      }
+      env {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    qanalysis {
+      items {
+        name
+        QuicksightTemplateId
+        sourceanalysisId
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    qdashboard {
+      items {
+        name
+        qtid
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateQuicksightTemplate {
+  onUpdateQuicksightTemplate {
+    id
+    name
+    sourceanalysisId
+    Qpid
+    qproject {
+      id
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      templates {
+        nextToken
+      }
+      env {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    qanalysis {
+      items {
+        name
+        QuicksightTemplateId
+        sourceanalysisId
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    qdashboard {
+      items {
+        name
+        qtid
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteQuicksightTemplate {
+  onDeleteQuicksightTemplate {
+    id
+    name
+    sourceanalysisId
+    Qpid
+    qproject {
+      id
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      templates {
+        nextToken
+      }
+      env {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    qanalysis {
+      items {
+        name
+        QuicksightTemplateId
+        sourceanalysisId
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    qdashboard {
+      items {
+        name
+        qtid
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateQuicksightAnalysis {
+  onCreateQuicksightAnalysis {
+    name
+    QuicksightTemplateId
+    sourceanalysisId
+    qtemplate {
+      id
+      name
+      sourceanalysisId
+      Qpid
+      qproject {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      qanalysis {
+        nextToken
+      }
+      qdashboard {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateQuicksightAnalysis {
+  onUpdateQuicksightAnalysis {
+    name
+    QuicksightTemplateId
+    sourceanalysisId
+    qtemplate {
+      id
+      name
+      sourceanalysisId
+      Qpid
+      qproject {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      qanalysis {
+        nextToken
+      }
+      qdashboard {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteQuicksightAnalysis {
+  onDeleteQuicksightAnalysis {
+    name
+    QuicksightTemplateId
+    sourceanalysisId
+    qtemplate {
+      id
+      name
+      sourceanalysisId
+      Qpid
+      qproject {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      qanalysis {
+        nextToken
+      }
+      qdashboard {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateQuicksightEnv {
+  onCreateQuicksightEnv {
+    name
+    Qpid
+    qproject {
+      id
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      templates {
+        nextToken
+      }
+      env {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateQuicksightEnv {
+  onUpdateQuicksightEnv {
+    name
+    Qpid
+    qproject {
+      id
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      templates {
+        nextToken
+      }
+      env {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteQuicksightEnv {
+  onDeleteQuicksightEnv {
+    name
+    Qpid
+    qproject {
+      id
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      templates {
+        nextToken
+      }
+      env {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateQuicksightDashboard {
+  onCreateQuicksightDashboard {
+    name
+    qtid
+    qtemplate {
+      id
+      name
+      sourceanalysisId
+      Qpid
+      qproject {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      qanalysis {
+        nextToken
+      }
+      qdashboard {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateQuicksightDashboard {
+  onUpdateQuicksightDashboard {
+    name
+    qtid
+    qtemplate {
+      id
+      name
+      sourceanalysisId
+      Qpid
+      qproject {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      qanalysis {
+        nextToken
+      }
+      qdashboard {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteQuicksightDashboard {
+  onDeleteQuicksightDashboard {
+    name
+    qtid
+    qtemplate {
+      id
+      name
+      sourceanalysisId
+      Qpid
+      qproject {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      qanalysis {
+        nextToken
+      }
+      qdashboard {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateTable {
+  onCreateTable {
+    name
+    dsid
+    datasource {
+      dsid
+      name
+      datasetid
+      datasets {
+        datasetid
+        name
+        id
+        createdAt
+        updatedAt
+      }
+      table {
+        nextToken
+      }
+      databaseserver
+      port
+      databasename
+      username
+      password
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateTable {
+  onUpdateTable {
+    name
+    dsid
+    datasource {
+      dsid
+      name
+      datasetid
+      datasets {
+        datasetid
+        name
+        id
+        createdAt
+        updatedAt
+      }
+      table {
+        nextToken
+      }
+      databaseserver
+      port
+      databasename
+      username
+      password
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteTable {
+  onDeleteTable {
+    name
+    dsid
+    datasource {
+      dsid
+      name
+      datasetid
+      datasets {
+        datasetid
+        name
+        id
+        createdAt
+        updatedAt
+      }
+      table {
+        nextToken
+      }
+      databaseserver
+      port
+      databasename
+      username
+      password
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateQuicksightFolder {
+  onCreateQuicksightFolder {
+    name
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateQuicksightFolder {
+  onUpdateQuicksightFolder {
+    name
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteQuicksightFolder {
+  onDeleteQuicksightFolder {
+    name
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateQuicksightGroup {
+  onCreateQuicksightGroup {
+    name
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateQuicksightGroup {
+  onUpdateQuicksightGroup {
+    name
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteQuicksightGroup {
+  onDeleteQuicksightGroup {
+    name
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateComments {
+  onCreateComments {
+    comments
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateComments {
+  onUpdateComments {
+    comments
+    id
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteComments {
+  onDeleteComments {
+    comments
+    id
+    createdAt
+    updatedAt
+  }
+}

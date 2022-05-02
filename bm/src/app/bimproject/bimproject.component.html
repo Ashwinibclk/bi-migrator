@@ -1,0 +1,55 @@
+
+
+<div  class="form-body">
+    <form
+      autocomplete="off"
+      [formGroup]="createFormtb"
+      (ngSubmit)="onCreatetb(createFormtb.value)"
+    >
+    <h3>BIMProject Login</h3>
+    <div>
+      <label>User Name: </label>
+      <input type="text" formControlName="UserName" autocomplete="off" />
+    </div>
+    <div>
+      <label>Department Name: </label>
+      <select id="dep" formControlName="DName"  >
+        <option value="MARKETING">MARKETING</option>
+          <option value="FINANCE" >FINANCE</option>
+          <option value="HR" >HR</option> 
+          <option value="SALES" >SALES</option>
+          <option value="PURCHASE" >PURCHASE</option>
+        
+      </select>
+    </div>
+      <div>
+        <label>Project Name: </label>
+        <input type="text" formControlName="Pname" autocomplete="off" />
+      </div>
+     
+      <div class="row">
+      <div class="column">
+        <label for="source">
+            Source: </label>
+        <select id="source" formControlName="source">
+          <option value="TABLEAU" >TABLEAU</option>
+          <option value="QUICKSIGHT">QUICKSIGHT</option>
+        </select>
+      </div>
+      <div class="column">
+        <label for="source">
+          Destination: </label>
+      <select id="destination" formControlName="destination">
+        <option value="TABLEAU" >TABLEAU</option>
+        <option value="QUICKSIGHT" >QUICKSIGHT</option>
+      </select>
+      </div>
+    </div>
+      <button type="submit">Log-In</button>
+      <button (click)="funcsign()" type="button" >Sign-Up</button>
+    </form>
+  </div>
+  
+  
+
+  

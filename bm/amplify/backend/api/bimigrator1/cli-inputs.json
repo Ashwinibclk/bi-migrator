@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "bimigrator1",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/madhavimarri/bi-migrator/bm/amplify/backend/api/bimigrator1/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 7
+    }
+  }
+}

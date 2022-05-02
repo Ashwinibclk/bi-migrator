@@ -1,0 +1,1156 @@
+# this is an auto generated file. This will be overwritten
+query GetTableaulogin($id: ID!) {
+  getTableaulogin(id: $id) {
+    id
+    username
+    password
+    sitename
+    siteurl
+    tenv {
+      name
+      tpid
+      tproject {
+        tpid
+        name
+        Did
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListTableaulogins(
+  $filter: ModelTableauloginFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTableaulogins(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      username
+      password
+      sitename
+      siteurl
+      tenv {
+        name
+        tpid
+        id
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetQuicksightlogin($id: ID!) {
+  getQuicksightlogin(id: $id) {
+    id
+    awsaccountId
+    qenv {
+      name
+      Qpid
+      qproject {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListQuicksightlogins(
+  $filter: ModelQuicksightloginFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listQuicksightlogins(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      awsaccountId
+      qenv {
+        name
+        Qpid
+        id
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetCustomer($name: ID!) {
+  getCustomer(name: $name) {
+    name
+    DName
+    Did
+    department {
+      Did
+      DName
+      customers {
+        nextToken
+      }
+      tprojects {
+        nextToken
+      }
+      qprojects {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListCustomers(
+  $name: ID
+  $filter: ModelCustomerFilterInput
+  $limit: Int
+  $nextToken: String
+  $sortDirection: ModelSortDirection
+) {
+  listCustomers(
+    name: $name
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    sortDirection: $sortDirection
+  ) {
+    items {
+      name
+      DName
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetDepartment($id: ID!) {
+  getDepartment(id: $id) {
+    Did
+    DName
+    customers {
+      items {
+        name
+        DName
+        Did
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    tprojects {
+      items {
+        tpid
+        name
+        Did
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    qprojects {
+      items {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+query ListDepartments(
+  $filter: ModelDepartmentFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listDepartments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      Did
+      DName
+      customers {
+        nextToken
+      }
+      tprojects {
+        nextToken
+      }
+      qprojects {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetBIMProject($id: ID!) {
+  getBIMProject(id: $id) {
+    DName
+    UserName
+    Customer {
+      name
+      DName
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+    Pname
+    source
+    destination
+    id
+    createdAt
+    updatedAt
+  }
+}
+query ListBIMProjects(
+  $filter: ModelBIMProjectFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listBIMProjects(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      DName
+      UserName
+      Customer {
+        name
+        DName
+        Did
+        createdAt
+        updatedAt
+      }
+      Pname
+      source
+      destination
+      id
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetDataset($id: ID!) {
+  getDataset(id: $id) {
+    datasetid
+    name
+    datasources {
+      items {
+        dsid
+        name
+        datasetid
+        databaseserver
+        port
+        databasename
+        username
+        password
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    Files {
+      items {
+        name
+        url
+        datasetid
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+query ListDatasets(
+  $filter: ModelDatasetFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listDatasets(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      datasetid
+      name
+      datasources {
+        nextToken
+      }
+      Files {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetFile($id: ID!) {
+  getFile(id: $id) {
+    name
+    url
+    datasetid
+    datasets {
+      datasetid
+      name
+      datasources {
+        nextToken
+      }
+      Files {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+query ListFiles(
+  $filter: ModelFileFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listFiles(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      name
+      url
+      datasetid
+      datasets {
+        datasetid
+        name
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetDatasources($id: ID!) {
+  getDatasources(id: $id) {
+    dsid
+    name
+    datasetid
+    datasets {
+      datasetid
+      name
+      datasources {
+        nextToken
+      }
+      Files {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    table {
+      items {
+        name
+        dsid
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    databaseserver
+    port
+    databasename
+    username
+    password
+    id
+    createdAt
+    updatedAt
+  }
+}
+query ListDatasources(
+  $filter: ModelDatasourcesFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listDatasources(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      dsid
+      name
+      datasetid
+      datasets {
+        datasetid
+        name
+        id
+        createdAt
+        updatedAt
+      }
+      table {
+        nextToken
+      }
+      databaseserver
+      port
+      databasename
+      username
+      password
+      id
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetTableauProject($id: ID!) {
+  getTableauProject(id: $id) {
+    tpid
+    name
+    Did
+    department {
+      Did
+      DName
+      customers {
+        nextToken
+      }
+      tprojects {
+        nextToken
+      }
+      qprojects {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+query ListTableauProjects(
+  $filter: ModelTableauProjectFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTableauProjects(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      tpid
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetTableauEnv($id: ID!) {
+  getTableauEnv(id: $id) {
+    name
+    tpid
+    tproject {
+      tpid
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+query ListTableauEnvs(
+  $filter: ModelTableauEnvFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTableauEnvs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      name
+      tpid
+      tproject {
+        tpid
+        name
+        Did
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetTaleauWorkbook($id: ID!) {
+  getTaleauWorkbook(id: $id) {
+    name
+    tpid
+    twbid
+    tproject {
+      tpid
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+query ListTaleauWorkbooks(
+  $filter: ModelTaleauWorkbookFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTaleauWorkbooks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      name
+      tpid
+      twbid
+      tproject {
+        tpid
+        name
+        Did
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetTableauSheet($id: ID!) {
+  getTableauSheet(id: $id) {
+    name
+    twbid
+    tsid
+    tworkbook {
+      name
+      tpid
+      twbid
+      tproject {
+        tpid
+        name
+        Did
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+query ListTableauSheets(
+  $filter: ModelTableauSheetFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTableauSheets(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      name
+      twbid
+      tsid
+      tworkbook {
+        name
+        tpid
+        twbid
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetTableauGraph($id: ID!) {
+  getTableauGraph(id: $id) {
+    name
+    tsid
+    tsheet {
+      name
+      twbid
+      tsid
+      tworkbook {
+        name
+        tpid
+        twbid
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+query ListTableauGraphs(
+  $filter: ModelTableauGraphFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTableauGraphs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      name
+      tsid
+      tsheet {
+        name
+        twbid
+        tsid
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetQuicksightProject($id: ID!) {
+  getQuicksightProject(id: $id) {
+    id
+    name
+    Did
+    department {
+      Did
+      DName
+      customers {
+        nextToken
+      }
+      tprojects {
+        nextToken
+      }
+      qprojects {
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    templates {
+      items {
+        id
+        name
+        sourceanalysisId
+        Qpid
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    env {
+      items {
+        name
+        Qpid
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListQuicksightProjects(
+  $filter: ModelQuicksightProjectFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listQuicksightProjects(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      templates {
+        nextToken
+      }
+      env {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetQuicksightTemplate($id: ID!) {
+  getQuicksightTemplate(id: $id) {
+    id
+    name
+    sourceanalysisId
+    Qpid
+    qproject {
+      id
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      templates {
+        nextToken
+      }
+      env {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    qanalysis {
+      items {
+        name
+        QuicksightTemplateId
+        sourceanalysisId
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    qdashboard {
+      items {
+        name
+        qtid
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListQuicksightTemplates(
+  $filter: ModelQuicksightTemplateFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listQuicksightTemplates(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      name
+      sourceanalysisId
+      Qpid
+      qproject {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      qanalysis {
+        nextToken
+      }
+      qdashboard {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetQuicksightAnalysis($id: ID!) {
+  getQuicksightAnalysis(id: $id) {
+    name
+    QuicksightTemplateId
+    sourceanalysisId
+    qtemplate {
+      id
+      name
+      sourceanalysisId
+      Qpid
+      qproject {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      qanalysis {
+        nextToken
+      }
+      qdashboard {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+query ListQuicksightAnalyses(
+  $filter: ModelQuicksightAnalysisFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listQuicksightAnalyses(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      name
+      QuicksightTemplateId
+      sourceanalysisId
+      qtemplate {
+        id
+        name
+        sourceanalysisId
+        Qpid
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetQuicksightEnv($id: ID!) {
+  getQuicksightEnv(id: $id) {
+    name
+    Qpid
+    qproject {
+      id
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+      }
+      templates {
+        nextToken
+      }
+      env {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+query ListQuicksightEnvs(
+  $filter: ModelQuicksightEnvFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listQuicksightEnvs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      name
+      Qpid
+      qproject {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetQuicksightDashboard($id: ID!) {
+  getQuicksightDashboard(id: $id) {
+    name
+    qtid
+    qtemplate {
+      id
+      name
+      sourceanalysisId
+      Qpid
+      qproject {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+      }
+      qanalysis {
+        nextToken
+      }
+      qdashboard {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+query ListQuicksightDashboards(
+  $filter: ModelQuicksightDashboardFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listQuicksightDashboards(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      name
+      qtid
+      qtemplate {
+        id
+        name
+        sourceanalysisId
+        Qpid
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetTable($id: ID!) {
+  getTable(id: $id) {
+    name
+    dsid
+    datasource {
+      dsid
+      name
+      datasetid
+      datasets {
+        datasetid
+        name
+        id
+        createdAt
+        updatedAt
+      }
+      table {
+        nextToken
+      }
+      databaseserver
+      port
+      databasename
+      username
+      password
+      id
+      createdAt
+      updatedAt
+    }
+    id
+    createdAt
+    updatedAt
+  }
+}
+query ListTables(
+  $filter: ModelTableFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTables(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      name
+      dsid
+      datasource {
+        dsid
+        name
+        datasetid
+        databaseserver
+        port
+        databasename
+        username
+        password
+        id
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetQuicksightFolder($id: ID!) {
+  getQuicksightFolder(id: $id) {
+    name
+    id
+    createdAt
+    updatedAt
+  }
+}
+query ListQuicksightFolders(
+  $filter: ModelQuicksightFolderFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listQuicksightFolders(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      name
+      id
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetQuicksightGroup($id: ID!) {
+  getQuicksightGroup(id: $id) {
+    name
+    id
+    createdAt
+    updatedAt
+  }
+}
+query ListQuicksightGroups(
+  $filter: ModelQuicksightGroupFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listQuicksightGroups(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      name
+      id
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetComments($id: ID!) {
+  getComments(id: $id) {
+    comments
+    id
+    createdAt
+    updatedAt
+  }
+}
+query ListComments(
+  $filter: ModelCommentsFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      comments
+      id
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
