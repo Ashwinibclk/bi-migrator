@@ -4,25 +4,29 @@ import {APIService,  Tableaulogin} from "../API.service";
 import { Subscription } from "rxjs";
 import {Router} from '@angular/router';
 import {API} from 'aws-amplify';
-import {HttpClient} from "@angular/common/http";
-import { NgxSpinnerService } from "ngx-spinner";  
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerService } from "ngx-spinner";
+declare function move():any;
+  
+
 @Component({
   selector: 'app-tableaulogin',
   templateUrl: './tableaulogin.component.html',
   styleUrls: ['./tableaulogin.component.css']
 })
-export class TableauloginComponent implements OnInit {
+export class TableauloginComponent implements OnInit,OnDestroy {
   response:any;
   tabdis:boolean=false;
+  qsdis:boolean=false;
   res2:Array<any>=[];
   res3:Array<any>=[];
   res4:Array<any>=[];
   res5:Array<any>=[];
   public createFormtb: any;
+  public createFormqs: any;
   public tbs: Array<Tableaulogin> =[];
-  constructor(private api: APIService, private fb: FormBuilder, private router: Router,private SpinnerService: NgxSpinnerService){ 
+  constructor(private api: APIService, private fb: FormBuilder, private router: Router, private spinner:NgxSpinnerService){ 
     this.createFormtb=FormBuilder;
+    this.createFormqs=FormBuilder;
     this.createFormtb= this.fb.group({
       username: ["", Validators.required],
       password: ["", Validators.required],
@@ -30,10 +34,16 @@ export class TableauloginComponent implements OnInit {
       siteurl: ["", Validators.required],
 
     });
+    this.createFormqs= this.fb.group({
+      awsaccountId: ["", Validators.required],
+      
+
+    });
   }
   private subscription: Subscription | null = null;
   
  async ngOnInit() {
+ 
   this.api.ListTableaulogins().then((event) => {
     this.tbs = event.items as Tableaulogin[];
   });
@@ -49,21 +59,46 @@ export class TableauloginComponent implements OnInit {
 
 async onCreatetb(todo: any) {
   this.tabdis=true;
-  this.SpinnerService.show();  
+  this.spinner.show();
   this.api
     .CreateTableaulogin(todo)
     .then((event) => {
       console.log("item created!");
       this.createFormtb.reset();
+      this.spinner.hide();
     })
     .catch((e) => {
+      this.spinner.hide();
+      alert("invalid credentials!!!")
       console.log("error creating restaurant...", e);
     });
-    this.projects(todo);
+    
     
 }
 
-async projects(todo:any){
+qslogin(){
+  this.qsdis=true;
+}
+
+async onCreateqs(todo: any) {
+  
+  move();
+  this.api
+    .CreateQuicksightlogin(todo)
+    .then((event) => {
+      console.log("item created!");
+      this.createFormqs.reset();
+      
+    })
+    .catch((e) => {
+      
+      alert("invalid credentials!!!")
+      console.log("error creating restaurant...", e);
+    });
+    
+    
+}
+/*async projects(todo:any){
   const apiName = 'bm';
   const path = '/tableau';
   const myInit = { // OPTIONAL
@@ -75,17 +110,12 @@ async projects(todo:any){
   };
   
 this.response=await API.post(apiName,path,myInit).then(result=>{ this.res2=result.body[0]; this.res3=result.body[1];this.res4=result.body[2];this.res5=result.body[3];
-  
-  this.SpinnerService.hide();    
+   
 console.log(this.res2,this.res3,this.res4,this.res5);}
 )
-.catch((e) => {
-  this.SpinnerService.hide(); 
-  this.tabdis=false;   
-  //alert("Invalid Credentials!!!")
-});
 
-}
+
+}*/
 /*public onDelete(username:any){
   this.api.DeleteTableaulogin(username).then((event)=>{
     console.log("item deleted!")
