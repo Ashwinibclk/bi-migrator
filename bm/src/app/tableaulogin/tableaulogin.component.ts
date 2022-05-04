@@ -1,6 +1,6 @@
 import {Component, OnInit, OnDestroy, ChangeDetectorRef } from "@angular/core";
 import {FormBuilder, FormGroup, Validators,ReactiveFormsModule} from "@angular/forms";
-import {APIService,  Tableaulogin} from "../API.service";
+import {APIService,  Tableaulogin, tprojects} from "../API.service";
 import { Subscription } from "rxjs";
 import {Router} from '@angular/router';
 import {API} from 'aws-amplify';
@@ -17,6 +17,9 @@ export class TableauloginComponent implements OnInit,OnDestroy {
   response:any;
   tabdis:boolean=false;
   qsdis:boolean=false;
+  r2:string="";
+  r3:string="";
+  r4:string="";
   res2:Array<any>=[];
   res3:Array<any>=[];
   res4:Array<any>=[];
@@ -44,6 +47,7 @@ export class TableauloginComponent implements OnInit,OnDestroy {
   
  async ngOnInit() {
  
+
   this.api.ListTableaulogins().then((event) => {
     this.tbs = event.items as Tableaulogin[];
   });
@@ -58,20 +62,41 @@ export class TableauloginComponent implements OnInit,OnDestroy {
 }
 
 async onCreatetb(todo: any) {
-  this.tabdis=true;
   this.spinner.show();
-  this.api
-    .CreateTableaulogin(todo)
-    .then((event) => {
-      console.log("item created!");
-      this.createFormtb.reset();
-      this.spinner.hide();
+  this.tabdis=true;
+ 
+  this.api.GetMessage(todo.username,todo.password,todo.sitename,todo.siteurl).then((result)=>{console.log(result.body); console.log(result.body1); console.log(result.body2);
+     this.r2=result.body.slice(1,-1);
+      this.r3=result.body1.slice(1,-1);
+      this.r4=result.body2.slice(1,-1);
+      this.res2=this.r2.split(",");
+      this.res3=this.r3.split(",");
+      this.res4=this.r4.split(",");
+      console.log(this.res2,this.res3,this.res4);
+      console.log(this.r2,this.r3,this.r4);
     })
     .catch((e) => {
+      this.tabdis=false;
       this.spinner.hide();
       alert("invalid credentials!!!")
       console.log("error creating restaurant...", e);
     });
+  
+this.api
+    .CreateTableaulogin(todo)
+    .then((event) => {
+      console.log("item created!");
+      
+
+    })
+    .catch((e) => {
+      this.spinner.hide();
+      this.tabdis=false;
+      alert("invalid credentials!!!")
+      console.log("error creating restaurant...", e);
+    });
+    this.spinner.hide();
+   
     
     
 }

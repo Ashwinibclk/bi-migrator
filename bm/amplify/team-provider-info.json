@@ -20,6 +20,13 @@
           "appId": "d3h8bs7zyukngu",
           "type": "manual"
         }
+      },
+      "function": {
+        "tableau": {
+          "dev": "app",
+          "deploymentBucketName": "amplify-bimigrator1-dev-111935-deployment",
+          "s3Key": "amplify-builds/tableau-70457876774d31526e36-build.zip"
+        }
       }
     }
   }

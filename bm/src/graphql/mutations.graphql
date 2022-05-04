@@ -19,13 +19,22 @@ mutation CreateTableaulogin(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateTableaulogin(
@@ -48,13 +57,22 @@ mutation UpdateTableaulogin(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteTableaulogin(
@@ -77,13 +95,22 @@ mutation DeleteTableaulogin(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateQuicksightlogin(
@@ -102,13 +129,22 @@ mutation CreateQuicksightlogin(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateQuicksightlogin(
@@ -127,13 +163,22 @@ mutation UpdateQuicksightlogin(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteQuicksightlogin(
@@ -152,13 +197,22 @@ mutation DeleteQuicksightlogin(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateCustomer(
@@ -174,19 +228,28 @@ mutation CreateCustomer(
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateCustomer(
@@ -202,19 +265,28 @@ mutation UpdateCustomer(
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteCustomer(
@@ -230,19 +302,28 @@ mutation DeleteCustomer(
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateDepartment(
@@ -259,8 +340,12 @@ mutation CreateDepartment(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     tprojects {
       items {
@@ -270,8 +355,12 @@ mutation CreateDepartment(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     qprojects {
       items {
@@ -280,12 +369,19 @@ mutation CreateDepartment(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateDepartment(
@@ -302,8 +398,12 @@ mutation UpdateDepartment(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     tprojects {
       items {
@@ -313,8 +413,12 @@ mutation UpdateDepartment(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     qprojects {
       items {
@@ -323,12 +427,19 @@ mutation UpdateDepartment(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteDepartment(
@@ -345,8 +456,12 @@ mutation DeleteDepartment(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     tprojects {
       items {
@@ -356,8 +471,12 @@ mutation DeleteDepartment(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     qprojects {
       items {
@@ -366,12 +485,19 @@ mutation DeleteDepartment(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateBIMProject(
@@ -391,9 +517,15 @@ mutation CreateBIMProject(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     Pname
     source
@@ -401,6 +533,9 @@ mutation CreateBIMProject(
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateBIMProject(
@@ -420,9 +555,15 @@ mutation UpdateBIMProject(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     Pname
     source
@@ -430,6 +571,9 @@ mutation UpdateBIMProject(
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteBIMProject(
@@ -449,9 +593,15 @@ mutation DeleteBIMProject(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     Pname
     source
@@ -459,6 +609,9 @@ mutation DeleteBIMProject(
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateDataset(
@@ -481,6 +634,9 @@ mutation CreateDataset(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
     }
@@ -492,12 +648,19 @@ mutation CreateDataset(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateDataset(
@@ -520,6 +683,9 @@ mutation UpdateDataset(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
     }
@@ -531,12 +697,19 @@ mutation UpdateDataset(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteDataset(
@@ -559,6 +732,9 @@ mutation DeleteDataset(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
     }
@@ -570,12 +746,19 @@ mutation DeleteDataset(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateFile(
@@ -594,14 +777,21 @@ mutation CreateFile(
       }
       Files {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateFile(
@@ -620,14 +810,21 @@ mutation UpdateFile(
       }
       Files {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteFile(
@@ -646,14 +843,21 @@ mutation DeleteFile(
       }
       Files {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateDatasources(
@@ -672,10 +876,14 @@ mutation CreateDatasources(
       }
       Files {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     table {
       items {
@@ -684,8 +892,12 @@ mutation CreateDatasources(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     databaseserver
     port
@@ -695,6 +907,9 @@ mutation CreateDatasources(
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateDatasources(
@@ -713,10 +928,14 @@ mutation UpdateDatasources(
       }
       Files {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     table {
       items {
@@ -725,8 +944,12 @@ mutation UpdateDatasources(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     databaseserver
     port
@@ -736,6 +959,9 @@ mutation UpdateDatasources(
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteDatasources(
@@ -754,10 +980,14 @@ mutation DeleteDatasources(
       }
       Files {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     table {
       items {
@@ -766,8 +996,12 @@ mutation DeleteDatasources(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     databaseserver
     port
@@ -777,6 +1011,9 @@ mutation DeleteDatasources(
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateTableauProject(
@@ -792,20 +1029,29 @@ mutation CreateTableauProject(
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateTableauProject(
@@ -821,20 +1067,29 @@ mutation UpdateTableauProject(
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteTableauProject(
@@ -850,20 +1105,29 @@ mutation DeleteTableauProject(
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateTableauEnv(
@@ -883,14 +1147,23 @@ mutation CreateTableauEnv(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateTableauEnv(
@@ -910,14 +1183,23 @@ mutation UpdateTableauEnv(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteTableauEnv(
@@ -937,14 +1219,23 @@ mutation DeleteTableauEnv(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateTaleauWorkbook(
@@ -965,14 +1256,23 @@ mutation CreateTaleauWorkbook(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateTaleauWorkbook(
@@ -993,14 +1293,23 @@ mutation UpdateTaleauWorkbook(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteTaleauWorkbook(
@@ -1021,14 +1330,23 @@ mutation DeleteTaleauWorkbook(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateTableauSheet(
@@ -1050,14 +1368,23 @@ mutation CreateTableauSheet(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateTableauSheet(
@@ -1079,14 +1406,23 @@ mutation UpdateTableauSheet(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteTableauSheet(
@@ -1108,14 +1444,23 @@ mutation DeleteTableauSheet(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateTableauGraph(
@@ -1136,14 +1481,23 @@ mutation CreateTableauGraph(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateTableauGraph(
@@ -1164,14 +1518,23 @@ mutation UpdateTableauGraph(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteTableauGraph(
@@ -1192,14 +1555,23 @@ mutation DeleteTableauGraph(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateQuicksightProject(
@@ -1215,16 +1587,22 @@ mutation CreateQuicksightProject(
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     templates {
       items {
@@ -1234,8 +1612,12 @@ mutation CreateQuicksightProject(
         Qpid
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     env {
       items {
@@ -1244,11 +1626,18 @@ mutation CreateQuicksightProject(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateQuicksightProject(
@@ -1264,16 +1653,22 @@ mutation UpdateQuicksightProject(
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     templates {
       items {
@@ -1283,8 +1678,12 @@ mutation UpdateQuicksightProject(
         Qpid
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     env {
       items {
@@ -1293,11 +1692,18 @@ mutation UpdateQuicksightProject(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteQuicksightProject(
@@ -1313,16 +1719,22 @@ mutation DeleteQuicksightProject(
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     templates {
       items {
@@ -1332,8 +1744,12 @@ mutation DeleteQuicksightProject(
         Qpid
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     env {
       items {
@@ -1342,11 +1758,18 @@ mutation DeleteQuicksightProject(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateQuicksightTemplate(
@@ -1368,15 +1791,23 @@ mutation CreateQuicksightTemplate(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       templates {
         nextToken
+        startedAt
       }
       env {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     qanalysis {
       items {
@@ -1386,8 +1817,12 @@ mutation CreateQuicksightTemplate(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     qdashboard {
       items {
@@ -1396,11 +1831,18 @@ mutation CreateQuicksightTemplate(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateQuicksightTemplate(
@@ -1422,15 +1864,23 @@ mutation UpdateQuicksightTemplate(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       templates {
         nextToken
+        startedAt
       }
       env {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     qanalysis {
       items {
@@ -1440,8 +1890,12 @@ mutation UpdateQuicksightTemplate(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     qdashboard {
       items {
@@ -1450,11 +1904,18 @@ mutation UpdateQuicksightTemplate(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteQuicksightTemplate(
@@ -1476,15 +1937,23 @@ mutation DeleteQuicksightTemplate(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       templates {
         nextToken
+        startedAt
       }
       env {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     qanalysis {
       items {
@@ -1494,8 +1963,12 @@ mutation DeleteQuicksightTemplate(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     qdashboard {
       items {
@@ -1504,11 +1977,18 @@ mutation DeleteQuicksightTemplate(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateQuicksightAnalysis(
@@ -1530,19 +2010,30 @@ mutation CreateQuicksightAnalysis(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       qanalysis {
         nextToken
+        startedAt
       }
       qdashboard {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateQuicksightAnalysis(
@@ -1564,19 +2055,30 @@ mutation UpdateQuicksightAnalysis(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       qanalysis {
         nextToken
+        startedAt
       }
       qdashboard {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteQuicksightAnalysis(
@@ -1598,19 +2100,30 @@ mutation DeleteQuicksightAnalysis(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       qanalysis {
         nextToken
+        startedAt
       }
       qdashboard {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateQuicksightEnv(
@@ -1630,19 +2143,30 @@ mutation CreateQuicksightEnv(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       templates {
         nextToken
+        startedAt
       }
       env {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateQuicksightEnv(
@@ -1662,19 +2186,30 @@ mutation UpdateQuicksightEnv(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       templates {
         nextToken
+        startedAt
       }
       env {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteQuicksightEnv(
@@ -1694,19 +2229,30 @@ mutation DeleteQuicksightEnv(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       templates {
         nextToken
+        startedAt
       }
       env {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateQuicksightDashboard(
@@ -1727,19 +2273,30 @@ mutation CreateQuicksightDashboard(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       qanalysis {
         nextToken
+        startedAt
       }
       qdashboard {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateQuicksightDashboard(
@@ -1760,19 +2317,30 @@ mutation UpdateQuicksightDashboard(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       qanalysis {
         nextToken
+        startedAt
       }
       qdashboard {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteQuicksightDashboard(
@@ -1793,19 +2361,30 @@ mutation DeleteQuicksightDashboard(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       qanalysis {
         nextToken
+        startedAt
       }
       qdashboard {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateTable(
@@ -1825,9 +2404,13 @@ mutation CreateTable(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       table {
         nextToken
+        startedAt
       }
       databaseserver
       port
@@ -1837,10 +2420,16 @@ mutation CreateTable(
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateTable(
@@ -1860,9 +2449,13 @@ mutation UpdateTable(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       table {
         nextToken
+        startedAt
       }
       databaseserver
       port
@@ -1872,10 +2465,16 @@ mutation UpdateTable(
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteTable(
@@ -1895,9 +2494,13 @@ mutation DeleteTable(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       table {
         nextToken
+        startedAt
       }
       databaseserver
       port
@@ -1907,10 +2510,16 @@ mutation DeleteTable(
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateQuicksightFolder(
@@ -1922,6 +2531,9 @@ mutation CreateQuicksightFolder(
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateQuicksightFolder(
@@ -1933,6 +2545,9 @@ mutation UpdateQuicksightFolder(
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteQuicksightFolder(
@@ -1944,6 +2559,9 @@ mutation DeleteQuicksightFolder(
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateQuicksightGroup(
@@ -1955,6 +2573,9 @@ mutation CreateQuicksightGroup(
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateQuicksightGroup(
@@ -1966,6 +2587,9 @@ mutation UpdateQuicksightGroup(
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteQuicksightGroup(
@@ -1977,6 +2601,9 @@ mutation DeleteQuicksightGroup(
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateComments(
@@ -1988,6 +2615,9 @@ mutation CreateComments(
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateComments(
@@ -1999,6 +2629,9 @@ mutation UpdateComments(
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteComments(
@@ -2010,5 +2643,146 @@ mutation DeleteComments(
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateTprojects(
+  $input: CreateTprojectsInput!
+  $condition: ModelTprojectsConditionInput
+) {
+  createTprojects(input: $input, condition: $condition) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateTprojects(
+  $input: UpdateTprojectsInput!
+  $condition: ModelTprojectsConditionInput
+) {
+  updateTprojects(input: $input, condition: $condition) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteTprojects(
+  $input: DeleteTprojectsInput!
+  $condition: ModelTprojectsConditionInput
+) {
+  deleteTprojects(input: $input, condition: $condition) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateTdatasources(
+  $input: CreateTdatasourcesInput!
+  $condition: ModelTdatasourcesConditionInput
+) {
+  createTdatasources(input: $input, condition: $condition) {
+    projectid
+    filepath
+    name
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateTdatasources(
+  $input: UpdateTdatasourcesInput!
+  $condition: ModelTdatasourcesConditionInput
+) {
+  updateTdatasources(input: $input, condition: $condition) {
+    projectid
+    filepath
+    name
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteTdatasources(
+  $input: DeleteTdatasourcesInput!
+  $condition: ModelTdatasourcesConditionInput
+) {
+  deleteTdatasources(input: $input, condition: $condition) {
+    projectid
+    filepath
+    name
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateTworkbooks(
+  $input: CreateTworkbooksInput!
+  $condition: ModelTworkbooksConditionInput
+) {
+  createTworkbooks(input: $input, condition: $condition) {
+    name
+    id
+    projectname
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateTworkbooks(
+  $input: UpdateTworkbooksInput!
+  $condition: ModelTworkbooksConditionInput
+) {
+  updateTworkbooks(input: $input, condition: $condition) {
+    name
+    id
+    projectname
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteTworkbooks(
+  $input: DeleteTworkbooksInput!
+  $condition: ModelTworkbooksConditionInput
+) {
+  deleteTworkbooks(input: $input, condition: $condition) {
+    name
+    id
+    projectname
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }

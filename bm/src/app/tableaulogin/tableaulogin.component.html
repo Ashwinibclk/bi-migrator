@@ -36,7 +36,7 @@
             <h6><i class="fa fa-duotone fa-folder" ></i> PROJECTS</h6>
             <div *ngFor="let i of res2;">
             <ul style="list-style-type:none; color:black; "  >
-              <li style="padding:0%; height:20px;"><button style=" background-color: transparent;height:fit-content; width:fit-content; padding:0%;font-size: 15px; border:none;--hover-color:white;">{{i}}</button></li>
+              <li style="padding:0%; height:20px;"><button style=" background-color: transparent;height:fit-content; width:fit-content; padding:0%;font-size: 15px; border:none;--hover-color:white;" (click)="qslogin()">{{i}}</button></li>
               
             </ul> 
             </div> 
@@ -61,7 +61,8 @@
               </ul> 
               </div> 
           </div>
-          <div class="column" style="background-image: linear-gradient(rgb(123, 255, 0), yellow);">
+            
+      <!--    <div class="column" style="background-image: linear-gradient(rgb(123, 255, 0), yellow);">
             <h6><i class="fa fa-bar-chart" aria-hidden="true"></i> VIEWS</h6>
             <div *ngFor="let i of res5;">
              <ul style="list-style-type:none; color:black; font-size: 10px;"  >
@@ -69,17 +70,23 @@
                
              </ul> 
              </div> 
-         </div>
+         </div>-->
         </div>
         
-        <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-circus" [fullScreen] = "true"><p style="color: white" > Fetching Information from tableau please wait... </p></ngx-spinner>
+        
       </div>
       
         </div>
         
         </div>
-         
+
+        <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-circus">  
+          <p style="color: white; font-size: 15px;">Please Wait. </p>  
+          </ngx-spinner> 
+   
         </div>
+        
+         
         <div *ngIf="qsdis" class="modal"  role="dialog">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -97,7 +104,9 @@
                       <label>AwsAccountId: </label>
                       <input type="text" formControlName="awsaccountId" autocomplete="off" />
                     </div>
-                    
+                    <div id="myProgress">
+                      <div id="myBar"></div>
+                    </div>
                      
                      
                     <button type="submit" >login</button>

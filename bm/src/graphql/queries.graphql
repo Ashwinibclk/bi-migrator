@@ -1,4 +1,21 @@
 # this is an auto generated file. This will be overwritten
+query GetMessage(
+  $username: String!
+  $password: String!
+  $sitename: String!
+  $siteurl: String!
+) {
+  getMessage(
+    username: $username
+    password: $password
+    sitename: $sitename
+    siteurl: $siteurl
+  ) {
+    body
+    body1
+    body2
+  }
+}
 query GetTableaulogin($id: ID!) {
   getTableaulogin(id: $id) {
     id
@@ -16,13 +33,22 @@ query GetTableaulogin($id: ID!) {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListTableaulogins(
@@ -43,11 +69,56 @@ query ListTableaulogins(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncTableaulogins(
+  $filter: ModelTableauloginFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTableaulogins(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      username
+      password
+      sitename
+      siteurl
+      tenv {
+        name
+        tpid
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetQuicksightlogin($id: ID!) {
@@ -63,13 +134,22 @@ query GetQuicksightlogin($id: ID!) {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListQuicksightlogins(
@@ -87,11 +167,53 @@ query ListQuicksightlogins(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncQuicksightlogins(
+  $filter: ModelQuicksightloginFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncQuicksightlogins(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      awsaccountId
+      qenv {
+        name
+        Qpid
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetCustomer($name: ID!) {
@@ -104,19 +226,28 @@ query GetCustomer($name: ID!) {
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListCustomers(
@@ -143,11 +274,54 @@ query ListCustomers(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncCustomers(
+  $filter: ModelCustomerFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncCustomers(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      name
+      DName
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetDepartment($id: ID!) {
@@ -161,8 +335,12 @@ query GetDepartment($id: ID!) {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     tprojects {
       items {
@@ -172,8 +350,12 @@ query GetDepartment($id: ID!) {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     qprojects {
       items {
@@ -182,12 +364,19 @@ query GetDepartment($id: ID!) {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListDepartments(
@@ -201,18 +390,63 @@ query ListDepartments(
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncDepartments(
+  $filter: ModelDepartmentFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncDepartments(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      Did
+      DName
+      customers {
+        nextToken
+        startedAt
+      }
+      tprojects {
+        nextToken
+        startedAt
+      }
+      qprojects {
+        nextToken
+        startedAt
+      }
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetBIMProject($id: ID!) {
@@ -229,9 +463,15 @@ query GetBIMProject($id: ID!) {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     Pname
     source
@@ -239,6 +479,9 @@ query GetBIMProject($id: ID!) {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListBIMProjects(
@@ -256,6 +499,9 @@ query ListBIMProjects(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       Pname
       source
@@ -263,8 +509,51 @@ query ListBIMProjects(
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncBIMProjects(
+  $filter: ModelBIMProjectFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncBIMProjects(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      DName
+      UserName
+      Customer {
+        name
+        DName
+        Did
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      Pname
+      source
+      destination
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetDataset($id: ID!) {
@@ -284,6 +573,9 @@ query GetDataset($id: ID!) {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
     }
@@ -295,12 +587,19 @@ query GetDataset($id: ID!) {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListDatasets(
@@ -317,12 +616,50 @@ query ListDatasets(
       }
       Files {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncDatasets(
+  $filter: ModelDatasetFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncDatasets(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      datasetid
+      name
+      datasources {
+        nextToken
+      }
+      Files {
+        nextToken
+        startedAt
+      }
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetFile($id: ID!) {
@@ -338,14 +675,21 @@ query GetFile($id: ID!) {
       }
       Files {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListFiles(
@@ -364,12 +708,56 @@ query ListFiles(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncFiles(
+  $filter: ModelFileFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncFiles(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      name
+      url
+      datasetid
+      datasets {
+        datasetid
+        name
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetDatasources($id: ID!) {
@@ -385,10 +773,14 @@ query GetDatasources($id: ID!) {
       }
       Files {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     table {
       items {
@@ -397,8 +789,12 @@ query GetDatasources($id: ID!) {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     databaseserver
     port
@@ -408,6 +804,9 @@ query GetDatasources($id: ID!) {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListDatasources(
@@ -426,9 +825,13 @@ query ListDatasources(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       table {
         nextToken
+        startedAt
       }
       databaseserver
       port
@@ -438,8 +841,58 @@ query ListDatasources(
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncDatasources(
+  $filter: ModelDatasourcesFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncDatasources(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      dsid
+      name
+      datasetid
+      datasets {
+        datasetid
+        name
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      table {
+        nextToken
+        startedAt
+      }
+      databaseserver
+      port
+      databasename
+      username
+      password
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetTableauProject($id: ID!) {
@@ -452,20 +905,29 @@ query GetTableauProject($id: ID!) {
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListTableauProjects(
@@ -484,12 +946,56 @@ query ListTableauProjects(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncTableauProjects(
+  $filter: ModelTableauProjectFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTableauProjects(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      tpid
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetTableauEnv($id: ID!) {
@@ -506,14 +1012,23 @@ query GetTableauEnv($id: ID!) {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListTableauEnvs(
@@ -532,12 +1047,56 @@ query ListTableauEnvs(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncTableauEnvs(
+  $filter: ModelTableauEnvFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTableauEnvs(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      name
+      tpid
+      tproject {
+        tpid
+        name
+        Did
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetTaleauWorkbook($id: ID!) {
@@ -555,14 +1114,23 @@ query GetTaleauWorkbook($id: ID!) {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListTaleauWorkbooks(
@@ -582,12 +1150,57 @@ query ListTaleauWorkbooks(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncTaleauWorkbooks(
+  $filter: ModelTaleauWorkbookFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTaleauWorkbooks(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      name
+      tpid
+      twbid
+      tproject {
+        tpid
+        name
+        Did
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetTableauSheet($id: ID!) {
@@ -606,14 +1219,23 @@ query GetTableauSheet($id: ID!) {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListTableauSheets(
@@ -633,12 +1255,57 @@ query ListTableauSheets(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncTableauSheets(
+  $filter: ModelTableauSheetFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTableauSheets(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      name
+      twbid
+      tsid
+      tworkbook {
+        name
+        tpid
+        twbid
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetTableauGraph($id: ID!) {
@@ -656,14 +1323,23 @@ query GetTableauGraph($id: ID!) {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListTableauGraphs(
@@ -682,12 +1358,56 @@ query ListTableauGraphs(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncTableauGraphs(
+  $filter: ModelTableauGraphFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTableauGraphs(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      name
+      tsid
+      tsheet {
+        name
+        twbid
+        tsid
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetQuicksightProject($id: ID!) {
@@ -700,16 +1420,22 @@ query GetQuicksightProject($id: ID!) {
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     templates {
       items {
@@ -719,8 +1445,12 @@ query GetQuicksightProject($id: ID!) {
         Qpid
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     env {
       items {
@@ -729,11 +1459,18 @@ query GetQuicksightProject($id: ID!) {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListQuicksightProjects(
@@ -756,17 +1493,70 @@ query ListQuicksightProjects(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       templates {
         nextToken
+        startedAt
       }
       env {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncQuicksightProjects(
+  $filter: ModelQuicksightProjectFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncQuicksightProjects(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      name
+      Did
+      department {
+        Did
+        DName
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      templates {
+        nextToken
+        startedAt
+      }
+      env {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetQuicksightTemplate($id: ID!) {
@@ -785,15 +1575,23 @@ query GetQuicksightTemplate($id: ID!) {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       templates {
         nextToken
+        startedAt
       }
       env {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     qanalysis {
       items {
@@ -803,8 +1601,12 @@ query GetQuicksightTemplate($id: ID!) {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     qdashboard {
       items {
@@ -813,11 +1615,18 @@ query GetQuicksightTemplate($id: ID!) {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListQuicksightTemplates(
@@ -841,17 +1650,71 @@ query ListQuicksightTemplates(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       qanalysis {
         nextToken
+        startedAt
       }
       qdashboard {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncQuicksightTemplates(
+  $filter: ModelQuicksightTemplateFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncQuicksightTemplates(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      name
+      sourceanalysisId
+      Qpid
+      qproject {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      qanalysis {
+        nextToken
+        startedAt
+      }
+      qdashboard {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetQuicksightAnalysis($id: ID!) {
@@ -870,19 +1733,30 @@ query GetQuicksightAnalysis($id: ID!) {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       qanalysis {
         nextToken
+        startedAt
       }
       qdashboard {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListQuicksightAnalyses(
@@ -906,12 +1780,57 @@ query ListQuicksightAnalyses(
         Qpid
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncQuicksightAnalyses(
+  $filter: ModelQuicksightAnalysisFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncQuicksightAnalyses(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      name
+      QuicksightTemplateId
+      sourceanalysisId
+      qtemplate {
+        id
+        name
+        sourceanalysisId
+        Qpid
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetQuicksightEnv($id: ID!) {
@@ -928,19 +1847,30 @@ query GetQuicksightEnv($id: ID!) {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       templates {
         nextToken
+        startedAt
       }
       env {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListQuicksightEnvs(
@@ -958,12 +1888,55 @@ query ListQuicksightEnvs(
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncQuicksightEnvs(
+  $filter: ModelQuicksightEnvFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncQuicksightEnvs(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      name
+      Qpid
+      qproject {
+        id
+        name
+        Did
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetQuicksightDashboard($id: ID!) {
@@ -981,19 +1954,30 @@ query GetQuicksightDashboard($id: ID!) {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       qanalysis {
         nextToken
+        startedAt
       }
       qdashboard {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListQuicksightDashboards(
@@ -1016,12 +2000,56 @@ query ListQuicksightDashboards(
         Qpid
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncQuicksightDashboards(
+  $filter: ModelQuicksightDashboardFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncQuicksightDashboards(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      name
+      qtid
+      qtemplate {
+        id
+        name
+        sourceanalysisId
+        Qpid
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetTable($id: ID!) {
@@ -1038,9 +2066,13 @@ query GetTable($id: ID!) {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       table {
         nextToken
+        startedAt
       }
       databaseserver
       port
@@ -1050,10 +2082,16 @@ query GetTable($id: ID!) {
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListTables(
@@ -1077,12 +2115,61 @@ query ListTables(
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncTables(
+  $filter: ModelTableFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTables(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      name
+      dsid
+      datasource {
+        dsid
+        name
+        datasetid
+        databaseserver
+        port
+        databasename
+        username
+        password
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetQuicksightFolder($id: ID!) {
@@ -1091,6 +2178,9 @@ query GetQuicksightFolder($id: ID!) {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListQuicksightFolders(
@@ -1104,8 +2194,37 @@ query ListQuicksightFolders(
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncQuicksightFolders(
+  $filter: ModelQuicksightFolderFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncQuicksightFolders(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      name
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetQuicksightGroup($id: ID!) {
@@ -1114,6 +2233,9 @@ query GetQuicksightGroup($id: ID!) {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListQuicksightGroups(
@@ -1127,8 +2249,37 @@ query ListQuicksightGroups(
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncQuicksightGroups(
+  $filter: ModelQuicksightGroupFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncQuicksightGroups(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      name
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetComments($id: ID!) {
@@ -1137,6 +2288,9 @@ query GetComments($id: ID!) {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListComments(
@@ -1150,7 +2304,213 @@ query ListComments(
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncComments(
+  $filter: ModelCommentsFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncComments(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      comments
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetTprojects($id: ID!) {
+  getTprojects(id: $id) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListTprojects(
+  $filter: ModelTprojectsFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTprojects(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      description
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncTprojects(
+  $filter: ModelTprojectsFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTprojects(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      name
+      description
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetTdatasources($id: ID!) {
+  getTdatasources(id: $id) {
+    projectid
+    filepath
+    name
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListTdatasources(
+  $filter: ModelTdatasourcesFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTdatasources(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      projectid
+      filepath
+      name
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncTdatasources(
+  $filter: ModelTdatasourcesFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTdatasources(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      projectid
+      filepath
+      name
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetTworkbooks($id: ID!) {
+  getTworkbooks(id: $id) {
+    name
+    id
+    projectname
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListTworkbooks(
+  $filter: ModelTworkbooksFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTworkbooks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      name
+      id
+      projectname
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncTworkbooks(
+  $filter: ModelTworkbooksFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTworkbooks(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      name
+      id
+      projectname
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }

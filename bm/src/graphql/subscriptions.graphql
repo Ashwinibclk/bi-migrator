@@ -16,13 +16,22 @@ subscription OnCreateTableaulogin {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateTableaulogin {
@@ -42,13 +51,22 @@ subscription OnUpdateTableaulogin {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteTableaulogin {
@@ -68,13 +86,22 @@ subscription OnDeleteTableaulogin {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateQuicksightlogin {
@@ -90,13 +117,22 @@ subscription OnCreateQuicksightlogin {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateQuicksightlogin {
@@ -112,13 +148,22 @@ subscription OnUpdateQuicksightlogin {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteQuicksightlogin {
@@ -134,13 +179,22 @@ subscription OnDeleteQuicksightlogin {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateCustomer {
@@ -153,19 +207,28 @@ subscription OnCreateCustomer {
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateCustomer {
@@ -178,19 +241,28 @@ subscription OnUpdateCustomer {
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteCustomer {
@@ -203,19 +275,28 @@ subscription OnDeleteCustomer {
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateDepartment {
@@ -229,8 +310,12 @@ subscription OnCreateDepartment {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     tprojects {
       items {
@@ -240,8 +325,12 @@ subscription OnCreateDepartment {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     qprojects {
       items {
@@ -250,12 +339,19 @@ subscription OnCreateDepartment {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateDepartment {
@@ -269,8 +365,12 @@ subscription OnUpdateDepartment {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     tprojects {
       items {
@@ -280,8 +380,12 @@ subscription OnUpdateDepartment {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     qprojects {
       items {
@@ -290,12 +394,19 @@ subscription OnUpdateDepartment {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteDepartment {
@@ -309,8 +420,12 @@ subscription OnDeleteDepartment {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     tprojects {
       items {
@@ -320,8 +435,12 @@ subscription OnDeleteDepartment {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     qprojects {
       items {
@@ -330,12 +449,19 @@ subscription OnDeleteDepartment {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateBIMProject {
@@ -352,9 +478,15 @@ subscription OnCreateBIMProject {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     Pname
     source
@@ -362,6 +494,9 @@ subscription OnCreateBIMProject {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateBIMProject {
@@ -378,9 +513,15 @@ subscription OnUpdateBIMProject {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     Pname
     source
@@ -388,6 +529,9 @@ subscription OnUpdateBIMProject {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteBIMProject {
@@ -404,9 +548,15 @@ subscription OnDeleteBIMProject {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     Pname
     source
@@ -414,6 +564,9 @@ subscription OnDeleteBIMProject {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateDataset {
@@ -433,6 +586,9 @@ subscription OnCreateDataset {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
     }
@@ -444,12 +600,19 @@ subscription OnCreateDataset {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateDataset {
@@ -469,6 +632,9 @@ subscription OnUpdateDataset {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
     }
@@ -480,12 +646,19 @@ subscription OnUpdateDataset {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteDataset {
@@ -505,6 +678,9 @@ subscription OnDeleteDataset {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
     }
@@ -516,12 +692,19 @@ subscription OnDeleteDataset {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateFile {
@@ -537,14 +720,21 @@ subscription OnCreateFile {
       }
       Files {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateFile {
@@ -560,14 +750,21 @@ subscription OnUpdateFile {
       }
       Files {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteFile {
@@ -583,14 +780,21 @@ subscription OnDeleteFile {
       }
       Files {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateDatasources {
@@ -606,10 +810,14 @@ subscription OnCreateDatasources {
       }
       Files {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     table {
       items {
@@ -618,8 +826,12 @@ subscription OnCreateDatasources {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     databaseserver
     port
@@ -629,6 +841,9 @@ subscription OnCreateDatasources {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateDatasources {
@@ -644,10 +859,14 @@ subscription OnUpdateDatasources {
       }
       Files {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     table {
       items {
@@ -656,8 +875,12 @@ subscription OnUpdateDatasources {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     databaseserver
     port
@@ -667,6 +890,9 @@ subscription OnUpdateDatasources {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteDatasources {
@@ -682,10 +908,14 @@ subscription OnDeleteDatasources {
       }
       Files {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     table {
       items {
@@ -694,8 +924,12 @@ subscription OnDeleteDatasources {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     databaseserver
     port
@@ -705,6 +939,9 @@ subscription OnDeleteDatasources {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateTableauProject {
@@ -717,20 +954,29 @@ subscription OnCreateTableauProject {
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateTableauProject {
@@ -743,20 +989,29 @@ subscription OnUpdateTableauProject {
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteTableauProject {
@@ -769,20 +1024,29 @@ subscription OnDeleteTableauProject {
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateTableauEnv {
@@ -799,14 +1063,23 @@ subscription OnCreateTableauEnv {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateTableauEnv {
@@ -823,14 +1096,23 @@ subscription OnUpdateTableauEnv {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteTableauEnv {
@@ -847,14 +1129,23 @@ subscription OnDeleteTableauEnv {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateTaleauWorkbook {
@@ -872,14 +1163,23 @@ subscription OnCreateTaleauWorkbook {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateTaleauWorkbook {
@@ -897,14 +1197,23 @@ subscription OnUpdateTaleauWorkbook {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteTaleauWorkbook {
@@ -922,14 +1231,23 @@ subscription OnDeleteTaleauWorkbook {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateTableauSheet {
@@ -948,14 +1266,23 @@ subscription OnCreateTableauSheet {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateTableauSheet {
@@ -974,14 +1301,23 @@ subscription OnUpdateTableauSheet {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteTableauSheet {
@@ -1000,14 +1336,23 @@ subscription OnDeleteTableauSheet {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateTableauGraph {
@@ -1025,14 +1370,23 @@ subscription OnCreateTableauGraph {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateTableauGraph {
@@ -1050,14 +1404,23 @@ subscription OnUpdateTableauGraph {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteTableauGraph {
@@ -1075,14 +1438,23 @@ subscription OnDeleteTableauGraph {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateQuicksightProject {
@@ -1095,16 +1467,22 @@ subscription OnCreateQuicksightProject {
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     templates {
       items {
@@ -1114,8 +1492,12 @@ subscription OnCreateQuicksightProject {
         Qpid
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     env {
       items {
@@ -1124,11 +1506,18 @@ subscription OnCreateQuicksightProject {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateQuicksightProject {
@@ -1141,16 +1530,22 @@ subscription OnUpdateQuicksightProject {
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     templates {
       items {
@@ -1160,8 +1555,12 @@ subscription OnUpdateQuicksightProject {
         Qpid
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     env {
       items {
@@ -1170,11 +1569,18 @@ subscription OnUpdateQuicksightProject {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteQuicksightProject {
@@ -1187,16 +1593,22 @@ subscription OnDeleteQuicksightProject {
       DName
       customers {
         nextToken
+        startedAt
       }
       tprojects {
         nextToken
+        startedAt
       }
       qprojects {
         nextToken
+        startedAt
       }
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     templates {
       items {
@@ -1206,8 +1618,12 @@ subscription OnDeleteQuicksightProject {
         Qpid
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     env {
       items {
@@ -1216,11 +1632,18 @@ subscription OnDeleteQuicksightProject {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateQuicksightTemplate {
@@ -1239,15 +1662,23 @@ subscription OnCreateQuicksightTemplate {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       templates {
         nextToken
+        startedAt
       }
       env {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     qanalysis {
       items {
@@ -1257,8 +1688,12 @@ subscription OnCreateQuicksightTemplate {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     qdashboard {
       items {
@@ -1267,11 +1702,18 @@ subscription OnCreateQuicksightTemplate {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateQuicksightTemplate {
@@ -1290,15 +1732,23 @@ subscription OnUpdateQuicksightTemplate {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       templates {
         nextToken
+        startedAt
       }
       env {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     qanalysis {
       items {
@@ -1308,8 +1758,12 @@ subscription OnUpdateQuicksightTemplate {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     qdashboard {
       items {
@@ -1318,11 +1772,18 @@ subscription OnUpdateQuicksightTemplate {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteQuicksightTemplate {
@@ -1341,15 +1802,23 @@ subscription OnDeleteQuicksightTemplate {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       templates {
         nextToken
+        startedAt
       }
       env {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     qanalysis {
       items {
@@ -1359,8 +1828,12 @@ subscription OnDeleteQuicksightTemplate {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     qdashboard {
       items {
@@ -1369,11 +1842,18 @@ subscription OnDeleteQuicksightTemplate {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateQuicksightAnalysis {
@@ -1392,19 +1872,30 @@ subscription OnCreateQuicksightAnalysis {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       qanalysis {
         nextToken
+        startedAt
       }
       qdashboard {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateQuicksightAnalysis {
@@ -1423,19 +1914,30 @@ subscription OnUpdateQuicksightAnalysis {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       qanalysis {
         nextToken
+        startedAt
       }
       qdashboard {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteQuicksightAnalysis {
@@ -1454,19 +1956,30 @@ subscription OnDeleteQuicksightAnalysis {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       qanalysis {
         nextToken
+        startedAt
       }
       qdashboard {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateQuicksightEnv {
@@ -1483,19 +1996,30 @@ subscription OnCreateQuicksightEnv {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       templates {
         nextToken
+        startedAt
       }
       env {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateQuicksightEnv {
@@ -1512,19 +2036,30 @@ subscription OnUpdateQuicksightEnv {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       templates {
         nextToken
+        startedAt
       }
       env {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteQuicksightEnv {
@@ -1541,19 +2076,30 @@ subscription OnDeleteQuicksightEnv {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       templates {
         nextToken
+        startedAt
       }
       env {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateQuicksightDashboard {
@@ -1571,19 +2117,30 @@ subscription OnCreateQuicksightDashboard {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       qanalysis {
         nextToken
+        startedAt
       }
       qdashboard {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateQuicksightDashboard {
@@ -1601,19 +2158,30 @@ subscription OnUpdateQuicksightDashboard {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       qanalysis {
         nextToken
+        startedAt
       }
       qdashboard {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteQuicksightDashboard {
@@ -1631,19 +2199,30 @@ subscription OnDeleteQuicksightDashboard {
         Did
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       qanalysis {
         nextToken
+        startedAt
       }
       qdashboard {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateTable {
@@ -1660,9 +2239,13 @@ subscription OnCreateTable {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       table {
         nextToken
+        startedAt
       }
       databaseserver
       port
@@ -1672,10 +2255,16 @@ subscription OnCreateTable {
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateTable {
@@ -1692,9 +2281,13 @@ subscription OnUpdateTable {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       table {
         nextToken
+        startedAt
       }
       databaseserver
       port
@@ -1704,10 +2297,16 @@ subscription OnUpdateTable {
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteTable {
@@ -1724,9 +2323,13 @@ subscription OnDeleteTable {
         id
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       table {
         nextToken
+        startedAt
       }
       databaseserver
       port
@@ -1736,10 +2339,16 @@ subscription OnDeleteTable {
       id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateQuicksightFolder {
@@ -1748,6 +2357,9 @@ subscription OnCreateQuicksightFolder {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateQuicksightFolder {
@@ -1756,6 +2368,9 @@ subscription OnUpdateQuicksightFolder {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteQuicksightFolder {
@@ -1764,6 +2379,9 @@ subscription OnDeleteQuicksightFolder {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateQuicksightGroup {
@@ -1772,6 +2390,9 @@ subscription OnCreateQuicksightGroup {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateQuicksightGroup {
@@ -1780,6 +2401,9 @@ subscription OnUpdateQuicksightGroup {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteQuicksightGroup {
@@ -1788,6 +2412,9 @@ subscription OnDeleteQuicksightGroup {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateComments {
@@ -1796,6 +2423,9 @@ subscription OnCreateComments {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateComments {
@@ -1804,6 +2434,9 @@ subscription OnUpdateComments {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteComments {
@@ -1812,5 +2445,119 @@ subscription OnDeleteComments {
     id
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateTprojects {
+  onCreateTprojects {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateTprojects {
+  onUpdateTprojects {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteTprojects {
+  onDeleteTprojects {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateTdatasources {
+  onCreateTdatasources {
+    projectid
+    filepath
+    name
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateTdatasources {
+  onUpdateTdatasources {
+    projectid
+    filepath
+    name
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteTdatasources {
+  onDeleteTdatasources {
+    projectid
+    filepath
+    name
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateTworkbooks {
+  onCreateTworkbooks {
+    name
+    id
+    projectname
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateTworkbooks {
+  onUpdateTworkbooks {
+    name
+    id
+    projectname
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteTworkbooks {
+  onDeleteTworkbooks {
+    name
+    id
+    projectname
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }

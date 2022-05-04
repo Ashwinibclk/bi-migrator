@@ -76,6 +76,15 @@ export type __SubscriptionContainer = {
   onCreateComments: OnCreateCommentsSubscription;
   onUpdateComments: OnUpdateCommentsSubscription;
   onDeleteComments: OnDeleteCommentsSubscription;
+  onCreateTprojects: OnCreateTprojectsSubscription;
+  onUpdateTprojects: OnUpdateTprojectsSubscription;
+  onDeleteTprojects: OnDeleteTprojectsSubscription;
+  onCreateTdatasources: OnCreateTdatasourcesSubscription;
+  onUpdateTdatasources: OnUpdateTdatasourcesSubscription;
+  onDeleteTdatasources: OnDeleteTdatasourcesSubscription;
+  onCreateTworkbooks: OnCreateTworkbooksSubscription;
+  onUpdateTworkbooks: OnUpdateTworkbooksSubscription;
+  onDeleteTworkbooks: OnDeleteTworkbooksSubscription;
 };
 
 export type CreateTableauloginInput = {
@@ -84,6 +93,7 @@ export type CreateTableauloginInput = {
   password: string;
   sitename: string;
   siteurl: string;
+  _version?: number | null;
 };
 
 export type ModelTableauloginConditionInput = {
@@ -145,6 +155,9 @@ export type Tableaulogin = {
   tenv?: TableauEnv | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type TableauEnv = {
@@ -155,6 +168,9 @@ export type TableauEnv = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type TableauProject = {
@@ -166,6 +182,9 @@ export type TableauProject = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type Department = {
@@ -178,6 +197,9 @@ export type Department = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export enum Departments {
@@ -192,6 +214,7 @@ export type ModelCustomerConnection = {
   __typename: "ModelCustomerConnection";
   items: Array<Customer | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type Customer = {
@@ -202,18 +225,23 @@ export type Customer = {
   department?: Department | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ModelTableauProjectConnection = {
   __typename: "ModelTableauProjectConnection";
   items: Array<TableauProject | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type ModelQuicksightProjectConnection = {
   __typename: "ModelQuicksightProjectConnection";
   items: Array<QuicksightProject | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type QuicksightProject = {
@@ -226,12 +254,16 @@ export type QuicksightProject = {
   env?: ModelQuicksightEnvConnection | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ModelQuicksightTemplateConnection = {
   __typename: "ModelQuicksightTemplateConnection";
   items: Array<QuicksightTemplate | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type QuicksightTemplate = {
@@ -245,12 +277,16 @@ export type QuicksightTemplate = {
   qdashboard?: ModelQuicksightDashboardConnection | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ModelQuicksightAnalysisConnection = {
   __typename: "ModelQuicksightAnalysisConnection";
   items: Array<QuicksightAnalysis | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type QuicksightAnalysis = {
@@ -262,12 +298,16 @@ export type QuicksightAnalysis = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ModelQuicksightDashboardConnection = {
   __typename: "ModelQuicksightDashboardConnection";
   items: Array<QuicksightDashboard | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type QuicksightDashboard = {
@@ -278,12 +318,16 @@ export type QuicksightDashboard = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ModelQuicksightEnvConnection = {
   __typename: "ModelQuicksightEnvConnection";
   items: Array<QuicksightEnv | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type QuicksightEnv = {
@@ -294,6 +338,9 @@ export type QuicksightEnv = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateTableauloginInput = {
@@ -302,15 +349,18 @@ export type UpdateTableauloginInput = {
   password?: string | null;
   sitename?: string | null;
   siteurl?: string | null;
+  _version?: number | null;
 };
 
 export type DeleteTableauloginInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateQuicksightloginInput = {
   id?: string | null;
   awsaccountId: string;
+  _version?: number | null;
 };
 
 export type ModelQuicksightloginConditionInput = {
@@ -343,21 +393,27 @@ export type Quicksightlogin = {
   qenv?: QuicksightEnv | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateQuicksightloginInput = {
   id: string;
   awsaccountId?: string | null;
+  _version?: number | null;
 };
 
 export type DeleteQuicksightloginInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateCustomerInput = {
   name: string;
   DName: Departments;
   Did: string;
+  _version?: number | null;
 };
 
 export type ModelCustomerConditionInput = {
@@ -377,16 +433,19 @@ export type UpdateCustomerInput = {
   name: string;
   DName?: Departments | null;
   Did?: string | null;
+  _version?: number | null;
 };
 
 export type DeleteCustomerInput = {
   name: string;
+  _version?: number | null;
 };
 
 export type CreateDepartmentInput = {
   Did: string;
   DName: Departments;
   id?: string | null;
+  _version?: number | null;
 };
 
 export type ModelDepartmentConditionInput = {
@@ -401,10 +460,12 @@ export type UpdateDepartmentInput = {
   Did?: string | null;
   DName?: Departments | null;
   id: string;
+  _version?: number | null;
 };
 
 export type DeleteDepartmentInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateBIMProjectInput = {
@@ -414,6 +475,7 @@ export type CreateBIMProjectInput = {
   source: BIPlatform;
   destination: BIPlatform;
   id?: string | null;
+  _version?: number | null;
 };
 
 export enum BIPlatform {
@@ -448,6 +510,9 @@ export type BIMProject = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateBIMProjectInput = {
@@ -457,16 +522,19 @@ export type UpdateBIMProjectInput = {
   source?: BIPlatform | null;
   destination?: BIPlatform | null;
   id: string;
+  _version?: number | null;
 };
 
 export type DeleteBIMProjectInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateDatasetInput = {
   datasetid: string;
   name: string;
   id?: string | null;
+  _version?: number | null;
 };
 
 export type ModelDatasetConditionInput = {
@@ -486,6 +554,9 @@ export type dataset = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ModeldatasourcesConnection = {
@@ -509,12 +580,16 @@ export type datasources = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ModelTableConnection = {
   __typename: "ModelTableConnection";
   items: Array<Table | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type Table = {
@@ -525,12 +600,16 @@ export type Table = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ModelFileConnection = {
   __typename: "ModelFileConnection";
   items: Array<File | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type File = {
@@ -542,16 +621,21 @@ export type File = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateDatasetInput = {
   datasetid?: string | null;
   name?: string | null;
   id: string;
+  _version?: number | null;
 };
 
 export type DeleteDatasetInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateFileInput = {
@@ -559,6 +643,7 @@ export type CreateFileInput = {
   url: string;
   datasetid: string;
   id?: string | null;
+  _version?: number | null;
 };
 
 export type ModelFileConditionInput = {
@@ -575,10 +660,12 @@ export type UpdateFileInput = {
   url?: string | null;
   datasetid?: string | null;
   id: string;
+  _version?: number | null;
 };
 
 export type DeleteFileInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateDatasourcesInput = {
@@ -591,6 +678,7 @@ export type CreateDatasourcesInput = {
   username: string;
   password: string;
   id?: string | null;
+  _version?: number | null;
 };
 
 export type ModelDatasourcesConditionInput = {
@@ -629,10 +717,12 @@ export type UpdateDatasourcesInput = {
   username?: string | null;
   password?: string | null;
   id: string;
+  _version?: number | null;
 };
 
 export type DeleteDatasourcesInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateTableauProjectInput = {
@@ -640,6 +730,7 @@ export type CreateTableauProjectInput = {
   name: string;
   Did: string;
   id?: string | null;
+  _version?: number | null;
 };
 
 export type ModelTableauProjectConditionInput = {
@@ -656,16 +747,19 @@ export type UpdateTableauProjectInput = {
   name?: string | null;
   Did?: string | null;
   id: string;
+  _version?: number | null;
 };
 
 export type DeleteTableauProjectInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateTableauEnvInput = {
   name: string;
   tpid: string;
   id?: string | null;
+  _version?: number | null;
 };
 
 export type ModelTableauEnvConditionInput = {
@@ -680,10 +774,12 @@ export type UpdateTableauEnvInput = {
   name?: string | null;
   tpid?: string | null;
   id: string;
+  _version?: number | null;
 };
 
 export type DeleteTableauEnvInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateTaleauWorkbookInput = {
@@ -691,6 +787,7 @@ export type CreateTaleauWorkbookInput = {
   tpid: string;
   twbid: string;
   id?: string | null;
+  _version?: number | null;
 };
 
 export type ModelTaleauWorkbookConditionInput = {
@@ -711,6 +808,9 @@ export type TaleauWorkbook = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateTaleauWorkbookInput = {
@@ -718,10 +818,12 @@ export type UpdateTaleauWorkbookInput = {
   tpid?: string | null;
   twbid?: string | null;
   id: string;
+  _version?: number | null;
 };
 
 export type DeleteTaleauWorkbookInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateTableauSheetInput = {
@@ -729,6 +831,7 @@ export type CreateTableauSheetInput = {
   twbid: string;
   tsid: string;
   id?: string | null;
+  _version?: number | null;
 };
 
 export type ModelTableauSheetConditionInput = {
@@ -749,6 +852,9 @@ export type TableauSheet = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateTableauSheetInput = {
@@ -756,16 +862,19 @@ export type UpdateTableauSheetInput = {
   twbid?: string | null;
   tsid?: string | null;
   id: string;
+  _version?: number | null;
 };
 
 export type DeleteTableauSheetInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateTableauGraphInput = {
   name: string;
   tsid: string;
   id?: string | null;
+  _version?: number | null;
 };
 
 export type ModelTableauGraphConditionInput = {
@@ -784,22 +893,28 @@ export type TableauGraph = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateTableauGraphInput = {
   name?: string | null;
   tsid?: string | null;
   id: string;
+  _version?: number | null;
 };
 
 export type DeleteTableauGraphInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateQuicksightProjectInput = {
   id?: string | null;
   name: string;
   Did: string;
+  _version?: number | null;
 };
 
 export type ModelQuicksightProjectConditionInput = {
@@ -814,10 +929,12 @@ export type UpdateQuicksightProjectInput = {
   id: string;
   name?: string | null;
   Did?: string | null;
+  _version?: number | null;
 };
 
 export type DeleteQuicksightProjectInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateQuicksightTemplateInput = {
@@ -825,6 +942,7 @@ export type CreateQuicksightTemplateInput = {
   name: string;
   sourceanalysisId: string;
   Qpid: string;
+  _version?: number | null;
 };
 
 export type ModelQuicksightTemplateConditionInput = {
@@ -841,10 +959,12 @@ export type UpdateQuicksightTemplateInput = {
   name?: string | null;
   sourceanalysisId?: string | null;
   Qpid?: string | null;
+  _version?: number | null;
 };
 
 export type DeleteQuicksightTemplateInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateQuicksightAnalysisInput = {
@@ -852,6 +972,7 @@ export type CreateQuicksightAnalysisInput = {
   QuicksightTemplateId: string;
   sourceanalysisId: string;
   id?: string | null;
+  _version?: number | null;
 };
 
 export type ModelQuicksightAnalysisConditionInput = {
@@ -868,16 +989,19 @@ export type UpdateQuicksightAnalysisInput = {
   QuicksightTemplateId?: string | null;
   sourceanalysisId?: string | null;
   id: string;
+  _version?: number | null;
 };
 
 export type DeleteQuicksightAnalysisInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateQuicksightEnvInput = {
   name: string;
   Qpid: string;
   id?: string | null;
+  _version?: number | null;
 };
 
 export type ModelQuicksightEnvConditionInput = {
@@ -892,16 +1016,19 @@ export type UpdateQuicksightEnvInput = {
   name?: string | null;
   Qpid?: string | null;
   id: string;
+  _version?: number | null;
 };
 
 export type DeleteQuicksightEnvInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateQuicksightDashboardInput = {
   name: string;
   qtid: string;
   id?: string | null;
+  _version?: number | null;
 };
 
 export type ModelQuicksightDashboardConditionInput = {
@@ -916,16 +1043,19 @@ export type UpdateQuicksightDashboardInput = {
   name?: string | null;
   qtid?: string | null;
   id: string;
+  _version?: number | null;
 };
 
 export type DeleteQuicksightDashboardInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateTableInput = {
   name: string;
   dsid: string;
   id?: string | null;
+  _version?: number | null;
 };
 
 export type ModelTableConditionInput = {
@@ -940,15 +1070,18 @@ export type UpdateTableInput = {
   name?: string | null;
   dsid?: string | null;
   id: string;
+  _version?: number | null;
 };
 
 export type DeleteTableInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateQuicksightFolderInput = {
   name: string;
   id?: string | null;
+  _version?: number | null;
 };
 
 export type ModelQuicksightFolderConditionInput = {
@@ -964,20 +1097,26 @@ export type QuicksightFolder = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateQuicksightFolderInput = {
   name?: string | null;
   id: string;
+  _version?: number | null;
 };
 
 export type DeleteQuicksightFolderInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateQuicksightGroupInput = {
   name: string;
   id?: string | null;
+  _version?: number | null;
 };
 
 export type ModelQuicksightGroupConditionInput = {
@@ -993,20 +1132,26 @@ export type QuicksightGroup = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateQuicksightGroupInput = {
   name?: string | null;
   id: string;
+  _version?: number | null;
 };
 
 export type DeleteQuicksightGroupInput = {
   id: string;
+  _version?: number | null;
 };
 
 export type CreateCommentsInput = {
   comments: string;
   id?: string | null;
+  _version?: number | null;
 };
 
 export type ModelCommentsConditionInput = {
@@ -1022,15 +1167,148 @@ export type comments = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateCommentsInput = {
   comments?: string | null;
   id: string;
+  _version?: number | null;
 };
 
 export type DeleteCommentsInput = {
   id: string;
+  _version?: number | null;
+};
+
+export type CreateTprojectsInput = {
+  id?: string | null;
+  name: string;
+  description: string;
+  _version?: number | null;
+};
+
+export type ModelTprojectsConditionInput = {
+  name?: ModelStringInput | null;
+  description?: ModelStringInput | null;
+  and?: Array<ModelTprojectsConditionInput | null> | null;
+  or?: Array<ModelTprojectsConditionInput | null> | null;
+  not?: ModelTprojectsConditionInput | null;
+};
+
+export type tprojects = {
+  __typename: "tprojects";
+  id: string;
+  name: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type UpdateTprojectsInput = {
+  id: string;
+  name?: string | null;
+  description?: string | null;
+  _version?: number | null;
+};
+
+export type DeleteTprojectsInput = {
+  id: string;
+  _version?: number | null;
+};
+
+export type CreateTdatasourcesInput = {
+  projectid: string;
+  filepath: string;
+  name: string;
+  id?: string | null;
+  _version?: number | null;
+};
+
+export type ModelTdatasourcesConditionInput = {
+  projectid?: ModelIDInput | null;
+  filepath?: ModelStringInput | null;
+  name?: ModelStringInput | null;
+  and?: Array<ModelTdatasourcesConditionInput | null> | null;
+  or?: Array<ModelTdatasourcesConditionInput | null> | null;
+  not?: ModelTdatasourcesConditionInput | null;
+};
+
+export type tdatasources = {
+  __typename: "tdatasources";
+  projectid: string;
+  filepath: string;
+  name: string;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type UpdateTdatasourcesInput = {
+  projectid?: string | null;
+  filepath?: string | null;
+  name?: string | null;
+  id: string;
+  _version?: number | null;
+};
+
+export type DeleteTdatasourcesInput = {
+  id: string;
+  _version?: number | null;
+};
+
+export type CreateTworkbooksInput = {
+  name: string;
+  id?: string | null;
+  projectname: string;
+  _version?: number | null;
+};
+
+export type ModelTworkbooksConditionInput = {
+  name?: ModelStringInput | null;
+  projectname?: ModelStringInput | null;
+  and?: Array<ModelTworkbooksConditionInput | null> | null;
+  or?: Array<ModelTworkbooksConditionInput | null> | null;
+  not?: ModelTworkbooksConditionInput | null;
+};
+
+export type tworkbooks = {
+  __typename: "tworkbooks";
+  name: string;
+  id: string;
+  projectname: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type UpdateTworkbooksInput = {
+  name?: string | null;
+  id: string;
+  projectname?: string | null;
+  _version?: number | null;
+};
+
+export type DeleteTworkbooksInput = {
+  id: string;
+  _version?: number | null;
+};
+
+export type message = {
+  __typename: "message";
+  body: string;
+  body1: string;
+  body2: string;
 };
 
 export type ModelTableauloginFilterInput = {
@@ -1048,6 +1326,7 @@ export type ModelTableauloginConnection = {
   __typename: "ModelTableauloginConnection";
   items: Array<Tableaulogin | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type ModelQuicksightloginFilterInput = {
@@ -1062,6 +1341,7 @@ export type ModelQuicksightloginConnection = {
   __typename: "ModelQuicksightloginConnection";
   items: Array<Quicksightlogin | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type ModelCustomerFilterInput = {
@@ -1090,6 +1370,7 @@ export type ModelDepartmentConnection = {
   __typename: "ModelDepartmentConnection";
   items: Array<Department | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type ModelBIMProjectFilterInput = {
@@ -1107,6 +1388,7 @@ export type ModelBIMProjectConnection = {
   __typename: "ModelBIMProjectConnection";
   items: Array<BIMProject | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type ModelDatasetFilterInput = {
@@ -1121,6 +1403,7 @@ export type ModelDatasetConnection = {
   __typename: "ModelDatasetConnection";
   items: Array<dataset | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type ModelFileFilterInput = {
@@ -1150,6 +1433,7 @@ export type ModelDatasourcesConnection = {
   __typename: "ModelDatasourcesConnection";
   items: Array<datasources | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type ModelTableauProjectFilterInput = {
@@ -1173,6 +1457,7 @@ export type ModelTableauEnvConnection = {
   __typename: "ModelTableauEnvConnection";
   items: Array<TableauEnv | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type ModelTaleauWorkbookFilterInput = {
@@ -1188,6 +1473,7 @@ export type ModelTaleauWorkbookConnection = {
   __typename: "ModelTaleauWorkbookConnection";
   items: Array<TaleauWorkbook | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type ModelTableauSheetFilterInput = {
@@ -1203,6 +1489,7 @@ export type ModelTableauSheetConnection = {
   __typename: "ModelTableauSheetConnection";
   items: Array<TableauSheet | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type ModelTableauGraphFilterInput = {
@@ -1217,6 +1504,7 @@ export type ModelTableauGraphConnection = {
   __typename: "ModelTableauGraphConnection";
   items: Array<TableauGraph | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type ModelQuicksightProjectFilterInput = {
@@ -1282,6 +1570,7 @@ export type ModelQuicksightFolderConnection = {
   __typename: "ModelQuicksightFolderConnection";
   items: Array<QuicksightFolder | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type ModelQuicksightGroupFilterInput = {
@@ -1295,6 +1584,7 @@ export type ModelQuicksightGroupConnection = {
   __typename: "ModelQuicksightGroupConnection";
   items: Array<QuicksightGroup | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type ModelCommentsFilterInput = {
@@ -1308,6 +1598,55 @@ export type ModelCommentsConnection = {
   __typename: "ModelCommentsConnection";
   items: Array<comments | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type ModelTprojectsFilterInput = {
+  id?: ModelIDInput | null;
+  name?: ModelStringInput | null;
+  description?: ModelStringInput | null;
+  and?: Array<ModelTprojectsFilterInput | null> | null;
+  or?: Array<ModelTprojectsFilterInput | null> | null;
+  not?: ModelTprojectsFilterInput | null;
+};
+
+export type ModelTprojectsConnection = {
+  __typename: "ModelTprojectsConnection";
+  items: Array<tprojects | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type ModelTdatasourcesFilterInput = {
+  projectid?: ModelIDInput | null;
+  filepath?: ModelStringInput | null;
+  name?: ModelStringInput | null;
+  and?: Array<ModelTdatasourcesFilterInput | null> | null;
+  or?: Array<ModelTdatasourcesFilterInput | null> | null;
+  not?: ModelTdatasourcesFilterInput | null;
+};
+
+export type ModelTdatasourcesConnection = {
+  __typename: "ModelTdatasourcesConnection";
+  items: Array<tdatasources | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type ModelTworkbooksFilterInput = {
+  name?: ModelStringInput | null;
+  id?: ModelIDInput | null;
+  projectname?: ModelStringInput | null;
+  and?: Array<ModelTworkbooksFilterInput | null> | null;
+  or?: Array<ModelTworkbooksFilterInput | null> | null;
+  not?: ModelTworkbooksFilterInput | null;
+};
+
+export type ModelTworkbooksConnection = {
+  __typename: "ModelTworkbooksConnection";
+  items: Array<tworkbooks | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type CreateTableauloginMutation = {
@@ -1329,13 +1668,22 @@ export type CreateTableauloginMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateTableauloginMutation = {
@@ -1357,13 +1705,22 @@ export type UpdateTableauloginMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteTableauloginMutation = {
@@ -1385,13 +1742,22 @@ export type DeleteTableauloginMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateQuicksightloginMutation = {
@@ -1409,13 +1775,22 @@ export type CreateQuicksightloginMutation = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateQuicksightloginMutation = {
@@ -1433,13 +1808,22 @@ export type UpdateQuicksightloginMutation = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteQuicksightloginMutation = {
@@ -1457,13 +1841,22 @@ export type DeleteQuicksightloginMutation = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateCustomerMutation = {
@@ -1478,21 +1871,30 @@ export type CreateCustomerMutation = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateCustomerMutation = {
@@ -1507,21 +1909,30 @@ export type UpdateCustomerMutation = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteCustomerMutation = {
@@ -1536,21 +1947,30 @@ export type DeleteCustomerMutation = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateDepartmentMutation = {
@@ -1566,8 +1986,12 @@ export type CreateDepartmentMutation = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   tprojects?: {
     __typename: "ModelTableauProjectConnection";
@@ -1579,8 +2003,12 @@ export type CreateDepartmentMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   qprojects?: {
     __typename: "ModelQuicksightProjectConnection";
@@ -1591,12 +2019,19 @@ export type CreateDepartmentMutation = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateDepartmentMutation = {
@@ -1612,8 +2047,12 @@ export type UpdateDepartmentMutation = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   tprojects?: {
     __typename: "ModelTableauProjectConnection";
@@ -1625,8 +2064,12 @@ export type UpdateDepartmentMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   qprojects?: {
     __typename: "ModelQuicksightProjectConnection";
@@ -1637,12 +2080,19 @@ export type UpdateDepartmentMutation = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteDepartmentMutation = {
@@ -1658,8 +2108,12 @@ export type DeleteDepartmentMutation = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   tprojects?: {
     __typename: "ModelTableauProjectConnection";
@@ -1671,8 +2125,12 @@ export type DeleteDepartmentMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   qprojects?: {
     __typename: "ModelQuicksightProjectConnection";
@@ -1683,12 +2141,19 @@ export type DeleteDepartmentMutation = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateBIMProjectMutation = {
@@ -1707,9 +2172,15 @@ export type CreateBIMProjectMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   Pname: string;
   source: BIPlatform;
@@ -1717,6 +2188,9 @@ export type CreateBIMProjectMutation = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateBIMProjectMutation = {
@@ -1735,9 +2209,15 @@ export type UpdateBIMProjectMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   Pname: string;
   source: BIPlatform;
@@ -1745,6 +2225,9 @@ export type UpdateBIMProjectMutation = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteBIMProjectMutation = {
@@ -1763,9 +2246,15 @@ export type DeleteBIMProjectMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   Pname: string;
   source: BIPlatform;
@@ -1773,6 +2262,9 @@ export type DeleteBIMProjectMutation = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateDatasetMutation = {
@@ -1794,6 +2286,9 @@ export type CreateDatasetMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
   } | null;
@@ -1807,12 +2302,19 @@ export type CreateDatasetMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateDatasetMutation = {
@@ -1834,6 +2336,9 @@ export type UpdateDatasetMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
   } | null;
@@ -1847,12 +2352,19 @@ export type UpdateDatasetMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteDatasetMutation = {
@@ -1874,6 +2386,9 @@ export type DeleteDatasetMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
   } | null;
@@ -1887,12 +2402,19 @@ export type DeleteDatasetMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateFileMutation = {
@@ -1911,14 +2433,21 @@ export type CreateFileMutation = {
     Files?: {
       __typename: "ModelFileConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateFileMutation = {
@@ -1937,14 +2466,21 @@ export type UpdateFileMutation = {
     Files?: {
       __typename: "ModelFileConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteFileMutation = {
@@ -1963,14 +2499,21 @@ export type DeleteFileMutation = {
     Files?: {
       __typename: "ModelFileConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateDatasourcesMutation = {
@@ -1989,10 +2532,14 @@ export type CreateDatasourcesMutation = {
     Files?: {
       __typename: "ModelFileConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   table?: {
     __typename: "ModelTableConnection";
@@ -2003,8 +2550,12 @@ export type CreateDatasourcesMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   databaseserver: string;
   port: number;
@@ -2014,6 +2565,9 @@ export type CreateDatasourcesMutation = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateDatasourcesMutation = {
@@ -2032,10 +2586,14 @@ export type UpdateDatasourcesMutation = {
     Files?: {
       __typename: "ModelFileConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   table?: {
     __typename: "ModelTableConnection";
@@ -2046,8 +2604,12 @@ export type UpdateDatasourcesMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   databaseserver: string;
   port: number;
@@ -2057,6 +2619,9 @@ export type UpdateDatasourcesMutation = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteDatasourcesMutation = {
@@ -2075,10 +2640,14 @@ export type DeleteDatasourcesMutation = {
     Files?: {
       __typename: "ModelFileConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   table?: {
     __typename: "ModelTableConnection";
@@ -2089,8 +2658,12 @@ export type DeleteDatasourcesMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   databaseserver: string;
   port: number;
@@ -2100,6 +2673,9 @@ export type DeleteDatasourcesMutation = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateTableauProjectMutation = {
@@ -2114,22 +2690,31 @@ export type CreateTableauProjectMutation = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateTableauProjectMutation = {
@@ -2144,22 +2729,31 @@ export type UpdateTableauProjectMutation = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteTableauProjectMutation = {
@@ -2174,22 +2768,31 @@ export type DeleteTableauProjectMutation = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateTableauEnvMutation = {
@@ -2208,14 +2811,23 @@ export type CreateTableauEnvMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateTableauEnvMutation = {
@@ -2234,14 +2846,23 @@ export type UpdateTableauEnvMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteTableauEnvMutation = {
@@ -2260,14 +2881,23 @@ export type DeleteTableauEnvMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateTaleauWorkbookMutation = {
@@ -2287,14 +2917,23 @@ export type CreateTaleauWorkbookMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateTaleauWorkbookMutation = {
@@ -2314,14 +2953,23 @@ export type UpdateTaleauWorkbookMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteTaleauWorkbookMutation = {
@@ -2341,14 +2989,23 @@ export type DeleteTaleauWorkbookMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateTableauSheetMutation = {
@@ -2369,14 +3026,23 @@ export type CreateTableauSheetMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateTableauSheetMutation = {
@@ -2397,14 +3063,23 @@ export type UpdateTableauSheetMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteTableauSheetMutation = {
@@ -2425,14 +3100,23 @@ export type DeleteTableauSheetMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateTableauGraphMutation = {
@@ -2452,14 +3136,23 @@ export type CreateTableauGraphMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateTableauGraphMutation = {
@@ -2479,14 +3172,23 @@ export type UpdateTableauGraphMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteTableauGraphMutation = {
@@ -2506,14 +3208,23 @@ export type DeleteTableauGraphMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateQuicksightProjectMutation = {
@@ -2528,18 +3239,24 @@ export type CreateQuicksightProjectMutation = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   templates?: {
     __typename: "ModelQuicksightTemplateConnection";
@@ -2551,8 +3268,12 @@ export type CreateQuicksightProjectMutation = {
       Qpid: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   env?: {
     __typename: "ModelQuicksightEnvConnection";
@@ -2563,11 +3284,18 @@ export type CreateQuicksightProjectMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateQuicksightProjectMutation = {
@@ -2582,18 +3310,24 @@ export type UpdateQuicksightProjectMutation = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   templates?: {
     __typename: "ModelQuicksightTemplateConnection";
@@ -2605,8 +3339,12 @@ export type UpdateQuicksightProjectMutation = {
       Qpid: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   env?: {
     __typename: "ModelQuicksightEnvConnection";
@@ -2617,11 +3355,18 @@ export type UpdateQuicksightProjectMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteQuicksightProjectMutation = {
@@ -2636,18 +3381,24 @@ export type DeleteQuicksightProjectMutation = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   templates?: {
     __typename: "ModelQuicksightTemplateConnection";
@@ -2659,8 +3410,12 @@ export type DeleteQuicksightProjectMutation = {
       Qpid: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   env?: {
     __typename: "ModelQuicksightEnvConnection";
@@ -2671,11 +3426,18 @@ export type DeleteQuicksightProjectMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateQuicksightTemplateMutation = {
@@ -2696,17 +3458,25 @@ export type CreateQuicksightTemplateMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     templates?: {
       __typename: "ModelQuicksightTemplateConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     env?: {
       __typename: "ModelQuicksightEnvConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   qanalysis?: {
     __typename: "ModelQuicksightAnalysisConnection";
@@ -2718,8 +3488,12 @@ export type CreateQuicksightTemplateMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   qdashboard?: {
     __typename: "ModelQuicksightDashboardConnection";
@@ -2730,11 +3504,18 @@ export type CreateQuicksightTemplateMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateQuicksightTemplateMutation = {
@@ -2755,17 +3536,25 @@ export type UpdateQuicksightTemplateMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     templates?: {
       __typename: "ModelQuicksightTemplateConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     env?: {
       __typename: "ModelQuicksightEnvConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   qanalysis?: {
     __typename: "ModelQuicksightAnalysisConnection";
@@ -2777,8 +3566,12 @@ export type UpdateQuicksightTemplateMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   qdashboard?: {
     __typename: "ModelQuicksightDashboardConnection";
@@ -2789,11 +3582,18 @@ export type UpdateQuicksightTemplateMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteQuicksightTemplateMutation = {
@@ -2814,17 +3614,25 @@ export type DeleteQuicksightTemplateMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     templates?: {
       __typename: "ModelQuicksightTemplateConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     env?: {
       __typename: "ModelQuicksightEnvConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   qanalysis?: {
     __typename: "ModelQuicksightAnalysisConnection";
@@ -2836,8 +3644,12 @@ export type DeleteQuicksightTemplateMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   qdashboard?: {
     __typename: "ModelQuicksightDashboardConnection";
@@ -2848,11 +3660,18 @@ export type DeleteQuicksightTemplateMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateQuicksightAnalysisMutation = {
@@ -2873,21 +3692,32 @@ export type CreateQuicksightAnalysisMutation = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     qanalysis?: {
       __typename: "ModelQuicksightAnalysisConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qdashboard?: {
       __typename: "ModelQuicksightDashboardConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateQuicksightAnalysisMutation = {
@@ -2908,21 +3738,32 @@ export type UpdateQuicksightAnalysisMutation = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     qanalysis?: {
       __typename: "ModelQuicksightAnalysisConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qdashboard?: {
       __typename: "ModelQuicksightDashboardConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteQuicksightAnalysisMutation = {
@@ -2943,21 +3784,32 @@ export type DeleteQuicksightAnalysisMutation = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     qanalysis?: {
       __typename: "ModelQuicksightAnalysisConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qdashboard?: {
       __typename: "ModelQuicksightDashboardConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateQuicksightEnvMutation = {
@@ -2976,21 +3828,32 @@ export type CreateQuicksightEnvMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     templates?: {
       __typename: "ModelQuicksightTemplateConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     env?: {
       __typename: "ModelQuicksightEnvConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateQuicksightEnvMutation = {
@@ -3009,21 +3872,32 @@ export type UpdateQuicksightEnvMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     templates?: {
       __typename: "ModelQuicksightTemplateConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     env?: {
       __typename: "ModelQuicksightEnvConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteQuicksightEnvMutation = {
@@ -3042,21 +3916,32 @@ export type DeleteQuicksightEnvMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     templates?: {
       __typename: "ModelQuicksightTemplateConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     env?: {
       __typename: "ModelQuicksightEnvConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateQuicksightDashboardMutation = {
@@ -3076,21 +3961,32 @@ export type CreateQuicksightDashboardMutation = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     qanalysis?: {
       __typename: "ModelQuicksightAnalysisConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qdashboard?: {
       __typename: "ModelQuicksightDashboardConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateQuicksightDashboardMutation = {
@@ -3110,21 +4006,32 @@ export type UpdateQuicksightDashboardMutation = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     qanalysis?: {
       __typename: "ModelQuicksightAnalysisConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qdashboard?: {
       __typename: "ModelQuicksightDashboardConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteQuicksightDashboardMutation = {
@@ -3144,21 +4051,32 @@ export type DeleteQuicksightDashboardMutation = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     qanalysis?: {
       __typename: "ModelQuicksightAnalysisConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qdashboard?: {
       __typename: "ModelQuicksightDashboardConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateTableMutation = {
@@ -3177,10 +4095,14 @@ export type CreateTableMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     table?: {
       __typename: "ModelTableConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     databaseserver: string;
     port: number;
@@ -3190,10 +4112,16 @@ export type CreateTableMutation = {
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateTableMutation = {
@@ -3212,10 +4140,14 @@ export type UpdateTableMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     table?: {
       __typename: "ModelTableConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     databaseserver: string;
     port: number;
@@ -3225,10 +4157,16 @@ export type UpdateTableMutation = {
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteTableMutation = {
@@ -3247,10 +4185,14 @@ export type DeleteTableMutation = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     table?: {
       __typename: "ModelTableConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     databaseserver: string;
     port: number;
@@ -3260,10 +4202,16 @@ export type DeleteTableMutation = {
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateQuicksightFolderMutation = {
@@ -3272,6 +4220,9 @@ export type CreateQuicksightFolderMutation = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateQuicksightFolderMutation = {
@@ -3280,6 +4231,9 @@ export type UpdateQuicksightFolderMutation = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteQuicksightFolderMutation = {
@@ -3288,6 +4242,9 @@ export type DeleteQuicksightFolderMutation = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateQuicksightGroupMutation = {
@@ -3296,6 +4253,9 @@ export type CreateQuicksightGroupMutation = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateQuicksightGroupMutation = {
@@ -3304,6 +4264,9 @@ export type UpdateQuicksightGroupMutation = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteQuicksightGroupMutation = {
@@ -3312,6 +4275,9 @@ export type DeleteQuicksightGroupMutation = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type CreateCommentsMutation = {
@@ -3320,6 +4286,9 @@ export type CreateCommentsMutation = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type UpdateCommentsMutation = {
@@ -3328,6 +4297,9 @@ export type UpdateCommentsMutation = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type DeleteCommentsMutation = {
@@ -3336,6 +4308,127 @@ export type DeleteCommentsMutation = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type CreateTprojectsMutation = {
+  __typename: "tprojects";
+  id: string;
+  name: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type UpdateTprojectsMutation = {
+  __typename: "tprojects";
+  id: string;
+  name: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type DeleteTprojectsMutation = {
+  __typename: "tprojects";
+  id: string;
+  name: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type CreateTdatasourcesMutation = {
+  __typename: "tdatasources";
+  projectid: string;
+  filepath: string;
+  name: string;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type UpdateTdatasourcesMutation = {
+  __typename: "tdatasources";
+  projectid: string;
+  filepath: string;
+  name: string;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type DeleteTdatasourcesMutation = {
+  __typename: "tdatasources";
+  projectid: string;
+  filepath: string;
+  name: string;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type CreateTworkbooksMutation = {
+  __typename: "tworkbooks";
+  name: string;
+  id: string;
+  projectname: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type UpdateTworkbooksMutation = {
+  __typename: "tworkbooks";
+  name: string;
+  id: string;
+  projectname: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type DeleteTworkbooksMutation = {
+  __typename: "tworkbooks";
+  name: string;
+  id: string;
+  projectname: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type GetMessageQuery = {
+  __typename: "message";
+  body: string;
+  body1: string;
+  body2: string;
 };
 
 export type GetTableauloginQuery = {
@@ -3357,13 +4450,22 @@ export type GetTableauloginQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListTableauloginsQuery = {
@@ -3382,11 +4484,48 @@ export type ListTableauloginsQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncTableauloginsQuery = {
+  __typename: "ModelTableauloginConnection";
+  items: Array<{
+    __typename: "Tableaulogin";
+    id: string;
+    username: string;
+    password: string;
+    sitename: string;
+    siteurl: string;
+    tenv?: {
+      __typename: "TableauEnv";
+      name: string;
+      tpid: string;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetQuicksightloginQuery = {
@@ -3404,13 +4543,22 @@ export type GetQuicksightloginQuery = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListQuicksightloginsQuery = {
@@ -3426,11 +4574,45 @@ export type ListQuicksightloginsQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncQuicksightloginsQuery = {
+  __typename: "ModelQuicksightloginConnection";
+  items: Array<{
+    __typename: "Quicksightlogin";
+    id: string;
+    awsaccountId: string;
+    qenv?: {
+      __typename: "QuicksightEnv";
+      name: string;
+      Qpid: string;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetCustomerQuery = {
@@ -3445,21 +4627,30 @@ export type GetCustomerQuery = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListCustomersQuery = {
@@ -3476,11 +4667,46 @@ export type ListCustomersQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncCustomersQuery = {
+  __typename: "ModelCustomerConnection";
+  items: Array<{
+    __typename: "Customer";
+    name: string;
+    DName: Departments;
+    Did: string;
+    department?: {
+      __typename: "Department";
+      Did: string;
+      DName: Departments;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetDepartmentQuery = {
@@ -3496,8 +4722,12 @@ export type GetDepartmentQuery = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   tprojects?: {
     __typename: "ModelTableauProjectConnection";
@@ -3509,8 +4739,12 @@ export type GetDepartmentQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   qprojects?: {
     __typename: "ModelQuicksightProjectConnection";
@@ -3521,12 +4755,19 @@ export type GetDepartmentQuery = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListDepartmentsQuery = {
@@ -3538,20 +4779,59 @@ export type ListDepartmentsQuery = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncDepartmentsQuery = {
+  __typename: "ModelDepartmentConnection";
+  items: Array<{
+    __typename: "Department";
+    Did: string;
+    DName: Departments;
+    customers?: {
+      __typename: "ModelCustomerConnection";
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
+    tprojects?: {
+      __typename: "ModelTableauProjectConnection";
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
+    qprojects?: {
+      __typename: "ModelQuicksightProjectConnection";
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetBIMProjectQuery = {
@@ -3570,9 +4850,15 @@ export type GetBIMProjectQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   Pname: string;
   source: BIPlatform;
@@ -3580,6 +4866,9 @@ export type GetBIMProjectQuery = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListBIMProjectsQuery = {
@@ -3595,6 +4884,9 @@ export type ListBIMProjectsQuery = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     Pname: string;
     source: BIPlatform;
@@ -3602,8 +4894,43 @@ export type ListBIMProjectsQuery = {
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncBIMProjectsQuery = {
+  __typename: "ModelBIMProjectConnection";
+  items: Array<{
+    __typename: "BIMProject";
+    DName: Departments;
+    UserName: string;
+    Customer?: {
+      __typename: "Customer";
+      name: string;
+      DName: Departments;
+      Did: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    Pname: string;
+    source: BIPlatform;
+    destination: BIPlatform;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetDatasetQuery = {
@@ -3625,6 +4952,9 @@ export type GetDatasetQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
   } | null;
@@ -3638,12 +4968,19 @@ export type GetDatasetQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListDatasetsQuery = {
@@ -3659,12 +4996,43 @@ export type ListDatasetsQuery = {
     Files?: {
       __typename: "ModelFileConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncDatasetsQuery = {
+  __typename: "ModelDatasetConnection";
+  items: Array<{
+    __typename: "dataset";
+    datasetid: string;
+    name: string;
+    datasources?: {
+      __typename: "ModeldatasourcesConnection";
+      nextToken?: string | null;
+    } | null;
+    Files?: {
+      __typename: "ModelFileConnection";
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetFileQuery = {
@@ -3683,14 +5051,21 @@ export type GetFileQuery = {
     Files?: {
       __typename: "ModelFileConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListFilesQuery = {
@@ -3707,12 +5082,48 @@ export type ListFilesQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncFilesQuery = {
+  __typename: "ModelFileConnection";
+  items: Array<{
+    __typename: "File";
+    name: string;
+    url: string;
+    datasetid: string;
+    datasets?: {
+      __typename: "dataset";
+      datasetid: string;
+      name: string;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetDatasourcesQuery = {
@@ -3731,10 +5142,14 @@ export type GetDatasourcesQuery = {
     Files?: {
       __typename: "ModelFileConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   table?: {
     __typename: "ModelTableConnection";
@@ -3745,8 +5160,12 @@ export type GetDatasourcesQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   databaseserver: string;
   port: number;
@@ -3756,6 +5175,9 @@ export type GetDatasourcesQuery = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListDatasourcesQuery = {
@@ -3772,10 +5194,14 @@ export type ListDatasourcesQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     table?: {
       __typename: "ModelTableConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     databaseserver: string;
     port: number;
@@ -3785,8 +5211,51 @@ export type ListDatasourcesQuery = {
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncDatasourcesQuery = {
+  __typename: "ModelDatasourcesConnection";
+  items: Array<{
+    __typename: "datasources";
+    dsid: string;
+    name: string;
+    datasetid: string;
+    datasets?: {
+      __typename: "dataset";
+      datasetid: string;
+      name: string;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    table?: {
+      __typename: "ModelTableConnection";
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
+    databaseserver: string;
+    port: number;
+    databasename: string;
+    username: string;
+    password: string;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetTableauProjectQuery = {
@@ -3801,22 +5270,31 @@ export type GetTableauProjectQuery = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListTableauProjectsQuery = {
@@ -3833,12 +5311,48 @@ export type ListTableauProjectsQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncTableauProjectsQuery = {
+  __typename: "ModelTableauProjectConnection";
+  items: Array<{
+    __typename: "TableauProject";
+    tpid: string;
+    name: string;
+    Did: string;
+    department?: {
+      __typename: "Department";
+      Did: string;
+      DName: Departments;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetTableauEnvQuery = {
@@ -3857,14 +5371,23 @@ export type GetTableauEnvQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListTableauEnvsQuery = {
@@ -3881,12 +5404,48 @@ export type ListTableauEnvsQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncTableauEnvsQuery = {
+  __typename: "ModelTableauEnvConnection";
+  items: Array<{
+    __typename: "TableauEnv";
+    name: string;
+    tpid: string;
+    tproject?: {
+      __typename: "TableauProject";
+      tpid: string;
+      name: string;
+      Did: string;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetTaleauWorkbookQuery = {
@@ -3906,14 +5465,23 @@ export type GetTaleauWorkbookQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListTaleauWorkbooksQuery = {
@@ -3931,12 +5499,49 @@ export type ListTaleauWorkbooksQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncTaleauWorkbooksQuery = {
+  __typename: "ModelTaleauWorkbookConnection";
+  items: Array<{
+    __typename: "TaleauWorkbook";
+    name: string;
+    tpid: string;
+    twbid: string;
+    tproject?: {
+      __typename: "TableauProject";
+      tpid: string;
+      name: string;
+      Did: string;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetTableauSheetQuery = {
@@ -3957,14 +5562,23 @@ export type GetTableauSheetQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListTableauSheetsQuery = {
@@ -3982,12 +5596,49 @@ export type ListTableauSheetsQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncTableauSheetsQuery = {
+  __typename: "ModelTableauSheetConnection";
+  items: Array<{
+    __typename: "TableauSheet";
+    name: string;
+    twbid: string;
+    tsid: string;
+    tworkbook?: {
+      __typename: "TaleauWorkbook";
+      name: string;
+      tpid: string;
+      twbid: string;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetTableauGraphQuery = {
@@ -4007,14 +5658,23 @@ export type GetTableauGraphQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListTableauGraphsQuery = {
@@ -4031,12 +5691,48 @@ export type ListTableauGraphsQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncTableauGraphsQuery = {
+  __typename: "ModelTableauGraphConnection";
+  items: Array<{
+    __typename: "TableauGraph";
+    name: string;
+    tsid: string;
+    tsheet?: {
+      __typename: "TableauSheet";
+      name: string;
+      twbid: string;
+      tsid: string;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetQuicksightProjectQuery = {
@@ -4051,18 +5747,24 @@ export type GetQuicksightProjectQuery = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   templates?: {
     __typename: "ModelQuicksightTemplateConnection";
@@ -4074,8 +5776,12 @@ export type GetQuicksightProjectQuery = {
       Qpid: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   env?: {
     __typename: "ModelQuicksightEnvConnection";
@@ -4086,11 +5792,18 @@ export type GetQuicksightProjectQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListQuicksightProjectsQuery = {
@@ -4107,19 +5820,66 @@ export type ListQuicksightProjectsQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     templates?: {
       __typename: "ModelQuicksightTemplateConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     env?: {
       __typename: "ModelQuicksightEnvConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncQuicksightProjectsQuery = {
+  __typename: "ModelQuicksightProjectConnection";
+  items: Array<{
+    __typename: "QuicksightProject";
+    id: string;
+    name: string;
+    Did: string;
+    department?: {
+      __typename: "Department";
+      Did: string;
+      DName: Departments;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    templates?: {
+      __typename: "ModelQuicksightTemplateConnection";
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
+    env?: {
+      __typename: "ModelQuicksightEnvConnection";
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetQuicksightTemplateQuery = {
@@ -4140,17 +5900,25 @@ export type GetQuicksightTemplateQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     templates?: {
       __typename: "ModelQuicksightTemplateConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     env?: {
       __typename: "ModelQuicksightEnvConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   qanalysis?: {
     __typename: "ModelQuicksightAnalysisConnection";
@@ -4162,8 +5930,12 @@ export type GetQuicksightTemplateQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   qdashboard?: {
     __typename: "ModelQuicksightDashboardConnection";
@@ -4174,11 +5946,18 @@ export type GetQuicksightTemplateQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListQuicksightTemplatesQuery = {
@@ -4196,19 +5975,67 @@ export type ListQuicksightTemplatesQuery = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     qanalysis?: {
       __typename: "ModelQuicksightAnalysisConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qdashboard?: {
       __typename: "ModelQuicksightDashboardConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncQuicksightTemplatesQuery = {
+  __typename: "ModelQuicksightTemplateConnection";
+  items: Array<{
+    __typename: "QuicksightTemplate";
+    id: string;
+    name: string;
+    sourceanalysisId: string;
+    Qpid: string;
+    qproject?: {
+      __typename: "QuicksightProject";
+      id: string;
+      name: string;
+      Did: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    qanalysis?: {
+      __typename: "ModelQuicksightAnalysisConnection";
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
+    qdashboard?: {
+      __typename: "ModelQuicksightDashboardConnection";
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetQuicksightAnalysisQuery = {
@@ -4229,21 +6056,32 @@ export type GetQuicksightAnalysisQuery = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     qanalysis?: {
       __typename: "ModelQuicksightAnalysisConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qdashboard?: {
       __typename: "ModelQuicksightDashboardConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListQuicksightAnalysesQuery = {
@@ -4261,12 +6099,49 @@ export type ListQuicksightAnalysesQuery = {
       Qpid: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncQuicksightAnalysesQuery = {
+  __typename: "ModelQuicksightAnalysisConnection";
+  items: Array<{
+    __typename: "QuicksightAnalysis";
+    name: string;
+    QuicksightTemplateId: string;
+    sourceanalysisId: string;
+    qtemplate?: {
+      __typename: "QuicksightTemplate";
+      id: string;
+      name: string;
+      sourceanalysisId: string;
+      Qpid: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetQuicksightEnvQuery = {
@@ -4285,21 +6160,32 @@ export type GetQuicksightEnvQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     templates?: {
       __typename: "ModelQuicksightTemplateConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     env?: {
       __typename: "ModelQuicksightEnvConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListQuicksightEnvsQuery = {
@@ -4315,12 +6201,47 @@ export type ListQuicksightEnvsQuery = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncQuicksightEnvsQuery = {
+  __typename: "ModelQuicksightEnvConnection";
+  items: Array<{
+    __typename: "QuicksightEnv";
+    name: string;
+    Qpid: string;
+    qproject?: {
+      __typename: "QuicksightProject";
+      id: string;
+      name: string;
+      Did: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetQuicksightDashboardQuery = {
@@ -4340,21 +6261,32 @@ export type GetQuicksightDashboardQuery = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     qanalysis?: {
       __typename: "ModelQuicksightAnalysisConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qdashboard?: {
       __typename: "ModelQuicksightDashboardConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListQuicksightDashboardsQuery = {
@@ -4371,12 +6303,48 @@ export type ListQuicksightDashboardsQuery = {
       Qpid: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncQuicksightDashboardsQuery = {
+  __typename: "ModelQuicksightDashboardConnection";
+  items: Array<{
+    __typename: "QuicksightDashboard";
+    name: string;
+    qtid: string;
+    qtemplate?: {
+      __typename: "QuicksightTemplate";
+      id: string;
+      name: string;
+      sourceanalysisId: string;
+      Qpid: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetTableQuery = {
@@ -4395,10 +6363,14 @@ export type GetTableQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     table?: {
       __typename: "ModelTableConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     databaseserver: string;
     port: number;
@@ -4408,10 +6380,16 @@ export type GetTableQuery = {
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListTablesQuery = {
@@ -4433,12 +6411,53 @@ export type ListTablesQuery = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncTablesQuery = {
+  __typename: "ModelTableConnection";
+  items: Array<{
+    __typename: "Table";
+    name: string;
+    dsid: string;
+    datasource?: {
+      __typename: "datasources";
+      dsid: string;
+      name: string;
+      datasetid: string;
+      databaseserver: string;
+      port: number;
+      databasename: string;
+      username: string;
+      password: string;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetQuicksightFolderQuery = {
@@ -4447,6 +6466,9 @@ export type GetQuicksightFolderQuery = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListQuicksightFoldersQuery = {
@@ -4457,8 +6479,28 @@ export type ListQuicksightFoldersQuery = {
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncQuicksightFoldersQuery = {
+  __typename: "ModelQuicksightFolderConnection";
+  items: Array<{
+    __typename: "QuicksightFolder";
+    name: string;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetQuicksightGroupQuery = {
@@ -4467,6 +6509,9 @@ export type GetQuicksightGroupQuery = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListQuicksightGroupsQuery = {
@@ -4477,8 +6522,28 @@ export type ListQuicksightGroupsQuery = {
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncQuicksightGroupsQuery = {
+  __typename: "ModelQuicksightGroupConnection";
+  items: Array<{
+    __typename: "QuicksightGroup";
+    name: string;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetCommentsQuery = {
@@ -4487,6 +6552,9 @@ export type GetCommentsQuery = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type ListCommentsQuery = {
@@ -4497,8 +6565,169 @@ export type ListCommentsQuery = {
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncCommentsQuery = {
+  __typename: "ModelCommentsConnection";
+  items: Array<{
+    __typename: "comments";
+    comments: string;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type GetTprojectsQuery = {
+  __typename: "tprojects";
+  id: string;
+  name: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type ListTprojectsQuery = {
+  __typename: "ModelTprojectsConnection";
+  items: Array<{
+    __typename: "tprojects";
+    id: string;
+    name: string;
+    description: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncTprojectsQuery = {
+  __typename: "ModelTprojectsConnection";
+  items: Array<{
+    __typename: "tprojects";
+    id: string;
+    name: string;
+    description: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type GetTdatasourcesQuery = {
+  __typename: "tdatasources";
+  projectid: string;
+  filepath: string;
+  name: string;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type ListTdatasourcesQuery = {
+  __typename: "ModelTdatasourcesConnection";
+  items: Array<{
+    __typename: "tdatasources";
+    projectid: string;
+    filepath: string;
+    name: string;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncTdatasourcesQuery = {
+  __typename: "ModelTdatasourcesConnection";
+  items: Array<{
+    __typename: "tdatasources";
+    projectid: string;
+    filepath: string;
+    name: string;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type GetTworkbooksQuery = {
+  __typename: "tworkbooks";
+  name: string;
+  id: string;
+  projectname: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type ListTworkbooksQuery = {
+  __typename: "ModelTworkbooksConnection";
+  items: Array<{
+    __typename: "tworkbooks";
+    name: string;
+    id: string;
+    projectname: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncTworkbooksQuery = {
+  __typename: "ModelTworkbooksConnection";
+  items: Array<{
+    __typename: "tworkbooks";
+    name: string;
+    id: string;
+    projectname: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type OnCreateTableauloginSubscription = {
@@ -4520,13 +6749,22 @@ export type OnCreateTableauloginSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateTableauloginSubscription = {
@@ -4548,13 +6786,22 @@ export type OnUpdateTableauloginSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteTableauloginSubscription = {
@@ -4576,13 +6823,22 @@ export type OnDeleteTableauloginSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateQuicksightloginSubscription = {
@@ -4600,13 +6856,22 @@ export type OnCreateQuicksightloginSubscription = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateQuicksightloginSubscription = {
@@ -4624,13 +6889,22 @@ export type OnUpdateQuicksightloginSubscription = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteQuicksightloginSubscription = {
@@ -4648,13 +6922,22 @@ export type OnDeleteQuicksightloginSubscription = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateCustomerSubscription = {
@@ -4669,21 +6952,30 @@ export type OnCreateCustomerSubscription = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateCustomerSubscription = {
@@ -4698,21 +6990,30 @@ export type OnUpdateCustomerSubscription = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteCustomerSubscription = {
@@ -4727,21 +7028,30 @@ export type OnDeleteCustomerSubscription = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateDepartmentSubscription = {
@@ -4757,8 +7067,12 @@ export type OnCreateDepartmentSubscription = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   tprojects?: {
     __typename: "ModelTableauProjectConnection";
@@ -4770,8 +7084,12 @@ export type OnCreateDepartmentSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   qprojects?: {
     __typename: "ModelQuicksightProjectConnection";
@@ -4782,12 +7100,19 @@ export type OnCreateDepartmentSubscription = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateDepartmentSubscription = {
@@ -4803,8 +7128,12 @@ export type OnUpdateDepartmentSubscription = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   tprojects?: {
     __typename: "ModelTableauProjectConnection";
@@ -4816,8 +7145,12 @@ export type OnUpdateDepartmentSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   qprojects?: {
     __typename: "ModelQuicksightProjectConnection";
@@ -4828,12 +7161,19 @@ export type OnUpdateDepartmentSubscription = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteDepartmentSubscription = {
@@ -4849,8 +7189,12 @@ export type OnDeleteDepartmentSubscription = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   tprojects?: {
     __typename: "ModelTableauProjectConnection";
@@ -4862,8 +7206,12 @@ export type OnDeleteDepartmentSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   qprojects?: {
     __typename: "ModelQuicksightProjectConnection";
@@ -4874,12 +7222,19 @@ export type OnDeleteDepartmentSubscription = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateBIMProjectSubscription = {
@@ -4898,9 +7253,15 @@ export type OnCreateBIMProjectSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   Pname: string;
   source: BIPlatform;
@@ -4908,6 +7269,9 @@ export type OnCreateBIMProjectSubscription = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateBIMProjectSubscription = {
@@ -4926,9 +7290,15 @@ export type OnUpdateBIMProjectSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   Pname: string;
   source: BIPlatform;
@@ -4936,6 +7306,9 @@ export type OnUpdateBIMProjectSubscription = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteBIMProjectSubscription = {
@@ -4954,9 +7327,15 @@ export type OnDeleteBIMProjectSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   Pname: string;
   source: BIPlatform;
@@ -4964,6 +7343,9 @@ export type OnDeleteBIMProjectSubscription = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateDatasetSubscription = {
@@ -4985,6 +7367,9 @@ export type OnCreateDatasetSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
   } | null;
@@ -4998,12 +7383,19 @@ export type OnCreateDatasetSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateDatasetSubscription = {
@@ -5025,6 +7417,9 @@ export type OnUpdateDatasetSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
   } | null;
@@ -5038,12 +7433,19 @@ export type OnUpdateDatasetSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteDatasetSubscription = {
@@ -5065,6 +7467,9 @@ export type OnDeleteDatasetSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
   } | null;
@@ -5078,12 +7483,19 @@ export type OnDeleteDatasetSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateFileSubscription = {
@@ -5102,14 +7514,21 @@ export type OnCreateFileSubscription = {
     Files?: {
       __typename: "ModelFileConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateFileSubscription = {
@@ -5128,14 +7547,21 @@ export type OnUpdateFileSubscription = {
     Files?: {
       __typename: "ModelFileConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteFileSubscription = {
@@ -5154,14 +7580,21 @@ export type OnDeleteFileSubscription = {
     Files?: {
       __typename: "ModelFileConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateDatasourcesSubscription = {
@@ -5180,10 +7613,14 @@ export type OnCreateDatasourcesSubscription = {
     Files?: {
       __typename: "ModelFileConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   table?: {
     __typename: "ModelTableConnection";
@@ -5194,8 +7631,12 @@ export type OnCreateDatasourcesSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   databaseserver: string;
   port: number;
@@ -5205,6 +7646,9 @@ export type OnCreateDatasourcesSubscription = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateDatasourcesSubscription = {
@@ -5223,10 +7667,14 @@ export type OnUpdateDatasourcesSubscription = {
     Files?: {
       __typename: "ModelFileConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   table?: {
     __typename: "ModelTableConnection";
@@ -5237,8 +7685,12 @@ export type OnUpdateDatasourcesSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   databaseserver: string;
   port: number;
@@ -5248,6 +7700,9 @@ export type OnUpdateDatasourcesSubscription = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteDatasourcesSubscription = {
@@ -5266,10 +7721,14 @@ export type OnDeleteDatasourcesSubscription = {
     Files?: {
       __typename: "ModelFileConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   table?: {
     __typename: "ModelTableConnection";
@@ -5280,8 +7739,12 @@ export type OnDeleteDatasourcesSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   databaseserver: string;
   port: number;
@@ -5291,6 +7754,9 @@ export type OnDeleteDatasourcesSubscription = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateTableauProjectSubscription = {
@@ -5305,22 +7771,31 @@ export type OnCreateTableauProjectSubscription = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateTableauProjectSubscription = {
@@ -5335,22 +7810,31 @@ export type OnUpdateTableauProjectSubscription = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteTableauProjectSubscription = {
@@ -5365,22 +7849,31 @@ export type OnDeleteTableauProjectSubscription = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateTableauEnvSubscription = {
@@ -5399,14 +7892,23 @@ export type OnCreateTableauEnvSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateTableauEnvSubscription = {
@@ -5425,14 +7927,23 @@ export type OnUpdateTableauEnvSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteTableauEnvSubscription = {
@@ -5451,14 +7962,23 @@ export type OnDeleteTableauEnvSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateTaleauWorkbookSubscription = {
@@ -5478,14 +7998,23 @@ export type OnCreateTaleauWorkbookSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateTaleauWorkbookSubscription = {
@@ -5505,14 +8034,23 @@ export type OnUpdateTaleauWorkbookSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteTaleauWorkbookSubscription = {
@@ -5532,14 +8070,23 @@ export type OnDeleteTaleauWorkbookSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateTableauSheetSubscription = {
@@ -5560,14 +8107,23 @@ export type OnCreateTableauSheetSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateTableauSheetSubscription = {
@@ -5588,14 +8144,23 @@ export type OnUpdateTableauSheetSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteTableauSheetSubscription = {
@@ -5616,14 +8181,23 @@ export type OnDeleteTableauSheetSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateTableauGraphSubscription = {
@@ -5643,14 +8217,23 @@ export type OnCreateTableauGraphSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateTableauGraphSubscription = {
@@ -5670,14 +8253,23 @@ export type OnUpdateTableauGraphSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteTableauGraphSubscription = {
@@ -5697,14 +8289,23 @@ export type OnDeleteTableauGraphSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateQuicksightProjectSubscription = {
@@ -5719,18 +8320,24 @@ export type OnCreateQuicksightProjectSubscription = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   templates?: {
     __typename: "ModelQuicksightTemplateConnection";
@@ -5742,8 +8349,12 @@ export type OnCreateQuicksightProjectSubscription = {
       Qpid: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   env?: {
     __typename: "ModelQuicksightEnvConnection";
@@ -5754,11 +8365,18 @@ export type OnCreateQuicksightProjectSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateQuicksightProjectSubscription = {
@@ -5773,18 +8391,24 @@ export type OnUpdateQuicksightProjectSubscription = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   templates?: {
     __typename: "ModelQuicksightTemplateConnection";
@@ -5796,8 +8420,12 @@ export type OnUpdateQuicksightProjectSubscription = {
       Qpid: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   env?: {
     __typename: "ModelQuicksightEnvConnection";
@@ -5808,11 +8436,18 @@ export type OnUpdateQuicksightProjectSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteQuicksightProjectSubscription = {
@@ -5827,18 +8462,24 @@ export type OnDeleteQuicksightProjectSubscription = {
     customers?: {
       __typename: "ModelCustomerConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     tprojects?: {
       __typename: "ModelTableauProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qprojects?: {
       __typename: "ModelQuicksightProjectConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   templates?: {
     __typename: "ModelQuicksightTemplateConnection";
@@ -5850,8 +8491,12 @@ export type OnDeleteQuicksightProjectSubscription = {
       Qpid: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   env?: {
     __typename: "ModelQuicksightEnvConnection";
@@ -5862,11 +8507,18 @@ export type OnDeleteQuicksightProjectSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateQuicksightTemplateSubscription = {
@@ -5887,17 +8539,25 @@ export type OnCreateQuicksightTemplateSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     templates?: {
       __typename: "ModelQuicksightTemplateConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     env?: {
       __typename: "ModelQuicksightEnvConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   qanalysis?: {
     __typename: "ModelQuicksightAnalysisConnection";
@@ -5909,8 +8569,12 @@ export type OnCreateQuicksightTemplateSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   qdashboard?: {
     __typename: "ModelQuicksightDashboardConnection";
@@ -5921,11 +8585,18 @@ export type OnCreateQuicksightTemplateSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateQuicksightTemplateSubscription = {
@@ -5946,17 +8617,25 @@ export type OnUpdateQuicksightTemplateSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     templates?: {
       __typename: "ModelQuicksightTemplateConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     env?: {
       __typename: "ModelQuicksightEnvConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   qanalysis?: {
     __typename: "ModelQuicksightAnalysisConnection";
@@ -5968,8 +8647,12 @@ export type OnUpdateQuicksightTemplateSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   qdashboard?: {
     __typename: "ModelQuicksightDashboardConnection";
@@ -5980,11 +8663,18 @@ export type OnUpdateQuicksightTemplateSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteQuicksightTemplateSubscription = {
@@ -6005,17 +8695,25 @@ export type OnDeleteQuicksightTemplateSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     templates?: {
       __typename: "ModelQuicksightTemplateConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     env?: {
       __typename: "ModelQuicksightEnvConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   qanalysis?: {
     __typename: "ModelQuicksightAnalysisConnection";
@@ -6027,8 +8725,12 @@ export type OnDeleteQuicksightTemplateSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   qdashboard?: {
     __typename: "ModelQuicksightDashboardConnection";
@@ -6039,11 +8741,18 @@ export type OnDeleteQuicksightTemplateSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
+    startedAt?: number | null;
   } | null;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateQuicksightAnalysisSubscription = {
@@ -6064,21 +8773,32 @@ export type OnCreateQuicksightAnalysisSubscription = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     qanalysis?: {
       __typename: "ModelQuicksightAnalysisConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qdashboard?: {
       __typename: "ModelQuicksightDashboardConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateQuicksightAnalysisSubscription = {
@@ -6099,21 +8819,32 @@ export type OnUpdateQuicksightAnalysisSubscription = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     qanalysis?: {
       __typename: "ModelQuicksightAnalysisConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qdashboard?: {
       __typename: "ModelQuicksightDashboardConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteQuicksightAnalysisSubscription = {
@@ -6134,21 +8865,32 @@ export type OnDeleteQuicksightAnalysisSubscription = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     qanalysis?: {
       __typename: "ModelQuicksightAnalysisConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qdashboard?: {
       __typename: "ModelQuicksightDashboardConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateQuicksightEnvSubscription = {
@@ -6167,21 +8909,32 @@ export type OnCreateQuicksightEnvSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     templates?: {
       __typename: "ModelQuicksightTemplateConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     env?: {
       __typename: "ModelQuicksightEnvConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateQuicksightEnvSubscription = {
@@ -6200,21 +8953,32 @@ export type OnUpdateQuicksightEnvSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     templates?: {
       __typename: "ModelQuicksightTemplateConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     env?: {
       __typename: "ModelQuicksightEnvConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteQuicksightEnvSubscription = {
@@ -6233,21 +8997,32 @@ export type OnDeleteQuicksightEnvSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     templates?: {
       __typename: "ModelQuicksightTemplateConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     env?: {
       __typename: "ModelQuicksightEnvConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateQuicksightDashboardSubscription = {
@@ -6267,21 +9042,32 @@ export type OnCreateQuicksightDashboardSubscription = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     qanalysis?: {
       __typename: "ModelQuicksightAnalysisConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qdashboard?: {
       __typename: "ModelQuicksightDashboardConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateQuicksightDashboardSubscription = {
@@ -6301,21 +9087,32 @@ export type OnUpdateQuicksightDashboardSubscription = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     qanalysis?: {
       __typename: "ModelQuicksightAnalysisConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qdashboard?: {
       __typename: "ModelQuicksightDashboardConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteQuicksightDashboardSubscription = {
@@ -6335,21 +9132,32 @@ export type OnDeleteQuicksightDashboardSubscription = {
       Did: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     qanalysis?: {
       __typename: "ModelQuicksightAnalysisConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     qdashboard?: {
       __typename: "ModelQuicksightDashboardConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateTableSubscription = {
@@ -6368,10 +9176,14 @@ export type OnCreateTableSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     table?: {
       __typename: "ModelTableConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     databaseserver: string;
     port: number;
@@ -6381,10 +9193,16 @@ export type OnCreateTableSubscription = {
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateTableSubscription = {
@@ -6403,10 +9221,14 @@ export type OnUpdateTableSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     table?: {
       __typename: "ModelTableConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     databaseserver: string;
     port: number;
@@ -6416,10 +9238,16 @@ export type OnUpdateTableSubscription = {
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteTableSubscription = {
@@ -6438,10 +9266,14 @@ export type OnDeleteTableSubscription = {
       id: string;
       createdAt: string;
       updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
     } | null;
     table?: {
       __typename: "ModelTableConnection";
       nextToken?: string | null;
+      startedAt?: number | null;
     } | null;
     databaseserver: string;
     port: number;
@@ -6451,10 +9283,16 @@ export type OnDeleteTableSubscription = {
     id: string;
     createdAt: string;
     updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
   } | null;
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateQuicksightFolderSubscription = {
@@ -6463,6 +9301,9 @@ export type OnCreateQuicksightFolderSubscription = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateQuicksightFolderSubscription = {
@@ -6471,6 +9312,9 @@ export type OnUpdateQuicksightFolderSubscription = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteQuicksightFolderSubscription = {
@@ -6479,6 +9323,9 @@ export type OnDeleteQuicksightFolderSubscription = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateQuicksightGroupSubscription = {
@@ -6487,6 +9334,9 @@ export type OnCreateQuicksightGroupSubscription = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateQuicksightGroupSubscription = {
@@ -6495,6 +9345,9 @@ export type OnUpdateQuicksightGroupSubscription = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteQuicksightGroupSubscription = {
@@ -6503,6 +9356,9 @@ export type OnDeleteQuicksightGroupSubscription = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateCommentsSubscription = {
@@ -6511,6 +9367,9 @@ export type OnCreateCommentsSubscription = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnUpdateCommentsSubscription = {
@@ -6519,6 +9378,9 @@ export type OnUpdateCommentsSubscription = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnDeleteCommentsSubscription = {
@@ -6527,6 +9389,120 @@ export type OnDeleteCommentsSubscription = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnCreateTprojectsSubscription = {
+  __typename: "tprojects";
+  id: string;
+  name: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnUpdateTprojectsSubscription = {
+  __typename: "tprojects";
+  id: string;
+  name: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnDeleteTprojectsSubscription = {
+  __typename: "tprojects";
+  id: string;
+  name: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnCreateTdatasourcesSubscription = {
+  __typename: "tdatasources";
+  projectid: string;
+  filepath: string;
+  name: string;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnUpdateTdatasourcesSubscription = {
+  __typename: "tdatasources";
+  projectid: string;
+  filepath: string;
+  name: string;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnDeleteTdatasourcesSubscription = {
+  __typename: "tdatasources";
+  projectid: string;
+  filepath: string;
+  name: string;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnCreateTworkbooksSubscription = {
+  __typename: "tworkbooks";
+  name: string;
+  id: string;
+  projectname: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnUpdateTworkbooksSubscription = {
+  __typename: "tworkbooks";
+  name: string;
+  id: string;
+  projectname: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnDeleteTworkbooksSubscription = {
+  __typename: "tworkbooks";
+  name: string;
+  id: string;
+  projectname: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 @Injectable({
@@ -6557,13 +9533,22 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -6601,13 +9586,22 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -6645,13 +9639,22 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -6685,13 +9688,22 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -6725,13 +9737,22 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -6765,13 +9786,22 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -6802,21 +9832,30 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -6847,21 +9886,30 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -6892,21 +9940,30 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -6938,8 +9995,12 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           tprojects {
             __typename
@@ -6951,8 +10012,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           qprojects {
             __typename
@@ -6963,12 +10028,19 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7000,8 +10072,12 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           tprojects {
             __typename
@@ -7013,8 +10089,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           qprojects {
             __typename
@@ -7025,12 +10105,19 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7062,8 +10149,12 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           tprojects {
             __typename
@@ -7075,8 +10166,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           qprojects {
             __typename
@@ -7087,12 +10182,19 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7127,9 +10229,15 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           Pname
           source
@@ -7137,6 +10245,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7171,9 +10282,15 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           Pname
           source
@@ -7181,6 +10298,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7215,9 +10335,15 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           Pname
           source
@@ -7225,6 +10351,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7262,6 +10391,9 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
           }
@@ -7275,12 +10407,19 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7318,6 +10457,9 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
           }
@@ -7331,12 +10473,19 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7374,6 +10523,9 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
           }
@@ -7387,12 +10539,19 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7427,14 +10586,21 @@ export class APIService {
             Files {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7469,14 +10635,21 @@ export class APIService {
             Files {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7511,14 +10684,21 @@ export class APIService {
             Files {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7553,10 +10733,14 @@ export class APIService {
             Files {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           table {
             __typename
@@ -7567,8 +10751,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           databaseserver
           port
@@ -7578,6 +10766,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7612,10 +10803,14 @@ export class APIService {
             Files {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           table {
             __typename
@@ -7626,8 +10821,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           databaseserver
           port
@@ -7637,6 +10836,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7671,10 +10873,14 @@ export class APIService {
             Files {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           table {
             __typename
@@ -7685,8 +10891,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           databaseserver
           port
@@ -7696,6 +10906,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7726,22 +10939,31 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7772,22 +10994,31 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7818,22 +11049,31 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7868,14 +11108,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7910,14 +11159,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7952,14 +11210,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -7995,14 +11262,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8038,14 +11314,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8081,14 +11366,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8125,14 +11419,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8169,14 +11472,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8213,14 +11525,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8256,14 +11577,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8299,14 +11629,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8342,14 +11681,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8380,18 +11728,24 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           templates {
             __typename
@@ -8403,8 +11757,12 @@ export class APIService {
               Qpid
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           env {
             __typename
@@ -8415,11 +11773,18 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8452,18 +11817,24 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           templates {
             __typename
@@ -8475,8 +11846,12 @@ export class APIService {
               Qpid
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           env {
             __typename
@@ -8487,11 +11862,18 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8524,18 +11906,24 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           templates {
             __typename
@@ -8547,8 +11935,12 @@ export class APIService {
               Qpid
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           env {
             __typename
@@ -8559,11 +11951,18 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8602,17 +12001,25 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             templates {
               __typename
               nextToken
+              startedAt
             }
             env {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           qanalysis {
             __typename
@@ -8624,8 +12031,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           qdashboard {
             __typename
@@ -8636,11 +12047,18 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8679,17 +12097,25 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             templates {
               __typename
               nextToken
+              startedAt
             }
             env {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           qanalysis {
             __typename
@@ -8701,8 +12127,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           qdashboard {
             __typename
@@ -8713,11 +12143,18 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8756,17 +12193,25 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             templates {
               __typename
               nextToken
+              startedAt
             }
             env {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           qanalysis {
             __typename
@@ -8778,8 +12223,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           qdashboard {
             __typename
@@ -8790,11 +12239,18 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8833,21 +12289,32 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             qanalysis {
               __typename
               nextToken
+              startedAt
             }
             qdashboard {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8886,21 +12353,32 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             qanalysis {
               __typename
               nextToken
+              startedAt
             }
             qdashboard {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8939,21 +12417,32 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             qanalysis {
               __typename
               nextToken
+              startedAt
             }
             qdashboard {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -8990,21 +12479,32 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             templates {
               __typename
               nextToken
+              startedAt
             }
             env {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9039,21 +12539,32 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             templates {
               __typename
               nextToken
+              startedAt
             }
             env {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9088,21 +12599,32 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             templates {
               __typename
               nextToken
+              startedAt
             }
             env {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9138,21 +12660,32 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             qanalysis {
               __typename
               nextToken
+              startedAt
             }
             qdashboard {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9190,21 +12723,32 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             qanalysis {
               __typename
               nextToken
+              startedAt
             }
             qdashboard {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9242,21 +12786,32 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             qanalysis {
               __typename
               nextToken
+              startedAt
             }
             qdashboard {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9293,10 +12848,14 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             table {
               __typename
               nextToken
+              startedAt
             }
             databaseserver
             port
@@ -9306,10 +12865,16 @@ export class APIService {
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9344,10 +12909,14 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             table {
               __typename
               nextToken
+              startedAt
             }
             databaseserver
             port
@@ -9357,10 +12926,16 @@ export class APIService {
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9395,10 +12970,14 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             table {
               __typename
               nextToken
+              startedAt
             }
             databaseserver
             port
@@ -9408,10 +12987,16 @@ export class APIService {
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9436,6 +13021,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9460,6 +13048,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9484,6 +13075,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9508,6 +13102,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9532,6 +13129,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9556,6 +13156,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9580,6 +13183,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9604,6 +13210,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9628,6 +13237,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9640,6 +13252,286 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <DeleteCommentsMutation>response.data.deleteComments;
+  }
+  async CreateTprojects(
+    input: CreateTprojectsInput,
+    condition?: ModelTprojectsConditionInput
+  ): Promise<CreateTprojectsMutation> {
+    const statement = `mutation CreateTprojects($input: CreateTprojectsInput!, $condition: ModelTprojectsConditionInput) {
+        createTprojects(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          description
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateTprojectsMutation>response.data.createTprojects;
+  }
+  async UpdateTprojects(
+    input: UpdateTprojectsInput,
+    condition?: ModelTprojectsConditionInput
+  ): Promise<UpdateTprojectsMutation> {
+    const statement = `mutation UpdateTprojects($input: UpdateTprojectsInput!, $condition: ModelTprojectsConditionInput) {
+        updateTprojects(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          description
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateTprojectsMutation>response.data.updateTprojects;
+  }
+  async DeleteTprojects(
+    input: DeleteTprojectsInput,
+    condition?: ModelTprojectsConditionInput
+  ): Promise<DeleteTprojectsMutation> {
+    const statement = `mutation DeleteTprojects($input: DeleteTprojectsInput!, $condition: ModelTprojectsConditionInput) {
+        deleteTprojects(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          description
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteTprojectsMutation>response.data.deleteTprojects;
+  }
+  async CreateTdatasources(
+    input: CreateTdatasourcesInput,
+    condition?: ModelTdatasourcesConditionInput
+  ): Promise<CreateTdatasourcesMutation> {
+    const statement = `mutation CreateTdatasources($input: CreateTdatasourcesInput!, $condition: ModelTdatasourcesConditionInput) {
+        createTdatasources(input: $input, condition: $condition) {
+          __typename
+          projectid
+          filepath
+          name
+          id
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateTdatasourcesMutation>response.data.createTdatasources;
+  }
+  async UpdateTdatasources(
+    input: UpdateTdatasourcesInput,
+    condition?: ModelTdatasourcesConditionInput
+  ): Promise<UpdateTdatasourcesMutation> {
+    const statement = `mutation UpdateTdatasources($input: UpdateTdatasourcesInput!, $condition: ModelTdatasourcesConditionInput) {
+        updateTdatasources(input: $input, condition: $condition) {
+          __typename
+          projectid
+          filepath
+          name
+          id
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateTdatasourcesMutation>response.data.updateTdatasources;
+  }
+  async DeleteTdatasources(
+    input: DeleteTdatasourcesInput,
+    condition?: ModelTdatasourcesConditionInput
+  ): Promise<DeleteTdatasourcesMutation> {
+    const statement = `mutation DeleteTdatasources($input: DeleteTdatasourcesInput!, $condition: ModelTdatasourcesConditionInput) {
+        deleteTdatasources(input: $input, condition: $condition) {
+          __typename
+          projectid
+          filepath
+          name
+          id
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteTdatasourcesMutation>response.data.deleteTdatasources;
+  }
+  async CreateTworkbooks(
+    input: CreateTworkbooksInput,
+    condition?: ModelTworkbooksConditionInput
+  ): Promise<CreateTworkbooksMutation> {
+    const statement = `mutation CreateTworkbooks($input: CreateTworkbooksInput!, $condition: ModelTworkbooksConditionInput) {
+        createTworkbooks(input: $input, condition: $condition) {
+          __typename
+          name
+          id
+          projectname
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateTworkbooksMutation>response.data.createTworkbooks;
+  }
+  async UpdateTworkbooks(
+    input: UpdateTworkbooksInput,
+    condition?: ModelTworkbooksConditionInput
+  ): Promise<UpdateTworkbooksMutation> {
+    const statement = `mutation UpdateTworkbooks($input: UpdateTworkbooksInput!, $condition: ModelTworkbooksConditionInput) {
+        updateTworkbooks(input: $input, condition: $condition) {
+          __typename
+          name
+          id
+          projectname
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateTworkbooksMutation>response.data.updateTworkbooks;
+  }
+  async DeleteTworkbooks(
+    input: DeleteTworkbooksInput,
+    condition?: ModelTworkbooksConditionInput
+  ): Promise<DeleteTworkbooksMutation> {
+    const statement = `mutation DeleteTworkbooks($input: DeleteTworkbooksInput!, $condition: ModelTworkbooksConditionInput) {
+        deleteTworkbooks(input: $input, condition: $condition) {
+          __typename
+          name
+          id
+          projectname
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteTworkbooksMutation>response.data.deleteTworkbooks;
+  }
+  async GetMessage(
+    username: string,
+    password: string,
+    sitename: string,
+    siteurl: string
+  ): Promise<GetMessageQuery> {
+    const statement = `query GetMessage($username: String!, $password: String!, $sitename: String!, $siteurl: String!) {
+        getMessage(username: $username, password: $password, sitename: $sitename, siteurl: $siteurl) {
+          __typename
+          body
+          body1
+          body2
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      username,
+      password,
+      sitename,
+      siteurl
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetMessageQuery>response.data.getMessage;
   }
   async GetTableaulogin(id: string): Promise<GetTableauloginQuery> {
     const statement = `query GetTableaulogin($id: ID!) {
@@ -9662,13 +13554,22 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9701,11 +13602,18 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -9722,6 +13630,61 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListTableauloginsQuery>response.data.listTableaulogins;
+  }
+  async SyncTableaulogins(
+    filter?: ModelTableauloginFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncTableauloginsQuery> {
+    const statement = `query SyncTableaulogins($filter: ModelTableauloginFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncTableaulogins(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            id
+            username
+            password
+            sitename
+            siteurl
+            tenv {
+              __typename
+              name
+              tpid
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncTableauloginsQuery>response.data.syncTableaulogins;
   }
   async GetQuicksightlogin(id: string): Promise<GetQuicksightloginQuery> {
     const statement = `query GetQuicksightlogin($id: ID!) {
@@ -9740,13 +13703,22 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9776,11 +13748,18 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -9798,6 +13777,58 @@ export class APIService {
     )) as any;
     return <ListQuicksightloginsQuery>response.data.listQuicksightlogins;
   }
+  async SyncQuicksightlogins(
+    filter?: ModelQuicksightloginFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncQuicksightloginsQuery> {
+    const statement = `query SyncQuicksightlogins($filter: ModelQuicksightloginFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncQuicksightlogins(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            id
+            awsaccountId
+            qenv {
+              __typename
+              name
+              Qpid
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncQuicksightloginsQuery>response.data.syncQuicksightlogins;
+  }
   async GetCustomer(name: string): Promise<GetCustomerQuery> {
     const statement = `query GetCustomer($name: ID!) {
         getCustomer(name: $name) {
@@ -9812,21 +13843,30 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9859,11 +13899,18 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -9887,6 +13934,59 @@ export class APIService {
     )) as any;
     return <ListCustomersQuery>response.data.listCustomers;
   }
+  async SyncCustomers(
+    filter?: ModelCustomerFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncCustomersQuery> {
+    const statement = `query SyncCustomers($filter: ModelCustomerFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncCustomers(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            name
+            DName
+            Did
+            department {
+              __typename
+              Did
+              DName
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncCustomersQuery>response.data.syncCustomers;
+  }
   async GetDepartment(id: string): Promise<GetDepartmentQuery> {
     const statement = `query GetDepartment($id: ID!) {
         getDepartment(id: $id) {
@@ -9902,8 +14002,12 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           tprojects {
             __typename
@@ -9915,8 +14019,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           qprojects {
             __typename
@@ -9927,12 +14035,19 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -9958,20 +14073,27 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -9988,6 +14110,63 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListDepartmentsQuery>response.data.listDepartments;
+  }
+  async SyncDepartments(
+    filter?: ModelDepartmentFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncDepartmentsQuery> {
+    const statement = `query SyncDepartments($filter: ModelDepartmentFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncDepartments(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            Did
+            DName
+            customers {
+              __typename
+              nextToken
+              startedAt
+            }
+            tprojects {
+              __typename
+              nextToken
+              startedAt
+            }
+            qprojects {
+              __typename
+              nextToken
+              startedAt
+            }
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncDepartmentsQuery>response.data.syncDepartments;
   }
   async GetBIMProject(id: string): Promise<GetBIMProjectQuery> {
     const statement = `query GetBIMProject($id: ID!) {
@@ -10007,9 +14186,15 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           Pname
           source
@@ -10017,6 +14202,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -10046,6 +14234,9 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             Pname
             source
@@ -10053,8 +14244,12 @@ export class APIService {
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -10071,6 +14266,62 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListBIMProjectsQuery>response.data.listBIMProjects;
+  }
+  async SyncBIMProjects(
+    filter?: ModelBIMProjectFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncBIMProjectsQuery> {
+    const statement = `query SyncBIMProjects($filter: ModelBIMProjectFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncBIMProjects(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            DName
+            UserName
+            Customer {
+              __typename
+              name
+              DName
+              Did
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            Pname
+            source
+            destination
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncBIMProjectsQuery>response.data.syncBIMProjects;
   }
   async GetDataset(id: string): Promise<GetDatasetQuery> {
     const statement = `query GetDataset($id: ID!) {
@@ -10093,6 +14344,9 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
           }
@@ -10106,12 +14360,19 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -10141,12 +14402,17 @@ export class APIService {
             Files {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -10163,6 +14429,57 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListDatasetsQuery>response.data.listDatasets;
+  }
+  async SyncDatasets(
+    filter?: ModelDatasetFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncDatasetsQuery> {
+    const statement = `query SyncDatasets($filter: ModelDatasetFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncDatasets(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            datasetid
+            name
+            datasources {
+              __typename
+              nextToken
+            }
+            Files {
+              __typename
+              nextToken
+              startedAt
+            }
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncDatasetsQuery>response.data.syncDatasets;
   }
   async GetFile(id: string): Promise<GetFileQuery> {
     const statement = `query GetFile($id: ID!) {
@@ -10182,14 +14499,21 @@ export class APIService {
             Files {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -10220,12 +14544,19 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -10242,6 +14573,60 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListFilesQuery>response.data.listFiles;
+  }
+  async SyncFiles(
+    filter?: ModelFileFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncFilesQuery> {
+    const statement = `query SyncFiles($filter: ModelFileFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncFiles(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            name
+            url
+            datasetid
+            datasets {
+              __typename
+              datasetid
+              name
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncFilesQuery>response.data.syncFiles;
   }
   async GetDatasources(id: string): Promise<GetDatasourcesQuery> {
     const statement = `query GetDatasources($id: ID!) {
@@ -10261,10 +14646,14 @@ export class APIService {
             Files {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           table {
             __typename
@@ -10275,8 +14664,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           databaseserver
           port
@@ -10286,6 +14679,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -10316,10 +14712,14 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             table {
               __typename
               nextToken
+              startedAt
             }
             databaseserver
             port
@@ -10329,8 +14729,12 @@ export class APIService {
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -10348,6 +14752,70 @@ export class APIService {
     )) as any;
     return <ListDatasourcesQuery>response.data.listDatasources;
   }
+  async SyncDatasources(
+    filter?: ModelDatasourcesFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncDatasourcesQuery> {
+    const statement = `query SyncDatasources($filter: ModelDatasourcesFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncDatasources(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            dsid
+            name
+            datasetid
+            datasets {
+              __typename
+              datasetid
+              name
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            table {
+              __typename
+              nextToken
+              startedAt
+            }
+            databaseserver
+            port
+            databasename
+            username
+            password
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncDatasourcesQuery>response.data.syncDatasources;
+  }
   async GetTableauProject(id: string): Promise<GetTableauProjectQuery> {
     const statement = `query GetTableauProject($id: ID!) {
         getTableauProject(id: $id) {
@@ -10362,22 +14830,31 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -10408,12 +14885,19 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -10430,6 +14914,60 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListTableauProjectsQuery>response.data.listTableauProjects;
+  }
+  async SyncTableauProjects(
+    filter?: ModelTableauProjectFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncTableauProjectsQuery> {
+    const statement = `query SyncTableauProjects($filter: ModelTableauProjectFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncTableauProjects(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            tpid
+            name
+            Did
+            department {
+              __typename
+              Did
+              DName
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncTableauProjectsQuery>response.data.syncTableauProjects;
   }
   async GetTableauEnv(id: string): Promise<GetTableauEnvQuery> {
     const statement = `query GetTableauEnv($id: ID!) {
@@ -10449,14 +14987,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -10487,12 +15034,19 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -10509,6 +15063,60 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListTableauEnvsQuery>response.data.listTableauEnvs;
+  }
+  async SyncTableauEnvs(
+    filter?: ModelTableauEnvFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncTableauEnvsQuery> {
+    const statement = `query SyncTableauEnvs($filter: ModelTableauEnvFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncTableauEnvs(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            name
+            tpid
+            tproject {
+              __typename
+              tpid
+              name
+              Did
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncTableauEnvsQuery>response.data.syncTableauEnvs;
   }
   async GetTaleauWorkbook(id: string): Promise<GetTaleauWorkbookQuery> {
     const statement = `query GetTaleauWorkbook($id: ID!) {
@@ -10529,14 +15137,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -10568,12 +15185,19 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -10590,6 +15214,61 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListTaleauWorkbooksQuery>response.data.listTaleauWorkbooks;
+  }
+  async SyncTaleauWorkbooks(
+    filter?: ModelTaleauWorkbookFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncTaleauWorkbooksQuery> {
+    const statement = `query SyncTaleauWorkbooks($filter: ModelTaleauWorkbookFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncTaleauWorkbooks(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            name
+            tpid
+            twbid
+            tproject {
+              __typename
+              tpid
+              name
+              Did
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncTaleauWorkbooksQuery>response.data.syncTaleauWorkbooks;
   }
   async GetTableauSheet(id: string): Promise<GetTableauSheetQuery> {
     const statement = `query GetTableauSheet($id: ID!) {
@@ -10611,14 +15290,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -10650,12 +15338,19 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -10672,6 +15367,61 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListTableauSheetsQuery>response.data.listTableauSheets;
+  }
+  async SyncTableauSheets(
+    filter?: ModelTableauSheetFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncTableauSheetsQuery> {
+    const statement = `query SyncTableauSheets($filter: ModelTableauSheetFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncTableauSheets(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            name
+            twbid
+            tsid
+            tworkbook {
+              __typename
+              name
+              tpid
+              twbid
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncTableauSheetsQuery>response.data.syncTableauSheets;
   }
   async GetTableauGraph(id: string): Promise<GetTableauGraphQuery> {
     const statement = `query GetTableauGraph($id: ID!) {
@@ -10692,14 +15442,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -10730,12 +15489,19 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -10753,6 +15519,60 @@ export class APIService {
     )) as any;
     return <ListTableauGraphsQuery>response.data.listTableauGraphs;
   }
+  async SyncTableauGraphs(
+    filter?: ModelTableauGraphFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncTableauGraphsQuery> {
+    const statement = `query SyncTableauGraphs($filter: ModelTableauGraphFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncTableauGraphs(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            name
+            tsid
+            tsheet {
+              __typename
+              name
+              twbid
+              tsid
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncTableauGraphsQuery>response.data.syncTableauGraphs;
+  }
   async GetQuicksightProject(id: string): Promise<GetQuicksightProjectQuery> {
     const statement = `query GetQuicksightProject($id: ID!) {
         getQuicksightProject(id: $id) {
@@ -10767,18 +15587,24 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           templates {
             __typename
@@ -10790,8 +15616,12 @@ export class APIService {
               Qpid
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           env {
             __typename
@@ -10802,11 +15632,18 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -10837,19 +15674,28 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             templates {
               __typename
               nextToken
+              startedAt
             }
             env {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -10866,6 +15712,69 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListQuicksightProjectsQuery>response.data.listQuicksightProjects;
+  }
+  async SyncQuicksightProjects(
+    filter?: ModelQuicksightProjectFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncQuicksightProjectsQuery> {
+    const statement = `query SyncQuicksightProjects($filter: ModelQuicksightProjectFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncQuicksightProjects(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            id
+            name
+            Did
+            department {
+              __typename
+              Did
+              DName
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            templates {
+              __typename
+              nextToken
+              startedAt
+            }
+            env {
+              __typename
+              nextToken
+              startedAt
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncQuicksightProjectsQuery>response.data.syncQuicksightProjects;
   }
   async GetQuicksightTemplate(id: string): Promise<GetQuicksightTemplateQuery> {
     const statement = `query GetQuicksightTemplate($id: ID!) {
@@ -10887,17 +15796,25 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             templates {
               __typename
               nextToken
+              startedAt
             }
             env {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           qanalysis {
             __typename
@@ -10909,8 +15826,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           qdashboard {
             __typename
@@ -10921,11 +15842,18 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -10957,19 +15885,28 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             qanalysis {
               __typename
               nextToken
+              startedAt
             }
             qdashboard {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -10986,6 +15923,70 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListQuicksightTemplatesQuery>response.data.listQuicksightTemplates;
+  }
+  async SyncQuicksightTemplates(
+    filter?: ModelQuicksightTemplateFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncQuicksightTemplatesQuery> {
+    const statement = `query SyncQuicksightTemplates($filter: ModelQuicksightTemplateFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncQuicksightTemplates(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            id
+            name
+            sourceanalysisId
+            Qpid
+            qproject {
+              __typename
+              id
+              name
+              Did
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            qanalysis {
+              __typename
+              nextToken
+              startedAt
+            }
+            qdashboard {
+              __typename
+              nextToken
+              startedAt
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncQuicksightTemplatesQuery>response.data.syncQuicksightTemplates;
   }
   async GetQuicksightAnalysis(id: string): Promise<GetQuicksightAnalysisQuery> {
     const statement = `query GetQuicksightAnalysis($id: ID!) {
@@ -11007,21 +16008,32 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             qanalysis {
               __typename
               nextToken
+              startedAt
             }
             qdashboard {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -11053,12 +16065,19 @@ export class APIService {
               Qpid
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -11075,6 +16094,61 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListQuicksightAnalysesQuery>response.data.listQuicksightAnalyses;
+  }
+  async SyncQuicksightAnalyses(
+    filter?: ModelQuicksightAnalysisFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncQuicksightAnalysesQuery> {
+    const statement = `query SyncQuicksightAnalyses($filter: ModelQuicksightAnalysisFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncQuicksightAnalyses(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            name
+            QuicksightTemplateId
+            sourceanalysisId
+            qtemplate {
+              __typename
+              id
+              name
+              sourceanalysisId
+              Qpid
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncQuicksightAnalysesQuery>response.data.syncQuicksightAnalyses;
   }
   async GetQuicksightEnv(id: string): Promise<GetQuicksightEnvQuery> {
     const statement = `query GetQuicksightEnv($id: ID!) {
@@ -11094,21 +16168,32 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             templates {
               __typename
               nextToken
+              startedAt
             }
             env {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -11138,12 +16223,19 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -11160,6 +16252,59 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListQuicksightEnvsQuery>response.data.listQuicksightEnvs;
+  }
+  async SyncQuicksightEnvs(
+    filter?: ModelQuicksightEnvFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncQuicksightEnvsQuery> {
+    const statement = `query SyncQuicksightEnvs($filter: ModelQuicksightEnvFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncQuicksightEnvs(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            name
+            Qpid
+            qproject {
+              __typename
+              id
+              name
+              Did
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncQuicksightEnvsQuery>response.data.syncQuicksightEnvs;
   }
   async GetQuicksightDashboard(
     id: string
@@ -11182,21 +16327,32 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             qanalysis {
               __typename
               nextToken
+              startedAt
             }
             qdashboard {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -11227,12 +16383,19 @@ export class APIService {
               Qpid
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -11250,6 +16413,62 @@ export class APIService {
     )) as any;
     return <ListQuicksightDashboardsQuery>(
       response.data.listQuicksightDashboards
+    );
+  }
+  async SyncQuicksightDashboards(
+    filter?: ModelQuicksightDashboardFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncQuicksightDashboardsQuery> {
+    const statement = `query SyncQuicksightDashboards($filter: ModelQuicksightDashboardFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncQuicksightDashboards(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            name
+            qtid
+            qtemplate {
+              __typename
+              id
+              name
+              sourceanalysisId
+              Qpid
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncQuicksightDashboardsQuery>(
+      response.data.syncQuicksightDashboards
     );
   }
   async GetTable(id: string): Promise<GetTableQuery> {
@@ -11270,10 +16489,14 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             table {
               __typename
               nextToken
+              startedAt
             }
             databaseserver
             port
@@ -11283,10 +16506,16 @@ export class APIService {
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -11322,12 +16551,19 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -11345,6 +16581,65 @@ export class APIService {
     )) as any;
     return <ListTablesQuery>response.data.listTables;
   }
+  async SyncTables(
+    filter?: ModelTableFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncTablesQuery> {
+    const statement = `query SyncTables($filter: ModelTableFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncTables(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            name
+            dsid
+            datasource {
+              __typename
+              dsid
+              name
+              datasetid
+              databaseserver
+              port
+              databasename
+              username
+              password
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncTablesQuery>response.data.syncTables;
+  }
   async GetQuicksightFolder(id: string): Promise<GetQuicksightFolderQuery> {
     const statement = `query GetQuicksightFolder($id: ID!) {
         getQuicksightFolder(id: $id) {
@@ -11353,6 +16648,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -11377,8 +16675,12 @@ export class APIService {
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -11396,6 +16698,47 @@ export class APIService {
     )) as any;
     return <ListQuicksightFoldersQuery>response.data.listQuicksightFolders;
   }
+  async SyncQuicksightFolders(
+    filter?: ModelQuicksightFolderFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncQuicksightFoldersQuery> {
+    const statement = `query SyncQuicksightFolders($filter: ModelQuicksightFolderFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncQuicksightFolders(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            name
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncQuicksightFoldersQuery>response.data.syncQuicksightFolders;
+  }
   async GetQuicksightGroup(id: string): Promise<GetQuicksightGroupQuery> {
     const statement = `query GetQuicksightGroup($id: ID!) {
         getQuicksightGroup(id: $id) {
@@ -11404,6 +16747,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -11428,8 +16774,12 @@ export class APIService {
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -11447,6 +16797,47 @@ export class APIService {
     )) as any;
     return <ListQuicksightGroupsQuery>response.data.listQuicksightGroups;
   }
+  async SyncQuicksightGroups(
+    filter?: ModelQuicksightGroupFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncQuicksightGroupsQuery> {
+    const statement = `query SyncQuicksightGroups($filter: ModelQuicksightGroupFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncQuicksightGroups(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            name
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncQuicksightGroupsQuery>response.data.syncQuicksightGroups;
+  }
   async GetComments(id: string): Promise<GetCommentsQuery> {
     const statement = `query GetComments($id: ID!) {
         getComments(id: $id) {
@@ -11455,6 +16846,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -11479,8 +16873,12 @@ export class APIService {
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           nextToken
+          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -11497,6 +16895,356 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListCommentsQuery>response.data.listComments;
+  }
+  async SyncComments(
+    filter?: ModelCommentsFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncCommentsQuery> {
+    const statement = `query SyncComments($filter: ModelCommentsFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncComments(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            comments
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncCommentsQuery>response.data.syncComments;
+  }
+  async GetTprojects(id: string): Promise<GetTprojectsQuery> {
+    const statement = `query GetTprojects($id: ID!) {
+        getTprojects(id: $id) {
+          __typename
+          id
+          name
+          description
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetTprojectsQuery>response.data.getTprojects;
+  }
+  async ListTprojects(
+    filter?: ModelTprojectsFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListTprojectsQuery> {
+    const statement = `query ListTprojects($filter: ModelTprojectsFilterInput, $limit: Int, $nextToken: String) {
+        listTprojects(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            name
+            description
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListTprojectsQuery>response.data.listTprojects;
+  }
+  async SyncTprojects(
+    filter?: ModelTprojectsFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncTprojectsQuery> {
+    const statement = `query SyncTprojects($filter: ModelTprojectsFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncTprojects(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            id
+            name
+            description
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncTprojectsQuery>response.data.syncTprojects;
+  }
+  async GetTdatasources(id: string): Promise<GetTdatasourcesQuery> {
+    const statement = `query GetTdatasources($id: ID!) {
+        getTdatasources(id: $id) {
+          __typename
+          projectid
+          filepath
+          name
+          id
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetTdatasourcesQuery>response.data.getTdatasources;
+  }
+  async ListTdatasources(
+    filter?: ModelTdatasourcesFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListTdatasourcesQuery> {
+    const statement = `query ListTdatasources($filter: ModelTdatasourcesFilterInput, $limit: Int, $nextToken: String) {
+        listTdatasources(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            projectid
+            filepath
+            name
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListTdatasourcesQuery>response.data.listTdatasources;
+  }
+  async SyncTdatasources(
+    filter?: ModelTdatasourcesFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncTdatasourcesQuery> {
+    const statement = `query SyncTdatasources($filter: ModelTdatasourcesFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncTdatasources(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            projectid
+            filepath
+            name
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncTdatasourcesQuery>response.data.syncTdatasources;
+  }
+  async GetTworkbooks(id: string): Promise<GetTworkbooksQuery> {
+    const statement = `query GetTworkbooks($id: ID!) {
+        getTworkbooks(id: $id) {
+          __typename
+          name
+          id
+          projectname
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetTworkbooksQuery>response.data.getTworkbooks;
+  }
+  async ListTworkbooks(
+    filter?: ModelTworkbooksFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListTworkbooksQuery> {
+    const statement = `query ListTworkbooks($filter: ModelTworkbooksFilterInput, $limit: Int, $nextToken: String) {
+        listTworkbooks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            name
+            id
+            projectname
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListTworkbooksQuery>response.data.listTworkbooks;
+  }
+  async SyncTworkbooks(
+    filter?: ModelTworkbooksFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncTworkbooksQuery> {
+    const statement = `query SyncTworkbooks($filter: ModelTworkbooksFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncTworkbooks(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            name
+            id
+            projectname
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncTworkbooksQuery>response.data.syncTworkbooks;
   }
   OnCreateTableauloginListener: Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateTableaulogin">>
@@ -11522,13 +17270,22 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -11560,13 +17317,22 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -11598,13 +17364,22 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -11634,13 +17409,22 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -11672,13 +17456,22 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -11710,13 +17503,22 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -11743,21 +17545,30 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -11782,21 +17593,30 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -11821,21 +17641,30 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -11861,8 +17690,12 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           tprojects {
             __typename
@@ -11874,8 +17707,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           qprojects {
             __typename
@@ -11886,12 +17723,19 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -11917,8 +17761,12 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           tprojects {
             __typename
@@ -11930,8 +17778,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           qprojects {
             __typename
@@ -11942,12 +17794,19 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -11973,8 +17832,12 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           tprojects {
             __typename
@@ -11986,8 +17849,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           qprojects {
             __typename
@@ -11998,12 +17865,19 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12032,9 +17906,15 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           Pname
           source
@@ -12042,6 +17922,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12070,9 +17953,15 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           Pname
           source
@@ -12080,6 +17969,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12108,9 +18000,15 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           Pname
           source
@@ -12118,6 +18016,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12149,6 +18050,9 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
           }
@@ -12162,12 +18066,19 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12199,6 +18110,9 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
           }
@@ -12212,12 +18126,19 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12249,6 +18170,9 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
           }
@@ -12262,12 +18186,19 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12296,14 +18227,21 @@ export class APIService {
             Files {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12332,14 +18270,21 @@ export class APIService {
             Files {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12368,14 +18313,21 @@ export class APIService {
             Files {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12404,10 +18356,14 @@ export class APIService {
             Files {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           table {
             __typename
@@ -12418,8 +18374,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           databaseserver
           port
@@ -12429,6 +18389,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12457,10 +18420,14 @@ export class APIService {
             Files {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           table {
             __typename
@@ -12471,8 +18438,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           databaseserver
           port
@@ -12482,6 +18453,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12510,10 +18484,14 @@ export class APIService {
             Files {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           table {
             __typename
@@ -12524,8 +18502,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           databaseserver
           port
@@ -12535,6 +18517,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12561,22 +18546,31 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12605,22 +18599,31 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12649,22 +18652,31 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12695,14 +18707,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12731,14 +18752,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12767,14 +18797,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12806,14 +18845,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12847,14 +18895,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12888,14 +18945,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12928,14 +18994,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -12966,14 +19041,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13004,14 +19088,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13041,14 +19134,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13078,14 +19180,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13115,14 +19226,23 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13149,18 +19269,24 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           templates {
             __typename
@@ -13172,8 +19298,12 @@ export class APIService {
               Qpid
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           env {
             __typename
@@ -13184,11 +19314,18 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13217,18 +19354,24 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           templates {
             __typename
@@ -13240,8 +19383,12 @@ export class APIService {
               Qpid
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           env {
             __typename
@@ -13252,11 +19399,18 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13285,18 +19439,24 @@ export class APIService {
             customers {
               __typename
               nextToken
+              startedAt
             }
             tprojects {
               __typename
               nextToken
+              startedAt
             }
             qprojects {
               __typename
               nextToken
+              startedAt
             }
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           templates {
             __typename
@@ -13308,8 +19468,12 @@ export class APIService {
               Qpid
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           env {
             __typename
@@ -13320,11 +19484,18 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13359,17 +19530,25 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             templates {
               __typename
               nextToken
+              startedAt
             }
             env {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           qanalysis {
             __typename
@@ -13381,8 +19560,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           qdashboard {
             __typename
@@ -13393,11 +19576,18 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13432,17 +19622,25 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             templates {
               __typename
               nextToken
+              startedAt
             }
             env {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           qanalysis {
             __typename
@@ -13454,8 +19652,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           qdashboard {
             __typename
@@ -13466,11 +19668,18 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13505,17 +19714,25 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             templates {
               __typename
               nextToken
+              startedAt
             }
             env {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           qanalysis {
             __typename
@@ -13527,8 +19744,12 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           qdashboard {
             __typename
@@ -13539,11 +19760,18 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             nextToken
+            startedAt
           }
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13578,21 +19806,32 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             qanalysis {
               __typename
               nextToken
+              startedAt
             }
             qdashboard {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13627,21 +19866,32 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             qanalysis {
               __typename
               nextToken
+              startedAt
             }
             qdashboard {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13676,21 +19926,32 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             qanalysis {
               __typename
               nextToken
+              startedAt
             }
             qdashboard {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13721,21 +19982,32 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             templates {
               __typename
               nextToken
+              startedAt
             }
             env {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13764,21 +20036,32 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             templates {
               __typename
               nextToken
+              startedAt
             }
             env {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13807,21 +20090,32 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             templates {
               __typename
               nextToken
+              startedAt
             }
             env {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13853,21 +20147,32 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             qanalysis {
               __typename
               nextToken
+              startedAt
             }
             qdashboard {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13901,21 +20206,32 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             qanalysis {
               __typename
               nextToken
+              startedAt
             }
             qdashboard {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13949,21 +20265,32 @@ export class APIService {
               Did
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             qanalysis {
               __typename
               nextToken
+              startedAt
             }
             qdashboard {
               __typename
               nextToken
+              startedAt
             }
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -13994,10 +20321,14 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             table {
               __typename
               nextToken
+              startedAt
             }
             databaseserver
             port
@@ -14007,10 +20338,16 @@ export class APIService {
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -14039,10 +20376,14 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             table {
               __typename
               nextToken
+              startedAt
             }
             databaseserver
             port
@@ -14052,10 +20393,16 @@ export class APIService {
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -14084,10 +20431,14 @@ export class APIService {
               id
               createdAt
               updatedAt
+              _version
+              _deleted
+              _lastChangedAt
             }
             table {
               __typename
               nextToken
+              startedAt
             }
             databaseserver
             port
@@ -14097,10 +20448,16 @@ export class APIService {
             id
             createdAt
             updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -14121,6 +20478,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -14143,6 +20503,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -14165,6 +20528,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -14187,6 +20553,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -14209,6 +20578,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -14231,6 +20603,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -14251,6 +20626,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -14269,6 +20647,9 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
@@ -14287,10 +20668,214 @@ export class APIService {
           id
           createdAt
           updatedAt
+          _version
+          _deleted
+          _lastChangedAt
         }
       }`
     )
   ) as Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteComments">>
+  >;
+
+  OnCreateTprojectsListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateTprojects">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreateTprojects {
+        onCreateTprojects {
+          __typename
+          id
+          name
+          description
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateTprojects">>
+  >;
+
+  OnUpdateTprojectsListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateTprojects">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdateTprojects {
+        onUpdateTprojects {
+          __typename
+          id
+          name
+          description
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateTprojects">>
+  >;
+
+  OnDeleteTprojectsListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteTprojects">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeleteTprojects {
+        onDeleteTprojects {
+          __typename
+          id
+          name
+          description
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteTprojects">>
+  >;
+
+  OnCreateTdatasourcesListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateTdatasources">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreateTdatasources {
+        onCreateTdatasources {
+          __typename
+          projectid
+          filepath
+          name
+          id
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateTdatasources">>
+  >;
+
+  OnUpdateTdatasourcesListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateTdatasources">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdateTdatasources {
+        onUpdateTdatasources {
+          __typename
+          projectid
+          filepath
+          name
+          id
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateTdatasources">>
+  >;
+
+  OnDeleteTdatasourcesListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteTdatasources">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeleteTdatasources {
+        onDeleteTdatasources {
+          __typename
+          projectid
+          filepath
+          name
+          id
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteTdatasources">>
+  >;
+
+  OnCreateTworkbooksListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateTworkbooks">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreateTworkbooks {
+        onCreateTworkbooks {
+          __typename
+          name
+          id
+          projectname
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateTworkbooks">>
+  >;
+
+  OnUpdateTworkbooksListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateTworkbooks">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdateTworkbooks {
+        onUpdateTworkbooks {
+          __typename
+          name
+          id
+          projectname
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateTworkbooks">>
+  >;
+
+  OnDeleteTworkbooksListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteTworkbooks">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeleteTworkbooks {
+        onDeleteTworkbooks {
+          __typename
+          name
+          id
+          projectname
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteTworkbooks">>
   >;
 }

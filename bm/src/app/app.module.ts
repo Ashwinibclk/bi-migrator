@@ -27,15 +27,17 @@ Amplify.configure(awsconfig);
     FormsModule,
     ReactiveFormsModule,
     AmplifyUIAngularModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    
     
   ],
   exports: [
     
     NgxSpinnerModule]
 ,
-schemas:[CUSTOM_ELEMENTS_SCHEMA],
+
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

@@ -52,7 +52,7 @@ input{
 
 
 button{
-  margin-top: 40px;
+  margin-top: 30px;
   width: 100%;
   background-color: rgb(203, 235, 41);
   color: black;
@@ -146,7 +146,7 @@ td button{
 
 .column {
   float: left;
-  width: 25%;
+  width: 33.33%;
   padding: 10px;
   height: 500px; 
   border:1px solid black;
@@ -177,4 +177,16 @@ li:hover{
 li button:hover{
   color: white;
   cursor: pointer;
+}
+
+#myProgress {
+  width: 100%;
+  background-color: whitesmoke;
+  margin-top: 40px;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: green;
 }
