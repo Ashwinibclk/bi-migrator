@@ -1223,15 +1223,13 @@ export type DeleteTprojectsInput = {
 };
 
 export type CreateTdatasourcesInput = {
-  projectid: string;
+  id?: string | null;
   filepath: string;
   name: string;
-  id?: string | null;
   _version?: number | null;
 };
 
 export type ModelTdatasourcesConditionInput = {
-  projectid?: ModelIDInput | null;
   filepath?: ModelStringInput | null;
   name?: ModelStringInput | null;
   and?: Array<ModelTdatasourcesConditionInput | null> | null;
@@ -1241,10 +1239,9 @@ export type ModelTdatasourcesConditionInput = {
 
 export type tdatasources = {
   __typename: "tdatasources";
-  projectid: string;
+  id: string;
   filepath: string;
   name: string;
-  id: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -1253,10 +1250,9 @@ export type tdatasources = {
 };
 
 export type UpdateTdatasourcesInput = {
-  projectid?: string | null;
+  id: string;
   filepath?: string | null;
   name?: string | null;
-  id: string;
   _version?: number | null;
 };
 
@@ -1309,6 +1305,11 @@ export type message = {
   body: string;
   body1: string;
   body2: string;
+};
+
+export type quick = {
+  __typename: "quick";
+  body: string;
 };
 
 export type ModelTableauloginFilterInput = {
@@ -1618,7 +1619,7 @@ export type ModelTprojectsConnection = {
 };
 
 export type ModelTdatasourcesFilterInput = {
-  projectid?: ModelIDInput | null;
+  id?: ModelIDInput | null;
   filepath?: ModelStringInput | null;
   name?: ModelStringInput | null;
   and?: Array<ModelTdatasourcesFilterInput | null> | null;
@@ -4351,10 +4352,9 @@ export type DeleteTprojectsMutation = {
 
 export type CreateTdatasourcesMutation = {
   __typename: "tdatasources";
-  projectid: string;
+  id: string;
   filepath: string;
   name: string;
-  id: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -4364,10 +4364,9 @@ export type CreateTdatasourcesMutation = {
 
 export type UpdateTdatasourcesMutation = {
   __typename: "tdatasources";
-  projectid: string;
+  id: string;
   filepath: string;
   name: string;
-  id: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -4377,10 +4376,9 @@ export type UpdateTdatasourcesMutation = {
 
 export type DeleteTdatasourcesMutation = {
   __typename: "tdatasources";
-  projectid: string;
+  id: string;
   filepath: string;
   name: string;
-  id: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -4429,6 +4427,11 @@ export type GetMessageQuery = {
   body: string;
   body1: string;
   body2: string;
+};
+
+export type GetquickQuery = {
+  __typename: "quick";
+  body: string;
 };
 
 export type GetTableauloginQuery = {
@@ -6637,10 +6640,9 @@ export type SyncTprojectsQuery = {
 
 export type GetTdatasourcesQuery = {
   __typename: "tdatasources";
-  projectid: string;
+  id: string;
   filepath: string;
   name: string;
-  id: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -6652,10 +6654,9 @@ export type ListTdatasourcesQuery = {
   __typename: "ModelTdatasourcesConnection";
   items: Array<{
     __typename: "tdatasources";
-    projectid: string;
+    id: string;
     filepath: string;
     name: string;
-    id: string;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -6670,10 +6671,9 @@ export type SyncTdatasourcesQuery = {
   __typename: "ModelTdatasourcesConnection";
   items: Array<{
     __typename: "tdatasources";
-    projectid: string;
+    id: string;
     filepath: string;
     name: string;
-    id: string;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -9432,10 +9432,9 @@ export type OnDeleteTprojectsSubscription = {
 
 export type OnCreateTdatasourcesSubscription = {
   __typename: "tdatasources";
-  projectid: string;
+  id: string;
   filepath: string;
   name: string;
-  id: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -9445,10 +9444,9 @@ export type OnCreateTdatasourcesSubscription = {
 
 export type OnUpdateTdatasourcesSubscription = {
   __typename: "tdatasources";
-  projectid: string;
+  id: string;
   filepath: string;
   name: string;
-  id: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -9458,10 +9456,9 @@ export type OnUpdateTdatasourcesSubscription = {
 
 export type OnDeleteTdatasourcesSubscription = {
   __typename: "tdatasources";
-  projectid: string;
+  id: string;
   filepath: string;
   name: string;
-  id: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -13344,10 +13341,9 @@ export class APIService {
     const statement = `mutation CreateTdatasources($input: CreateTdatasourcesInput!, $condition: ModelTdatasourcesConditionInput) {
         createTdatasources(input: $input, condition: $condition) {
           __typename
-          projectid
+          id
           filepath
           name
-          id
           createdAt
           updatedAt
           _version
@@ -13373,10 +13369,9 @@ export class APIService {
     const statement = `mutation UpdateTdatasources($input: UpdateTdatasourcesInput!, $condition: ModelTdatasourcesConditionInput) {
         updateTdatasources(input: $input, condition: $condition) {
           __typename
-          projectid
+          id
           filepath
           name
-          id
           createdAt
           updatedAt
           _version
@@ -13402,10 +13397,9 @@ export class APIService {
     const statement = `mutation DeleteTdatasources($input: DeleteTdatasourcesInput!, $condition: ModelTdatasourcesConditionInput) {
         deleteTdatasources(input: $input, condition: $condition) {
           __typename
-          projectid
+          id
           filepath
           name
-          id
           createdAt
           updatedAt
           _version
@@ -13532,6 +13526,27 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <GetMessageQuery>response.data.getMessage;
+  }
+  async Getquick(
+    dsid: string,
+    pid: string,
+    awsaccountid: string
+  ): Promise<GetquickQuery> {
+    const statement = `query Getquick($dsid: String!, $pid: String!, $awsaccountid: String!) {
+        getquick(dsid: $dsid, pid: $pid, awsaccountid: $awsaccountid) {
+          __typename
+          body
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      dsid,
+      pid,
+      awsaccountid
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetquickQuery>response.data.getquick;
   }
   async GetTableaulogin(id: string): Promise<GetTableauloginQuery> {
     const statement = `query GetTableaulogin($id: ID!) {
@@ -17043,10 +17058,9 @@ export class APIService {
     const statement = `query GetTdatasources($id: ID!) {
         getTdatasources(id: $id) {
           __typename
-          projectid
+          id
           filepath
           name
-          id
           createdAt
           updatedAt
           _version
@@ -17072,10 +17086,9 @@ export class APIService {
           __typename
           items {
             __typename
-            projectid
+            id
             filepath
             name
-            id
             createdAt
             updatedAt
             _version
@@ -17112,10 +17125,9 @@ export class APIService {
           __typename
           items {
             __typename
-            projectid
+            id
             filepath
             name
-            id
             createdAt
             updatedAt
             _version
@@ -20751,10 +20763,9 @@ export class APIService {
       `subscription OnCreateTdatasources {
         onCreateTdatasources {
           __typename
-          projectid
+          id
           filepath
           name
-          id
           createdAt
           updatedAt
           _version
@@ -20774,10 +20785,9 @@ export class APIService {
       `subscription OnUpdateTdatasources {
         onUpdateTdatasources {
           __typename
-          projectid
+          id
           filepath
           name
-          id
           createdAt
           updatedAt
           _version
@@ -20797,10 +20807,9 @@ export class APIService {
       `subscription OnDeleteTdatasources {
         onDeleteTdatasources {
           __typename
-          projectid
+          id
           filepath
           name
-          id
           createdAt
           updatedAt
           _version

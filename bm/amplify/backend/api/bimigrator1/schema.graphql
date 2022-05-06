@@ -195,7 +195,7 @@ type tprojects @model {
  
  
 type tdatasources @model {
- projectid:ID!
+ id:ID!
  filepath:String!
  name:String!
 }
@@ -212,6 +212,11 @@ type message {
     body2:String!
 }
 
+type quick{
+  body:String!
+}
+
 type Query{
   getMessage(username:String! password:String! sitename:String! siteurl:String!) :message @function (name: "tableau-${env}")
+  getquick(dsid:String! pid:String! awsaccountid:String!):quick!
 }

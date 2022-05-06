@@ -1588,13 +1588,6 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "projectid": {
-                    "name": "projectid",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
                 "filepath": {
                     "name": "filepath",
                     "isArray": false,
@@ -1731,7 +1724,19 @@ export const schema = {
                     "attributes": []
                 }
             }
+        },
+        "quick": {
+            "name": "quick",
+            "fields": {
+                "body": {
+                    "name": "body",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                }
+            }
         }
     },
-    "version": "13e17facc8533b0995fc9f025b7bc09e"
+    "version": "0e2bde7874acc4975ec554683659e413"
 };

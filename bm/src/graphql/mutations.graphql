@@ -2698,10 +2698,9 @@ mutation CreateTdatasources(
   $condition: ModelTdatasourcesConditionInput
 ) {
   createTdatasources(input: $input, condition: $condition) {
-    projectid
+    id
     filepath
     name
-    id
     createdAt
     updatedAt
     _version
@@ -2714,10 +2713,9 @@ mutation UpdateTdatasources(
   $condition: ModelTdatasourcesConditionInput
 ) {
   updateTdatasources(input: $input, condition: $condition) {
-    projectid
+    id
     filepath
     name
-    id
     createdAt
     updatedAt
     _version
@@ -2730,10 +2728,9 @@ mutation DeleteTdatasources(
   $condition: ModelTdatasourcesConditionInput
 ) {
   deleteTdatasources(input: $input, condition: $condition) {
-    projectid
+    id
     filepath
     name
-    id
     createdAt
     updatedAt
     _version

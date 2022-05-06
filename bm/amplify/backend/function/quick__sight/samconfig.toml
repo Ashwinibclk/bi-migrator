@@ -1,0 +1,12 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "quick-sight"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1v3ufpfb5as2e"
+s3_prefix = "quick-sight"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+image_repositories = []
+disable_rollback = true

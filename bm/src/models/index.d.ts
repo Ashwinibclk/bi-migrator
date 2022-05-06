@@ -20,6 +20,11 @@ export declare class message {
   constructor(init: ModelInit<message>);
 }
 
+export declare class quick {
+  readonly body: string;
+  constructor(init: ModelInit<quick>);
+}
+
 type TableauloginMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -385,7 +390,6 @@ export declare class tprojects {
 
 export declare class tdatasources {
   readonly id: string;
-  readonly projectid: string;
   readonly filepath: string;
   readonly name: string;
   readonly createdAt?: string | null;

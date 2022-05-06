@@ -15,7 +15,7 @@ const BiPlatform = {
   "QUICKSIGHT": "QUICKSIGHT"
 };
 
-const { Tableaulogin, TableauEnv, TableauProject, Department, Customer, QuicksightProject, QuicksightTemplate, QuicksightAnalysis, QuicksightDashboard, QuicksightEnv, Quicksightlogin, BIMProject, dataset, datasources, Table, File, TaleauWorkbook, TableauSheet, TableauGraph, QuicksightFolder, QuicksightGroup, comments, tprojects, tdatasources, tworkbooks, message } = initSchema(schema);
+const { Tableaulogin, TableauEnv, TableauProject, Department, Customer, QuicksightProject, QuicksightTemplate, QuicksightAnalysis, QuicksightDashboard, QuicksightEnv, Quicksightlogin, BIMProject, dataset, datasources, Table, File, TaleauWorkbook, TableauSheet, TableauGraph, QuicksightFolder, QuicksightGroup, comments, tprojects, tdatasources, tworkbooks, message, quick } = initSchema(schema);
 
 export {
   Tableaulogin,
@@ -45,5 +45,6 @@ export {
   tworkbooks,
   Departments,
   BiPlatform,
-  message
+  message,
+  quick
 };

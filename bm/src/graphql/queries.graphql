@@ -16,6 +16,11 @@ query GetMessage(
     body2
   }
 }
+query Getquick($dsid: String!, $pid: String!, $awsaccountid: String!) {
+  getquick(dsid: $dsid, pid: $pid, awsaccountid: $awsaccountid) {
+    body
+  }
+}
 query GetTableaulogin($id: ID!) {
   getTableaulogin(id: $id) {
     id
@@ -2397,10 +2402,9 @@ query SyncTprojects(
 }
 query GetTdatasources($id: ID!) {
   getTdatasources(id: $id) {
-    projectid
+    id
     filepath
     name
-    id
     createdAt
     updatedAt
     _version
@@ -2415,10 +2419,9 @@ query ListTdatasources(
 ) {
   listTdatasources(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
-      projectid
+      id
       filepath
       name
-      id
       createdAt
       updatedAt
       _version
@@ -2442,10 +2445,9 @@ query SyncTdatasources(
     lastSync: $lastSync
   ) {
     items {
-      projectid
+      id
       filepath
       name
-      id
       createdAt
       updatedAt
       _version

@@ -20,13 +20,17 @@ def lambda_handler(event, context):
     }
   }
         """
+   
     tableau_auth = TSC.TableauAuth(event['username'], event['password'], event['sitename'])
     server = TSC.Server(event['siteurl'], use_server_version=True)
     # signin tableau and get project id
     with server.auth.sign_in(tableau_auth):
         # get all projects on site
+        projects=[]
         all_project_items, pagination_item = server.projects.get()
-        projects=[proj.name for proj in all_project_items]
+        p=[proj.name for proj in all_project_items]
+        for i in all_project_items:
+          projects.append([i.id,i.name])   
         for proj in all_project_items:
             client.put_item(
                 TableName='tprojects-2i2srqro3bfvpogryufqfhd5hi-dev',
@@ -43,9 +47,13 @@ def lambda_handler(event, context):
                 }
             )
     with server.auth.sign_in(tableau_auth):
+        datasources=[]
         all_datasources, pagination_item = server.datasources.get()
+        d=[d.name for d in all_datasources]
+        for i in all_datasources:
+            datasources.append([i.id,i.name])
         print([datasource.id for datasource in all_datasources])
-        datasources=[proj.name for proj in all_datasources]
+       
         for datasource in all_datasources:
             # get the data source
             data_source = server.datasources.get_by_id(datasource.id)
@@ -71,8 +79,11 @@ def lambda_handler(event, context):
 
     with server.auth.sign_in(tableau_auth):
         all_workbooks, pagination_item = server.workbooks.get()
+        w=[w.name for w in all_workbooks]
         print([workbook.id for workbook in all_workbooks])
-        workbooks=[proj.name for proj in all_workbooks]
+        workbooks=[]
+        for i in all_workbooks:
+            workbooks.append([i.id,i.name])
         resp = server.metadata.query(query)
         print(server.metadata)
         workbook = resp['data']['workbooks']
@@ -95,9 +106,9 @@ def lambda_handler(event, context):
 
     response = {
         'statusCode': 200,
-        'body': projects,
-        'body1': datasources,
-        'body2': workbooks,
+        'body': p,
+        'body1': d,
+        'body2': w,
         'headers': {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*'
