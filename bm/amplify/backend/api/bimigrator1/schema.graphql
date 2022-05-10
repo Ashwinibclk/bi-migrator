@@ -70,8 +70,8 @@ datasets:dataset @belongsTo(fields:["datasetid"])
 }
  
 type datasources @model{
- dsid:ID!
- name:String!
+dsid:ID!
+name:String!
 datasetid:ID!
 datasets:dataset @belongsTo(fields:["datasetid"])
 table:[Table] @hasMany(fields:["dsid"])
@@ -80,7 +80,6 @@ port:Int!
 databasename:String!
 username:String!
 password:String!
- 
 }
  
  
@@ -192,6 +191,8 @@ type tprojects @model {
   description:String!
  
 }
+
+
  
  
 type tdatasources @model {

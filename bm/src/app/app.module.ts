@@ -11,6 +11,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { TableauloginComponent } from './tableaulogin/tableaulogin.component';
 import { BimprojectComponent } from './bimproject/bimproject.component';
 import { NgxSpinnerModule ,NgxSpinnerService} from 'ngx-spinner';
+import { LoadingComponent } from './loading';
 Amplify.configure(awsconfig);
 
 
@@ -19,7 +20,8 @@ Amplify.configure(awsconfig);
     AppComponent,
     CustomerComponent,
     TableauloginComponent,
-    BimprojectComponent
+    BimprojectComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +40,6 @@ Amplify.configure(awsconfig);
 
   providers: [],
   bootstrap: [AppComponent],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA]
+  
 })
 export class AppModule { }

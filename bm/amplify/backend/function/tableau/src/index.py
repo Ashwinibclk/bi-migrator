@@ -28,6 +28,7 @@ def lambda_handler(event, context):
         # get all projects on site
         projects=[]
         all_project_items, pagination_item = server.projects.get()
+        print(all_project_items)
         p=[proj.name for proj in all_project_items]
         for i in all_project_items:
           projects.append([i.id,i.name])   
@@ -49,6 +50,7 @@ def lambda_handler(event, context):
     with server.auth.sign_in(tableau_auth):
         datasources=[]
         all_datasources, pagination_item = server.datasources.get()
+        print(all_datasources)
         d=[d.name for d in all_datasources]
         for i in all_datasources:
             datasources.append([i.id,i.name])
@@ -79,6 +81,7 @@ def lambda_handler(event, context):
 
     with server.auth.sign_in(tableau_auth):
         all_workbooks, pagination_item = server.workbooks.get()
+        print(all_workbooks)
         w=[w.name for w in all_workbooks]
         print([workbook.id for workbook in all_workbooks])
         workbooks=[]

@@ -15,6 +15,8 @@ declare function move(): any;
   styleUrls: ['./tableaulogin.component.css']
 })
 export class TableauloginComponent implements OnInit, OnDestroy {
+  isLoading = false;
+
   dsid:String="";
   pid:String="";
   response: any;
@@ -68,7 +70,7 @@ export class TableauloginComponent implements OnInit, OnDestroy {
   }
 
   async onCreatetb(todo: any) {
-    this.spinner.show();
+    this.isLoading = true;
     this.tabdis = true;
 
     this.api.GetMessage(todo.username, todo.password, todo.sitename, todo.siteurl).then((result) => {
@@ -84,13 +86,14 @@ export class TableauloginComponent implements OnInit, OnDestroy {
     this.res4=this.r4.split(",");
 
 
-   
+    this.isLoading = false;
     
      
     })
       .catch((e) => {
+        this.isLoading = false;
         this.tabdis = false;
-        this.spinner.hide();
+       
         alert("invalid credentials!!!");
         console.log("error creating restaurant...", e);
       });
@@ -103,12 +106,12 @@ export class TableauloginComponent implements OnInit, OnDestroy {
 
       })
       .catch((e) => {
-        this.spinner.hide();
+        this.isLoading = false;
         this.tabdis = false;
         alert("invalid credentials!!!")
         console.log("error creating restaurant...", e);
       });
-    this.spinner.hide();
+    
 
 
 
