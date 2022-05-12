@@ -10,7 +10,7 @@ def lambda_handler(event, context):
     response = dynamodb_client.get_item(
         TableName='tdatasources-2i2srqro3bfvpogryufqfhd5hi-dev',
         Key={
-            'id': {'S': event['dsid']},
+            'id': {'S': event['id']},
             #'filepath': {'S': 'World Indicators.hyper'},
             # 'name': {'S': 'World Indicators'}
         }
@@ -25,7 +25,7 @@ def lambda_handler(event, context):
     )
     print(responses['Item']['id']['S'])
     client_qs.create_data_source(
-        AwsAccountId=event['awsaccountid'],
+        AwsAccountId=event['awsaccountId'],
         DataSourceId=response['Item']['id']['S'],
         Name=response['Item']['name']['S'],
         Type='S3',
@@ -54,7 +54,7 @@ def lambda_handler(event, context):
     )
 
     client_qs.create_data_set(
-        AwsAccountId="519510601754",
+        AwsAccountId=event['awsaccountId'],
         DataSetId="dataset" + response['Item']['id']['S'],
         Name=response['Item']['name']['S'],
         PhysicalTableMap={

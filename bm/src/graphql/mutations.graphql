@@ -2783,3 +2783,54 @@ mutation DeleteTworkbooks(
     _lastChangedAt
   }
 }
+mutation CreateTptds(
+  $input: CreateTptdsInput!
+  $condition: ModelTptdsConditionInput
+) {
+  createTptds(input: $input, condition: $condition) {
+    id
+    pid
+    name
+    pname
+    filepath
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateTptds(
+  $input: UpdateTptdsInput!
+  $condition: ModelTptdsConditionInput
+) {
+  updateTptds(input: $input, condition: $condition) {
+    id
+    pid
+    name
+    pname
+    filepath
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteTptds(
+  $input: DeleteTptdsInput!
+  $condition: ModelTptdsConditionInput
+) {
+  deleteTptds(input: $input, condition: $condition) {
+    id
+    pid
+    name
+    pname
+    filepath
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

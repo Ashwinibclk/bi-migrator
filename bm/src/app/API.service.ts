@@ -85,6 +85,9 @@ export type __SubscriptionContainer = {
   onCreateTworkbooks: OnCreateTworkbooksSubscription;
   onUpdateTworkbooks: OnUpdateTworkbooksSubscription;
   onDeleteTworkbooks: OnDeleteTworkbooksSubscription;
+  onCreateTptds: OnCreateTptdsSubscription;
+  onUpdateTptds: OnUpdateTptdsSubscription;
+  onDeleteTptds: OnDeleteTptdsSubscription;
 };
 
 export type CreateTableauloginInput = {
@@ -1300,6 +1303,53 @@ export type DeleteTworkbooksInput = {
   _version?: number | null;
 };
 
+export type CreateTptdsInput = {
+  id?: string | null;
+  pid: string;
+  name: string;
+  pname: string;
+  filepath: string;
+  _version?: number | null;
+};
+
+export type ModelTptdsConditionInput = {
+  pid?: ModelIDInput | null;
+  name?: ModelStringInput | null;
+  pname?: ModelStringInput | null;
+  filepath?: ModelStringInput | null;
+  and?: Array<ModelTptdsConditionInput | null> | null;
+  or?: Array<ModelTptdsConditionInput | null> | null;
+  not?: ModelTptdsConditionInput | null;
+};
+
+export type tptds = {
+  __typename: "tptds";
+  id: string;
+  pid: string;
+  name: string;
+  pname: string;
+  filepath: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type UpdateTptdsInput = {
+  id: string;
+  pid?: string | null;
+  name?: string | null;
+  pname?: string | null;
+  filepath?: string | null;
+  _version?: number | null;
+};
+
+export type DeleteTptdsInput = {
+  id: string;
+  _version?: number | null;
+};
+
 export type message = {
   __typename: "message";
   body: string;
@@ -1646,6 +1696,24 @@ export type ModelTworkbooksFilterInput = {
 export type ModelTworkbooksConnection = {
   __typename: "ModelTworkbooksConnection";
   items: Array<tworkbooks | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type ModelTptdsFilterInput = {
+  id?: ModelIDInput | null;
+  pid?: ModelIDInput | null;
+  name?: ModelStringInput | null;
+  pname?: ModelStringInput | null;
+  filepath?: ModelStringInput | null;
+  and?: Array<ModelTptdsFilterInput | null> | null;
+  or?: Array<ModelTptdsFilterInput | null> | null;
+  not?: ModelTptdsFilterInput | null;
+};
+
+export type ModelTptdsConnection = {
+  __typename: "ModelTptdsConnection";
+  items: Array<tptds | null>;
   nextToken?: string | null;
   startedAt?: number | null;
 };
@@ -4422,6 +4490,48 @@ export type DeleteTworkbooksMutation = {
   _lastChangedAt: number;
 };
 
+export type CreateTptdsMutation = {
+  __typename: "tptds";
+  id: string;
+  pid: string;
+  name: string;
+  pname: string;
+  filepath: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type UpdateTptdsMutation = {
+  __typename: "tptds";
+  id: string;
+  pid: string;
+  name: string;
+  pname: string;
+  filepath: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type DeleteTptdsMutation = {
+  __typename: "tptds";
+  id: string;
+  pid: string;
+  name: string;
+  pname: string;
+  filepath: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
 export type GetMessageQuery = {
   __typename: "message";
   body: string;
@@ -6720,6 +6830,58 @@ export type SyncTworkbooksQuery = {
     name: string;
     id: string;
     projectname: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type GetTptdsQuery = {
+  __typename: "tptds";
+  id: string;
+  pid: string;
+  name: string;
+  pname: string;
+  filepath: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type ListTptdsQuery = {
+  __typename: "ModelTptdsConnection";
+  items: Array<{
+    __typename: "tptds";
+    id: string;
+    pid: string;
+    name: string;
+    pname: string;
+    filepath: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncTptdsQuery = {
+  __typename: "ModelTptdsConnection";
+  items: Array<{
+    __typename: "tptds";
+    id: string;
+    pid: string;
+    name: string;
+    pname: string;
+    filepath: string;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -9495,6 +9657,48 @@ export type OnDeleteTworkbooksSubscription = {
   name: string;
   id: string;
   projectname: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnCreateTptdsSubscription = {
+  __typename: "tptds";
+  id: string;
+  pid: string;
+  name: string;
+  pname: string;
+  filepath: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnUpdateTptdsSubscription = {
+  __typename: "tptds";
+  id: string;
+  pid: string;
+  name: string;
+  pname: string;
+  filepath: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnDeleteTptdsSubscription = {
+  __typename: "tptds";
+  id: string;
+  pid: string;
+  name: string;
+  pname: string;
+  filepath: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -13502,6 +13706,96 @@ export class APIService {
     )) as any;
     return <DeleteTworkbooksMutation>response.data.deleteTworkbooks;
   }
+  async CreateTptds(
+    input: CreateTptdsInput,
+    condition?: ModelTptdsConditionInput
+  ): Promise<CreateTptdsMutation> {
+    const statement = `mutation CreateTptds($input: CreateTptdsInput!, $condition: ModelTptdsConditionInput) {
+        createTptds(input: $input, condition: $condition) {
+          __typename
+          id
+          pid
+          name
+          pname
+          filepath
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateTptdsMutation>response.data.createTptds;
+  }
+  async UpdateTptds(
+    input: UpdateTptdsInput,
+    condition?: ModelTptdsConditionInput
+  ): Promise<UpdateTptdsMutation> {
+    const statement = `mutation UpdateTptds($input: UpdateTptdsInput!, $condition: ModelTptdsConditionInput) {
+        updateTptds(input: $input, condition: $condition) {
+          __typename
+          id
+          pid
+          name
+          pname
+          filepath
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateTptdsMutation>response.data.updateTptds;
+  }
+  async DeleteTptds(
+    input: DeleteTptdsInput,
+    condition?: ModelTptdsConditionInput
+  ): Promise<DeleteTptdsMutation> {
+    const statement = `mutation DeleteTptds($input: DeleteTptdsInput!, $condition: ModelTptdsConditionInput) {
+        deleteTptds(input: $input, condition: $condition) {
+          __typename
+          id
+          pid
+          name
+          pname
+          filepath
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteTptdsMutation>response.data.deleteTptds;
+  }
   async GetMessage(
     username: string,
     password: string,
@@ -13528,20 +13822,20 @@ export class APIService {
     return <GetMessageQuery>response.data.getMessage;
   }
   async Getquick(
-    dsid: string,
+    id: string,
     pid: string,
-    awsaccountid: string
+    awsaccountId: string
   ): Promise<GetquickQuery> {
-    const statement = `query Getquick($dsid: String!, $pid: String!, $awsaccountid: String!) {
-        getquick(dsid: $dsid, pid: $pid, awsaccountid: $awsaccountid) {
+    const statement = `query Getquick($id: String!, $pid: String!, $awsaccountId: String!) {
+        getquick(id: $id, pid: $pid, awsaccountId: $awsaccountId) {
           __typename
           body
         }
       }`;
     const gqlAPIServiceArguments: any = {
-      dsid,
+      id,
       pid,
-      awsaccountid
+      awsaccountId
     };
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
@@ -17258,6 +17552,114 @@ export class APIService {
     )) as any;
     return <SyncTworkbooksQuery>response.data.syncTworkbooks;
   }
+  async GetTptds(id: string): Promise<GetTptdsQuery> {
+    const statement = `query GetTptds($id: ID!) {
+        getTptds(id: $id) {
+          __typename
+          id
+          pid
+          name
+          pname
+          filepath
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetTptdsQuery>response.data.getTptds;
+  }
+  async ListTptds(
+    filter?: ModelTptdsFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListTptdsQuery> {
+    const statement = `query ListTptds($filter: ModelTptdsFilterInput, $limit: Int, $nextToken: String) {
+        listTptds(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            pid
+            name
+            pname
+            filepath
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListTptdsQuery>response.data.listTptds;
+  }
+  async SyncTptds(
+    filter?: ModelTptdsFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncTptdsQuery> {
+    const statement = `query SyncTptds($filter: ModelTptdsFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncTptds(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            id
+            pid
+            name
+            pname
+            filepath
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncTptdsQuery>response.data.syncTptds;
+  }
   OnCreateTableauloginListener: Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateTableaulogin">>
   > = API.graphql(
@@ -20886,5 +21288,77 @@ export class APIService {
     )
   ) as Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteTworkbooks">>
+  >;
+
+  OnCreateTptdsListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateTptds">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreateTptds {
+        onCreateTptds {
+          __typename
+          id
+          pid
+          name
+          pname
+          filepath
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateTptds">>
+  >;
+
+  OnUpdateTptdsListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateTptds">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdateTptds {
+        onUpdateTptds {
+          __typename
+          id
+          pid
+          name
+          pname
+          filepath
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateTptds">>
+  >;
+
+  OnDeleteTptdsListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteTptds">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeleteTptds {
+        onDeleteTptds {
+          __typename
+          id
+          pid
+          name
+          pname
+          filepath
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteTptds">>
   >;
 }

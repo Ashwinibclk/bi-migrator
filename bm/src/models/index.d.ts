@@ -125,6 +125,10 @@ type tworkbooksMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
+type tptdsMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 export declare class Tableaulogin {
   readonly id: string;
   readonly username: string;
@@ -406,4 +410,16 @@ export declare class tworkbooks {
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<tworkbooks, tworkbooksMetaData>);
   static copyOf(source: tworkbooks, mutator: (draft: MutableModel<tworkbooks, tworkbooksMetaData>) => MutableModel<tworkbooks, tworkbooksMetaData> | void): tworkbooks;
+}
+
+export declare class tptds {
+  readonly id: string;
+  readonly pid: string;
+  readonly name: string;
+  readonly pname: string;
+  readonly filepath: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<tptds, tptdsMetaData>);
+  static copyOf(source: tptds, mutator: (draft: MutableModel<tptds, tptdsMetaData>) => MutableModel<tptds, tptdsMetaData> | void): tptds;
 }

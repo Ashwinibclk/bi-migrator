@@ -1,11 +1,14 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit, OnDestroy, ChangeDetectorRef, QueryList } from "@angular/core";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angular/forms";
-import { APIService, Tableaulogin, tdatasources, tprojects } from "../API.service";
+import { APIService, CreateTptdsInput, Tableaulogin, tdatasources, tprojects, tptds } from "../API.service";
 import { Subscription } from "rxjs";
 import { Router } from '@angular/router';
-import { API } from 'aws-amplify';
+import { API ,graphqlOperation } from 'aws-amplify';
 import { NgxSpinnerService } from "ngx-spinner";
 import { toUnicode } from "punycode";
+import { Variable } from "@angular/compiler/src/render3/r3_ast";
+import { query } from "@angular/animations";
+
 declare function move(): any;
 
 
@@ -16,9 +19,10 @@ declare function move(): any;
 })
 export class TableauloginComponent implements OnInit, OnDestroy {
   isLoading = false;
-
-  dsid:String="";
-  pid:String="";
+  
+public tb:Array<tptds>=[];
+  id:string="";
+  pid:string="";
   response: any;
   tabdis: boolean = false;
   qsdis: boolean = false;
@@ -55,9 +59,14 @@ export class TableauloginComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
 
+    this.api.ListTptds().then((event)=>{
+      this.tb=event.items as tptds[];
+      console.log(this.tb, this.tb.length);
+    });
 
     this.api.ListTableaulogins().then((event) => {
       this.tbs = event.items as Tableaulogin[];
+      console.log(this.tbs);
     });
 
 
@@ -67,6 +76,14 @@ export class TableauloginComponent implements OnInit, OnDestroy {
         this.tbs = [newtb, ...this.tbs];
       })
     );
+
+  
+
+    
+    // equivalent to 
+    // const oneTodo = await API.graphql({ query: queries.getTodo, variables: { id: 'some id' }}));
+
+    
   }
 
   async onCreatetb(todo: any) {
@@ -115,13 +132,34 @@ export class TableauloginComponent implements OnInit, OnDestroy {
 
 
 
+
   }
 
-  qslogin(event:any) {
-    this.qsdis = true;
-   var a=event;
-   console.log(event);
-   return a;
+ qslogin(event:any) {
+    //this.qsdis = true;
+   console.log(this.id);
+   console.log(this.tb);
+   /*this.api.ListTptds().then(result=>{
+     this.tb=result.items;
+     console.log(this.tb);
+   })*/
+   
+   
+  console.log(event);
+  console.log(event.target.value,this.tb.length);
+for(var i=0; i<this.tb.length; i++){
+  console.log(this.tb[i]['pname']);
+  console.log(event.target.value);
+  console.log(this.tb[i]['pname']==event.target.value.slice(1));
+  if(this.tb[i]['pname']==event.target.value.slice(1)){
+    console.log("true");
+    this.id=this.tb[i]['id'];
+    this.pid=this.tb[i]['pid'];
+    console.log(this.id);
+    console.log(this.pid);
+  }
+}
+    
   
     
   }
@@ -148,7 +186,7 @@ export class TableauloginComponent implements OnInit, OnDestroy {
      
     });
    */
-    this.api.Getquick("98765","987","519510601754").then((result) => {
+    this.api.Getquick(this.id,this.pid,todo.awsaccountId).then((result) => {
       console.log(result.body); 
     
     });

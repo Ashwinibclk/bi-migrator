@@ -16,8 +16,8 @@ query GetMessage(
     body2
   }
 }
-query Getquick($dsid: String!, $pid: String!, $awsaccountid: String!) {
-  getquick(dsid: $dsid, pid: $pid, awsaccountid: $awsaccountid) {
+query Getquick($id: String!, $pid: String!, $awsaccountId: String!) {
+  getquick(id: $id, pid: $pid, awsaccountId: $awsaccountId) {
     body
   }
 }
@@ -2506,6 +2506,70 @@ query SyncTworkbooks(
       name
       id
       projectname
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetTptds($id: ID!) {
+  getTptds(id: $id) {
+    id
+    pid
+    name
+    pname
+    filepath
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListTptds(
+  $filter: ModelTptdsFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTptds(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      pid
+      name
+      pname
+      filepath
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncTptds(
+  $filter: ModelTptdsFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTptds(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      pid
+      name
+      pname
+      filepath
       createdAt
       updatedAt
       _version

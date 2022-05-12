@@ -162,9 +162,8 @@ type QuicksightDashboard @model {
 }
  
 type Table @model {
- 
- name:String!
- dsid:ID!
+name:String!
+dsid:ID!
 datasource: datasources @belongsTo(fields:["dsid"])
 }
  
@@ -186,25 +185,24 @@ type comments @model {
 }
  
 type tprojects @model {
-  id:ID!
-  name:String!
+  id:ID! 
+  name:String! 
   description:String!
  
 }
 
-
- 
- 
 type tdatasources @model {
  id:ID!
  filepath:String!
  name:String!
+
 }
  
 type tworkbooks @model{
  name:String!
  id:ID!
- projectname:String!
+ projectname:String! 
+ 
 }
 
 type message {
@@ -219,5 +217,19 @@ type quick{
 
 type Query{
   getMessage(username:String! password:String! sitename:String! siteurl:String!) :message @function (name: "tableau-${env}")
-  getquick(dsid:String! pid:String! awsaccountid:String!):quick!
+  getquick(id:String! pid:String! awsaccountId:String!):quick!
+  
+
+}
+
+
+
+
+
+type tptds @model{
+  id:ID!
+  pid:ID!
+  name:String!
+  pname:String!
+  filepath:String!
 }

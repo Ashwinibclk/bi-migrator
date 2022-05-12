@@ -25,11 +25,15 @@
         "tableau": {
           "dev": "app",
           "deploymentBucketName": "amplify-bimigrator1-dev-111935-deployment",
-          "s3Key": "amplify-builds/tableau-32484d6279616c6a5a2f-build.zip"
+          "s3Key": "amplify-builds/tableau-4f795476686268657265-build.zip"
         },
         "quicksight": {
           "deploymentBucketName": "amplify-bimigrator1-dev-111935-deployment",
-          "s3Key": "amplify-builds/quicksight-4f4f573937642f343947-build.zip"
+          "s3Key": "amplify-builds/quicksight-4d544c2b6a502f6b7444-build.zip"
+        },
+        "project": {
+          "deploymentBucketName": "amplify-bimigrator1-dev-111935-deployment",
+          "s3Key": "amplify-builds/project-6455564e4968534e592b-build.zip"
         }
       }
     }

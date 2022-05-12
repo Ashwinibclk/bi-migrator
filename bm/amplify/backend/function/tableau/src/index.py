@@ -1,4 +1,6 @@
 import boto3
+from datetime import datetime,  timezone
+import time
 import tableauserverclient as TSC
 
 
@@ -28,7 +30,7 @@ def lambda_handler(event, context):
         # get all projects on site
         projects=[]
         all_project_items, pagination_item = server.projects.get()
-        print(all_project_items)
+        print(list(all_project_items))
         p=[proj.name for proj in all_project_items]
         for i in all_project_items:
           projects.append([i.id,i.name])   
@@ -106,6 +108,67 @@ def lambda_handler(event, context):
                     }
                 }
             )
+    for i in all_project_items:
+        request_option=TSC.RequestOptions().filter.add(TSC.Filter(TSC.RequestOptions.Field.ProjectName, TSC.RequestOptions.Operator.Equals,i.name))
+
+        with server.auth.sign_in(tableau_auth):
+                all_workbooks, pagination_item = server.workbooks.get(request_option)
+                all_datasources, pagination_items =  server.datasources.get(request_option)
+                all_projects, pagination_items = server.projects.get(request_option)
+                print("\nThere are {} workbooks for project {} on site: {}".format(pagination_item.total_available, i.name, 'migrations'))
+                print("\nThere are {} datasources for project {} on site: {}".format(pagination_items.total_available,i.name, 'migrations'))
+                print([proj.id for proj in all_workbooks])
+                print([proj.id for proj in all_datasources])
+                for datasource in all_datasources:
+                # get the data source
+                    data_source = server.datasources.get_by_id(datasource.id)
+                # get the connection information
+                    server.datasources.populate_connections(data_source)
+                # print the information about the first connection item
+                connection = data_source.connections[0]
+                print(connection)
+                for proj in all_datasources:
+                    for j in all_projects:
+                        if(i.name==j.name):
+
+                            print(proj.id, proj.name,i.id)
+                            client.put_item(
+                            TableName='tptds-2i2srqro3bfvpogryufqfhd5hi-dev',
+                            Item={
+                                'id': {
+                                    'S': proj.id
+                                },
+                                'name': {
+                                    'S': proj.name
+                                },
+                                'filepath': {
+                                    'S': proj.name + '.' + connection.connection_type
+                                },
+                                'pid':{
+                                    'S':i.id
+                                },
+                                'pname':{
+                                    'S':i.name
+                                },
+                                '__typename':{
+                                    'S':"tptds"
+                                },
+                                '_version':{
+                                    'N':"1"
+                                },
+                                'createdAt':{
+                                    'S':str(datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"))
+                                },
+                                'updatedAt':{
+                                    'S':str(datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"))
+                                },
+                                '_lastChangedAt':{
+                                    'N':str(int(time.time()))
+                                }
+                            
+                            }
+                                
+                )
 
     response = {
         'statusCode': 200,

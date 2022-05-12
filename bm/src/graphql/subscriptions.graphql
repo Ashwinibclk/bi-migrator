@@ -2558,3 +2558,45 @@ subscription OnDeleteTworkbooks {
     _lastChangedAt
   }
 }
+subscription OnCreateTptds {
+  onCreateTptds {
+    id
+    pid
+    name
+    pname
+    filepath
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateTptds {
+  onUpdateTptds {
+    id
+    pid
+    name
+    pname
+    filepath
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteTptds {
+  onDeleteTptds {
+    id
+    pid
+    name
+    pname
+    filepath
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
