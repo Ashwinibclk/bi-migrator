@@ -10,7 +10,7 @@ def lambda_handler(event, context):
     response = dynamodb_client.get_item(
         TableName='tdatasources-2i2srqro3bfvpogryufqfhd5hi-dev',
         Key={
-            'id': {'S': event['id']},
+            'id': {'S': event['dsid']},
             #'filepath': {'S': 'World Indicators.hyper'},
             # 'name': {'S': 'World Indicators'}
         }
@@ -19,7 +19,7 @@ def lambda_handler(event, context):
     responses = dynamodb_client.get_item(
         TableName='tprojects-2i2srqro3bfvpogryufqfhd5hi-dev',
         Key={
-            'id': {'S': event['pid']},
+            'id': {'S': event['id']},
             #'name': {'S': 'default'}
         }
     )
@@ -106,7 +106,7 @@ def lambda_handler(event, context):
         }
     )
     client_qs.create_template(
-        AwsAccountId="519510601754",
+        AwsAccountId=event['awsaccountId'],
         TemplateId="template" + responses['Item']['id']['S'],
         Name="template" + responses['Item']['name']['S'],
         Permissions=[
@@ -137,7 +137,7 @@ def lambda_handler(event, context):
         VersionDescription='0'
     )
     client_qs.create_analysis(
-        AwsAccountId="519510601754",
+        AwsAccountId=event['awsaccountId'],
         AnalysisId="analysis" + response['Item']['id']['S'],
         Name='analysis' + response['Item']['name']['S'],
         Permissions=[
@@ -169,7 +169,7 @@ def lambda_handler(event, context):
     )
 
     client_qs.create_dashboard(
-        AwsAccountId="519510601754",
+        AwsAccountId=event['awsaccountId'],
         DashboardId="dashboard" + response['Item']['id']['S'],
         Name="dashboard" + response['Item']['name']['S'],
         Permissions=[

@@ -1688,8 +1688,8 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "pid": {
-                    "name": "pid",
+                "dsid": {
+                    "name": "dsid",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
@@ -1716,6 +1716,13 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "username": {
+                    "name": "username",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -1735,6 +1742,70 @@ export const schema = {
             },
             "syncable": true,
             "pluralName": "tptds",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                }
+            ]
+        },
+        "twtp": {
+            "name": "twtp",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "pid": {
+                    "name": "pid",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "pname": {
+                    "name": "pname",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "workbookname": {
+                    "name": "workbookname",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "username": {
+                    "name": "username",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "twtps",
             "attributes": [
                 {
                     "type": "model",
@@ -1802,5 +1873,5 @@ export const schema = {
             }
         }
     },
-    "version": "a748534ff3596c111ee0f3786b2e453a"
+    "version": "f20ca98ee52465f352916a72b3a62f9e"
 };

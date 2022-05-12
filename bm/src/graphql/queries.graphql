@@ -16,8 +16,8 @@ query GetMessage(
     body2
   }
 }
-query Getquick($id: String!, $pid: String!, $awsaccountId: String!) {
-  getquick(id: $id, pid: $pid, awsaccountId: $awsaccountId) {
+query Getquick($dsid: String!, $id: String!, $awsaccountId: String!) {
+  getquick(dsid: $dsid, id: $id, awsaccountId: $awsaccountId) {
     body
   }
 }
@@ -2519,10 +2519,11 @@ query SyncTworkbooks(
 query GetTptds($id: ID!) {
   getTptds(id: $id) {
     id
-    pid
+    dsid
     name
     pname
     filepath
+    username
     createdAt
     updatedAt
     _version
@@ -2538,10 +2539,11 @@ query ListTptds(
   listTptds(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      pid
+      dsid
       name
       pname
       filepath
+      username
       createdAt
       updatedAt
       _version
@@ -2566,10 +2568,75 @@ query SyncTptds(
   ) {
     items {
       id
-      pid
+      dsid
       name
       pname
       filepath
+      username
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetTwtp($id: ID!) {
+  getTwtp(id: $id) {
+    id
+    pid
+    pname
+    workbookname
+    username
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListTwtps(
+  $filter: ModelTwtpFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTwtps(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      pid
+      pname
+      workbookname
+      username
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncTwtps(
+  $filter: ModelTwtpFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTwtps(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      pid
+      pname
+      workbookname
+      username
       createdAt
       updatedAt
       _version

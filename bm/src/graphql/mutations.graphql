@@ -2789,10 +2789,11 @@ mutation CreateTptds(
 ) {
   createTptds(input: $input, condition: $condition) {
     id
-    pid
+    dsid
     name
     pname
     filepath
+    username
     createdAt
     updatedAt
     _version
@@ -2806,10 +2807,11 @@ mutation UpdateTptds(
 ) {
   updateTptds(input: $input, condition: $condition) {
     id
-    pid
+    dsid
     name
     pname
     filepath
+    username
     createdAt
     updatedAt
     _version
@@ -2823,10 +2825,62 @@ mutation DeleteTptds(
 ) {
   deleteTptds(input: $input, condition: $condition) {
     id
-    pid
+    dsid
     name
     pname
     filepath
+    username
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateTwtp(
+  $input: CreateTwtpInput!
+  $condition: ModelTwtpConditionInput
+) {
+  createTwtp(input: $input, condition: $condition) {
+    id
+    pid
+    pname
+    workbookname
+    username
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateTwtp(
+  $input: UpdateTwtpInput!
+  $condition: ModelTwtpConditionInput
+) {
+  updateTwtp(input: $input, condition: $condition) {
+    id
+    pid
+    pname
+    workbookname
+    username
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteTwtp(
+  $input: DeleteTwtpInput!
+  $condition: ModelTwtpConditionInput
+) {
+  deleteTwtp(input: $input, condition: $condition) {
+    id
+    pid
+    pname
+    workbookname
+    username
     createdAt
     updatedAt
     _version

@@ -2561,10 +2561,11 @@ subscription OnDeleteTworkbooks {
 subscription OnCreateTptds {
   onCreateTptds {
     id
-    pid
+    dsid
     name
     pname
     filepath
+    username
     createdAt
     updatedAt
     _version
@@ -2575,10 +2576,11 @@ subscription OnCreateTptds {
 subscription OnUpdateTptds {
   onUpdateTptds {
     id
-    pid
+    dsid
     name
     pname
     filepath
+    username
     createdAt
     updatedAt
     _version
@@ -2589,10 +2591,53 @@ subscription OnUpdateTptds {
 subscription OnDeleteTptds {
   onDeleteTptds {
     id
-    pid
+    dsid
     name
     pname
     filepath
+    username
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateTwtp {
+  onCreateTwtp {
+    id
+    pid
+    pname
+    workbookname
+    username
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateTwtp {
+  onUpdateTwtp {
+    id
+    pid
+    pname
+    workbookname
+    username
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteTwtp {
+  onDeleteTwtp {
+    id
+    pid
+    pname
+    workbookname
+    username
     createdAt
     updatedAt
     _version

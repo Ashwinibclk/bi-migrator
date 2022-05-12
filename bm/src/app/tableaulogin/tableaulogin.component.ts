@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef, QueryList } from "@angular/core";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angular/forms";
-import { APIService, CreateTptdsInput, Tableaulogin, tdatasources, tprojects, tptds } from "../API.service";
+import { APIService, CreateTptdsInput, Tableaulogin, tdatasources, tprojects, tptds,twtp } from "../API.service";
 import { Subscription } from "rxjs";
 import { Router } from '@angular/router';
 import { API ,graphqlOperation } from 'aws-amplify';
@@ -21,8 +21,9 @@ export class TableauloginComponent implements OnInit, OnDestroy {
   isLoading = false;
   
 public tb:Array<tptds>=[];
+
   id:string="";
-  pid:string="";
+  dsid:string="";
   response: any;
   tabdis: boolean = false;
   qsdis: boolean = false;
@@ -37,6 +38,7 @@ public tb:Array<tptds>=[];
   res5: Array<any> = [];
   public createFormtb: any;
   public createFormqs: any;
+  public tw:Array<twtp>=[];
   public tbs: Array<Tableaulogin> = [];
   constructor(private api: APIService, private fb: FormBuilder, private router: Router, private spinner: NgxSpinnerService) {
     this.createFormtb = FormBuilder;
@@ -62,6 +64,10 @@ public tb:Array<tptds>=[];
     this.api.ListTptds().then((event)=>{
       this.tb=event.items as tptds[];
       console.log(this.tb, this.tb.length);
+    });
+    this.api.ListTwtps().then((event)=>{
+      this.tw=event.items as twtp[];
+      console.log(this.tw, this.tw.length);
     });
 
     this.api.ListTableaulogins().then((event) => {
@@ -104,7 +110,14 @@ public tb:Array<tptds>=[];
 
 
     this.isLoading = false;
-    
+    this.api.ListTptds().then((event)=>{
+      this.tb=event.items as tptds[];
+      console.log(this.tb, this.tb.length);
+    });
+    this.api.ListTwtps().then((event)=>{
+      this.tw=event.items as twtp[];
+      console.log(this.tw, this.tw.length);
+    });
      
     })
       .catch((e) => {
@@ -150,13 +163,13 @@ public tb:Array<tptds>=[];
 for(var i=0; i<this.tb.length; i++){
   console.log(this.tb[i]['pname']);
   console.log(event.target.value);
-  console.log(this.tb[i]['pname']==event.target.value.slice(1));
-  if(this.tb[i]['pname']==event.target.value.slice(1)){
+  console.log(this.tb[i]['pname']==event.target.value);
+  if(this.tb[i]['pname']==event.target.value){
     console.log("true");
+    this.dsid=this.tb[i]['dsid'];
     this.id=this.tb[i]['id'];
-    this.pid=this.tb[i]['pid'];
+    console.log(this.dsid);
     console.log(this.id);
-    console.log(this.pid);
   }
 }
     
@@ -186,7 +199,7 @@ for(var i=0; i<this.tb.length; i++){
      
     });
    */
-    this.api.Getquick(this.id,this.pid,todo.awsaccountId).then((result) => {
+    this.api.Getquick(this.dsid,this.id,todo.awsaccountId).then((result) => {
       console.log(result.body); 
     
     });
@@ -198,14 +211,7 @@ for(var i=0; i<this.tb.length; i++){
     
 }
 
-migrate(a:any,b:any,c:any){
-  
-  this.api.Getquick(a,b,c).then((result) => {
-    console.log(result.body); 
-  
-  });
 
-}
    /* this.api
       .CreateQuicksightlogin(todo)
       .then((event) => {

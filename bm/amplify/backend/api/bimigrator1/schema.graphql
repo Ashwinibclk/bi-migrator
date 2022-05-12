@@ -217,7 +217,7 @@ type quick{
 
 type Query{
   getMessage(username:String! password:String! sitename:String! siteurl:String!) :message @function (name: "tableau-${env}")
-  getquick(id:String! pid:String! awsaccountId:String!):quick!
+  getquick(dsid:String! id:String! awsaccountId:String!):quick!
   
 
 }
@@ -228,8 +228,17 @@ type Query{
 
 type tptds @model{
   id:ID!
-  pid:ID!
+  dsid:ID!
   name:String!
   pname:String!
   filepath:String!
+  username:String!
+}
+
+type twtp @model{
+  id:ID!
+  pid:ID!
+  pname:String!
+  workbookname:String!
+  username:String!
 }

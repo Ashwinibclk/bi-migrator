@@ -88,6 +88,9 @@ export type __SubscriptionContainer = {
   onCreateTptds: OnCreateTptdsSubscription;
   onUpdateTptds: OnUpdateTptdsSubscription;
   onDeleteTptds: OnDeleteTptdsSubscription;
+  onCreateTwtp: OnCreateTwtpSubscription;
+  onUpdateTwtp: OnUpdateTwtpSubscription;
+  onDeleteTwtp: OnDeleteTwtpSubscription;
 };
 
 export type CreateTableauloginInput = {
@@ -1305,18 +1308,20 @@ export type DeleteTworkbooksInput = {
 
 export type CreateTptdsInput = {
   id?: string | null;
-  pid: string;
+  dsid: string;
   name: string;
   pname: string;
   filepath: string;
+  username: string;
   _version?: number | null;
 };
 
 export type ModelTptdsConditionInput = {
-  pid?: ModelIDInput | null;
+  dsid?: ModelIDInput | null;
   name?: ModelStringInput | null;
   pname?: ModelStringInput | null;
   filepath?: ModelStringInput | null;
+  username?: ModelStringInput | null;
   and?: Array<ModelTptdsConditionInput | null> | null;
   or?: Array<ModelTptdsConditionInput | null> | null;
   not?: ModelTptdsConditionInput | null;
@@ -1325,10 +1330,11 @@ export type ModelTptdsConditionInput = {
 export type tptds = {
   __typename: "tptds";
   id: string;
-  pid: string;
+  dsid: string;
   name: string;
   pname: string;
   filepath: string;
+  username: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -1338,14 +1344,62 @@ export type tptds = {
 
 export type UpdateTptdsInput = {
   id: string;
-  pid?: string | null;
+  dsid?: string | null;
   name?: string | null;
   pname?: string | null;
   filepath?: string | null;
+  username?: string | null;
   _version?: number | null;
 };
 
 export type DeleteTptdsInput = {
+  id: string;
+  _version?: number | null;
+};
+
+export type CreateTwtpInput = {
+  id?: string | null;
+  pid: string;
+  pname: string;
+  workbookname: string;
+  username: string;
+  _version?: number | null;
+};
+
+export type ModelTwtpConditionInput = {
+  pid?: ModelIDInput | null;
+  pname?: ModelStringInput | null;
+  workbookname?: ModelStringInput | null;
+  username?: ModelStringInput | null;
+  and?: Array<ModelTwtpConditionInput | null> | null;
+  or?: Array<ModelTwtpConditionInput | null> | null;
+  not?: ModelTwtpConditionInput | null;
+};
+
+export type twtp = {
+  __typename: "twtp";
+  id: string;
+  pid: string;
+  pname: string;
+  workbookname: string;
+  username: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type UpdateTwtpInput = {
+  id: string;
+  pid?: string | null;
+  pname?: string | null;
+  workbookname?: string | null;
+  username?: string | null;
+  _version?: number | null;
+};
+
+export type DeleteTwtpInput = {
   id: string;
   _version?: number | null;
 };
@@ -1702,10 +1756,11 @@ export type ModelTworkbooksConnection = {
 
 export type ModelTptdsFilterInput = {
   id?: ModelIDInput | null;
-  pid?: ModelIDInput | null;
+  dsid?: ModelIDInput | null;
   name?: ModelStringInput | null;
   pname?: ModelStringInput | null;
   filepath?: ModelStringInput | null;
+  username?: ModelStringInput | null;
   and?: Array<ModelTptdsFilterInput | null> | null;
   or?: Array<ModelTptdsFilterInput | null> | null;
   not?: ModelTptdsFilterInput | null;
@@ -1714,6 +1769,24 @@ export type ModelTptdsFilterInput = {
 export type ModelTptdsConnection = {
   __typename: "ModelTptdsConnection";
   items: Array<tptds | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type ModelTwtpFilterInput = {
+  id?: ModelIDInput | null;
+  pid?: ModelIDInput | null;
+  pname?: ModelStringInput | null;
+  workbookname?: ModelStringInput | null;
+  username?: ModelStringInput | null;
+  and?: Array<ModelTwtpFilterInput | null> | null;
+  or?: Array<ModelTwtpFilterInput | null> | null;
+  not?: ModelTwtpFilterInput | null;
+};
+
+export type ModelTwtpConnection = {
+  __typename: "ModelTwtpConnection";
+  items: Array<twtp | null>;
   nextToken?: string | null;
   startedAt?: number | null;
 };
@@ -4493,10 +4566,11 @@ export type DeleteTworkbooksMutation = {
 export type CreateTptdsMutation = {
   __typename: "tptds";
   id: string;
-  pid: string;
+  dsid: string;
   name: string;
   pname: string;
   filepath: string;
+  username: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -4507,10 +4581,11 @@ export type CreateTptdsMutation = {
 export type UpdateTptdsMutation = {
   __typename: "tptds";
   id: string;
-  pid: string;
+  dsid: string;
   name: string;
   pname: string;
   filepath: string;
+  username: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -4521,10 +4596,53 @@ export type UpdateTptdsMutation = {
 export type DeleteTptdsMutation = {
   __typename: "tptds";
   id: string;
-  pid: string;
+  dsid: string;
   name: string;
   pname: string;
   filepath: string;
+  username: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type CreateTwtpMutation = {
+  __typename: "twtp";
+  id: string;
+  pid: string;
+  pname: string;
+  workbookname: string;
+  username: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type UpdateTwtpMutation = {
+  __typename: "twtp";
+  id: string;
+  pid: string;
+  pname: string;
+  workbookname: string;
+  username: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type DeleteTwtpMutation = {
+  __typename: "twtp";
+  id: string;
+  pid: string;
+  pname: string;
+  workbookname: string;
+  username: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -6843,10 +6961,11 @@ export type SyncTworkbooksQuery = {
 export type GetTptdsQuery = {
   __typename: "tptds";
   id: string;
-  pid: string;
+  dsid: string;
   name: string;
   pname: string;
   filepath: string;
+  username: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -6859,10 +6978,11 @@ export type ListTptdsQuery = {
   items: Array<{
     __typename: "tptds";
     id: string;
-    pid: string;
+    dsid: string;
     name: string;
     pname: string;
     filepath: string;
+    username: string;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -6878,10 +6998,63 @@ export type SyncTptdsQuery = {
   items: Array<{
     __typename: "tptds";
     id: string;
-    pid: string;
+    dsid: string;
     name: string;
     pname: string;
     filepath: string;
+    username: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type GetTwtpQuery = {
+  __typename: "twtp";
+  id: string;
+  pid: string;
+  pname: string;
+  workbookname: string;
+  username: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type ListTwtpsQuery = {
+  __typename: "ModelTwtpConnection";
+  items: Array<{
+    __typename: "twtp";
+    id: string;
+    pid: string;
+    pname: string;
+    workbookname: string;
+    username: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncTwtpsQuery = {
+  __typename: "ModelTwtpConnection";
+  items: Array<{
+    __typename: "twtp";
+    id: string;
+    pid: string;
+    pname: string;
+    workbookname: string;
+    username: string;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -9667,10 +9840,11 @@ export type OnDeleteTworkbooksSubscription = {
 export type OnCreateTptdsSubscription = {
   __typename: "tptds";
   id: string;
-  pid: string;
+  dsid: string;
   name: string;
   pname: string;
   filepath: string;
+  username: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -9681,10 +9855,11 @@ export type OnCreateTptdsSubscription = {
 export type OnUpdateTptdsSubscription = {
   __typename: "tptds";
   id: string;
-  pid: string;
+  dsid: string;
   name: string;
   pname: string;
   filepath: string;
+  username: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -9695,10 +9870,53 @@ export type OnUpdateTptdsSubscription = {
 export type OnDeleteTptdsSubscription = {
   __typename: "tptds";
   id: string;
-  pid: string;
+  dsid: string;
   name: string;
   pname: string;
   filepath: string;
+  username: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnCreateTwtpSubscription = {
+  __typename: "twtp";
+  id: string;
+  pid: string;
+  pname: string;
+  workbookname: string;
+  username: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnUpdateTwtpSubscription = {
+  __typename: "twtp";
+  id: string;
+  pid: string;
+  pname: string;
+  workbookname: string;
+  username: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnDeleteTwtpSubscription = {
+  __typename: "twtp";
+  id: string;
+  pid: string;
+  pname: string;
+  workbookname: string;
+  username: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -13714,10 +13932,11 @@ export class APIService {
         createTptds(input: $input, condition: $condition) {
           __typename
           id
-          pid
+          dsid
           name
           pname
           filepath
+          username
           createdAt
           updatedAt
           _version
@@ -13744,10 +13963,11 @@ export class APIService {
         updateTptds(input: $input, condition: $condition) {
           __typename
           id
-          pid
+          dsid
           name
           pname
           filepath
+          username
           createdAt
           updatedAt
           _version
@@ -13774,10 +13994,11 @@ export class APIService {
         deleteTptds(input: $input, condition: $condition) {
           __typename
           id
-          pid
+          dsid
           name
           pname
           filepath
+          username
           createdAt
           updatedAt
           _version
@@ -13795,6 +14016,96 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <DeleteTptdsMutation>response.data.deleteTptds;
+  }
+  async CreateTwtp(
+    input: CreateTwtpInput,
+    condition?: ModelTwtpConditionInput
+  ): Promise<CreateTwtpMutation> {
+    const statement = `mutation CreateTwtp($input: CreateTwtpInput!, $condition: ModelTwtpConditionInput) {
+        createTwtp(input: $input, condition: $condition) {
+          __typename
+          id
+          pid
+          pname
+          workbookname
+          username
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateTwtpMutation>response.data.createTwtp;
+  }
+  async UpdateTwtp(
+    input: UpdateTwtpInput,
+    condition?: ModelTwtpConditionInput
+  ): Promise<UpdateTwtpMutation> {
+    const statement = `mutation UpdateTwtp($input: UpdateTwtpInput!, $condition: ModelTwtpConditionInput) {
+        updateTwtp(input: $input, condition: $condition) {
+          __typename
+          id
+          pid
+          pname
+          workbookname
+          username
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateTwtpMutation>response.data.updateTwtp;
+  }
+  async DeleteTwtp(
+    input: DeleteTwtpInput,
+    condition?: ModelTwtpConditionInput
+  ): Promise<DeleteTwtpMutation> {
+    const statement = `mutation DeleteTwtp($input: DeleteTwtpInput!, $condition: ModelTwtpConditionInput) {
+        deleteTwtp(input: $input, condition: $condition) {
+          __typename
+          id
+          pid
+          pname
+          workbookname
+          username
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteTwtpMutation>response.data.deleteTwtp;
   }
   async GetMessage(
     username: string,
@@ -13822,19 +14133,19 @@ export class APIService {
     return <GetMessageQuery>response.data.getMessage;
   }
   async Getquick(
+    dsid: string,
     id: string,
-    pid: string,
     awsaccountId: string
   ): Promise<GetquickQuery> {
-    const statement = `query Getquick($id: String!, $pid: String!, $awsaccountId: String!) {
-        getquick(id: $id, pid: $pid, awsaccountId: $awsaccountId) {
+    const statement = `query Getquick($dsid: String!, $id: String!, $awsaccountId: String!) {
+        getquick(dsid: $dsid, id: $id, awsaccountId: $awsaccountId) {
           __typename
           body
         }
       }`;
     const gqlAPIServiceArguments: any = {
+      dsid,
       id,
-      pid,
       awsaccountId
     };
     const response = (await API.graphql(
@@ -17557,10 +17868,11 @@ export class APIService {
         getTptds(id: $id) {
           __typename
           id
-          pid
+          dsid
           name
           pname
           filepath
+          username
           createdAt
           updatedAt
           _version
@@ -17587,10 +17899,11 @@ export class APIService {
           items {
             __typename
             id
-            pid
+            dsid
             name
             pname
             filepath
+            username
             createdAt
             updatedAt
             _version
@@ -17628,10 +17941,11 @@ export class APIService {
           items {
             __typename
             id
-            pid
+            dsid
             name
             pname
             filepath
+            username
             createdAt
             updatedAt
             _version
@@ -17659,6 +17973,114 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <SyncTptdsQuery>response.data.syncTptds;
+  }
+  async GetTwtp(id: string): Promise<GetTwtpQuery> {
+    const statement = `query GetTwtp($id: ID!) {
+        getTwtp(id: $id) {
+          __typename
+          id
+          pid
+          pname
+          workbookname
+          username
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetTwtpQuery>response.data.getTwtp;
+  }
+  async ListTwtps(
+    filter?: ModelTwtpFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListTwtpsQuery> {
+    const statement = `query ListTwtps($filter: ModelTwtpFilterInput, $limit: Int, $nextToken: String) {
+        listTwtps(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            pid
+            pname
+            workbookname
+            username
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListTwtpsQuery>response.data.listTwtps;
+  }
+  async SyncTwtps(
+    filter?: ModelTwtpFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncTwtpsQuery> {
+    const statement = `query SyncTwtps($filter: ModelTwtpFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncTwtps(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            id
+            pid
+            pname
+            workbookname
+            username
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncTwtpsQuery>response.data.syncTwtps;
   }
   OnCreateTableauloginListener: Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateTableaulogin">>
@@ -21298,10 +21720,11 @@ export class APIService {
         onCreateTptds {
           __typename
           id
-          pid
+          dsid
           name
           pname
           filepath
+          username
           createdAt
           updatedAt
           _version
@@ -21322,10 +21745,11 @@ export class APIService {
         onUpdateTptds {
           __typename
           id
-          pid
+          dsid
           name
           pname
           filepath
+          username
           createdAt
           updatedAt
           _version
@@ -21346,10 +21770,11 @@ export class APIService {
         onDeleteTptds {
           __typename
           id
-          pid
+          dsid
           name
           pname
           filepath
+          username
           createdAt
           updatedAt
           _version
@@ -21360,5 +21785,77 @@ export class APIService {
     )
   ) as Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteTptds">>
+  >;
+
+  OnCreateTwtpListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateTwtp">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreateTwtp {
+        onCreateTwtp {
+          __typename
+          id
+          pid
+          pname
+          workbookname
+          username
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateTwtp">>
+  >;
+
+  OnUpdateTwtpListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateTwtp">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdateTwtp {
+        onUpdateTwtp {
+          __typename
+          id
+          pid
+          pname
+          workbookname
+          username
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateTwtp">>
+  >;
+
+  OnDeleteTwtpListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteTwtp">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeleteTwtp {
+        onDeleteTwtp {
+          __typename
+          id
+          pid
+          pname
+          workbookname
+          username
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteTwtp">>
   >;
 }
