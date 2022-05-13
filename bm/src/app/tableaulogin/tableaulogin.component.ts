@@ -21,7 +21,7 @@ export class TableauloginComponent implements OnInit, OnDestroy {
   isLoading = false;
   
 public tb:Array<tptds>=[];
-
+dashboardurl:string="";
   id:string="";
   dsid:string="";
   response: any;
@@ -107,7 +107,7 @@ public tb:Array<tptds>=[];
     this.res2=this.r2.split(",");
     this.res3=this.r3.split(",");
     this.res4=this.r4.split(",");
-
+    this.res2[0] = ' '+this.res2[0];
 
     this.isLoading = false;
     this.api.ListTptds().then((event)=>{
@@ -164,7 +164,7 @@ for(var i=0; i<this.tb.length; i++){
   console.log(this.tb[i]['pname']);
   console.log(event.target.value);
   console.log(this.tb[i]['pname']==event.target.value);
-  if(this.tb[i]['pname']==event.target.value){
+  if(this.tb[i]['pname']==event.target.value.slice(1)){
     console.log("true");
     this.dsid=this.tb[i]['dsid'];
     this.id=this.tb[i]['id'];
@@ -179,7 +179,8 @@ for(var i=0; i<this.tb.length; i++){
 
  
   async onCreateqs(todo: any) {
-    move();
+    this.isLoading = true;
+   
   
  /*   this.api.ListTdatasources().then((event) => {
       this.qs = event.items as tdatasources[];
@@ -201,14 +202,20 @@ for(var i=0; i<this.tb.length; i++){
    */
     this.api.Getquick(this.dsid,this.id,todo.awsaccountId).then((result) => {
       console.log(result.body); 
-    
+    this.dashboardurl=result.body;
+    console.log(this.dashboardurl);
+    this.qsdis=true;
+this.isLoading=false;
+    })
+    .catch((e) => {
+      this.isLoading = false;
+      this.qsdis = false;
+     
+      alert("invalid credentials!!!");
+      console.log("error creating restaurant...", e);
     });
   
-    setTimeout(() => {
-      this.qsdis=true;
-      this.router.navigate(["/"]);
-    }, 6000);
-    
+ 
 }
 
 
@@ -270,3 +277,7 @@ for(var i=0; i<this.tb.length; i++){
 
 
 }
+function x(x: any) {
+  throw new Error("Function not implemented.");
+}
+

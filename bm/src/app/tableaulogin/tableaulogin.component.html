@@ -37,37 +37,37 @@
           [formGroup]="createFormqs"
           
         >
-        <div *ngFor="let i in tb">
+
           <div class="column" style="background-image: linear-gradient(rgb(123, 255, 0), yellow);">
+            <p>Select Project to migrate</p>
             <h6><i class="fa fa-duotone fa-folder" ></i> PROJECTS</h6>
-           <!-- <div *ngFor="let i of res2;">-->
+            <div *ngFor="let i of res2;">
             <ul style="list-style-type:none; color:black; "  >
-              <li style="padding:0%; height:20px;"><button style=" background-color: transparent;height:fit-content; width:fit-content; padding:0%;font-size: 15px; border:none;--hover-color:white;" (click)="qslogin($event)" value="{{tb[i]['pname']}}">{{tb[i]['pname']}}</button></li>
+              <li style="padding:0%; height:20px;"><button style=" background-color: transparent;height:fit-content; width:fit-content; padding:0%;font-size: 15px; border:none;--hover-color:white;" (click)="qslogin($event)" value={{i}}>{{i}}</button></li>
               
             </ul> 
-            <!--</div> -->
+            </div> 
           </div>
           <div class="column" style="background-image: linear-gradient(rgb(123, 255, 0), yellow);">
            <h6><i class="fa fa-duotone fa-table"></i> WORKBOOKS</h6>
            <ul style="list-style-type:none; color:black; font-size: 10px;"  >
-          <div *ngFor="let j in tw;">
+           <div *ngFor="let i of res4;">
             
-              <li *ngIf="tw[j]['pname']==tb[i]['pname']" style="padding:0%; font-weight: normal; height:20px;"><button  style=" background-color: transparent; width:fit-content;border:none; padding:0% ; font-size: 15px;--hover-color:white;">{{tw[j]['workbookname']}}</button></li>
+              <li style="padding:0%; font-weight: normal; height:20px;"><button  disabled="true"  style=" background-color: transparent; width:fit-content;border:none; padding:0% ; font-size: 15px;--hover-color:brown;">{{i}}</button></li>
               
            
-           </div> 
+            </div> 
           </ul> 
           </div>
           <div class="column" style="background-image: linear-gradient(rgb(123, 255, 0), yellow);">
              <h6><i class="fa fa-regular fa-database"></i> DATASOURCES</h6>
-           <!--  <div *ngFor="let i of res3;">-->
+             <div *ngFor="let i of res3;">
               <ul style="list-style-type:none; color:black; font-size: 10px;"  >
-                <li style="padding:0%; height:20px;"><button (click)="qslogin($event)" style="background-color: transparent;height:fit-content; width:fit-content;padding:0%;border:none; font-size: 15px; --hover-color:white;" >{{tb[i]['name']}}</button></li>
+                <li style="padding:0%; height:20px;"><button disabled="true" style="background-color: transparent;height:fit-content; width:fit-content;padding:0%;border:none; font-size: 15px; --hover-color:brown;" >{{i}}</button></li>
                 
               </ul> 
               </div> 
-         <!-- </div>-->
-        </div>
+          </div>
             
       <!--    <div class="column" style="background-image: linear-gradient(rgb(123, 255, 0), yellow);">
             <h6><i class="fa fa-bar-chart" aria-hidden="true"></i> VIEWS</h6>
@@ -107,9 +107,7 @@
                       <label>AwsAccountId: </label>
                       <input type="text" formControlName="awsaccountId" autocomplete="off" />
                     </div>
-                    <div id="myProgress">
-                      <div id="myBar"></div>
-                    </div>
+                   
                      
                      
                     <button type="submit" (click)="onCreateqs(createFormqs.value)">login</button>
@@ -128,10 +126,10 @@
                 <div class="modal-header">
               
                 <div class="modal-body">
-
-                  Migration completed!!!
+               <h6> Migration completed to view your dashboard in quicksight click here.
+                 <a href={{dashboardurl}}>Dashboard</a></h6>
+               
                   </div>
                   </div>
               </div></div></div>
-
 

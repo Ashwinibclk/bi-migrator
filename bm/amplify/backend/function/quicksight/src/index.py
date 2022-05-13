@@ -201,10 +201,18 @@ def lambda_handler(event, context):
         },
         VersionDescription='0',
     )
+    durl = client_qs.get_dashboard_embed_url(
+    AwsAccountId=event['awsaccountId'],
+    DashboardId="dashboard" + response['Item']['id']['S'],
+    IdentityType='QUICKSIGHT',
+    UserArn="arn:aws:quicksight:us-east-1:519510601754:user/default/ashwini",
+    UndoRedoDisabled=True|False,
+    ResetDisabled=True|False
+)
 
     response = {
         'statusCode': 200,
-        'body': "auth successfully",
+        'body': durl['EmbedUrl'],
         'headers': {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*'

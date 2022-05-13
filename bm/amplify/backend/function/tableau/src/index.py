@@ -45,9 +45,7 @@ def lambda_handler(event, context):
                     'name': {
                         'S': proj.name
                     },
-                    'description': {
-                        'S': proj.description
-                    }
+                   
                 }
             )
     with server.auth.sign_in(tableau_auth):

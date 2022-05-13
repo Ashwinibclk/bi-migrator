@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit ,ChangeDetectorRef, Attribute} from '@angu
 import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-amplify/ui-components';
 import { Subscription } from 'rxjs';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {APIService, BIMProject,comments} from "./API.service";
+import {APIService, BIMProject,comments, tptds} from "./API.service";
 import { Router,NavigationStart } from "@angular/router";
 
 @Component({
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit , OnDestroy {
   showapp:any;
   show:boolean=false;
   logcred:boolean=false;
-  public tbs: Array<BIMProject> =[];
+  public tbs: Array<tptds> =[];
   
   public tbs1: Array<comments> =[];
   /* declare restaurants variable */
@@ -48,8 +48,8 @@ router.events.forEach((event)=>{
   private subscription: Subscription | null = null;
 
   async ngOnInit() {
-    this.api.ListBIMProjects().then((event) => {
-      this.tbs = event.items as BIMProject[];
+    this.api.ListTptds().then((event) => {
+      this.tbs = event.items as tptds[];
 
     //this.res1=this.getData1();
     //console.log(this.res1);  
