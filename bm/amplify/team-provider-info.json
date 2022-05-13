@@ -25,7 +25,7 @@
         "tableau": {
           "dev": "app",
           "deploymentBucketName": "amplify-bimigrator1-dev-111935-deployment",
-          "s3Key": "amplify-builds/tableau-37444c4f7358384a352f-build.zip"
+          "s3Key": "amplify-builds/tableau-696b4a4a613958644a2f-build.zip"
         },
         "quicksight": {
           "deploymentBucketName": "amplify-bimigrator1-dev-111935-deployment",
