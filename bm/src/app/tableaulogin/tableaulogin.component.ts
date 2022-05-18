@@ -52,7 +52,7 @@ dashboardurl:string="";
     });
     this.createFormqs = this.fb.group({
       awsaccountId: ["", Validators.required],
-      name:["",Validators.required]
+      awsusername:["",Validators.required]
 
 
     });
@@ -200,7 +200,7 @@ for(var i=0; i<this.tb.length; i++){
      
     });
    */
-    this.api.Getquick(this.dsid,this.id,todo.awsaccountId).then((result) => {
+    this.api.Getquick(this.dsid,this.id,todo.awsaccountId,todo.awsusername).then((result) => {
       console.log(result.body); 
     this.dashboardurl=result.body;
     console.log(this.dashboardurl);
@@ -211,7 +211,7 @@ this.isLoading=false;
       this.isLoading = false;
       this.qsdis = false;
      
-      alert("invalid credentials!!!");
+      alert("Project already migrated");
       console.log("error creating restaurant...", e);
     });
   

@@ -217,7 +217,7 @@ type quick{
 
 type Query{
   getMessage(username:String! password:String! sitename:String! siteurl:String!) :message @function (name: "tableau-${env}")
-  getquick(dsid:String! id:String! awsaccountId:String!):quick!
+  getquick(dsid:String! id:String! awsaccountId:String! awsusername:String!):quick!
   
 
 }

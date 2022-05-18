@@ -29,7 +29,7 @@
         },
         "quicksight": {
           "deploymentBucketName": "amplify-bimigrator1-dev-111935-deployment",
-          "s3Key": "amplify-builds/quicksight-424256446a734e5a7454-build.zip"
+          "s3Key": "amplify-builds/quicksight-2b457a63453574784b6e-build.zip"
         },
         "project": {
           "deploymentBucketName": "amplify-bimigrator1-dev-111935-deployment",

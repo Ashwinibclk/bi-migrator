@@ -14135,10 +14135,11 @@ export class APIService {
   async Getquick(
     dsid: string,
     id: string,
-    awsaccountId: string
+    awsaccountId: string,
+    awsusername: string
   ): Promise<GetquickQuery> {
-    const statement = `query Getquick($dsid: String!, $id: String!, $awsaccountId: String!) {
-        getquick(dsid: $dsid, id: $id, awsaccountId: $awsaccountId) {
+    const statement = `query Getquick($dsid: String!, $id: String!, $awsaccountId: String!, $awsusername: String!) {
+        getquick(dsid: $dsid, id: $id, awsaccountId: $awsaccountId, awsusername: $awsusername) {
           __typename
           body
         }
@@ -14146,7 +14147,8 @@ export class APIService {
     const gqlAPIServiceArguments: any = {
       dsid,
       id,
-      awsaccountId
+      awsaccountId,
+      awsusername
     };
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)

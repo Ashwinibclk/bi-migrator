@@ -43,7 +43,7 @@
             <h6><i class="fa fa-duotone fa-folder" ></i> PROJECTS</h6>
             <div *ngFor="let i of res2;">
             <ul style="list-style-type:none; color:black; "  >
-              <li style="padding:0%; height:20px;"><button style=" background-color: transparent;height:fit-content; width:fit-content; padding:0%;font-size: 15px; border:none;--hover-color:white;" (click)="qslogin($event)" value={{i}}>{{i}}</button></li>
+              <li style="padding:0%; height:20px;"><button style=" background-color: transparent;height:fit-content; width:fit-content; padding:0%;font-size: 15px; border:none;--hover-color:white; " (click)="qslogin($event)" value={{i}}>{{i}}</button></li>
               
             </ul> 
             </div> 
@@ -107,7 +107,10 @@
                       <label>AwsAccountId: </label>
                       <input type="text" formControlName="awsaccountId" autocomplete="off" />
                     </div>
-                   
+                    <div>
+                      <label>AwsUsername: </label>
+                      <input type="text" formControlName="awsusername" autocomplete="off" />
+                    </div>
                      
                      
                     <button type="submit" (click)="onCreateqs(createFormqs.value)">login</button>

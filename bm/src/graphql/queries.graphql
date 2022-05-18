@@ -16,8 +16,18 @@ query GetMessage(
     body2
   }
 }
-query Getquick($dsid: String!, $id: String!, $awsaccountId: String!) {
-  getquick(dsid: $dsid, id: $id, awsaccountId: $awsaccountId) {
+query Getquick(
+  $dsid: String!
+  $id: String!
+  $awsaccountId: String!
+  $awsusername: String!
+) {
+  getquick(
+    dsid: $dsid
+    id: $id
+    awsaccountId: $awsaccountId
+    awsusername: $awsusername
+  ) {
     body
   }
 }
