@@ -1871,7 +1871,19 @@ export const schema = {
                     "attributes": []
                 }
             }
+        },
+        "aws": {
+            "name": "aws",
+            "fields": {
+                "body": {
+                    "name": "body",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                }
+            }
         }
     },
-    "version": "f20ca98ee52465f352916a72b3a62f9e"
+    "version": "b923acab46a582da35a40e5cd3b7f490"
 };

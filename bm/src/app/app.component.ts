@@ -15,7 +15,7 @@ export class AppComponent implements OnInit , OnDestroy {
   title = 'bm';
   user: CognitoUserInterface | undefined;
   authState: any;
-  
+  aws:boolean=false;
   response:any;
   res1:any;
   res2:Array<any>=[];
@@ -30,13 +30,21 @@ export class AppComponent implements OnInit , OnDestroy {
   
   public tbs1: Array<comments> =[];
   /* declare restaurants variable */
+  public createFormaws: any;
   public createFormtb1: any;
   constructor( private api: APIService, private fb: FormBuilder, private ref: ChangeDetectorRef, private router:Router) {
     this.createFormtb1=FormBuilder;
     this.createFormtb1= this.fb.group({
-      comments: ["", Validators.required],
+      comments: ["", Validators.required]
       
     });
+    this.createFormaws=FormBuilder;
+    this.createFormaws= this.fb.group({
+      access: ["", Validators.required],
+      secret: ["", Validators.required],
+      username:["", Validators.required]
+    });
+
     this.showapp=Boolean;
 router.events.forEach((event)=>{
   if(event instanceof NavigationStart){
@@ -88,7 +96,7 @@ router.events.forEach((event)=>{
   }
 
   showm(){
-    this.logcred=true;
+    this.aws=true;
     
   }
     
@@ -110,6 +118,21 @@ router.events.forEach((event)=>{
       });
       
   }
+
+  public oncreateaws(todo: any) {
+    this.api.Getaws(todo.access,todo.secret,todo.username).then((event)=>{
+      alert("authenticated to aws");
+      this.createFormaws.reset();
+      this.aws=false;
+      this.router.navigate(["\sign-up"]);
+    })
+      .catch((e) => {
+        alert("invalid credentials")
+        console.log("error creating restaurant...", e);
+      });
+      
+  }
+  
   
   ngOnDestroy() {
     if (this.subscription) {

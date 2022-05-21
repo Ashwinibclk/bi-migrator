@@ -27,19 +27,19 @@ def lambda_handler(event, context):
     client_qs.create_data_source(
         AwsAccountId=event['awsaccountId'],
         DataSourceId=response['Item']['id']['S'],
-        Name=response['Item']['name']['S'],
+        Name=event['projectname'],
         Type='S3',
         DataSourceParameters={
             'S3Parameters': {
                 'ManifestFileLocation': {
-                    'Bucket': 'bim-project',
-                    'Key': 'bimprojectfolder/CityData.manifest'
+                    'Bucket': event['bucket'],
+                    'Key': event['key']
                 }
             },
         },
         Permissions=[
             {
-                'Principal': 'arn:aws:quicksight:us-east-1:'+event['awsaccountId']+':user/default/'+event['awsusername'],
+                'Principal': event['userarn'],
                 'Actions': [
                     "quicksight:UpdateDataSourcePermissions",
                     "quicksight:DescribeDataSource",
@@ -60,7 +60,7 @@ def lambda_handler(event, context):
         PhysicalTableMap={
             'qs-test-data-1': {
                 'S3Source': {
-                    'DataSourceArn': 'arn:aws:quicksight:us-east-1:'+event['awsaccountId']+':datasource/' +
+                    'DataSourceArn': 'arn:aws:quicksight:'+event['region']+":"+event['awsaccountId']+':datasource/' +
                                      response['Item']['id']['S'],
                     'InputColumns': [
                         {
@@ -90,7 +90,7 @@ def lambda_handler(event, context):
         ImportMode='SPICE',
         Permissions=[
             {
-                'Principal': 'arn:aws:quicksight:us-east-1:'+event['awsaccountId']+':user/default/'+event['awsusername'],
+                'Principal': event['userarn'],
                 'Actions': [
                     "quicksight:DescribeDataSet", "quicksight:DescribeDataSetPermissions", "quicksight:PassDataSet",
                     "quicksight:DescribeIngestion", "quicksight:ListIngestions", "quicksight:UpdateDataSet",
@@ -111,7 +111,7 @@ def lambda_handler(event, context):
         Name="template" + responses['Item']['name']['S'],
         Permissions=[
             {
-                'Principal': 'arn:aws:quicksight:us-east-1:'+event['awsaccountId']+':user/default/'+event['awsusername'],
+                'Principal': event['userarn'],
                 'Actions': [
                     "quicksight:CreateTemplate",
                     "quicksight:DescribeTemplate",
@@ -124,11 +124,11 @@ def lambda_handler(event, context):
         ],
         SourceEntity={
             'SourceAnalysis': {
-                'Arn': "arn:aws:quicksight:us-east-1:"+event['awsaccountId']+":analysis/analysisboto3",
+                'Arn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+":analysis/analysisboto3",
                 'DataSetReferences': [
                     {
                         'DataSetPlaceholder': 'test',
-                        'DataSetArn': 'arn:aws:quicksight:us-east-1:'+event['awsaccountId']+':dataset/datasetboto-2'
+                        'DataSetArn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':dataset/datasetboto-2'
 
                     },
                 ]
@@ -139,10 +139,10 @@ def lambda_handler(event, context):
     client_qs.create_analysis(
         AwsAccountId=event['awsaccountId'],
         AnalysisId="analysis" + response['Item']['id']['S'],
-        Name='analysis' + response['Item']['name']['S'],
+        Name=event['workbookname'],
         Permissions=[
             {
-                'Principal': 'arn:aws:quicksight:us-east-1:'+event['awsaccountId']+':user/default/'+event['awsusername'],
+                'Principal': event['userarn'],
                 'Actions': [
                     "quicksight:RestoreAnalysis",
                     "quicksight:UpdateAnalysisPermissions",
@@ -159,11 +159,11 @@ def lambda_handler(event, context):
                 'DataSetReferences': [
                     {
                         'DataSetPlaceholder': 'test',
-                        'DataSetArn': 'arn:aws:quicksight:us-east-1:'+event['awsaccountId']+':dataset/' + "dataset" +
+                        'DataSetArn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':dataset/' + "dataset" +
                                       response['Item']['id']['S']
                     },
                 ],
-                'Arn': 'arn:aws:quicksight:us-east-1:'+event['awsaccountId']+':template/templatebotot3'
+                'Arn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':template/templatebotot3'
             }
         },
     )
@@ -171,10 +171,10 @@ def lambda_handler(event, context):
     client_qs.create_dashboard(
         AwsAccountId=event['awsaccountId'],
         DashboardId="dashboard" + response['Item']['id']['S'],
-        Name="dashboard" + response['Item']['name']['S'],
+        Name=event['projectname']+'dashboard',
         Permissions=[
             {
-                'Principal': 'arn:aws:quicksight:us-east-1:'+event['awsaccountId']+':user/default/'+event['awsusername'],
+                'Principal': event['userarn'],
                 'Actions': [
                     "quicksight:DescribeDashboard",
                     "quicksight:ListDashboardVersions",
@@ -192,11 +192,11 @@ def lambda_handler(event, context):
                 'DataSetReferences': [
                     {
                         'DataSetPlaceholder': 'test',
-                        'DataSetArn': 'arn:aws:quicksight:us-east-1:'+event['awsaccountId']+':dataset/' + "dataset" +
+                        'DataSetArn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':dataset/' + "dataset" +
                                       response['Item']['id']['S']
                     },
                 ],
-                'Arn': 'arn:aws:quicksight:us-east-1:'+event['awsaccountId']+':template/' + "template" + responses['Item']['id']['S']
+                'Arn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':template/' + "template" + responses['Item']['id']['S']
             }
         },
         VersionDescription='0',
@@ -205,7 +205,7 @@ def lambda_handler(event, context):
     AwsAccountId=event['awsaccountId'],
     DashboardId="dashboard" + response['Item']['id']['S'],
     IdentityType='QUICKSIGHT',
-    UserArn='arn:aws:quicksight:us-east-1:'+event['awsaccountId']+':user/default/'+event['awsusername'],
+    UserArn=event['userarn'],
     UndoRedoDisabled=True|False,
     ResetDisabled=True|False
 )

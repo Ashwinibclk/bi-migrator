@@ -1,7 +1,39 @@
 <amplify-auth-container>
   <amplify-authenticator *ngIf="authState !== 'signedin'"></amplify-authenticator>
   
-  <div *ngIf="authState === 'signedin' && user" class="App">
+  <div *ngIf="authState === 'signedin' && user" class="App" >
+    <div *ngIf="aws" class="modal"  role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+          </div>
+          <form
+          autocomplete="off"
+          [formGroup]="createFormaws"
+          
+        >
+          <h3>Please Provide your aws credentials</h3>
+                  <div>
+                    <label>Access Key Id: </label>
+                    <input type="text" formControlName="access" autocomplete="off" />
+                  </div>
+                  <div>
+                    <label>Secret Access Key Id: </label>
+                    <input type="text" formControlName="secret" autocomplete="off" />
+                  </div>
+                  <div>
+                    <label>Username: </label>
+                    <input type="text" formControlName="username" autocomplete="off" />
+                  </div>
+                  <div>
+                   
+                    <button type="submit" (click)="oncreateaws(this.createFormaws.value)" autocomplete="off" >submit</button>
+                  </div>
+                  </form>
+            </div>
+            </div>
+            </div>
+            
     
 
 

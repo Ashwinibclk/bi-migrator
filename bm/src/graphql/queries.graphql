@@ -20,14 +20,29 @@ query Getquick(
   $dsid: String!
   $id: String!
   $awsaccountId: String!
-  $awsusername: String!
+  $userarn: String!
+  $projectname: String!
+  $workbookname: String!
+  $bucket: String!
+  $key: String!
+  $region: String!
 ) {
   getquick(
     dsid: $dsid
     id: $id
     awsaccountId: $awsaccountId
-    awsusername: $awsusername
+    userarn: $userarn
+    projectname: $projectname
+    workbookname: $workbookname
+    bucket: $bucket
+    key: $key
+    region: $region
   ) {
+    body
+  }
+}
+query Getaws($access: String!, $secret: String!, $username: String!) {
+  getaws(access: $access, secret: $secret, username: $username) {
     body
   }
 }

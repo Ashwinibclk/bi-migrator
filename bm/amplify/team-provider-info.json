@@ -29,11 +29,15 @@
         },
         "quicksight": {
           "deploymentBucketName": "amplify-bimigrator1-dev-111935-deployment",
-          "s3Key": "amplify-builds/quicksight-2b457a63453574784b6e-build.zip"
+          "s3Key": "amplify-builds/quicksight-5441612b69336e764f2f-build.zip"
         },
         "project": {
           "deploymentBucketName": "amplify-bimigrator1-dev-111935-deployment",
           "s3Key": "amplify-builds/project-6455564e4968534e592b-build.zip"
+        },
+        "awsauth": {
+          "deploymentBucketName": "amplify-bimigrator1-dev-111935-deployment",
+          "s3Key": "amplify-builds/awsauth-514f366e684b41534e6b-build.zip"
         }
       }
     }

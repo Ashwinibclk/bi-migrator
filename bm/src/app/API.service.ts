@@ -1416,6 +1416,11 @@ export type quick = {
   body: string;
 };
 
+export type aws = {
+  __typename: "aws";
+  body: string;
+};
+
 export type ModelTableauloginFilterInput = {
   id?: ModelIDInput | null;
   username?: ModelStringInput | null;
@@ -4659,6 +4664,11 @@ export type GetMessageQuery = {
 
 export type GetquickQuery = {
   __typename: "quick";
+  body: string;
+};
+
+export type GetawsQuery = {
+  __typename: "aws";
   body: string;
 };
 
@@ -14136,10 +14146,15 @@ export class APIService {
     dsid: string,
     id: string,
     awsaccountId: string,
-    awsusername: string
+    userarn: string,
+    projectname: string,
+    workbookname: string,
+    bucket: string,
+    key: string,
+    region: string
   ): Promise<GetquickQuery> {
-    const statement = `query Getquick($dsid: String!, $id: String!, $awsaccountId: String!, $awsusername: String!) {
-        getquick(dsid: $dsid, id: $id, awsaccountId: $awsaccountId, awsusername: $awsusername) {
+    const statement = `query Getquick($dsid: String!, $id: String!, $awsaccountId: String!, $userarn: String!, $projectname: String!, $workbookname: String!, $bucket: String!, $key: String!, $region: String!) {
+        getquick(dsid: $dsid, id: $id, awsaccountId: $awsaccountId, userarn: $userarn, projectname: $projectname, workbookname: $workbookname, bucket: $bucket, key: $key, region: $region) {
           __typename
           body
         }
@@ -14148,12 +14163,38 @@ export class APIService {
       dsid,
       id,
       awsaccountId,
-      awsusername
+      userarn,
+      projectname,
+      workbookname,
+      bucket,
+      key,
+      region
     };
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <GetquickQuery>response.data.getquick;
+  }
+  async Getaws(
+    access: string,
+    secret: string,
+    username: string
+  ): Promise<GetawsQuery> {
+    const statement = `query Getaws($access: String!, $secret: String!, $username: String!) {
+        getaws(access: $access, secret: $secret, username: $username) {
+          __typename
+          body
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      access,
+      secret,
+      username
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetawsQuery>response.data.getaws;
   }
   async GetTableaulogin(id: string): Promise<GetTableauloginQuery> {
     const statement = `query GetTableaulogin($id: ID!) {

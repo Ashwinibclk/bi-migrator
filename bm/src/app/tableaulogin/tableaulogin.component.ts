@@ -52,7 +52,12 @@ dashboardurl:string="";
     });
     this.createFormqs = this.fb.group({
       awsaccountId: ["", Validators.required],
-      awsusername:["",Validators.required]
+      userarn:["",Validators.required],
+      region:["",Validators.required],
+      projectname:["",Validators.required],
+      workbookname:["",Validators.required],
+      bucket:["",Validators.required],
+      key:["",Validators.required]
 
 
     });
@@ -200,7 +205,7 @@ for(var i=0; i<this.tb.length; i++){
      
     });
    */
-    this.api.Getquick(this.dsid,this.id,todo.awsaccountId,todo.awsusername).then((result) => {
+    this.api.Getquick(this.dsid,this.id,todo.awsaccountId,todo.userarn,todo.projectname,todo.workbookname,todo.bucket,todo.key,todo.region).then((result) => {
       console.log(result.body); 
     this.dashboardurl=result.body;
     console.log(this.dashboardurl);

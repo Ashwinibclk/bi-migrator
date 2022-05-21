@@ -25,6 +25,11 @@ export declare class quick {
   constructor(init: ModelInit<quick>);
 }
 
+export declare class aws {
+  readonly body: string;
+  constructor(init: ModelInit<aws>);
+}
+
 type TableauloginMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }

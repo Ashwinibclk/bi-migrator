@@ -101,19 +101,40 @@
             
               <div class="modal-body">
                 <div  class="form-body">-->
-                 
+                  <h3>Please Provide your S3 datasource bucket details</h3>
+                  <div>
+                    <label>Bucket Name: </label>
+                    <input type="text" formControlName="bucket" autocomplete="off" />
+                  </div>
+                  <div>
+                    <label>Key: </label>
+                    <input type="text" formControlName="key" autocomplete="off" />
+                  </div>
                   <h3>Quicksight Login</h3>
                     <div>
                       <label>AwsAccountId: </label>
                       <input type="text" formControlName="awsaccountId" autocomplete="off" />
                     </div>
                     <div>
-                      <label>AwsUsername: </label>
-                      <input type="text" formControlName="awsusername" autocomplete="off" />
+                      <label>Awsregion: </label>
+                      <input type="text" formControlName="region" autocomplete="off" />
+                    </div>
+                     
+                    <div>
+                      <label>Userarn: </label>
+                      <input type="text" formControlName="userarn" autocomplete="off" />
+                    </div>
+                    <div>
+                      <label>Quicksight Project Name </label>
+                      <input type="text" formControlName="projectname" autocomplete="off" />
+                    </div>
+                    <div>
+                      <label>Quicksight Workbook Name </label>
+                      <input type="text" formControlName="workbookname" autocomplete="off" />
                     </div>
                      
                      
-                    <button type="submit" (click)="onCreateqs(createFormqs.value)">login</button>
+                    <button type="submit" (click)="onCreateqs(createFormqs.value)">Migrate</button>
                   </form>
                </div>
                 </div>
