@@ -13,9 +13,11 @@ import { Router,NavigationStart } from "@angular/router";
 
 export class AppComponent implements OnInit , OnDestroy {
   title = 'bm';
+  isLoading = false;
   user: CognitoUserInterface | undefined;
   authState: any;
   aws:boolean=false;
+  chec:boolean=false;
   response:any;
   res1:any;
   res2:Array<any>=[];
@@ -42,7 +44,8 @@ export class AppComponent implements OnInit , OnDestroy {
     this.createFormaws= this.fb.group({
       access: ["", Validators.required],
       secret: ["", Validators.required],
-      username:["", Validators.required]
+      username:["", Validators.required],
+      awsaccountId:["",Validators.required]
     });
 
     this.showapp=Boolean;
@@ -96,12 +99,15 @@ router.events.forEach((event)=>{
   }
 
   showm(){
+   //this.isLoading=true;
     this.aws=true;
+    //this.isLoading=false;
     
   }
     
   method(){
-    this.logcred=false;
+    this.aws=false;
+    
     this.router.navigate(["\sign-up"]);
   }
   
@@ -119,9 +125,13 @@ router.events.forEach((event)=>{
       
   }
 
+  check(){
+    this.chec=true;
+  }
   public oncreateaws(todo: any) {
-    this.api.Getaws(todo.access,todo.secret,todo.username).then((event)=>{
-      alert("authenticated to aws");
+    if(this.chec==true){
+    this.api.Getaws(todo.access,todo.secret,todo.username,todo.awsaccountId).then((event)=>{
+      alert("Authenticated to AWS and Created Policies");
       this.createFormaws.reset();
       this.aws=false;
       this.router.navigate(["\sign-up"]);
@@ -130,6 +140,10 @@ router.events.forEach((event)=>{
         alert("invalid credentials")
         console.log("error creating restaurant...", e);
       });
+    }
+    if(this.chec==false){
+      alert("Creating policies is mandatory please check!!!")
+    }
       
   }
   

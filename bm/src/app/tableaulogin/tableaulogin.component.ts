@@ -97,6 +97,21 @@ dashboardurl:string="";
     
   }
 
+  async tabauth(todo:any){
+    console.log(todo.username);
+   await this.api.Tableauauth(todo.username, todo.password, todo.sitename, todo.siteurl).then((result) => {
+      console.log(result.body); 
+     alert("Connected")
+   
+ 
+    })
+    .catch((e) => {
+       
+       
+      alert("invalid credentials, unable to connect")
+    });
+  }
+
   async onCreatetb(todo: any) {
     this.isLoading = true;
     this.tabdis = true;

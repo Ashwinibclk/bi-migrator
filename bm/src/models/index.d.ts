@@ -30,6 +30,11 @@ export declare class aws {
   constructor(init: ModelInit<aws>);
 }
 
+export declare class tabauth {
+  readonly body: string;
+  constructor(init: ModelInit<tabauth>);
+}
+
 type TableauloginMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }

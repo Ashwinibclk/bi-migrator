@@ -218,12 +218,15 @@ type quick{
 type aws{
   body:String!
 }
+type tabauth{
+  body:String!
+}
 
 type Query{
   getMessage(username:String! password:String! sitename:String! siteurl:String!) :message @function (name: "tableau-${env}")
   getquick(dsid:String! id:String! awsaccountId:String!  userarn:String! projectname:String! workbookname:String! bucket:String! key:String! region:String!):quick!
-  getaws(access:String! secret:String! username:String!):aws!
-
+  getaws(access:String! secret:String! username:String! awsaccountId:String!):aws!
+  tableauauth(username:String! password:String! sitename:String! siteurl:String!):tabauth!
 }
 
 

@@ -41,8 +41,33 @@ query Getquick(
     body
   }
 }
-query Getaws($access: String!, $secret: String!, $username: String!) {
-  getaws(access: $access, secret: $secret, username: $username) {
+query Getaws(
+  $access: String!
+  $secret: String!
+  $username: String!
+  $awsaccountId: String!
+) {
+  getaws(
+    access: $access
+    secret: $secret
+    username: $username
+    awsaccountId: $awsaccountId
+  ) {
+    body
+  }
+}
+query Tableauauth(
+  $username: String!
+  $password: String!
+  $sitename: String!
+  $siteurl: String!
+) {
+  tableauauth(
+    username: $username
+    password: $password
+    sitename: $sitename
+    siteurl: $siteurl
+  ) {
     body
   }
 }

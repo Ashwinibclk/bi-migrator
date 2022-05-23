@@ -1883,7 +1883,19 @@ export const schema = {
                     "attributes": []
                 }
             }
+        },
+        "tabauth": {
+            "name": "tabauth",
+            "fields": {
+                "body": {
+                    "name": "body",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                }
+            }
         }
     },
-    "version": "b923acab46a582da35a40e5cd3b7f490"
+    "version": "d4f645235152a0e559bcef94416efa4f"
 };

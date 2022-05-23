@@ -1421,6 +1421,11 @@ export type aws = {
   body: string;
 };
 
+export type tabauth = {
+  __typename: "tabauth";
+  body: string;
+};
+
 export type ModelTableauloginFilterInput = {
   id?: ModelIDInput | null;
   username?: ModelStringInput | null;
@@ -4669,6 +4674,11 @@ export type GetquickQuery = {
 
 export type GetawsQuery = {
   __typename: "aws";
+  body: string;
+};
+
+export type TableauauthQuery = {
+  __typename: "tabauth";
   body: string;
 };
 
@@ -14178,10 +14188,11 @@ export class APIService {
   async Getaws(
     access: string,
     secret: string,
-    username: string
+    username: string,
+    awsaccountId: string
   ): Promise<GetawsQuery> {
-    const statement = `query Getaws($access: String!, $secret: String!, $username: String!) {
-        getaws(access: $access, secret: $secret, username: $username) {
+    const statement = `query Getaws($access: String!, $secret: String!, $username: String!, $awsaccountId: String!) {
+        getaws(access: $access, secret: $secret, username: $username, awsaccountId: $awsaccountId) {
           __typename
           body
         }
@@ -14189,12 +14200,36 @@ export class APIService {
     const gqlAPIServiceArguments: any = {
       access,
       secret,
-      username
+      username,
+      awsaccountId
     };
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <GetawsQuery>response.data.getaws;
+  }
+  async Tableauauth(
+    username: string,
+    password: string,
+    sitename: string,
+    siteurl: string
+  ): Promise<TableauauthQuery> {
+    const statement = `query Tableauauth($username: String!, $password: String!, $sitename: String!, $siteurl: String!) {
+        tableauauth(username: $username, password: $password, sitename: $sitename, siteurl: $siteurl) {
+          __typename
+          body
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      username,
+      password,
+      sitename,
+      siteurl
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <TableauauthQuery>response.data.tableauauth;
   }
   async GetTableaulogin(id: string): Promise<GetTableauloginQuery> {
     const statement = `query GetTableaulogin($id: ID!) {
