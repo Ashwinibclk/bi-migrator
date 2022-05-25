@@ -131,7 +131,7 @@ def lambda_handler(event, context):
                 for datasource in all_datasources:
                     # get the data source
                     data_source = server.datasources.get_by_id(datasource.id)
-                    file_path = server.datasources.download(datasource.id,"Downloads/")
+                    
                 # get the connection information
                     server.datasources.populate_connections(data_source)
                 # print the information about the first connection item
@@ -140,7 +140,7 @@ def lambda_handler(event, context):
                 for proj in all_datasources:
                     
                     s3 = boto3.resource('s3')
-                    
+                    file_path = server.datasources.download(datasource.id,"/tmp/")
                     
                     print(format(file_path))
 
@@ -148,14 +148,14 @@ def lambda_handler(event, context):
                     os.path.splitext(base)
                     file = os.path.splitext(base)[0]+".zip"
 
-                    """src_path = r"/Users/madhavimarri/tab/d2.tdsx"
-                    dst_path = r"/Users/madhavimarri/tab/d2.zip"
+                    src_path = format(file_path)
+                    dst_path = r"/tmp/"+file
                     shutil.copy(src_path, dst_path)
-                    print('Copied')"""
-                    with zipfile.ZipFile(file, "r") as zip_ref:
-                        zip_ref.extractall("/")
+                    print('Copied')
+                    with zipfile.ZipFile("/tmp/"+file, "r") as zip_ref:
+                        zip_ref.extractall("/tmp/")
 
-                    os.chdir('/Data/')
+                    os.chdir('/tmp//Data/')
                     result = glob.glob('*/**.csv')
                     print(result)
 
