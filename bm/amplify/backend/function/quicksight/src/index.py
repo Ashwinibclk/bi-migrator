@@ -7,11 +7,12 @@ s3 = boto3.client("s3")
 
 
 def lambda_handler(event, context):
+
     response = dynamodb_client.get_item(
         TableName='tdatasources-2i2srqro3bfvpogryufqfhd5hi-dev',
         Key={
             'id': {'S': event['dsid']},
-            #'filepath': {'S': 'World Indicators.hyper'},
+            # 'filepath': {'S': 'World Indicators.hyper'},
             # 'name': {'S': 'World Indicators'}
         }
     )
@@ -20,10 +21,28 @@ def lambda_handler(event, context):
         TableName='tprojects-2i2srqro3bfvpogryufqfhd5hi-dev',
         Key={
             'id': {'S': event['id']},
-            #'name': {'S': 'default'}
+            # 'name': {'S': 'default'}
         }
     )
     print(responses['Item']['id']['S'])
+    client_qs.create_folder(
+        AwsAccountId=event['awsaccountId'],
+        FolderId=response['Item']['id']['S'],
+        Name=event['projectname'],
+        Permissions=[
+            {
+                'Principal': event['userarn'],
+                'Actions': ["quicksight:CreateFolder",
+                            "quicksight:DescribeFolder",
+                            "quicksight:UpdateFolder",
+                            "quicksight:DeleteFolder",
+                            "quicksight:CreateFolderMembership",
+                            "quicksight:DeleteFolderMembership",
+                            "quicksight:DescribeFolderPermissions",
+                            "quicksight:UpdateFolderPermissions"]
+            },
+        ],
+    )
     client_qs.create_data_source(
         AwsAccountId=event['awsaccountId'],
         DataSourceId=response['Item']['id']['S'],
@@ -202,13 +221,13 @@ def lambda_handler(event, context):
         VersionDescription='0',
     )
     durl = client_qs.get_dashboard_embed_url(
-    AwsAccountId=event['awsaccountId'],
-    DashboardId="dashboard" + response['Item']['id']['S'],
-    IdentityType='QUICKSIGHT',
-    UserArn=event['userarn'],
-    UndoRedoDisabled=True|False,
-    ResetDisabled=True|False
-)
+        AwsAccountId=event['awsaccountId'],
+        DashboardId="dashboard" + response['Item']['id']['S'],
+        IdentityType='QUICKSIGHT',
+        UserArn=event['userarn'],
+        UndoRedoDisabled=True | False,
+        ResetDisabled=True | False
+    )
 
     response = {
         'statusCode': 200,
