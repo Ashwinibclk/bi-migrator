@@ -14156,15 +14156,13 @@ export class APIService {
     dsid: string,
     id: string,
     awsaccountId: string,
-    userarn: string,
     projectname: string,
-    workbookname: string,
-    bucket: string,
-    key: string,
-    region: string
+    region: string,
+    pname: string,
+    username: string
   ): Promise<GetquickQuery> {
-    const statement = `query Getquick($dsid: String!, $id: String!, $awsaccountId: String!, $userarn: String!, $projectname: String!, $workbookname: String!, $bucket: String!, $key: String!, $region: String!) {
-        getquick(dsid: $dsid, id: $id, awsaccountId: $awsaccountId, userarn: $userarn, projectname: $projectname, workbookname: $workbookname, bucket: $bucket, key: $key, region: $region) {
+    const statement = `query Getquick($dsid: String!, $id: String!, $awsaccountId: String!, $projectname: String!, $region: String!, $pname: String!, $username: String!) {
+        getquick(dsid: $dsid, id: $id, awsaccountId: $awsaccountId, projectname: $projectname, region: $region, pname: $pname, username: $username) {
           __typename
           body
         }
@@ -14173,12 +14171,10 @@ export class APIService {
       dsid,
       id,
       awsaccountId,
-      userarn,
       projectname,
-      workbookname,
-      bucket,
-      key,
-      region
+      region,
+      pname,
+      username
     };
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)

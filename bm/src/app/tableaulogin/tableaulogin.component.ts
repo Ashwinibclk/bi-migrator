@@ -22,6 +22,7 @@ export class TableauloginComponent implements OnInit, OnDestroy {
   
 public tb:Array<tptds>=[];
 dashboardurl:string="";
+pname:string=""
   id:string="";
   dsid:string="";
   response: any;
@@ -52,12 +53,11 @@ dashboardurl:string="";
     });
     this.createFormqs = this.fb.group({
       awsaccountId: ["", Validators.required],
-      userarn:["",Validators.required],
+      username:["",Validators.required],
       region:["",Validators.required],
       projectname:["",Validators.required],
-      workbookname:["",Validators.required],
-      bucket:["",Validators.required],
-      key:["",Validators.required]
+      pname:["",Validators.required]
+   
 
 
     });
@@ -186,6 +186,7 @@ for(var i=0; i<this.tb.length; i++){
   console.log(this.tb[i]['pname']==event.target.value);
   if(this.tb[i]['pname']==event.target.value.slice(1)){
     console.log("true");
+    this.pname=this.tb[i]['pname'];
     this.dsid=this.tb[i]['dsid'];
     this.id=this.tb[i]['id'];
     console.log(this.dsid);
@@ -220,7 +221,7 @@ for(var i=0; i<this.tb.length; i++){
      
     });
    */
-    this.api.Getquick(this.dsid,this.id,todo.awsaccountId,todo.userarn,todo.projectname,todo.workbookname,todo.bucket,todo.key,todo.region).then((result) => {
+    this.api.Getquick(this.dsid,this.id,todo.awsaccountId,todo.projectname,todo.region,this.pname,todo.username).then((result) => {
       console.log(result.body); 
     this.dashboardurl=result.body;
     console.log(this.dashboardurl);

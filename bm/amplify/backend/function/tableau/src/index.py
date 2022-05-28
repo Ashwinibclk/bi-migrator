@@ -1,6 +1,7 @@
 import glob
 import os
 import shutil
+from subprocess import call
 import zipfile
 import boto3
 from datetime import datetime,  timezone
@@ -241,6 +242,7 @@ def lambda_handler(event, context):
                                 'N': str(int(time.time()))
                             }
                         })
+    call('rm -rf /tmp/*', shell=True)
             
 
     response = {

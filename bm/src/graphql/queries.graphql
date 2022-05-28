@@ -20,23 +20,19 @@ query Getquick(
   $dsid: String!
   $id: String!
   $awsaccountId: String!
-  $userarn: String!
   $projectname: String!
-  $workbookname: String!
-  $bucket: String!
-  $key: String!
   $region: String!
+  $pname: String!
+  $username: String!
 ) {
   getquick(
     dsid: $dsid
     id: $id
     awsaccountId: $awsaccountId
-    userarn: $userarn
     projectname: $projectname
-    workbookname: $workbookname
-    bucket: $bucket
-    key: $key
     region: $region
+    pname: $pname
+    username: $username
   ) {
     body
   }

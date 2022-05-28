@@ -224,7 +224,7 @@ type tabauth{
 
 type Query{
   getMessage(username:String! password:String! sitename:String! siteurl:String!) :message @function (name: "tableau-${env}")
-  getquick(dsid:String! id:String! awsaccountId:String!  userarn:String! projectname:String! workbookname:String! bucket:String! key:String! region:String!):quick!
+  getquick(dsid:String! id:String! awsaccountId:String!  projectname:String!   region:String! pname:String! username:String!):quick!
   getaws(access:String! secret:String! username:String! awsaccountId:String!):aws!
   tableauauth(username:String! password:String! sitename:String! siteurl:String!):tabauth!
 }

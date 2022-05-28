@@ -1,12 +1,35 @@
+from subprocess import call
 import boto3
 import csv
+import json
 
 dynamodb_client = boto3.client('dynamodb')
 client_qs = boto3.client('quicksight')
-s3 = boto3.client("s3")
+s3 = boto3.resource("s3")
 
 
 def lambda_handler(event, context):
+    s3.Bucket('bim-project').download_file(event['pname']+".csv", '/tmp/'+event['pname']+".csv")
+    file = open('/tmp/'+event['pname']+".csv")
+    csvreader = csv.reader(file)
+    Name = next(csvreader)
+    print(Name)
+    inpcol=[]
+    for i in Name:
+         inpcol.append(
+                        {
+                        'Name':i,
+                        'Type':'STRING'
+                                        
+                        })
+    print(inpcol)
+    dictionary = {"entries": [
+        {"url": "s3://bim-project/"+event['pname']+".csv", "mandatory":"true"}, ]}
+    json_object = json.dumps(dictionary, indent=4)
+    f = open('/tmp/'+event['pname']+'.manifest', "w+")
+    f.write(json_object)
+    f.close()
+    s3.Bucket('bim-project').upload_file(f.name, event['pname']+'.manifest')
 
     response = dynamodb_client.get_item(
         TableName='tdatasources-2i2srqro3bfvpogryufqfhd5hi-dev',
@@ -31,7 +54,7 @@ def lambda_handler(event, context):
         Name=event['projectname'],
         Permissions=[
             {
-                'Principal': event['userarn'],
+                'Principal':  'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':user/default/'+event['username'],
                 'Actions': ["quicksight:CreateFolder",
                             "quicksight:DescribeFolder",
                             "quicksight:UpdateFolder",
@@ -51,14 +74,14 @@ def lambda_handler(event, context):
         DataSourceParameters={
             'S3Parameters': {
                 'ManifestFileLocation': {
-                    'Bucket': event['bucket'],
-                    'Key': event['key']
+                    'Bucket': 'bim-project',
+                    'Key': event['pname']+'.manifest'
                 }
             },
         },
         Permissions=[
             {
-                'Principal': event['userarn'],
+                'Principal':  'arn:aws:quicksight:'+event['region']+":"+event['awsaccountId']+':user/default/'+event['username'],
                 'Actions': [
                     "quicksight:UpdateDataSourcePermissions",
                     "quicksight:DescribeDataSource",
@@ -81,35 +104,17 @@ def lambda_handler(event, context):
                 'S3Source': {
                     'DataSourceArn': 'arn:aws:quicksight:'+event['region']+":"+event['awsaccountId']+':datasource/' +
                                      response['Item']['id']['S'],
-                    'InputColumns': [
-                        {
-                            'Name': 'ID',
-                            'Type': 'STRING'
-                        },
-                        {
-                            'Name': 'Country',
-                            'Type': 'STRING'
-                        },
-                        {
-                            'Name': 'State',
-                            'Type': 'STRING'
-                        },
-                        {
-                            'Name': 'City',
-                            'Type': 'STRING'
-                        },
-                        {
-                            'Name': 'Amount',
-                            'Type': 'STRING'
-                        },
-                    ]
+                    'InputColumns': inpcol
+                    
+                        
+                     
                 }
             }
         },
         ImportMode='SPICE',
         Permissions=[
             {
-                'Principal': event['userarn'],
+                'Principal':  'arn:aws:quicksight:'+event['region']+":"+event['awsaccountId']+':user/default/'+event['username'],
                 'Actions': [
                     "quicksight:DescribeDataSet", "quicksight:DescribeDataSetPermissions", "quicksight:PassDataSet",
                     "quicksight:DescribeIngestion", "quicksight:ListIngestions", "quicksight:UpdateDataSet",
@@ -130,7 +135,7 @@ def lambda_handler(event, context):
         Name="template" + responses['Item']['name']['S'],
         Permissions=[
             {
-                'Principal': event['userarn'],
+                'Principal':  'arn:aws:quicksight:'+event['region']+":"+event['awsaccountId']+':user/default/'+event['username'],
                 'Actions': [
                     "quicksight:CreateTemplate",
                     "quicksight:DescribeTemplate",
@@ -158,10 +163,10 @@ def lambda_handler(event, context):
     client_qs.create_analysis(
         AwsAccountId=event['awsaccountId'],
         AnalysisId="analysis" + response['Item']['id']['S'],
-        Name=event['workbookname'],
+        Name=event['pname'],
         Permissions=[
             {
-                'Principal': event['userarn'],
+                'Principal':  'arn:aws:quicksight:'+event['region']+":"+event['awsaccountId']+':user/default/'+event['username'],
                 'Actions': [
                     "quicksight:RestoreAnalysis",
                     "quicksight:UpdateAnalysisPermissions",
@@ -193,7 +198,7 @@ def lambda_handler(event, context):
         Name=event['projectname']+'dashboard',
         Permissions=[
             {
-                'Principal': event['userarn'],
+                'Principal':  'arn:aws:quicksight:'+event['region']+":"+event['awsaccountId']+':user/default/'+event['username'],
                 'Actions': [
                     "quicksight:DescribeDashboard",
                     "quicksight:ListDashboardVersions",
@@ -224,10 +229,13 @@ def lambda_handler(event, context):
         AwsAccountId=event['awsaccountId'],
         DashboardId="dashboard" + response['Item']['id']['S'],
         IdentityType='QUICKSIGHT',
-        UserArn=event['userarn'],
+        UserArn='arn:aws:quicksight:' +
+        event['region']+':'+event['awsaccountId'] +
+        ':user/default/'+event['username'],
         UndoRedoDisabled=True | False,
         ResetDisabled=True | False
     )
+    call('rm -rf /tmp/*', shell=True)
 
     response = {
         'statusCode': 200,
