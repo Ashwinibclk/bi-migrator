@@ -9,19 +9,20 @@ s3 = boto3.resource("s3")
 
 
 def lambda_handler(event, context):
-    s3.Bucket('bim-project').download_file(event['pname']+".csv", '/tmp/'+event['pname']+".csv")
+    s3.Bucket(
+        'bim-project').download_file(event['pname']+".csv", '/tmp/'+event['pname']+".csv")
     file = open('/tmp/'+event['pname']+".csv")
     csvreader = csv.reader(file)
     Name = next(csvreader)
     print(Name)
-    inpcol=[]
+    inpcol = []
     for i in Name:
-         inpcol.append(
-                        {
-                        'Name':i,
-                        'Type':'STRING'
-                                        
-                        })
+        inpcol.append(
+            {
+                'Name': i,
+                'Type': 'STRING'
+
+            })
     print(inpcol)
     dictionary = {"entries": [
         {"url": "s3://bim-project/"+event['pname']+".csv", "mandatory":"true"}, ]}
@@ -105,9 +106,9 @@ def lambda_handler(event, context):
                     'DataSourceArn': 'arn:aws:quicksight:'+event['region']+":"+event['awsaccountId']+':datasource/' +
                                      response['Item']['id']['S'],
                     'InputColumns': inpcol
-                    
-                        
-                     
+
+
+
                 }
             }
         },
@@ -187,7 +188,7 @@ def lambda_handler(event, context):
                                       response['Item']['id']['S']
                     },
                 ],
-                'Arn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':template/templatebotot3'
+                'Arn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':template/template'+responses['Item']['id']['S']
             }
         },
     )
@@ -220,7 +221,7 @@ def lambda_handler(event, context):
                                       response['Item']['id']['S']
                     },
                 ],
-                'Arn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':template/' + "template" + responses['Item']['id']['S']
+                'Arn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':template/template'+responses['Item']['id']['S'],
             }
         },
         VersionDescription='0',
