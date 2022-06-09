@@ -12,6 +12,7 @@ import { TableauloginComponent } from './tableaulogin/tableaulogin.component';
 import { BimprojectComponent } from './bimproject/bimproject.component';
 import { NgxSpinnerModule ,NgxSpinnerService} from 'ngx-spinner';
 import { LoadingComponent } from './loading';
+import { AwsloginComponent } from './awslogin/awslogin.component';
 Amplify.configure(awsconfig);
 
 
@@ -21,7 +22,8 @@ Amplify.configure(awsconfig);
     CustomerComponent,
     TableauloginComponent,
     BimprojectComponent,
-    LoadingComponent
+    LoadingComponent,
+    AwsloginComponent
   ],
   imports: [
     BrowserModule,

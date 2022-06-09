@@ -1,0 +1,235 @@
+{
+    "Message from DemoCentral": "Analysis definition extracted from API response is given below. You can explore the definition element, make changes therein and try uploading the changed version by clicking the upload button in above panel.",
+    "Definition": {
+        "DataSetIdentifierDeclarations": [
+            {
+                "Identifier": "DemoCentral-SaaS-Sales",
+                "DataSetArn": "arn:aws:quicksight:us-east-1:12345678XXXX:dataset/99efe90a-19e9-473b-81b3-445402fe5e9b"
+            }
+        ],
+        "Sheets": [
+            {
+                "SheetId": "7ed74a05-a908-44af-bc2d-4307b41222d4",
+                "Title": "Assets As Code",
+                "Name": "Sheet 1",
+                "ParameterControls": [
+                    {
+                        "List": {
+                            "ParameterControlId": "14373057-1c07-4886-981e-f9e8973299ca",
+                            "Title": "Product",
+                            "SourceParameterName": "pProduct",
+                            "DisplayOptions": {
+                                "SearchOptions": {
+                                    "Visibility": "HIDDEN"
+                                },
+                                "AllOptions": {
+                                    "Visibility": "VISIBLE"
+                                },
+                                "TitleOptions": {
+                                    "Visibility": "VISIBLE",
+                                    "FontConfiguration": {
+                                        "FontSize": {
+                                            "Relative": "MEDIUM"
+                                        }
+                                    }
+                                }
+                            },
+                            "Type": "MULTI_SELECT",
+                            "SelectableValues": {
+                                "LinkToDataSetColumn": {
+                                    "DataSetIdentifier": "DemoCentral-SaaS-Sales",
+                                    "ColumnName": "Product"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "Visuals": [
+                    {
+                        "BarChartVisual": {
+                            "VisualId": "c0584ebb-9c5b-4a0b-a981-4742c9c8fcac",
+                            "Title": {
+                                "Visibility": "VISIBLE",
+                                "FormatText": {
+                                    "PlainText": "Assets as code (preview feature) exposes analysis definition in JSON format via describe-analysis-definition method. "
+                                }
+                            },
+                            "Subtitle": {
+                                "Visibility": "VISIBLE",
+                                "FormatText": {
+                                    "PlainText": "This opens up several possibilities - Storing in external code repository, development of migration tools, backup & recovery, automated dashboard creation etc. 1) Launch analysis view. 2) Launch code editor from right sidebar. 3) Explore analysis definition. 4)Change orientation (ln 117) to VERTICAL and upload. 5)Change Bars Arrangement (ln 118) to CLUSTERED and upload. 6)Try duplicating a visual (and its layout; ids need to be unique).Note - All visual types and features not supported yet."
+                                }
+                            },
+                            "ChartConfiguration": {
+                                "FieldWells": {
+                                    "BarChartAggregatedFieldWells": {
+                                        "Category": [
+                                            {
+                                                "CategoricalDimensionField": {
+                                                    "FieldId": "a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "DemoCentral-SaaS-Sales",
+                                                        "ColumnName": "Product"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "Values": [
+                                            {
+                                                "NumericalMeasureField": {
+                                                    "FieldId": "a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.2.1647725256871",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "DemoCentral-SaaS-Sales",
+                                                        "ColumnName": "Sales"
+                                                    },
+                                                    "AggregationFunction": {
+                                                        "SimpleNumericalAggregation": "SUM"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "Colors": [
+                                            {
+                                                "CategoricalDimensionField": {
+                                                    "FieldId": "a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-13.0.1647725256871",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "DemoCentral-SaaS-Sales",
+                                                        "ColumnName": "Segment"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "SortConfiguration": {
+                                    "CategorySort": [
+                                        {
+                                            "FieldSort": {
+                                                "FieldId": "a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.2.1647725256871",
+                                                "Direction": "DESC"
+                                            }
+                                        }
+                                    ],
+                                    "CategoryItemsLimit": {
+                                        "OtherCategories": "INCLUDE"
+                                    }
+                                },
+                                "Orientation": "HORIZONTAL",
+                                "BarsArrangement": "STACKED",
+                                "DataLabels": {
+                                    "Visibility": "HIDDEN",
+                                    "Overlap": "DISABLE_OVERLAP"
+                                },
+                                "Tooltip": {
+                                    "TooltipVisibility": "VISIBLE",
+                                    "SelectedTooltipType": "DETAILED",
+                                    "FieldBasedTooltip": {
+                                        "AggregationVisibility": "HIDDEN",
+                                        "TooltipTitleType": "PRIMARY_VALUE",
+                                        "TooltipFields": [
+                                            {
+                                                "FieldTooltipItem": {
+                                                    "FieldId": "a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871",
+                                                    "Visibility": "VISIBLE"
+                                                }
+                                            },
+                                            {
+                                                "FieldTooltipItem": {
+                                                    "FieldId": "a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.2.1647725256871",
+                                                    "Visibility": "VISIBLE"
+                                                }
+                                            },
+                                            {
+                                                "FieldTooltipItem": {
+                                                    "FieldId": "a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-13.0.1647725256871",
+                                                    "Visibility": "VISIBLE"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            },
+                            "Actions": [],
+                            "ColumnHierarchies": []
+                        }
+                    }
+                ],
+                "Layouts": [
+                    {
+                        "Configuration": {
+                            "GridLayout": {
+                                "Elements": [
+                                    {
+                                        "ElementId": "c0584ebb-9c5b-4a0b-a981-4742c9c8fcac",
+                                        "ElementType": "VISUAL",
+                                        "ColumnIndex": 0,
+                                        "ColumnSpan": 29,
+                                        "RowIndex": 0,
+                                        "RowSpan": 16
+                                    },
+                                    {
+                                        "ElementId": "14373057-1c07-4886-981e-f9e8973299ca",
+                                        "ElementType": "PARAMETER_CONTROL",
+                                        "ColumnIndex": 29,
+                                        "ColumnSpan": 7,
+                                        "RowIndex": 0,
+                                        "RowSpan": 16
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        ],
+        "CalculatedFields": [],
+        "ParameterDeclarations": [
+            {
+                "StringParameterDeclaration": {
+                    "ParameterValueType": "MULTI_VALUED",
+                    "Name": "pProduct",
+                    "DefaultValues": {}
+                }
+            }
+        ],
+        "FilterGroups": [
+            {
+                "FilterGroupId": "66af1a33-f94b-43e5-aa1a-eb058d1bccb7",
+                "Filters": [
+                    {
+                        "CategoryFilter": {
+                            "FilterId": "ebf7e5c0-fb09-4d4c-9124-e0d216ea42b4",
+                            "Column": {
+                                "DataSetIdentifier": "DemoCentral-SaaS-Sales",
+                                "ColumnName": "Product"
+                            },
+                            "Configuration": {
+                                "CustomFilterConfiguration": {
+                                    "MatchOperator": "EQUALS",
+                                    "ParameterName": "pProduct",
+                                    "NullOption": "NON_NULLS_ONLY"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "ScopeConfiguration": {
+                    "SelectedSheet": {
+                        "SameDataSetVisuals": {
+                            "SheetId": "7ed74a05-a908-44af-bc2d-4307b41222d4"
+                        }
+                    }
+                },
+                "Status": "ENABLED"
+            }
+        ],
+        "DefaultConfiguration": {
+            "DefaultLayoutConfiguration": {
+                "Grid": {
+                    "ResizeOption": "FIXED",
+                    "OptimizedViewPortWidth": 1600
+                }
+            }
+        }
+    }
+}

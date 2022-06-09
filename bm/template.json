@@ -1,17 +1,31 @@
-{
-    "AwsAccountId": "519510601754",
-    "TemplateId": "templateref1",
-    "Name": "templateref1",
-   
-    "SourceEntity": {
-        "SourceAnalysis": {
-            "Arn": "arn:aws:quicksight:us-east-1:519510601754:analysis/analysisc9518936-dc1a-4971-b869-c58737b48fe0",
-            "DataSetReferences": [        {
-                "DataSetPlaceholder": "test",
-                "DataSetArn": "arn:aws:quicksight:us-east-1:519510601754:dataset/datasetc9518936-dc1a-4971-b869-c58737b48fe0"
+ {
+    
+    "Definition": {
+        "DataSetIdentifierDeclarations": [
+            {
+                "Identifier": "nnn",
+                "DataSetArn": "arn:aws:quicksight:us-east-1:519510601754:dataset/dataset51bb7a87-aa76-4f22-a264-8488a3f3e19e"
             }
-        ]
+        ],
+        "Sheets": [
+            {
+                "SheetId": "51bb7a87-aa76-4f22-a264-8488a3f3e19e",
+                "Title": "example 1",
+                "Name": "updates"
+            }
+        ],
+        "DefaultConfiguration": {
+            "DefaultLayoutConfiguration": {
+                "Grid": {
+                    "ResizeOption": "FIXED",
+                    "OptimizedViewPortWidth": 1600
+                }
+            }
         }
-    },
-    "VersionDescription": "Version-0"
+    }
+
+    
 }
+        
+    
+

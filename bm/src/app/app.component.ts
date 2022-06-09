@@ -8,7 +8,7 @@ import { Router,NavigationStart } from "@angular/router";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['app.scss']
 })
 
 export class AppComponent implements OnInit , OnDestroy {
@@ -51,7 +51,7 @@ export class AppComponent implements OnInit , OnDestroy {
     this.showapp=Boolean;
 router.events.forEach((event)=>{
   if(event instanceof NavigationStart){
-    this.showapp = event.url !=="/tableaulogin" && event.url !=="/quicksightlogin" && event.url !=="/sign-up" && event.url !=="/department" && event.url !=="/login" && event.url !=="/datasets" && event.url !=="/tableau" && event.url !=="/quicksight"
+    this.showapp = event.url !=="/tableaulogin" && event.url !=="/quicksightlogin" && event.url !=="/sign-up" && event.url !=="/department" && event.url !=="/login" && event.url !=="/datasets" && event.url !=="/tableau" && event.url !=="/quicksight" && event.url !=="/awslogin"
   }
 })
   };
@@ -100,7 +100,9 @@ router.events.forEach((event)=>{
 
   showm(){
    //this.isLoading=true;
+   
     this.aws=true;
+    console.log(this.aws);
     //this.isLoading=false;
     
   }

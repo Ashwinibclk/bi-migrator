@@ -1,0 +1,45 @@
+
+<div  class="form-body"  >
+   
+        
+        <form
+        autocomplete="off"
+        [formGroup]="createFormaws"
+        
+      >
+        <h3>Please Provide Your AWS Credentials</h3>
+                <div>
+                  <label>Access Key Id: </label>
+                  <input type="password" formControlName="access" autocomplete="off" />
+                </div>
+                <div>
+                  <label>Secret Access Key Id: </label>
+                  <input type="password" formControlName="secret" autocomplete="off" />
+                </div>
+                <div>
+                  <label>Username: </label>
+                  <input type="text" formControlName="username" autocomplete="off" />
+                </div>
+                <div>
+                  <label>AwsaccountId: </label>
+                  <input type="text" formControlName="awsaccountId" autocomplete="off" />
+                </div>
+                <br>
+           
+                <input type="checkbox" style="width:auto; height:auto; display: inline;" (change)="check()"/><p style="display:inline; color:rgb(255, 123, 0)">By checking on this, these are the policies that will be attached with your account to proceed </p><br>
+                 <li>AmazonDynamoDBFullAccess</li>
+                 <li>AWSLambda_FullAccess</li>
+                 <li>IAMFullAccess</li>
+                 <li>AmazonS3FullAccess</li>
+                 <li>QuicksightFullAccess</li>
+                 <div>
+                </div>
+                <div>
+                 
+                  <button type="submit" (click)="oncreateaws(this.createFormaws.value)" autocomplete="off" >Submit</button>
+                </div>
+                </form>
+          </div>
+         
+          
+  

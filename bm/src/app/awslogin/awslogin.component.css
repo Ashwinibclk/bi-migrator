@@ -1,70 +1,50 @@
-
-
-  *,
-  *:before,
-  *:after{
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-  }
-
-  .form-body{
+.form-body{
     background-color:  #080710;;
   }
-
+  
   .form-body form{
-    height: 600px;
-    width: 400px;
+    overflow:scroll;
+    height: 550px;
+    width: 600px;
     background-color: #545454;
     position: absolute;
     transform: translate(-50%,-50%);
     top: 50%;
     left: 50%;
     border-radius: 10px;
-    
+    backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
     
     padding: 50px 35px;
-    overflow: scroll;
-}
-
-label{
+  }
+  
+  label{
   display: block;
   margin-top: 30px;
   font-size: 16px;
   font-weight: 600;
   color:white;
-
-}
-input{
+  }
+  
+  input{
   display: block;
   height: 40px;
   width: 100%;
   background-color: white;
   border-radius: 3px;
-  padding: 0 10px;
+  padding: 0 10px ;
   margin-top: 8px;
   font-size: 14px;
   font-weight: 300;
-}
-::placeholder{
+  
+  }
+  ::placeholder{
   color: #e5e5e5;
-}
-
-select{
-  display: block;
-  height: 40px;
-  width: 100%;
-  background-color: rgba(255,255,255,0.07);
-  border-radius: 3px;
-  padding: 0 10px;
-  margin-top: 8px;
-  font-size: 14px;
-  border:1px solid black;
-}
-
-button{
-  margin-top: 20px;
+  }
+  
+  
+  button{
+  margin-top: 30px;
   width: 100%;
   background-color: rgb(203, 235, 41);
   color: black;
@@ -73,30 +53,22 @@ button{
   font-weight: 600;
   border-radius: 5px;
   cursor: pointer;
-}
-
-button:hover{
+  }
+  
+  button:hover{
   background-color: #fe6019;
   color:white;
-}
-
-form h3{
+  }
+  
+  form h3{
   font-size: 25px;
   font-weight: 500;
   line-height: 35px;
   text-align: center;
   color:rgb(255, 123, 0);
-
-}
-
-.row {
-  display: table;
-  width: 100%; /*Optional*/
-  table-layout: fixed; /*Optional*/
-  border-spacing: 10px; /*Optional*/
-}
-.column {
-  display: table-cell;
   
-}
-
+  }
+  
+  li{
+      color:white;
+  }
