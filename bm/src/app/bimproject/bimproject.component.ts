@@ -55,6 +55,7 @@ export class BimprojectComponent implements OnInit {
   }
   
   public onCreatetb(todo: any) {
+    console.log("yes");
 var i;
 for(i=0; i<this.tbs1.length; i++){
   if(this.tbs1[i].name==todo.UserName && this.tbs1[i].DName

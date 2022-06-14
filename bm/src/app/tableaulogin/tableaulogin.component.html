@@ -1,7 +1,7 @@
 
 <loading *ngIf="isLoading">{{ isLoading }}</loading>
 
-<div  class="form-body">
+<div   class="form-body">
   <form
     autocomplete="off"
     [formGroup]="createFormtb"
@@ -28,11 +28,8 @@
     <button type="submit" >Discover</button>
   </form>
 </div>
-<div *ngIf="tabdis" class="modal"  role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-      </div>
+<div *ngIf="tabdis" class="modal1"  >
+  
       <div class="modal-body">
         <div class="row">
           <form
@@ -40,7 +37,7 @@
           [formGroup]="createFormqs"
           
         >
-        <h6>Select Project to migrate</h6>
+        <h6 style="color:white;">Select Project to migrate</h6>
           <div class="column" style="background-image: linear-gradient(rgb(123, 255, 0), yellow);">
             
             <h6><i class="fa fa-duotone fa-folder" ></i> PROJECTS</h6>
@@ -139,21 +136,21 @@
                </div>
                 </div>
               </div>
-                </div>
-                
-                </div>
+               
                  
            <!-- </div>-->
-           <div *ngIf="qsdis" class="modal"  role="dialog">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-              
+           <div *ngIf="qsdis" class="modal1"  role="dialog">
+           
                 <div class="modal-body">
-               <h6> Migration completed to view your dashboard in quicksight click here.
-                 <a href={{dashboardurl}}>Dashboard</a></h6>
+               <h6 style="color:white; margin-top:10%; text-align: center;"> Migration completed to view your dashboard in quicksight click here.
+                 <a href={{dashboardurl}} style="color:aqua;">Dashboard</a> </h6>
+                 <div style="margin-top:15%; margin-left:45%;">
+                  
+                  <img src="assets/img/bar.gif" width="50" height="60">
+                 </div>
+                 
                
                   </div>
                   </div>
-              </div></div></div>
+             
             

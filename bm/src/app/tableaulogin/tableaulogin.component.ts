@@ -27,7 +27,7 @@ pname:string=""
   dsid:string="";
   response: any;
   tabdis: boolean = false;
-  qsdis: boolean = false;
+  qsdis: boolean =false;
   r2: string = "";
   r3: string = "";
   r4: string = "";
