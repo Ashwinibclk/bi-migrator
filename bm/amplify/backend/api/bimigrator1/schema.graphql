@@ -249,3 +249,14 @@ type twtp @model{
   workbookname:String!
   username:String!
 }
+
+type xmlinput @model{
+  id:ID!
+  sheetname:String!
+  xaxis:String!
+  yaxis:String!
+  dimensional:String!
+  numerical:String!
+  formula:String!
+  charttype:String!
+}

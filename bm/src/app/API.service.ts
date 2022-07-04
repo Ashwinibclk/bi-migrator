@@ -91,6 +91,9 @@ export type __SubscriptionContainer = {
   onCreateTwtp: OnCreateTwtpSubscription;
   onUpdateTwtp: OnUpdateTwtpSubscription;
   onDeleteTwtp: OnDeleteTwtpSubscription;
+  onCreateXmlinput: OnCreateXmlinputSubscription;
+  onUpdateXmlinput: OnUpdateXmlinputSubscription;
+  onDeleteXmlinput: OnDeleteXmlinputSubscription;
 };
 
 export type CreateTableauloginInput = {
@@ -1404,6 +1407,65 @@ export type DeleteTwtpInput = {
   _version?: number | null;
 };
 
+export type CreateXmlinputInput = {
+  id?: string | null;
+  sheetname: string;
+  xaxis: string;
+  yaxis: string;
+  dimensional: string;
+  numerical: string;
+  formula: string;
+  charttype: string;
+  _version?: number | null;
+};
+
+export type ModelXmlinputConditionInput = {
+  sheetname?: ModelStringInput | null;
+  xaxis?: ModelStringInput | null;
+  yaxis?: ModelStringInput | null;
+  dimensional?: ModelStringInput | null;
+  numerical?: ModelStringInput | null;
+  formula?: ModelStringInput | null;
+  charttype?: ModelStringInput | null;
+  and?: Array<ModelXmlinputConditionInput | null> | null;
+  or?: Array<ModelXmlinputConditionInput | null> | null;
+  not?: ModelXmlinputConditionInput | null;
+};
+
+export type xmlinput = {
+  __typename: "xmlinput";
+  id: string;
+  sheetname: string;
+  xaxis: string;
+  yaxis: string;
+  dimensional: string;
+  numerical: string;
+  formula: string;
+  charttype: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type UpdateXmlinputInput = {
+  id: string;
+  sheetname?: string | null;
+  xaxis?: string | null;
+  yaxis?: string | null;
+  dimensional?: string | null;
+  numerical?: string | null;
+  formula?: string | null;
+  charttype?: string | null;
+  _version?: number | null;
+};
+
+export type DeleteXmlinputInput = {
+  id: string;
+  _version?: number | null;
+};
+
 export type message = {
   __typename: "message";
   body: string;
@@ -1797,6 +1859,27 @@ export type ModelTwtpFilterInput = {
 export type ModelTwtpConnection = {
   __typename: "ModelTwtpConnection";
   items: Array<twtp | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type ModelXmlinputFilterInput = {
+  id?: ModelIDInput | null;
+  sheetname?: ModelStringInput | null;
+  xaxis?: ModelStringInput | null;
+  yaxis?: ModelStringInput | null;
+  dimensional?: ModelStringInput | null;
+  numerical?: ModelStringInput | null;
+  formula?: ModelStringInput | null;
+  charttype?: ModelStringInput | null;
+  and?: Array<ModelXmlinputFilterInput | null> | null;
+  or?: Array<ModelXmlinputFilterInput | null> | null;
+  not?: ModelXmlinputFilterInput | null;
+};
+
+export type ModelXmlinputConnection = {
+  __typename: "ModelXmlinputConnection";
+  items: Array<xmlinput | null>;
   nextToken?: string | null;
   startedAt?: number | null;
 };
@@ -4660,6 +4743,57 @@ export type DeleteTwtpMutation = {
   _lastChangedAt: number;
 };
 
+export type CreateXmlinputMutation = {
+  __typename: "xmlinput";
+  id: string;
+  sheetname: string;
+  xaxis: string;
+  yaxis: string;
+  dimensional: string;
+  numerical: string;
+  formula: string;
+  charttype: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type UpdateXmlinputMutation = {
+  __typename: "xmlinput";
+  id: string;
+  sheetname: string;
+  xaxis: string;
+  yaxis: string;
+  dimensional: string;
+  numerical: string;
+  formula: string;
+  charttype: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type DeleteXmlinputMutation = {
+  __typename: "xmlinput";
+  id: string;
+  sheetname: string;
+  xaxis: string;
+  yaxis: string;
+  dimensional: string;
+  numerical: string;
+  formula: string;
+  charttype: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
 export type GetMessageQuery = {
   __typename: "message";
   body: string;
@@ -7075,6 +7209,67 @@ export type SyncTwtpsQuery = {
     pname: string;
     workbookname: string;
     username: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type GetXmlinputQuery = {
+  __typename: "xmlinput";
+  id: string;
+  sheetname: string;
+  xaxis: string;
+  yaxis: string;
+  dimensional: string;
+  numerical: string;
+  formula: string;
+  charttype: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type ListXmlinputsQuery = {
+  __typename: "ModelXmlinputConnection";
+  items: Array<{
+    __typename: "xmlinput";
+    id: string;
+    sheetname: string;
+    xaxis: string;
+    yaxis: string;
+    dimensional: string;
+    numerical: string;
+    formula: string;
+    charttype: string;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncXmlinputsQuery = {
+  __typename: "ModelXmlinputConnection";
+  items: Array<{
+    __typename: "xmlinput";
+    id: string;
+    sheetname: string;
+    xaxis: string;
+    yaxis: string;
+    dimensional: string;
+    numerical: string;
+    formula: string;
+    charttype: string;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -9937,6 +10132,57 @@ export type OnDeleteTwtpSubscription = {
   pname: string;
   workbookname: string;
   username: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnCreateXmlinputSubscription = {
+  __typename: "xmlinput";
+  id: string;
+  sheetname: string;
+  xaxis: string;
+  yaxis: string;
+  dimensional: string;
+  numerical: string;
+  formula: string;
+  charttype: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnUpdateXmlinputSubscription = {
+  __typename: "xmlinput";
+  id: string;
+  sheetname: string;
+  xaxis: string;
+  yaxis: string;
+  dimensional: string;
+  numerical: string;
+  formula: string;
+  charttype: string;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnDeleteXmlinputSubscription = {
+  __typename: "xmlinput";
+  id: string;
+  sheetname: string;
+  xaxis: string;
+  yaxis: string;
+  dimensional: string;
+  numerical: string;
+  formula: string;
+  charttype: string;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -14127,6 +14373,105 @@ export class APIService {
     )) as any;
     return <DeleteTwtpMutation>response.data.deleteTwtp;
   }
+  async CreateXmlinput(
+    input: CreateXmlinputInput,
+    condition?: ModelXmlinputConditionInput
+  ): Promise<CreateXmlinputMutation> {
+    const statement = `mutation CreateXmlinput($input: CreateXmlinputInput!, $condition: ModelXmlinputConditionInput) {
+        createXmlinput(input: $input, condition: $condition) {
+          __typename
+          id
+          sheetname
+          xaxis
+          yaxis
+          dimensional
+          numerical
+          formula
+          charttype
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateXmlinputMutation>response.data.createXmlinput;
+  }
+  async UpdateXmlinput(
+    input: UpdateXmlinputInput,
+    condition?: ModelXmlinputConditionInput
+  ): Promise<UpdateXmlinputMutation> {
+    const statement = `mutation UpdateXmlinput($input: UpdateXmlinputInput!, $condition: ModelXmlinputConditionInput) {
+        updateXmlinput(input: $input, condition: $condition) {
+          __typename
+          id
+          sheetname
+          xaxis
+          yaxis
+          dimensional
+          numerical
+          formula
+          charttype
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateXmlinputMutation>response.data.updateXmlinput;
+  }
+  async DeleteXmlinput(
+    input: DeleteXmlinputInput,
+    condition?: ModelXmlinputConditionInput
+  ): Promise<DeleteXmlinputMutation> {
+    const statement = `mutation DeleteXmlinput($input: DeleteXmlinputInput!, $condition: ModelXmlinputConditionInput) {
+        deleteXmlinput(input: $input, condition: $condition) {
+          __typename
+          id
+          sheetname
+          xaxis
+          yaxis
+          dimensional
+          numerical
+          formula
+          charttype
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteXmlinputMutation>response.data.deleteXmlinput;
+  }
   async GetMessage(
     username: string,
     password: string,
@@ -18156,6 +18501,123 @@ export class APIService {
     )) as any;
     return <SyncTwtpsQuery>response.data.syncTwtps;
   }
+  async GetXmlinput(id: string): Promise<GetXmlinputQuery> {
+    const statement = `query GetXmlinput($id: ID!) {
+        getXmlinput(id: $id) {
+          __typename
+          id
+          sheetname
+          xaxis
+          yaxis
+          dimensional
+          numerical
+          formula
+          charttype
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetXmlinputQuery>response.data.getXmlinput;
+  }
+  async ListXmlinputs(
+    filter?: ModelXmlinputFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListXmlinputsQuery> {
+    const statement = `query ListXmlinputs($filter: ModelXmlinputFilterInput, $limit: Int, $nextToken: String) {
+        listXmlinputs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            sheetname
+            xaxis
+            yaxis
+            dimensional
+            numerical
+            formula
+            charttype
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListXmlinputsQuery>response.data.listXmlinputs;
+  }
+  async SyncXmlinputs(
+    filter?: ModelXmlinputFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncXmlinputsQuery> {
+    const statement = `query SyncXmlinputs($filter: ModelXmlinputFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncXmlinputs(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            id
+            sheetname
+            xaxis
+            yaxis
+            dimensional
+            numerical
+            formula
+            charttype
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncXmlinputsQuery>response.data.syncXmlinputs;
+  }
   OnCreateTableauloginListener: Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateTableaulogin">>
   > = API.graphql(
@@ -21931,5 +22393,86 @@ export class APIService {
     )
   ) as Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteTwtp">>
+  >;
+
+  OnCreateXmlinputListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateXmlinput">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreateXmlinput {
+        onCreateXmlinput {
+          __typename
+          id
+          sheetname
+          xaxis
+          yaxis
+          dimensional
+          numerical
+          formula
+          charttype
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateXmlinput">>
+  >;
+
+  OnUpdateXmlinputListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateXmlinput">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdateXmlinput {
+        onUpdateXmlinput {
+          __typename
+          id
+          sheetname
+          xaxis
+          yaxis
+          dimensional
+          numerical
+          formula
+          charttype
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateXmlinput">>
+  >;
+
+  OnDeleteXmlinputListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteXmlinput">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeleteXmlinput {
+        onDeleteXmlinput {
+          __typename
+          id
+          sheetname
+          xaxis
+          yaxis
+          dimensional
+          numerical
+          formula
+          charttype
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteXmlinput">>
   >;
 }

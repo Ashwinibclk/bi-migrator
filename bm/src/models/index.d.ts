@@ -143,6 +143,10 @@ type twtpMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
+type xmlinputMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 export declare class Tableaulogin {
   readonly id: string;
   readonly username: string;
@@ -449,4 +453,19 @@ export declare class twtp {
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<twtp, twtpMetaData>);
   static copyOf(source: twtp, mutator: (draft: MutableModel<twtp, twtpMetaData>) => MutableModel<twtp, twtpMetaData> | void): twtp;
+}
+
+export declare class xmlinput {
+  readonly id: string;
+  readonly sheetname: string;
+  readonly xaxis: string;
+  readonly yaxis: string;
+  readonly dimensional: string;
+  readonly numerical: string;
+  readonly formula: string;
+  readonly charttype: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<xmlinput, xmlinputMetaData>);
+  static copyOf(source: xmlinput, mutator: (draft: MutableModel<xmlinput, xmlinputMetaData>) => MutableModel<xmlinput, xmlinputMetaData> | void): xmlinput;
 }

@@ -2693,3 +2693,76 @@ query SyncTwtps(
     startedAt
   }
 }
+query GetXmlinput($id: ID!) {
+  getXmlinput(id: $id) {
+    id
+    sheetname
+    xaxis
+    yaxis
+    dimensional
+    numerical
+    formula
+    charttype
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListXmlinputs(
+  $filter: ModelXmlinputFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listXmlinputs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      sheetname
+      xaxis
+      yaxis
+      dimensional
+      numerical
+      formula
+      charttype
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncXmlinputs(
+  $filter: ModelXmlinputFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncXmlinputs(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      sheetname
+      xaxis
+      yaxis
+      dimensional
+      numerical
+      formula
+      charttype
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}

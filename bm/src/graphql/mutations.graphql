@@ -2888,3 +2888,63 @@ mutation DeleteTwtp(
     _lastChangedAt
   }
 }
+mutation CreateXmlinput(
+  $input: CreateXmlinputInput!
+  $condition: ModelXmlinputConditionInput
+) {
+  createXmlinput(input: $input, condition: $condition) {
+    id
+    sheetname
+    xaxis
+    yaxis
+    dimensional
+    numerical
+    formula
+    charttype
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateXmlinput(
+  $input: UpdateXmlinputInput!
+  $condition: ModelXmlinputConditionInput
+) {
+  updateXmlinput(input: $input, condition: $condition) {
+    id
+    sheetname
+    xaxis
+    yaxis
+    dimensional
+    numerical
+    formula
+    charttype
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteXmlinput(
+  $input: DeleteXmlinputInput!
+  $condition: ModelXmlinputConditionInput
+) {
+  deleteXmlinput(input: $input, condition: $condition) {
+    id
+    sheetname
+    xaxis
+    yaxis
+    dimensional
+    numerical
+    formula
+    charttype
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

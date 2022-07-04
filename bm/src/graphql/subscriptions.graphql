@@ -2645,3 +2645,54 @@ subscription OnDeleteTwtp {
     _lastChangedAt
   }
 }
+subscription OnCreateXmlinput {
+  onCreateXmlinput {
+    id
+    sheetname
+    xaxis
+    yaxis
+    dimensional
+    numerical
+    formula
+    charttype
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateXmlinput {
+  onUpdateXmlinput {
+    id
+    sheetname
+    xaxis
+    yaxis
+    dimensional
+    numerical
+    formula
+    charttype
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteXmlinput {
+  onDeleteXmlinput {
+    id
+    sheetname
+    xaxis
+    yaxis
+    dimensional
+    numerical
+    formula
+    charttype
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
