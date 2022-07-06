@@ -5,21 +5,40 @@ import csv
 import json
 from collections import namedtuple
 import xml.etree.ElementTree as ET
+#import pandas as pd
 
 dynamodb_client = boto3.client('dynamodb')
 client_qs = boto3.client('quicksight')
 s3 = boto3.resource("s3")
-quickSight = boto3.client('qsfldr', region_name="us-east-1")
+qs = boto3.client('qs')
+axis = []
 
 
 def lambda_handler(event, context):
     s3.Bucket(
         'bim-project').download_file(event['pname']+".csv", '/tmp/'+event['pname']+".csv")
     file = open('/tmp/'+event['pname']+".csv")
+    #df = pd.read_csv('/tmp/'+event['pname']+".csv")
     csvreader = csv.reader(file)
     Name = next(csvreader)
     print(Name)
     inpcol = []
+    """for i in Name:
+        print(df[i].dtype)
+    if(df[i].dtype == "object"):
+        inpcol.append(
+            {
+                'Name': i,
+                'Type': 'STRING'
+
+            })
+    if(df[i].dtype == "int64"):
+        inpcol.append(
+            {
+                'Name': i,
+                'Type': 'INTEGER'
+
+            })"""
     for i in Name:
         inpcol.append(
             {
@@ -38,12 +57,22 @@ def lambda_handler(event, context):
     s3.Bucket(
         'bim-project').download_file(event['pname']+".twb", '/tmp/'+event['pname']+".twb")
     tree = ET.parse('/tmp/'+event['pname']+'.twb')
+    # get title
+    """for i in tree.findall('worksheets'):
+        for j in i.findall('worksheet'):
+            for a in j.findall('layout-options'):
+                for b in a.findall('title'):
+                    for c in b.findall('formatted-text'):
+                        title = c.find('run').text
+                        print(title)"""
+
     for i in tree.findall('worksheets'):
         for j in i.findall('worksheet'):
             for a in j.findall('table'):
                 for b in a.findall('panes'):
                     for c in b.findall('pane'):
                         for d in c.findall('mark'):
+                            global chart
                             chart = d.get('class')
                             print(chart)
 
@@ -51,6 +80,7 @@ def lambda_handler(event, context):
     print(XML_worksheets)
     XML_val = XML_worksheets[0].iter('worksheet')
     for item in XML_val:
+        global sname
         sname = item.get('name')
         print(sname)
 
@@ -61,8 +91,14 @@ def lambda_handler(event, context):
                 for b in a.findall('view'):
                     for d in b.findall('datasource-dependencies'):
                         for e in d.findall('column'):
-                            axis = e.get('name')
-                            print(axis)
+                            name = e.get('name')
+                            axis.append(name)
+                            print(name)
+                        global x,y
+                        x = axis[0][1:-1]
+                        y = axis[1][1:-1]
+                        print(x)
+                        print(y)
 
 
 # get calculated fields
@@ -106,117 +142,7 @@ def lambda_handler(event, context):
                 }
             )
 """
-    response = quickSight.create_analysis(
-        AwsAccountId=event['awsaccountId'],
-        AnalysisId=event['analysisid'],
-        Name=event['pname'],
-        Permissions=[
-            {
-                'Principal':  'arn:aws:quicksight:'+event['region']+":"+event['awsaccountId']+':user/default/'+event['username'],
-                'Actions': [
-                    "quicksight:RestoreAnalysis",
-                    "quicksight:UpdateAnalysisPermissions",
-                    "quicksight:DeleteAnalysis",
-                    "quicksight:DescribeAnalysisPermissions",
-                    "quicksight:QueryAnalysis",
-                    "quicksight:DescribeAnalysis",
-                    "quicksight:UpdateAnalysis"
-                ]
-            },
-        ],
-
-        SourceEntity={
-            "Definition":{
-
-
-
-        "DataSetIdentifierDeclarations":[
-            {
-                "Identifier": "tabpro2",
-                "DataSetArn": "arn:aws:quicksight:us-east-1:519510601754:dataset/cf5dc8fb-2022-4810-9e51-ddeeaddf855e"
-            }
-        ],
-        "Sheets":[
-            {
-                "SheetId": "46cc5963-fbfb-4619-b27c-839ec7cfdf22",
-                "Title": "tableausheet",
-                "Name": "Sheet**1",
-                "Visuals": [
-                    {
-                        "BarChartVisual": {
-                            "VisualId": "75c186b9-7be4-4607-9901-4ef09e5f2502",
-                            "Title": {
-                                "Visibility": "VISIBLE",
-                                "FormatText": {
-                                    "PlainText": "Assets as code (preview feature) exposes analysis definition in JSON format via describe-analysis-definition method. "
-                                }
-                            },
-                            "Subtitle": {
-                                "Visibility": "VISIBLE",
-                                "FormatText": {
-                                    "PlainText": "This opens up several possibilities - Storing in external code repository, development of migration tools, backup & recovery, automated dashboard creation etc. 1) Launch analysis view. 2) Launch code editor from right sidebar. 3) Explore analysis definition. 4)Change orientation (ln 117) to VERTICAL and upload. 5)Change Bars Arrangement (ln 118) to CLUSTERED and upload. 6)Try duplicating a visual (and its layout; ids need to be unique).Note - All visual types and features not supported yet."
-                                }
-                            },
-                            "ChartConfiguration": {
-                                "FieldWells": {
-                                    "BarChartAggregatedFieldWells": {
-                                        "Category": [
-                                            {
-                                                "CategoricalDimensionField": {
-                                                    "FieldId": "a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871",
-                                                    "Column": {
-                                                        "DataSetIdentifier": "tabpro2",
-                                                        "ColumnName": "Year"
-                                                    }
-                                                }
-                                            }
-                                        ],
-                                        "Values": [
-                                            {
-                                                "NumericalMeasureField": {
-                                                    "FieldId": "a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.2.1647725256871",
-                                                    "Column": {
-                                                        "DataSetIdentifier": "tabpro2",
-                                                        "ColumnName": "Value"
-                                                    },
-                                                    "AggregationFunction": {
-                                                        "SimpleNumericalAggregation": "SUM"
-                                                    }
-                                                }
-                                            }
-                                        ]
-
-
-                                    }
-                                }
-                            }
-                        }
-
-
-
-
-                    }
-
-
-
-
-                ]
-            }
-        ],
-        "DefaultConfiguration":{
-            "DefaultLayoutConfiguration": {
-                "Grid": {
-                    "ResizeOption": "FIXED",
-                    "OptimizedViewPortWidth": 1600
-                }
-            }
-
-
-        }
-        }
-        }
-    )
-    return response
+  
 
     """  client_qs.put_item(
                 TableName='tworkbooks-2i2srqro3bfvpogryufqfhd5hi-dev',
@@ -325,6 +251,30 @@ def lambda_handler(event, context):
             'DisableUseAsImportedSource': False
         }
     )
+
+    qs.create_analysis(
+        AwsAccountId=event['awsaccountId'],
+        AnalysisId="analysis" + response['Item']['id']['S'],
+        Name=event['pname'],
+        Permissions=[
+            {
+                'Principal':  'arn:aws:quicksight:'+event['region']+":"+event['awsaccountId']+':user/default/'+event['username'],
+                'Actions': [
+                    "quicksight:RestoreAnalysis",
+                    "quicksight:UpdateAnalysisPermissions",
+                    "quicksight:DeleteAnalysis",
+                    "quicksight:DescribeAnalysisPermissions",
+                    "quicksight:QueryAnalysis",
+                    "quicksight:DescribeAnalysis",
+                    "quicksight:UpdateAnalysis"
+                ]
+            },
+        ],
+
+        SourceEntity={'Definition': {'DataSetIdentifierDeclarations': [{'Identifier': 'tabpro2', 'DataSetArn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':dataset/' + "dataset" + response['Item']['id']['S']}], 'Sheets': [{'SheetId': '46cc5963-fbfb-4619-b27c-839ec7cfdf22', 'Name': sname, 'Visuals': [{chart+'ChartVisual': {'VisualId': '75c186b9-7be4-4607-9901-4ef09e5f2502', 'Title': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'Assets as code (preview feature) exposes analysis definition in JSON format via describe-analysis-definition method. '}}, 'Subtitle': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'This opens up several possibilities - Storing in external code repository, development of migration tools, backup & recovery, automated dashboard creation etc. 1) Launch analysis view. 2) Launch code editor from right sidebar. 3) Explore analysis definition. 4)Change orientation (ln 117) to VERTICAL and upload. 5)Change Bars Arrangement (ln 118) to CLUSTERED and upload. 6)Try duplicating a visual (and its layout; ids need to be unique).Note - All visual types and features not supported yet.'}}, 'ChartConfiguration': {
+            'FieldWells': {chart+'ChartAggregatedFieldWells': {'Category': [{'CategoricalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': y}}}], 'Values': [{'NumericalMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.2.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': x}, 'AggregationFunction': {'SimpleNumericalAggregation': 'SUM'}}}]}}}}}]}], 'DefaultConfiguration': {'DefaultLayoutConfiguration': {'Grid': {'ResizeOption': 'FIXED', 'OptimizedViewPortWidth': 1600}}}}}
+    )
+
     client_qs.create_template(
         AwsAccountId=event['awsaccountId'],
         TemplateId="template" + responses['Item']['id']['S'],
@@ -344,48 +294,17 @@ def lambda_handler(event, context):
         ],
         SourceEntity={
             'SourceAnalysis': {
-                'Arn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+":analysis/analysisboto3",
-                'DataSetReferences': [
-                    {
-                        'DataSetPlaceholder': 'test',
-                        'DataSetArn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':dataset/datasetboto-2'
-
-                    },
-                ]
-            },
-        },
-        VersionDescription='0'
-    )
-    client_qs.create_analysis(
-        AwsAccountId=event['awsaccountId'],
-        AnalysisId="analysis" + response['Item']['id']['S'],
-        Name=event['pname'],
-        Permissions=[
-            {
-                'Principal':  'arn:aws:quicksight:'+event['region']+":"+event['awsaccountId']+':user/default/'+event['username'],
-                'Actions': [
-                    "quicksight:RestoreAnalysis",
-                    "quicksight:UpdateAnalysisPermissions",
-                    "quicksight:DeleteAnalysis",
-                    "quicksight:DescribeAnalysisPermissions",
-                    "quicksight:QueryAnalysis",
-                    "quicksight:DescribeAnalysis",
-                    "quicksight:UpdateAnalysis"
-                ]
-            },
-        ],
-        SourceEntity={
-            'SourceTemplate': {
+                'Arn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+":analysis/"+"analysis" + response['Item']['id']['S'],
                 'DataSetReferences': [
                     {
                         'DataSetPlaceholder': 'test',
                         'DataSetArn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':dataset/' + "dataset" +
                                       response['Item']['id']['S']
                     },
-                ],
-                'Arn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':template/template'+responses['Item']['id']['S']
-            }
+                ]
+            },
         },
+        VersionDescription='0'
     )
 
     client_qs.create_dashboard(

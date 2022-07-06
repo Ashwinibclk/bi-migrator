@@ -33,6 +33,10 @@ def lambda_handler(event, context):
     server = TSC.Server(event['siteurl'], use_server_version=True)
     # signin tableau and get project id
     with server.auth.sign_in(tableau_auth):
+        resp = server.metadata.query(query)
+        print(server.metadata)
+        datasources = resp['data']
+        print(datasources)
         # get all projects on site
         projects = []
         all_project_items, pagination_item = server.projects.get()
@@ -92,7 +96,33 @@ def lambda_handler(event, context):
        # print([workbook.id for workbook in all_workbooks])
         workbooks = []
         for i in all_workbooks:
+            print(i.id)
+            file_path = server.workbooks.download(i.id, "/tmp")
+            print("\nDownloaded the file to {0}.".format(file_path))
+            print(format(file_path))
+
+            base = os.path.basename(file_path)
+            os.path.splitext(base)
+            file = os.path.splitext(base)[0]+".zip"
+            print(file)
+            src_path = format(file_path)
+            dst_path = r"/tmp/"+file
+            shutil.copy(src_path, dst_path)
+            print('Copied')
+            with zipfile.ZipFile("/tmp/"+file, "r") as zip_ref:
+                zip_ref.extractall("/tmp/")
+            lst = os.listdir("/tmp")
+            print(lst)
+
+            os.chdir('/tmp/')
+            print(os.path.splitext(base)[0])
+            result = glob.glob('*.twb')
+            print("h")
+            print(result)
+            s3 = boto3.resource('s3')
+            s3.Bucket('bim-project').upload_file(result[0], i.name+'.twb')
             workbooks.append([i.id, i.name])
+            call('rm -rf /tmp/*', shell=True)
         resp = server.metadata.query(query)
         # print(server.metadata)
         workbook = resp['data']['workbooks']
@@ -120,6 +150,8 @@ def lambda_handler(event, context):
             with server.auth.sign_in(tableau_auth):
                 all_workbooks, pagination_item = server.workbooks.get(
                     request_option)
+                # print("hello")
+                #print(i.name for i in all_workbooks)
                 all_datasources, pagination_items = server.datasources.get(
                     request_option)
                 # all_projects, pagination_items = server.projects.get(request_option)
@@ -132,17 +164,18 @@ def lambda_handler(event, context):
                 for datasource in all_datasources:
                     # get the data source
                     data_source = server.datasources.get_by_id(datasource.id)
-                    
+
                 # get the connection information
                     server.datasources.populate_connections(data_source)
                 # print the information about the first connection item
                 connection = data_source.connections[0]
             # print(connection)
                 for proj in all_datasources:
-                    
+
                     s3 = boto3.resource('s3')
-                    file_path = server.datasources.download(datasource.id,"/tmp/")
-                    
+                    file_path = server.datasources.download(
+                        datasource.id, "/tmp/")
+
                     print(format(file_path))
 
                     base = os.path.basename(file_path)
@@ -160,90 +193,89 @@ def lambda_handler(event, context):
                     result = glob.glob('*/**.csv')
                     print(result)
 
-                    
-                    s3.Bucket('bim-project').upload_file(result[0], i.name+'.csv')
+                    s3.Bucket(
+                        'bim-project').upload_file(result[0], i.name+'.csv')
                     # print(proj.id, proj.name, i.id, i.name, event['username'])
         client.put_item(
 
-                        TableName='tptds-2i2srqro3bfvpogryufqfhd5hi-dev',
-                        Item={
-                            'dsid': {
-                                'S': proj.id
-                            },
-                            'name': {
-                                'S': proj.name
-                            },
-                            'filepath': {
-                                'S': proj.name + '.' + connection.connection_type
-                            },
-                            'username': {
-                                'S': event['username']
-                            },
-                            'id': {
-                                'S': i.id
-                            },
-                            'pname': {
-                                'S': i.name
-                            },
-                            '__typename': {
-                                'S': "tptds"
-                            },
-                            '_version': {
-                                'N': "1"
-                            },
-                            'createdAt': {
-                                'S': str(datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"))
-                            },
-                            'updatedAt': {
-                                'S': str(datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"))
-                            },
-                            '_lastChangedAt': {
-                                'N': str(int(time.time()))
-                            }
+            TableName='tptds-2i2srqro3bfvpogryufqfhd5hi-dev',
+            Item={
+                'dsid': {
+                    'S': proj.id
+                },
+                'name': {
+                    'S': proj.name
+                },
+                'filepath': {
+                    'S': proj.name + '.' + connection.connection_type
+                },
+                'username': {
+                    'S': event['username']
+                },
+                'id': {
+                    'S': i.id
+                },
+                'pname': {
+                    'S': i.name
+                },
+                '__typename': {
+                    'S': "tptds"
+                },
+                '_version': {
+                    'N': "1"
+                },
+                'createdAt': {
+                    'S': str(datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"))
+                },
+                'updatedAt': {
+                    'S': str(datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"))
+                },
+                '_lastChangedAt': {
+                    'N': str(int(time.time()))
+                }
 
-                        }
+            }
 
-                    )
+        )
         for j in all_workbooks:
-                    # print(j.id, j.name, i.id, i.name, event['username'])
-                    client.put_item(
+            # print(j.id, j.name, i.id, i.name, event['username'])
+            client.put_item(
 
-                        TableName='twtp-2i2srqro3bfvpogryufqfhd5hi-dev',
-                        Item={
-                            'id': {
-                                'S': j.id
-                            },
-                            'workbookname': {
-                                'S':j.name
-                            },
-                            'username':{
-                                'S':event['username']
-                            },
-                        
-                            'pid': {
-                                'S': i.id
-                            },
-                            'pname': {
-                                'S': i.name
-                            },
-                            '__typename': {
-                                'S': "twtp"
-                            },
-                            '_version': {
-                                'N': "1"
-                            },
-                            'createdAt': {
-                                'S': str(datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"))
-                            },
-                            'updatedAt': {
-                                'S': str(datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"))
-                            },
-                            '_lastChangedAt': {
-                                'N': str(int(time.time()))
-                            }
-                        })
+                TableName='twtp-2i2srqro3bfvpogryufqfhd5hi-dev',
+                Item={
+                    'id': {
+                        'S': j.id
+                    },
+                    'workbookname': {
+                        'S': j.name
+                    },
+                    'username': {
+                        'S': event['username']
+                    },
+
+                    'pid': {
+                        'S': i.id
+                    },
+                    'pname': {
+                        'S': i.name
+                    },
+                    '__typename': {
+                        'S': "twtp"
+                    },
+                    '_version': {
+                        'N': "1"
+                    },
+                    'createdAt': {
+                        'S': str(datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"))
+                    },
+                    'updatedAt': {
+                        'S': str(datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"))
+                    },
+                    '_lastChangedAt': {
+                        'N': str(int(time.time()))
+                    }
+                })
     call('rm -rf /tmp/*', shell=True)
-            
 
     response = {
         'statusCode': 200,
