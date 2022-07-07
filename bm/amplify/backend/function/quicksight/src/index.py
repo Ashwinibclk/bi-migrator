@@ -5,7 +5,7 @@ import csv
 import json
 from collections import namedtuple
 import xml.etree.ElementTree as ET
-#import pandas as pd
+import pandas as pd
 
 dynamodb_client = boto3.client('dynamodb')
 client_qs = boto3.client('quicksight')
@@ -18,27 +18,11 @@ def lambda_handler(event, context):
     s3.Bucket(
         'bim-project').download_file(event['pname']+".csv", '/tmp/'+event['pname']+".csv")
     file = open('/tmp/'+event['pname']+".csv")
-    #df = pd.read_csv('/tmp/'+event['pname']+".csv")
+    df = pd.read_csv('/tmp/'+event['pname']+".csv")
     csvreader = csv.reader(file)
     Name = next(csvreader)
     print(Name)
     inpcol = []
-    """for i in Name:
-        print(df[i].dtype)
-    if(df[i].dtype == "object"):
-        inpcol.append(
-            {
-                'Name': i,
-                'Type': 'STRING'
-
-            })
-    if(df[i].dtype == "int64"):
-        inpcol.append(
-            {
-                'Name': i,
-                'Type': 'INTEGER'
-
-            })"""
     for i in Name:
         inpcol.append(
             {
@@ -46,6 +30,29 @@ def lambda_handler(event, context):
                 'Type': 'STRING'
 
             })
+        print(df[i].dtype)
+        """if(df[i].dtype == "object"):
+            inpcol.append(
+            {
+                'Name': i,
+                'Type': 'STRING'
+
+            })
+        if(df[i].dtype == "int64"):
+            inpcol.append(
+            {
+                'Name': i,
+                'Type': 'INTEGER'
+
+            })
+        if(df[i].dtype == "str"):
+            inpcol.append(
+            {
+                'Name': i,
+                'Type': 'STRING'
+
+            })"""
+       
     print(inpcol)
     dictionary = {"entries": [
         {"url": "s3://bim-project/"+event['pname']+".csv", "mandatory":"true"}, ]}
@@ -272,45 +279,13 @@ def lambda_handler(event, context):
         ],
 
         SourceEntity={'Definition': {'DataSetIdentifierDeclarations': [{'Identifier': 'tabpro2', 'DataSetArn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':dataset/' + "dataset" + response['Item']['id']['S']}], 'Sheets': [{'SheetId': '46cc5963-fbfb-4619-b27c-839ec7cfdf22', 'Name': sname, 'Visuals': [{chart+'ChartVisual': {'VisualId': '75c186b9-7be4-4607-9901-4ef09e5f2502', 'Title': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'Assets as code (preview feature) exposes analysis definition in JSON format via describe-analysis-definition method. '}}, 'Subtitle': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'This opens up several possibilities - Storing in external code repository, development of migration tools, backup & recovery, automated dashboard creation etc. 1) Launch analysis view. 2) Launch code editor from right sidebar. 3) Explore analysis definition. 4)Change orientation (ln 117) to VERTICAL and upload. 5)Change Bars Arrangement (ln 118) to CLUSTERED and upload. 6)Try duplicating a visual (and its layout; ids need to be unique).Note - All visual types and features not supported yet.'}}, 'ChartConfiguration': {
-            'FieldWells': {chart+'ChartAggregatedFieldWells': {'Category': [{'CategoricalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': y}}}], 'Values': [{'NumericalMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.2.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': x}, 'AggregationFunction': {'SimpleNumericalAggregation': 'SUM'}}}]}}}}}]}], 'DefaultConfiguration': {'DefaultLayoutConfiguration': {'Grid': {'ResizeOption': 'FIXED', 'OptimizedViewPortWidth': 1600}}}}}
+            'FieldWells': {chart+'ChartAggregatedFieldWells': {'Category': [{'CategoricalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': y}}}], 'Values': [{'CategoricalMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.2.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': x}, 'AggregationFunction': 'COUNT'}}]}}}}}]}], 'DefaultConfiguration': {'DefaultLayoutConfiguration': {'Grid': {'ResizeOption': 'FIXED', 'OptimizedViewPortWidth': 1600}}}}}
     )
 
-    client_qs.create_template(
+    qs.create_dashboard(
         AwsAccountId=event['awsaccountId'],
-        TemplateId="template" + responses['Item']['id']['S'],
-        Name="template" + responses['Item']['name']['S'],
-        Permissions=[
-            {
-                'Principal':  'arn:aws:quicksight:'+event['region']+":"+event['awsaccountId']+':user/default/'+event['username'],
-                'Actions': [
-                    "quicksight:CreateTemplate",
-                    "quicksight:DescribeTemplate",
-                    "quicksight:ListTemplates",
-                    "quicksight:DescribeTemplatePermissions",
-                    "quicksight:DeleteTemplate",
-                    "quicksight:UpdateTemplate",
-                ]
-            },
-        ],
-        SourceEntity={
-            'SourceAnalysis': {
-                'Arn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+":analysis/"+"analysis" + response['Item']['id']['S'],
-                'DataSetReferences': [
-                    {
-                        'DataSetPlaceholder': 'test',
-                        'DataSetArn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':dataset/' + "dataset" +
-                                      response['Item']['id']['S']
-                    },
-                ]
-            },
-        },
-        VersionDescription='0'
-    )
-
-    client_qs.create_dashboard(
-        AwsAccountId=event['awsaccountId'],
-        DashboardId="dashboard" + response['Item']['id']['S'],
-        Name=event['projectname']+'dashboard',
+        DashboardId="dashboard"+response['Item']['id']['S'],
+        Name=event['pname'],
         Permissions=[
             {
                 'Principal':  'arn:aws:quicksight:'+event['region']+":"+event['awsaccountId']+':user/default/'+event['username'],
@@ -326,20 +301,15 @@ def lambda_handler(event, context):
                 ]
             },
         ],
-        SourceEntity={
-            'SourceTemplate': {
-                'DataSetReferences': [
-                    {
-                        'DataSetPlaceholder': 'test',
-                        'DataSetArn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':dataset/' + "dataset" +
-                                      response['Item']['id']['S']
-                    },
-                ],
-                'Arn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':template/template'+responses['Item']['id']['S'],
-            }
-        },
-        VersionDescription='0',
-    )
+
+        SourceEntity={'Definition': {'DataSetIdentifierDeclarations': [{'Identifier': 'tabpro2', 'DataSetArn': 'arn:aws:quicksight:us-east-1:519510601754:dataset/'+ "dataset" + response['Item']['id']['S']}], 'Sheets': [{'SheetId': '46cc5963-fbfb-4619-b27c-839ec7cfdf22', 'Name': sname, 'Visuals': [{chart+'ChartVisual': {'VisualId': '75c186b9-7be4-4607-9901-4ef09e5f2502', 'Title': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'Assets as code (preview feature) exposes analysis definition in JSON format via describe-analysis-definition method. '}}, 'Subtitle': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'This opens up several possibilities - Storing in external code repository, development of migration tools, backup & recovery, automated dashboard creation etc. 1) Launch analysis view. 2) Launch code editor from right sidebar. 3) Explore analysis definition. 4)Change orientation (ln 117) to VERTICAL and upload. 5)Change Bars Arrangement (ln 118) to CLUSTERED and upload. 6)Try duplicating a visual (and its layout; ids need to be unique).Note - All visual types and features not supported yet.'}}, 'ChartConfiguration': {'FieldWells': {chart+'ChartAggregatedFieldWells': {'Category': [{'CategoricalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': y}}}], 'Values': [{'CategoricalMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.2.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': x}, 'AggregationFunction': "COUNT"}}]}}}}}]}], 
+
+
+'DefaultConfiguration': {'DefaultLayoutConfiguration': {'Grid': {'ResizeOption': 'FIXED', 'OptimizedViewPortWidth': 1600}}}}}
+
+       
+)
+    
     durl = client_qs.get_dashboard_embed_url(
         AwsAccountId=event['awsaccountId'],
         DashboardId="dashboard" + response['Item']['id']['S'],
