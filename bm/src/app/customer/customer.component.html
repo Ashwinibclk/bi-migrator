@@ -8,14 +8,14 @@
     >
     <h3>Sign-Up</h3>
       <div>
-        <label>UserName: </label>
+        <label>UserName * : </label>
         <input type="text" formControlName="name" autocomplete="off" />
       </div>
       
       
       <div>
         <label for="DName">
-          Department Name: </label>
+          Department Name * : </label>
       <select id="dep" formControlName="DName" (change)="select($event)" >
         <option value="MARKETING">MARKETING</option>
           <option value="FINANCE" >FINANCE</option>
@@ -27,7 +27,7 @@
       </div>
       <div>
         <label for="Did">
-          Department Id: </label>
+          Department Id * : </label>
       <input type="text" id="depid" formControlName="Did" > 
       </div>
      

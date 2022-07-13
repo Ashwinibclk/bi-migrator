@@ -170,6 +170,7 @@ pname:string=""
 
  qslogin(event:any) {
     //this.qsdis = true;
+    
    console.log(this.id);
    console.log(this.tb);
    /*this.api.ListTptds().then(result=>{

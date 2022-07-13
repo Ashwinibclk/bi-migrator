@@ -1,72 +1,40 @@
 <loading *ngIf="isLoading">{{ isLoading }}</loading>
+
 <amplify-auth-container>
+  <header id="header" style=" background-color:transparent;   height: 70px;
+  
+ 
+  
+  position: relative;">
+
+    <div class="container d-flex">
+     
+      <div class="logo mr-auto">
+        <h1 class="text-light"><a href="index.html"><span>Bi-migrator  <img src="assets/img/bar.gif"></span></a></h1>
+        
+      </div>
+  
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li ><a href="/" style="text-decoration:none;">Home</a></li>
+  
+          <li ><a href="https://vaidhyamegha.com/" style="text-decoration:none;">About</a>
+           
+          </li>
+            <li style="margin-left:50px"> <amplify-sign-out></amplify-sign-out></li>
+       
+  
+          
+  
+        </ul>
+      </nav>
+  
+    </div>
+  </header>
   <amplify-authenticator *ngIf="authState !== 'signedin'"></amplify-authenticator>
   
  <div *ngIf="authState === 'signedin' && user" class="App" >
-  <!--<div *ngIf="aws === true" class="modal"  role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-          </div>
-          <form
-          autocomplete="off"
-          [formGroup]="createFormaws"
-          
-        >
-          <h3>Please Provide Your AWS Credentials</h3>
-                  <div>
-                    <label>Access Key Id: </label>
-                    <input type="password" formControlName="access" autocomplete="off" />
-                  </div>
-                  <div>
-                    <label>Secret Access Key Id: </label>
-                    <input type="password" formControlName="secret" autocomplete="off" />
-                  </div>
-                  <div>
-                    <label>Username: </label>
-                    <input type="text" formControlName="username" autocomplete="off" />
-                  </div>
-                  <div>
-                    <label>AwsaccountId: </label>
-                    <input type="text" formControlName="awsaccountId" autocomplete="off" />
-                  </div>
-                  <br>
-                  <div>
-                  <input type="checkbox" style="width:auto; height:auto; display: inline;" (change)="check()"/><p style="display:inline; color:red;">By checking on this, these are the policies that will be attached with your account to proceed </p><br>
-                   <li>AmazonDynamoDBFullAccess</li>
-                   <li>AWSLambda_FullAccess</li>
-                   <li>IAMFullAccess</li>
-                   <li>AmazonS3FullAccess</li>
-                   <li>QuicksightFullAccess</li>
-           
-                  </div>
-                  <div>
-                   
-                    <button type="submit" (click)="oncreateaws(this.createFormaws.value)" autocomplete="off" >Submit</button>
-                  </div>
-                  </form>
-            </div>
-            </div>
-            </div>
-          -->
-    
-
-
-<!--<div class="topnav">
-  <a style="padding:10px 8px;"><amplify-sign-out></amplify-sign-out></a>
-  <a style="font-style:italic; color:rgb(224, 190, 56)">{{user['attributes']['email']}}</a>
-  <a href="https://vaidhyamegha.com/contact/">Contact</a>
-  <a href="https://vaidhyamegha.com/about/">About</a>
  
-  <a href="#">Home</a>
-  <a href="#">Dashboard</a>
-  
-    
-   
-  <a href="" style="float:left; font-size: 24px; color:rgb(173, 209, 12); ">Bi-Migrator</a>
- 
-
-</div>-->
 <!-- ======= Top Bar ======= -->
 <section id="topbar" class="d-none d-lg-block">
   <div class="container d-flex">
@@ -85,33 +53,7 @@
 </section>
 
 <!-- ======= Header ======= -->
-<header id="header">
 
-  <div class="container d-flex">
-   
-    <div class="logo mr-auto">
-      <h1 class="text-light"><a href="index.html"><span>Bi-migrator  <img src="assets/img/bar.gif"></span></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-    </div>
-
-    <nav class="nav-menu d-none d-lg-block">
-      <ul>
-        <li ><a href="/" style="text-decoration:none;">Home</a></li>
-
-        <li ><a href="https://vaidhyamegha.com/" style="text-decoration:none;">About</a>
-         
-        </li>
-          <li style="margin-left:50px"> <amplify-sign-out></amplify-sign-out></li>
-     
-
-        
-
-      </ul>
-    </nav><!-- .nav-menu -->
-
-  </div>
-</header><!-- End Header -->
 
 <!-- ======= Hero Section ======= -->
 <section  *ngIf="showapp" id="hero" class="d-flex align-items-center">
@@ -147,59 +89,6 @@
 
 
 
-<!--<div *ngIf="showapp" style="margin-top: -20px;">
-  <amplify-auth-container>
-  <amplify-authenticator *ngIf="authState !== 'signedin'"></amplify-authenticator>
-  
-  <div *ngIf="authState === 'signedin' && user" class="App">
-    <amplify-sign-out></amplify-sign-out>
-    <div>Hello, {{user.username}}</div>
-   
-  </div>
-  </amplify-auth-container></div>-->
-
-  <!--<div *ngIf="showapp" class="row">
-   
-
-    <div class="column" style="background-color:whitesmoke;border:10px solid white; border-radius: 20px; overflow: scroll; border-right:20px solid white; ">
-      <p style="margin-left:10%; font-size: medium; color:green"></p>
-      <div class="board" *ngFor="let i of tbs">
-        <li>User {{i.username}} has migrated project {{i.pname}} successfully!!</li>
-      </div>
-    </div>
-    <div class="column" style="background-color:whitesmoke; border:10px solid white;border-left:20px solid white; border-radius: 20px; overflow: scroll;">
-      <button (click)="showm()" style="background-color:rgb(26, 133, 58); width:200px; height:50px; font-size:15px; color:white;  margin-top: 10%; margin-left:30%; border-radius: 20px;">Migrate My Project</button>
-      <p style="font-size:18px; color: rgb(15, 119, 204); margin-left: 2%;">Comments:</p>
-      <form  autocomplete="off"
-      [formGroup]="createFormtb1"
-      (ngSubmit)="onCreatetb1(createFormtb1.value)">
-        <div > 
-        <textarea name="comments" id="comments" formControlName="comments" rows="4" cols="45" style="font-family:sans-serif;font-size: 18px; border:none;border-radius: 10px; margin-left: 2%;">
-      
-        </textarea></div>
-        <input type="submit" value="Post" style="color:white; background-color:green; border-radius: 10px;font-size: 15px; width:80px; height:40px;margin-left: 2%; ">
-        
-       <div *ngFor="let i of tbs1" class="comment" style="overflow:scroll; margin-left: 2%;">
-          <li>{{i.comments}}</li>
-       </div>
-        </form>
-    </div>
-  </div>
-  
-</div>
-
-<div *ngIf="logcred "class="modal"  role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-      </div>
-      <div class="modal-body">
-       <button (click)="method()" style="background-color:rgb(26, 133, 58); width:200px; height:50px; font-size:15px; color:white;   margin-left:25%; border-radius: 20px;">  Please Login!!! </button>
-        
-      </div>
-        </div>
-        </div>
-        </div>-->
       
       </div>
 </section>

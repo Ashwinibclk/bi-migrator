@@ -14,6 +14,10 @@
     
   }
 
+  .mybtn:focus{
+    color: rgb(9, 83, 210);
+  }
+
   .form-body form{
     overflow: scroll;
     height: 550px;

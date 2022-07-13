@@ -9,20 +9,20 @@
   >
   <h3>Tableau Login</h3>
     <div>
-      <label>UserName: </label>
-      <input type="text" formControlName="username" autocomplete="off" />
+      <label>UserName * : </label>
+      <input type="text" formControlName="username" autocomplete="off" required />
     </div>
     <div>
-      <label>Password: </label>
-      <input type="password" formControlName="password" autocomplete="off" />
+      <label>Password * : </label>
+      <input type="password" formControlName="password" autocomplete="off" required />
     </div>
     <div>
-      <label>Sitename: </label>
-      <input type="text" formControlName="sitename" autocomplete="off" />
+      <label>Sitename * : </label>
+      <input type="text" formControlName="sitename" autocomplete="off"  required/>
     </div>
     <div>
-      <label>SiteURL: </label>
-      <input type="text" formControlName="siteurl" autocomplete="off" />
+      <label>SiteURL * : </label>
+      <input type="text" formControlName="siteurl" autocomplete="off" required />
     </div>
     <button type="button" (click)="tabauth(createFormtb.value)">TestConnection</button>
     <button type="submit" >Discover</button>
@@ -43,7 +43,7 @@
             <h6><i class="fa fa-duotone fa-folder" ></i> PROJECTS</h6>
             <div *ngFor="let i of res2;">
             <ul style="list-style-type:none; color:black; "  >
-              <li style="padding:0%; height:20px;"><button style=" background-color: transparent;height:fit-content; width:fit-content; padding:0%;font-size: 15px; border:none;--hover-color:white; " (click)="qslogin($event)" value={{i}}>{{i}}</button></li>
+              <li style="padding:0%; height:20px;"><button class="mybtn" style=" background-color: transparent;height:fit-content; width:fit-content; padding:0%;font-size: 15px; border:none;--hover-color:white; "  (click)="qslogin($event)" value={{i}}>{{i}}</button></li>
               
             </ul> 
             </div> 
@@ -112,20 +112,20 @@
                   </div>-->
                   <h3>Quicksight Login</h3>
                     <div>
-                      <label>AwsAccountId: </label>
+                      <label>AwsAccountId * : </label>
                       <input type="text" formControlName="awsaccountId" autocomplete="off" />
                     </div>
                     <div>
-                      <label>Awsregion: </label>
+                      <label>Awsregion * : </label>
                       <input type="text" formControlName="region" autocomplete="off" />
                     </div>
                      
                     <div>
-                      <label>Aws Username: </label>
+                      <label>Aws Username * : </label>
                       <input type="text" formControlName="username" autocomplete="off" />
                     </div>
                     <div>
-                      <label>Quicksight Project Name </label>
+                      <label>Quicksight Project Name * :</label>
                       <input type="text" formControlName="projectname" autocomplete="off" />
                     </div>
                    
