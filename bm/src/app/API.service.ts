@@ -1488,6 +1488,11 @@ export type tabauth = {
   body: string;
 };
 
+export type getwb = {
+  __typename: "getwb";
+  body: string;
+};
+
 export type ModelTableauloginFilterInput = {
   id?: ModelIDInput | null;
   username?: ModelStringInput | null;
@@ -4813,6 +4818,11 @@ export type GetawsQuery = {
 
 export type TableauauthQuery = {
   __typename: "tabauth";
+  body: string;
+};
+
+export type GetwbsQuery = {
+  __typename: "getwb";
   body: string;
 };
 
@@ -14571,6 +14581,31 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <TableauauthQuery>response.data.tableauauth;
+  }
+  async Getwbs(
+    username: string,
+    password: string,
+    sitename: string,
+    siteurl: string,
+    projectname: string
+  ): Promise<GetwbsQuery> {
+    const statement = `query Getwbs($username: String!, $password: String!, $sitename: String!, $siteurl: String!, $projectname: String!) {
+        getwbs(username: $username, password: $password, sitename: $sitename, siteurl: $siteurl, projectname: $projectname) {
+          __typename
+          body
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      username,
+      password,
+      sitename,
+      siteurl,
+      projectname
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetwbsQuery>response.data.getwbs;
   }
   async GetTableaulogin(id: string): Promise<GetTableauloginQuery> {
     const statement = `query GetTableaulogin($id: ID!) {

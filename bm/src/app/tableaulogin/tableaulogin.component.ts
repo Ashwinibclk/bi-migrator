@@ -28,15 +28,23 @@ pname:string=""
   response: any;
   tabdis: boolean = false;
   qsdis: boolean =false;
+  r5:string="";
   r2: string = "";
   r3: string = "";
   r4: string = "";
+  username:string="";
+  password:string="";
+  sitename:string="";
+  siteurl:string="";
+  projectname:string="";
+
   tp:Array<tprojects>=[];
   qs:Array<tdatasources>=[];
   res2: Array<any> = [];
   res3: Array<any> = [];
   res4: Array<any> = [];
   res5: Array<any> = [];
+  res6:Array<any>=[];
   public createFormtb: any;
   public createFormqs: any;
   public tw:Array<twtp>=[];
@@ -115,7 +123,10 @@ pname:string=""
   async onCreatetb(todo: any) {
     this.isLoading = true;
     this.tabdis = true;
-
+    this.username=todo.username;
+    this.password=todo.password;
+    this.sitename=todo.sitename;
+    this.siteurl=todo.siteurl;
     this.api.GetMessage(todo.username, todo.password, todo.sitename, todo.siteurl).then((result) => {
       console.log(result.body); console.log(result.body1); console.log(result.body2);
      this.r2=result.body.slice(1,-1);
@@ -170,9 +181,22 @@ pname:string=""
 
  qslogin(event:any) {
     //this.qsdis = true;
-    
+   console.log(event.target.value) 
    console.log(this.id);
    console.log(this.tb);
+   this.api.Getwbs(this.username,this.password,this.sitename,this.siteurl,event.target.value).then((result) => {
+    console.log(result.body);
+   this.r5=result.body.slice(1,-1);
+   this.res6=this.r5.split(",");
+  })
+  .catch((e) => {
+    this.isLoading = false;
+    this.tabdis = false;
+   
+    alert("invalid credentials!!!");
+    console.log("error creating restaurant...", e);
+  });
+
    /*this.api.ListTptds().then(result=>{
      this.tb=result.items;
      console.log(this.tb);

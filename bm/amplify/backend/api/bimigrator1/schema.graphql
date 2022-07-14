@@ -227,6 +227,7 @@ type Query{
   getquick(dsid:String! id:String! awsaccountId:String!  projectname:String!   region:String! pname:String! username:String!):quick!
   getaws(access:String! secret:String! username:String! awsaccountId:String!):aws!
   tableauauth(username:String! password:String! sitename:String! siteurl:String!):tabauth!
+  getwbs(username:String! password:String! sitename:String! siteurl:String! projectname:String!): getwb!
 }
 
 
@@ -240,6 +241,10 @@ type tptds @model{
   pname:String!
   filepath:String!
   username:String!
+}
+
+type getwb {
+  body:String!
 }
 
 type twtp @model{
@@ -260,3 +265,4 @@ type xmlinput @model{
   formula:String!
   charttype:String!
 }
+

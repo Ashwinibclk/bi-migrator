@@ -67,6 +67,23 @@ query Tableauauth(
     body
   }
 }
+query Getwbs(
+  $username: String!
+  $password: String!
+  $sitename: String!
+  $siteurl: String!
+  $projectname: String!
+) {
+  getwbs(
+    username: $username
+    password: $password
+    sitename: $sitename
+    siteurl: $siteurl
+    projectname: $projectname
+  ) {
+    body
+  }
+}
 query GetTableaulogin($id: ID!) {
   getTableaulogin(id: $id) {
     id

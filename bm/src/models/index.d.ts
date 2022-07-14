@@ -35,6 +35,11 @@ export declare class tabauth {
   constructor(init: ModelInit<tabauth>);
 }
 
+export declare class getwb {
+  readonly body: string;
+  constructor(init: ModelInit<getwb>);
+}
+
 type TableauloginMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }

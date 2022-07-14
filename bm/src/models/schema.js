@@ -1980,7 +1980,19 @@ export const schema = {
                     "attributes": []
                 }
             }
+        },
+        "getwb": {
+            "name": "getwb",
+            "fields": {
+                "body": {
+                    "name": "body",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                }
+            }
         }
     },
-    "version": "68d57fc851b5c8838c0975ec4ff23c81"
+    "version": "729ed9f29382563c1e2223adf377d564"
 };
