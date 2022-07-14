@@ -12,7 +12,7 @@ client_qs = boto3.client('quicksight')
 s3 = boto3.resource("s3")
 qs = boto3.client('qs')
 axis = []
-
+title = ''
 
 def lambda_handler(event, context):
     s3.Bucket(
@@ -65,13 +65,14 @@ def lambda_handler(event, context):
         'bim-project').download_file(event['pname']+".twb", '/tmp/'+event['pname']+".twb")
     tree = ET.parse('/tmp/'+event['pname']+'.twb')
     # get title
-    """for i in tree.findall('worksheets'):
+    for i in tree.findall('worksheets'):
         for j in i.findall('worksheet'):
             for a in j.findall('layout-options'):
                 for b in a.findall('title'):
                     for c in b.findall('formatted-text'):
+                        global title
                         title = c.find('run').text
-                        print(title)"""
+                        print(title)
 
     for i in tree.findall('worksheets'):
         for j in i.findall('worksheet'):
@@ -278,7 +279,7 @@ def lambda_handler(event, context):
             },
         ],
 
-        SourceEntity={'Definition': {'DataSetIdentifierDeclarations': [{'Identifier': 'tabpro2', 'DataSetArn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':dataset/' + "dataset" + response['Item']['id']['S']}], 'Sheets': [{'SheetId': '46cc5963-fbfb-4619-b27c-839ec7cfdf22', 'Name': sname, 'Visuals': [{chart+'ChartVisual': {'VisualId': '75c186b9-7be4-4607-9901-4ef09e5f2502', 'Title': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'Assets as code (preview feature) exposes analysis definition in JSON format via describe-analysis-definition method. '}}, 'Subtitle': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'This opens up several possibilities - Storing in external code repository, development of migration tools, backup & recovery, automated dashboard creation etc. 1) Launch analysis view. 2) Launch code editor from right sidebar. 3) Explore analysis definition. 4)Change orientation (ln 117) to VERTICAL and upload. 5)Change Bars Arrangement (ln 118) to CLUSTERED and upload. 6)Try duplicating a visual (and its layout; ids need to be unique).Note - All visual types and features not supported yet.'}}, 'ChartConfiguration': {
+        SourceEntity={'Definition': {'DataSetIdentifierDeclarations': [{'Identifier': 'tabpro2', 'DataSetArn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':dataset/' + "dataset" + response['Item']['id']['S']}], 'Sheets': [{'SheetId': '46cc5963-fbfb-4619-b27c-839ec7cfdf22','Title': title if title!='' else 'tabsheet1', 'Name': sname, 'Visuals': [{chart+'ChartVisual': {'VisualId': '75c186b9-7be4-4607-9901-4ef09e5f2502', 'Title': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'Assets as code (preview feature) exposes analysis definition in JSON format via describe-analysis-definition method. '}}, 'Subtitle': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'This opens up several possibilities - Storing in external code repository, development of migration tools, backup & recovery, automated dashboard creation etc. 1) Launch analysis view. 2) Launch code editor from right sidebar. 3) Explore analysis definition. 4)Change orientation (ln 117) to VERTICAL and upload. 5)Change Bars Arrangement (ln 118) to CLUSTERED and upload. 6)Try duplicating a visual (and its layout; ids need to be unique).Note - All visual types and features not supported yet.'}}, 'ChartConfiguration': {
             'FieldWells': {chart+'ChartAggregatedFieldWells': {'Category': [{'CategoricalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': y}}}], 'Values': [{'CategoricalMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.2.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': x}, 'AggregationFunction': 'COUNT'}}]}}}}}]}], 'DefaultConfiguration': {'DefaultLayoutConfiguration': {'Grid': {'ResizeOption': 'FIXED', 'OptimizedViewPortWidth': 1600}}}}}
     )
 
@@ -302,7 +303,7 @@ def lambda_handler(event, context):
             },
         ],
 
-        SourceEntity={'Definition': {'DataSetIdentifierDeclarations': [{'Identifier': 'tabpro2', 'DataSetArn': 'arn:aws:quicksight:us-east-1:519510601754:dataset/'+ "dataset" + response['Item']['id']['S']}], 'Sheets': [{'SheetId': '46cc5963-fbfb-4619-b27c-839ec7cfdf22', 'Name': sname, 'Visuals': [{chart+'ChartVisual': {'VisualId': '75c186b9-7be4-4607-9901-4ef09e5f2502', 'Title': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'Assets as code (preview feature) exposes analysis definition in JSON format via describe-analysis-definition method. '}}, 'Subtitle': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'This opens up several possibilities - Storing in external code repository, development of migration tools, backup & recovery, automated dashboard creation etc. 1) Launch analysis view. 2) Launch code editor from right sidebar. 3) Explore analysis definition. 4)Change orientation (ln 117) to VERTICAL and upload. 5)Change Bars Arrangement (ln 118) to CLUSTERED and upload. 6)Try duplicating a visual (and its layout; ids need to be unique).Note - All visual types and features not supported yet.'}}, 'ChartConfiguration': {'FieldWells': {chart+'ChartAggregatedFieldWells': {'Category': [{'CategoricalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': y}}}], 'Values': [{'CategoricalMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.2.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': x}, 'AggregationFunction': "COUNT"}}]}}}}}]}], 
+        SourceEntity={'Definition': {'DataSetIdentifierDeclarations': [{'Identifier': 'tabpro2', 'DataSetArn': 'arn:aws:quicksight:us-east-1:519510601754:dataset/'+ "dataset" + response['Item']['id']['S']}], 'Sheets': [{'SheetId': '46cc5963-fbfb-4619-b27c-839ec7cfdf22','Title': title if title!='' else 'tabsheet1', 'Name': sname, 'Visuals': [{chart+'ChartVisual': {'VisualId': '75c186b9-7be4-4607-9901-4ef09e5f2502', 'Title': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'Assets as code (preview feature) exposes analysis definition in JSON format via describe-analysis-definition method. '}}, 'Subtitle': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'This opens up several possibilities - Storing in external code repository, development of migration tools, backup & recovery, automated dashboard creation etc. 1) Launch analysis view. 2) Launch code editor from right sidebar. 3) Explore analysis definition. 4)Change orientation (ln 117) to VERTICAL and upload. 5)Change Bars Arrangement (ln 118) to CLUSTERED and upload. 6)Try duplicating a visual (and its layout; ids need to be unique).Note - All visual types and features not supported yet.'}}, 'ChartConfiguration': {'FieldWells': {chart+'ChartAggregatedFieldWells': {'Category': [{'CategoricalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': y}}}], 'Values': [{'CategoricalMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.2.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': x}, 'AggregationFunction': "COUNT"}}]}}}}}]}], 
 
 
 'DefaultConfiguration': {'DefaultLayoutConfiguration': {'Grid': {'ResizeOption': 'FIXED', 'OptimizedViewPortWidth': 1600}}}}}
