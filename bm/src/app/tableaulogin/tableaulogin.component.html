@@ -38,6 +38,15 @@
           
         >
         <h6 style="color:white;">Select Project to migrate</h6>
+        <div class="column" style="background-image: linear-gradient(rgb(123, 255, 0), yellow);">
+          <h6><i class="fa fa-regular fa-database"></i> DATASOURCES</h6>
+          <div *ngFor="let i of res3;">
+           <ul style="list-style-type:none; color:black; font-size: 10px;"  >
+             <li style="padding:0%; height:20px;"><button disabled="true" style="background-color: transparent;height:fit-content; width:fit-content;padding:0%;border:none; font-size: 15px; --hover-color:brown;" >{{i}}</button></li>
+             
+           </ul> 
+           </div> 
+       </div>
           <div class="column" style="background-image: linear-gradient(rgb(123, 255, 0), yellow);">
             
             <h6><i class="fa fa-duotone fa-folder" ></i> PROJECTS</h6>
@@ -47,27 +56,20 @@
               
             </ul> 
             </div> 
+           
           </div>
           <div class="column" style="background-image: linear-gradient(rgb(123, 255, 0), yellow);">
            <h6><i class="fa fa-duotone fa-table"></i> WORKBOOKS</h6>
            <ul style="list-style-type:none; color:black; font-size: 10px;"  >
-           <div *ngFor="let i of res4;">
+           <div *ngFor="let i of res6;">
             
-              <li style="padding:0%; font-weight: normal; height:20px;"><button  disabled="true"  style=" background-color: transparent; width:fit-content;border:none; padding:0% ; font-size: 15px;--hover-color:brown;">{{i}}</button></li>
+              <li style="padding:0%; font-weight: normal; height:20px;"><button  disabled="true"  style=" background-color: transparent; width:fit-content;border:none; padding:0% ; font-size: 15px;--hover-color:brown; color:blue;">{{i}}</button></li>
               
            
             </div> 
           </ul> 
           </div>
-          <div class="column" style="background-image: linear-gradient(rgb(123, 255, 0), yellow);">
-             <h6><i class="fa fa-regular fa-database"></i> DATASOURCES</h6>
-             <div *ngFor="let i of res3;">
-              <ul style="list-style-type:none; color:black; font-size: 10px;"  >
-                <li style="padding:0%; height:20px;"><button disabled="true" style="background-color: transparent;height:fit-content; width:fit-content;padding:0%;border:none; font-size: 15px; --hover-color:brown;" >{{i}}</button></li>
-                
-              </ul> 
-              </div> 
-          </div>
+          
             
       <!--    <div class="column" style="background-image: linear-gradient(rgb(123, 255, 0), yellow);">
             <h6><i class="fa fa-bar-chart" aria-hidden="true"></i> VIEWS</h6>

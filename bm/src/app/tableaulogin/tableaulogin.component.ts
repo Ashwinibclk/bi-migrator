@@ -21,6 +21,7 @@ export class TableauloginComponent implements OnInit, OnDestroy {
   isLoading = false;
   
 public tb:Array<tptds>=[];
+tree:boolean=false;
 dashboardurl:string="";
 pname:string=""
   id:string="";
@@ -181,13 +182,15 @@ pname:string=""
 
  qslogin(event:any) {
     //this.qsdis = true;
+    this.tree=true;
    console.log(event.target.value) 
    console.log(this.id);
    console.log(this.tb);
-   this.api.Getwbs(this.username,this.password,this.sitename,this.siteurl,event.target.value).then((result) => {
+   this.api.Getwbs(this.username,this.password,this.sitename,this.siteurl,event.target.value.slice(1)).then((result) => {
     console.log(result.body);
    this.r5=result.body.slice(1,-1);
    this.res6=this.r5.split(",");
+   console.log(this.res6);
   })
   .catch((e) => {
     this.isLoading = false;

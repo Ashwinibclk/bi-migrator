@@ -33,11 +33,15 @@
         },
         "project": {
           "deploymentBucketName": "amplify-bimigrator1-dev-111935-deployment",
-          "s3Key": "amplify-builds/project-39574b48334e47763478-build.zip"
+          "s3Key": "amplify-builds/project-50586d38755a6255364b-build.zip"
         },
         "awsauth": {
           "deploymentBucketName": "amplify-bimigrator1-dev-111935-deployment",
           "s3Key": "amplify-builds/awsauth-4b4a643832712f333250-build.zip"
+        },
+        "tree": {
+          "deploymentBucketName": "amplify-bimigrator1-dev-111935-deployment",
+          "s3Key": "amplify-builds/tree-74613148714577593650-build.zip"
         }
       }
     }
