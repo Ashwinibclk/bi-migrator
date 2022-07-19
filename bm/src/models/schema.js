@@ -746,6 +746,20 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "username": {
+                    "name": "username",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "region": {
+                    "name": "region",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
                 "qenv": {
                     "name": "qenv",
                     "isArray": false,
@@ -758,6 +772,20 @@ export const schema = {
                         "connectionType": "HAS_ONE",
                         "associatedWith": "id",
                         "targetName": "i"
+                    }
+                },
+                "xmlinput": {
+                    "name": "xmlinput",
+                    "isArray": true,
+                    "type": {
+                        "model": "xmlinput"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "quicksight"
                     }
                 },
                 "createdAt": {
@@ -786,6 +814,83 @@ export const schema = {
             },
             "syncable": true,
             "pluralName": "Quicksightlogins",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                }
+            ]
+        },
+        "xmlinput": {
+            "name": "xmlinput",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "sheetname": {
+                    "name": "sheetname",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "xaxis": {
+                    "name": "xaxis",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "yaxis": {
+                    "name": "yaxis",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "charttype": {
+                    "name": "charttype",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "quicksight": {
+                    "name": "quicksight",
+                    "isArray": false,
+                    "type": {
+                        "model": "Quicksightlogin"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetName": "qsid"
+                    }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "xmlinputs",
             "attributes": [
                 {
                     "type": "model",
@@ -1812,91 +1917,6 @@ export const schema = {
                     "properties": {}
                 }
             ]
-        },
-        "xmlinput": {
-            "name": "xmlinput",
-            "fields": {
-                "id": {
-                    "name": "id",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "sheetname": {
-                    "name": "sheetname",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "xaxis": {
-                    "name": "xaxis",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "yaxis": {
-                    "name": "yaxis",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "dimensional": {
-                    "name": "dimensional",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "numerical": {
-                    "name": "numerical",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "formula": {
-                    "name": "formula",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "charttype": {
-                    "name": "charttype",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "createdAt": {
-                    "name": "createdAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                },
-                "updatedAt": {
-                    "name": "updatedAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                }
-            },
-            "syncable": true,
-            "pluralName": "xmlinputs",
-            "attributes": [
-                {
-                    "type": "model",
-                    "properties": {}
-                }
-            ]
         }
     },
     "enums": {
@@ -1994,5 +2014,5 @@ export const schema = {
             }
         }
     },
-    "version": "729ed9f29382563c1e2223adf377d564"
+    "version": "ae85bfddb4edadf052f441030cd2bbb2"
 };

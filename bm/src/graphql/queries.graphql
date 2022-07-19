@@ -193,6 +193,8 @@ query GetQuicksightlogin($id: ID!) {
   getQuicksightlogin(id: $id) {
     id
     awsaccountId
+    username
+    region
     qenv {
       name
       Qpid
@@ -213,6 +215,22 @@ query GetQuicksightlogin($id: ID!) {
       _deleted
       _lastChangedAt
     }
+    xmlinput {
+      items {
+        id
+        sheetname
+        xaxis
+        yaxis
+        charttype
+        qsid
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+    }
     createdAt
     updatedAt
     _version
@@ -229,6 +247,8 @@ query ListQuicksightlogins(
     items {
       id
       awsaccountId
+      username
+      region
       qenv {
         name
         Qpid
@@ -238,6 +258,9 @@ query ListQuicksightlogins(
         _version
         _deleted
         _lastChangedAt
+      }
+      xmlinput {
+        nextToken
       }
       createdAt
       updatedAt
@@ -264,6 +287,8 @@ query SyncQuicksightlogins(
     items {
       id
       awsaccountId
+      username
+      region
       qenv {
         name
         Qpid
@@ -273,6 +298,9 @@ query SyncQuicksightlogins(
         _version
         _deleted
         _lastChangedAt
+      }
+      xmlinput {
+        nextToken
       }
       createdAt
       updatedAt
@@ -2716,10 +2744,32 @@ query GetXmlinput($id: ID!) {
     sheetname
     xaxis
     yaxis
-    dimensional
-    numerical
-    formula
     charttype
+    qsid
+    quicksight {
+      id
+      awsaccountId
+      username
+      region
+      qenv {
+        name
+        Qpid
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      xmlinput {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
     createdAt
     updatedAt
     _version
@@ -2738,10 +2788,19 @@ query ListXmlinputs(
       sheetname
       xaxis
       yaxis
-      dimensional
-      numerical
-      formula
       charttype
+      qsid
+      quicksight {
+        id
+        awsaccountId
+        username
+        region
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
       createdAt
       updatedAt
       _version
@@ -2769,10 +2828,19 @@ query SyncXmlinputs(
       sheetname
       xaxis
       yaxis
-      dimensional
-      numerical
-      formula
       charttype
+      qsid
+      quicksight {
+        id
+        awsaccountId
+        username
+        region
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
       createdAt
       updatedAt
       _version

@@ -108,6 +108,8 @@ subscription OnCreateQuicksightlogin {
   onCreateQuicksightlogin {
     id
     awsaccountId
+    username
+    region
     qenv {
       name
       Qpid
@@ -127,6 +129,22 @@ subscription OnCreateQuicksightlogin {
       _version
       _deleted
       _lastChangedAt
+    }
+    xmlinput {
+      items {
+        id
+        sheetname
+        xaxis
+        yaxis
+        charttype
+        qsid
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
     }
     createdAt
     updatedAt
@@ -139,6 +157,8 @@ subscription OnUpdateQuicksightlogin {
   onUpdateQuicksightlogin {
     id
     awsaccountId
+    username
+    region
     qenv {
       name
       Qpid
@@ -159,6 +179,22 @@ subscription OnUpdateQuicksightlogin {
       _deleted
       _lastChangedAt
     }
+    xmlinput {
+      items {
+        id
+        sheetname
+        xaxis
+        yaxis
+        charttype
+        qsid
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+    }
     createdAt
     updatedAt
     _version
@@ -170,6 +206,8 @@ subscription OnDeleteQuicksightlogin {
   onDeleteQuicksightlogin {
     id
     awsaccountId
+    username
+    region
     qenv {
       name
       Qpid
@@ -189,6 +227,22 @@ subscription OnDeleteQuicksightlogin {
       _version
       _deleted
       _lastChangedAt
+    }
+    xmlinput {
+      items {
+        id
+        sheetname
+        xaxis
+        yaxis
+        charttype
+        qsid
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
     }
     createdAt
     updatedAt
@@ -2651,10 +2705,32 @@ subscription OnCreateXmlinput {
     sheetname
     xaxis
     yaxis
-    dimensional
-    numerical
-    formula
     charttype
+    qsid
+    quicksight {
+      id
+      awsaccountId
+      username
+      region
+      qenv {
+        name
+        Qpid
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      xmlinput {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
     createdAt
     updatedAt
     _version
@@ -2668,10 +2744,32 @@ subscription OnUpdateXmlinput {
     sheetname
     xaxis
     yaxis
-    dimensional
-    numerical
-    formula
     charttype
+    qsid
+    quicksight {
+      id
+      awsaccountId
+      username
+      region
+      qenv {
+        name
+        Qpid
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      xmlinput {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
     createdAt
     updatedAt
     _version
@@ -2685,10 +2783,32 @@ subscription OnDeleteXmlinput {
     sheetname
     xaxis
     yaxis
-    dimensional
-    numerical
-    formula
     charttype
+    qsid
+    quicksight {
+      id
+      awsaccountId
+      username
+      region
+      qenv {
+        name
+        Qpid
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      xmlinput {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
     createdAt
     updatedAt
     _version

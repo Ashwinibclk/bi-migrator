@@ -120,6 +120,8 @@ mutation CreateQuicksightlogin(
   createQuicksightlogin(input: $input, condition: $condition) {
     id
     awsaccountId
+    username
+    region
     qenv {
       name
       Qpid
@@ -139,6 +141,22 @@ mutation CreateQuicksightlogin(
       _version
       _deleted
       _lastChangedAt
+    }
+    xmlinput {
+      items {
+        id
+        sheetname
+        xaxis
+        yaxis
+        charttype
+        qsid
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
     }
     createdAt
     updatedAt
@@ -154,6 +172,8 @@ mutation UpdateQuicksightlogin(
   updateQuicksightlogin(input: $input, condition: $condition) {
     id
     awsaccountId
+    username
+    region
     qenv {
       name
       Qpid
@@ -174,6 +194,22 @@ mutation UpdateQuicksightlogin(
       _deleted
       _lastChangedAt
     }
+    xmlinput {
+      items {
+        id
+        sheetname
+        xaxis
+        yaxis
+        charttype
+        qsid
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+    }
     createdAt
     updatedAt
     _version
@@ -188,6 +224,8 @@ mutation DeleteQuicksightlogin(
   deleteQuicksightlogin(input: $input, condition: $condition) {
     id
     awsaccountId
+    username
+    region
     qenv {
       name
       Qpid
@@ -207,6 +245,22 @@ mutation DeleteQuicksightlogin(
       _version
       _deleted
       _lastChangedAt
+    }
+    xmlinput {
+      items {
+        id
+        sheetname
+        xaxis
+        yaxis
+        charttype
+        qsid
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
     }
     createdAt
     updatedAt
@@ -2897,10 +2951,32 @@ mutation CreateXmlinput(
     sheetname
     xaxis
     yaxis
-    dimensional
-    numerical
-    formula
     charttype
+    qsid
+    quicksight {
+      id
+      awsaccountId
+      username
+      region
+      qenv {
+        name
+        Qpid
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      xmlinput {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
     createdAt
     updatedAt
     _version
@@ -2917,10 +2993,32 @@ mutation UpdateXmlinput(
     sheetname
     xaxis
     yaxis
-    dimensional
-    numerical
-    formula
     charttype
+    qsid
+    quicksight {
+      id
+      awsaccountId
+      username
+      region
+      qenv {
+        name
+        Qpid
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      xmlinput {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
     createdAt
     updatedAt
     _version
@@ -2937,10 +3035,32 @@ mutation DeleteXmlinput(
     sheetname
     xaxis
     yaxis
-    dimensional
-    numerical
-    formula
     charttype
+    qsid
+    quicksight {
+      id
+      awsaccountId
+      username
+      region
+      qenv {
+        name
+        Qpid
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      xmlinput {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
     createdAt
     updatedAt
     _version

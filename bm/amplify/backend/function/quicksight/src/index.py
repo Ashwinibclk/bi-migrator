@@ -116,40 +116,10 @@ def lambda_handler(event, context):
                 for c in b.findall('calculations'):
                     for d in c[0].iter('calculation'):
                         calculatedfields = d.get('formula')
-                        print(calculatedfields)
+                        print(calculatedfields)"""
 
-        dynamodb_client.put_item(
-                TableName='xmlinput-2i2srqro3bfvpogryufqfhd5hi-dev',
-                Item={
-                    'id': {
-                        'S':id
-                    },
-                    'sheetname': {
-                        'S': sname
-                    },
-                    'xaxis': {
-                        'S': axis
-                    },
-                    'yaxis': {
-                        'S': axis
-                    },
-                    'formula': {
-                        'S': calculatedfields
-                    },
-                    'numerical': {
-                        'S': calculatedfields
-                    },
-                    'dimensional': {
-                        'S': calculatedfields
-                    },
-                    'charttype': {
-                        'S': chart
-                    }
+    
 
-
-                }
-            )
-"""
   
 
     """  client_qs.put_item(
@@ -176,6 +146,60 @@ def lambda_handler(event, context):
         }
     )
 
+    dynamodb_client.put_item(
+            TableName='Quicksightlogin-2i2srqro3bfvpogryufqfhd5hi-dev',
+            Item={
+                'id':{
+                    'S':response['Item']['id']['S']
+                },
+                'awsaccountId': {
+                    'S': event['awsaccountId']
+                },
+                'username':{
+                    'S': event['username']
+                },
+                'region':{
+                    'S':event['region']
+                }
+ 
+ 
+            }
+    )
+
+    dynamodb_client.put_item(
+                TableName='xmlinput-2i2srqro3bfvpogryufqfhd5hi-dev',
+                Item={
+                    'id': {
+                        'S':response['Item']['id']['S']
+                    },
+                    'qsid':{
+                        'S':response['Item']['id']['S']
+                    },
+                    'sheetname': {
+                        'S': sname
+                    },
+                    'xaxis': {
+                        'S': x
+                    },
+                    'yaxis': {
+                        'S': y
+                    },
+                    'charttype': {
+                        'S': chart
+                    }
+
+
+                }
+            )
+    r1 = dynamodb_client.get_item(
+        TableName='xmlinput-2i2srqro3bfvpogryufqfhd5hi-dev',
+        Key={
+            'id': {'S': response['Item']['id']['S']},
+            # 'filepath': {'S': 'World Indicators.hyper'},
+            # 'name': {'S': 'World Indicators'}
+        }
+    )
+    print(r1)
     # run_command('/opt/aws s3 sync s3://BUCKETNAME /tmp')
     print(responses['Item']['id']['S'])
     client_qs.create_folder(
@@ -279,8 +303,8 @@ def lambda_handler(event, context):
             },
         ],
 
-        SourceEntity={'Definition': {'DataSetIdentifierDeclarations': [{'Identifier': 'tabpro2', 'DataSetArn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':dataset/' + "dataset" + response['Item']['id']['S']}], 'Sheets': [{'SheetId': '46cc5963-fbfb-4619-b27c-839ec7cfdf22','Title': title if title!='' else 'tabsheet1', 'Name': sname, 'Visuals': [{chart+'ChartVisual': {'VisualId': '75c186b9-7be4-4607-9901-4ef09e5f2502', 'Title': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'Assets as code (preview feature) exposes analysis definition in JSON format via describe-analysis-definition method. '}}, 'Subtitle': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'This opens up several possibilities - Storing in external code repository, development of migration tools, backup & recovery, automated dashboard creation etc. 1) Launch analysis view. 2) Launch code editor from right sidebar. 3) Explore analysis definition. 4)Change orientation (ln 117) to VERTICAL and upload. 5)Change Bars Arrangement (ln 118) to CLUSTERED and upload. 6)Try duplicating a visual (and its layout; ids need to be unique).Note - All visual types and features not supported yet.'}}, 'ChartConfiguration': {
-            'FieldWells': {chart+'ChartAggregatedFieldWells': {'Category': [{'CategoricalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': y}}}], 'Values': [{'CategoricalMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.2.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': x}, 'AggregationFunction': 'COUNT'}}]}}}}}]}], 'DefaultConfiguration': {'DefaultLayoutConfiguration': {'Grid': {'ResizeOption': 'FIXED', 'OptimizedViewPortWidth': 1600}}}}}
+        SourceEntity={'Definition': {'DataSetIdentifierDeclarations': [{'Identifier': 'tabpro2', 'DataSetArn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':dataset/' + "dataset" + response['Item']['id']['S']}], 'Sheets': [{'SheetId': '46cc5963-fbfb-4619-b27c-839ec7cfdf22','Title': title if title!='' else 'tabsheet1', 'Name': r1['Item']['sheetname']['S'], 'Visuals': [{r1['Item']['charttype']['S']+'ChartVisual': {'VisualId': '75c186b9-7be4-4607-9901-4ef09e5f2502', 'Title': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'Assets as code (preview feature) exposes analysis definition in JSON format via describe-analysis-definition method. '}}, 'Subtitle': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'This opens up several possibilities - Storing in external code repository, development of migration tools, backup & recovery, automated dashboard creation etc. 1) Launch analysis view. 2) Launch code editor from right sidebar. 3) Explore analysis definition. 4)Change orientation (ln 117) to VERTICAL and upload. 5)Change Bars Arrangement (ln 118) to CLUSTERED and upload. 6)Try duplicating a visual (and its layout; ids need to be unique).Note - All visual types and features not supported yet.'}}, 'ChartConfiguration': {
+            'FieldWells': {chart+'ChartAggregatedFieldWells': {'Category': [{'CategoricalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']}}}], 'Values': [{'CategoricalMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.2.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['xaxis']['S']}, 'AggregationFunction': 'COUNT'}}]}}}}}]}], 'DefaultConfiguration': {'DefaultLayoutConfiguration': {'Grid': {'ResizeOption': 'FIXED', 'OptimizedViewPortWidth': 1600}}}}}
     )
 
     qs.create_dashboard(

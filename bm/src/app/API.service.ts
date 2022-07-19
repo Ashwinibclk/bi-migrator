@@ -369,11 +369,15 @@ export type DeleteTableauloginInput = {
 export type CreateQuicksightloginInput = {
   id?: string | null;
   awsaccountId: string;
+  username: string;
+  region: string;
   _version?: number | null;
 };
 
 export type ModelQuicksightloginConditionInput = {
   awsaccountId?: ModelIDInput | null;
+  username?: ModelStringInput | null;
+  region?: ModelStringInput | null;
   and?: Array<ModelQuicksightloginConditionInput | null> | null;
   or?: Array<ModelQuicksightloginConditionInput | null> | null;
   not?: ModelQuicksightloginConditionInput | null;
@@ -399,7 +403,32 @@ export type Quicksightlogin = {
   __typename: "Quicksightlogin";
   id: string;
   awsaccountId: string;
+  username: string;
+  region: string;
   qenv?: QuicksightEnv | null;
+  xmlinput?: ModelxmlinputConnection | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type ModelxmlinputConnection = {
+  __typename: "ModelxmlinputConnection";
+  items: Array<xmlinput | null>;
+  nextToken?: string | null;
+};
+
+export type xmlinput = {
+  __typename: "xmlinput";
+  id: string;
+  sheetname: string;
+  xaxis: string;
+  yaxis: string;
+  charttype: string;
+  qsid: string;
+  quicksight?: Quicksightlogin | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -410,6 +439,8 @@ export type Quicksightlogin = {
 export type UpdateQuicksightloginInput = {
   id: string;
   awsaccountId?: string | null;
+  username?: string | null;
+  region?: string | null;
   _version?: number | null;
 };
 
@@ -1412,10 +1443,8 @@ export type CreateXmlinputInput = {
   sheetname: string;
   xaxis: string;
   yaxis: string;
-  dimensional: string;
-  numerical: string;
-  formula: string;
   charttype: string;
+  qsid: string;
   _version?: number | null;
 };
 
@@ -1423,30 +1452,11 @@ export type ModelXmlinputConditionInput = {
   sheetname?: ModelStringInput | null;
   xaxis?: ModelStringInput | null;
   yaxis?: ModelStringInput | null;
-  dimensional?: ModelStringInput | null;
-  numerical?: ModelStringInput | null;
-  formula?: ModelStringInput | null;
   charttype?: ModelStringInput | null;
+  qsid?: ModelIDInput | null;
   and?: Array<ModelXmlinputConditionInput | null> | null;
   or?: Array<ModelXmlinputConditionInput | null> | null;
   not?: ModelXmlinputConditionInput | null;
-};
-
-export type xmlinput = {
-  __typename: "xmlinput";
-  id: string;
-  sheetname: string;
-  xaxis: string;
-  yaxis: string;
-  dimensional: string;
-  numerical: string;
-  formula: string;
-  charttype: string;
-  createdAt: string;
-  updatedAt: string;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
 export type UpdateXmlinputInput = {
@@ -1454,10 +1464,8 @@ export type UpdateXmlinputInput = {
   sheetname?: string | null;
   xaxis?: string | null;
   yaxis?: string | null;
-  dimensional?: string | null;
-  numerical?: string | null;
-  formula?: string | null;
   charttype?: string | null;
+  qsid?: string | null;
   _version?: number | null;
 };
 
@@ -1514,6 +1522,8 @@ export type ModelTableauloginConnection = {
 export type ModelQuicksightloginFilterInput = {
   id?: ModelIDInput | null;
   awsaccountId?: ModelIDInput | null;
+  username?: ModelStringInput | null;
+  region?: ModelStringInput | null;
   and?: Array<ModelQuicksightloginFilterInput | null> | null;
   or?: Array<ModelQuicksightloginFilterInput | null> | null;
   not?: ModelQuicksightloginFilterInput | null;
@@ -1873,10 +1883,8 @@ export type ModelXmlinputFilterInput = {
   sheetname?: ModelStringInput | null;
   xaxis?: ModelStringInput | null;
   yaxis?: ModelStringInput | null;
-  dimensional?: ModelStringInput | null;
-  numerical?: ModelStringInput | null;
-  formula?: ModelStringInput | null;
   charttype?: ModelStringInput | null;
+  qsid?: ModelIDInput | null;
   and?: Array<ModelXmlinputFilterInput | null> | null;
   or?: Array<ModelXmlinputFilterInput | null> | null;
   not?: ModelXmlinputFilterInput | null;
@@ -2004,6 +2012,8 @@ export type CreateQuicksightloginMutation = {
   __typename: "Quicksightlogin";
   id: string;
   awsaccountId: string;
+  username: string;
+  region: string;
   qenv?: {
     __typename: "QuicksightEnv";
     name: string;
@@ -2025,6 +2035,24 @@ export type CreateQuicksightloginMutation = {
     _version: number;
     _deleted?: boolean | null;
     _lastChangedAt: number;
+  } | null;
+  xmlinput?: {
+    __typename: "ModelxmlinputConnection";
+    items: Array<{
+      __typename: "xmlinput";
+      id: string;
+      sheetname: string;
+      xaxis: string;
+      yaxis: string;
+      charttype: string;
+      qsid: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null>;
+    nextToken?: string | null;
   } | null;
   createdAt: string;
   updatedAt: string;
@@ -2037,6 +2065,8 @@ export type UpdateQuicksightloginMutation = {
   __typename: "Quicksightlogin";
   id: string;
   awsaccountId: string;
+  username: string;
+  region: string;
   qenv?: {
     __typename: "QuicksightEnv";
     name: string;
@@ -2059,6 +2089,24 @@ export type UpdateQuicksightloginMutation = {
     _deleted?: boolean | null;
     _lastChangedAt: number;
   } | null;
+  xmlinput?: {
+    __typename: "ModelxmlinputConnection";
+    items: Array<{
+      __typename: "xmlinput";
+      id: string;
+      sheetname: string;
+      xaxis: string;
+      yaxis: string;
+      charttype: string;
+      qsid: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -2070,6 +2118,8 @@ export type DeleteQuicksightloginMutation = {
   __typename: "Quicksightlogin";
   id: string;
   awsaccountId: string;
+  username: string;
+  region: string;
   qenv?: {
     __typename: "QuicksightEnv";
     name: string;
@@ -2091,6 +2141,24 @@ export type DeleteQuicksightloginMutation = {
     _version: number;
     _deleted?: boolean | null;
     _lastChangedAt: number;
+  } | null;
+  xmlinput?: {
+    __typename: "ModelxmlinputConnection";
+    items: Array<{
+      __typename: "xmlinput";
+      id: string;
+      sheetname: string;
+      xaxis: string;
+      yaxis: string;
+      charttype: string;
+      qsid: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null>;
+    nextToken?: string | null;
   } | null;
   createdAt: string;
   updatedAt: string;
@@ -4754,10 +4822,35 @@ export type CreateXmlinputMutation = {
   sheetname: string;
   xaxis: string;
   yaxis: string;
-  dimensional: string;
-  numerical: string;
-  formula: string;
   charttype: string;
+  qsid: string;
+  quicksight?: {
+    __typename: "Quicksightlogin";
+    id: string;
+    awsaccountId: string;
+    username: string;
+    region: string;
+    qenv?: {
+      __typename: "QuicksightEnv";
+      name: string;
+      Qpid: string;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    xmlinput?: {
+      __typename: "ModelxmlinputConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -4771,10 +4864,35 @@ export type UpdateXmlinputMutation = {
   sheetname: string;
   xaxis: string;
   yaxis: string;
-  dimensional: string;
-  numerical: string;
-  formula: string;
   charttype: string;
+  qsid: string;
+  quicksight?: {
+    __typename: "Quicksightlogin";
+    id: string;
+    awsaccountId: string;
+    username: string;
+    region: string;
+    qenv?: {
+      __typename: "QuicksightEnv";
+      name: string;
+      Qpid: string;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    xmlinput?: {
+      __typename: "ModelxmlinputConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -4788,10 +4906,35 @@ export type DeleteXmlinputMutation = {
   sheetname: string;
   xaxis: string;
   yaxis: string;
-  dimensional: string;
-  numerical: string;
-  formula: string;
   charttype: string;
+  qsid: string;
+  quicksight?: {
+    __typename: "Quicksightlogin";
+    id: string;
+    awsaccountId: string;
+    username: string;
+    region: string;
+    qenv?: {
+      __typename: "QuicksightEnv";
+      name: string;
+      Qpid: string;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    xmlinput?: {
+      __typename: "ModelxmlinputConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -4927,6 +5070,8 @@ export type GetQuicksightloginQuery = {
   __typename: "Quicksightlogin";
   id: string;
   awsaccountId: string;
+  username: string;
+  region: string;
   qenv?: {
     __typename: "QuicksightEnv";
     name: string;
@@ -4949,6 +5094,24 @@ export type GetQuicksightloginQuery = {
     _deleted?: boolean | null;
     _lastChangedAt: number;
   } | null;
+  xmlinput?: {
+    __typename: "ModelxmlinputConnection";
+    items: Array<{
+      __typename: "xmlinput";
+      id: string;
+      sheetname: string;
+      xaxis: string;
+      yaxis: string;
+      charttype: string;
+      qsid: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -4962,6 +5125,8 @@ export type ListQuicksightloginsQuery = {
     __typename: "Quicksightlogin";
     id: string;
     awsaccountId: string;
+    username: string;
+    region: string;
     qenv?: {
       __typename: "QuicksightEnv";
       name: string;
@@ -4972,6 +5137,10 @@ export type ListQuicksightloginsQuery = {
       _version: number;
       _deleted?: boolean | null;
       _lastChangedAt: number;
+    } | null;
+    xmlinput?: {
+      __typename: "ModelxmlinputConnection";
+      nextToken?: string | null;
     } | null;
     createdAt: string;
     updatedAt: string;
@@ -4989,6 +5158,8 @@ export type SyncQuicksightloginsQuery = {
     __typename: "Quicksightlogin";
     id: string;
     awsaccountId: string;
+    username: string;
+    region: string;
     qenv?: {
       __typename: "QuicksightEnv";
       name: string;
@@ -4999,6 +5170,10 @@ export type SyncQuicksightloginsQuery = {
       _version: number;
       _deleted?: boolean | null;
       _lastChangedAt: number;
+    } | null;
+    xmlinput?: {
+      __typename: "ModelxmlinputConnection";
+      nextToken?: string | null;
     } | null;
     createdAt: string;
     updatedAt: string;
@@ -7235,10 +7410,35 @@ export type GetXmlinputQuery = {
   sheetname: string;
   xaxis: string;
   yaxis: string;
-  dimensional: string;
-  numerical: string;
-  formula: string;
   charttype: string;
+  qsid: string;
+  quicksight?: {
+    __typename: "Quicksightlogin";
+    id: string;
+    awsaccountId: string;
+    username: string;
+    region: string;
+    qenv?: {
+      __typename: "QuicksightEnv";
+      name: string;
+      Qpid: string;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    xmlinput?: {
+      __typename: "ModelxmlinputConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -7254,10 +7454,20 @@ export type ListXmlinputsQuery = {
     sheetname: string;
     xaxis: string;
     yaxis: string;
-    dimensional: string;
-    numerical: string;
-    formula: string;
     charttype: string;
+    qsid: string;
+    quicksight?: {
+      __typename: "Quicksightlogin";
+      id: string;
+      awsaccountId: string;
+      username: string;
+      region: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -7276,10 +7486,20 @@ export type SyncXmlinputsQuery = {
     sheetname: string;
     xaxis: string;
     yaxis: string;
-    dimensional: string;
-    numerical: string;
-    formula: string;
     charttype: string;
+    qsid: string;
+    quicksight?: {
+      __typename: "Quicksightlogin";
+      id: string;
+      awsaccountId: string;
+      username: string;
+      region: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -7405,6 +7625,8 @@ export type OnCreateQuicksightloginSubscription = {
   __typename: "Quicksightlogin";
   id: string;
   awsaccountId: string;
+  username: string;
+  region: string;
   qenv?: {
     __typename: "QuicksightEnv";
     name: string;
@@ -7426,6 +7648,24 @@ export type OnCreateQuicksightloginSubscription = {
     _version: number;
     _deleted?: boolean | null;
     _lastChangedAt: number;
+  } | null;
+  xmlinput?: {
+    __typename: "ModelxmlinputConnection";
+    items: Array<{
+      __typename: "xmlinput";
+      id: string;
+      sheetname: string;
+      xaxis: string;
+      yaxis: string;
+      charttype: string;
+      qsid: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null>;
+    nextToken?: string | null;
   } | null;
   createdAt: string;
   updatedAt: string;
@@ -7438,6 +7678,8 @@ export type OnUpdateQuicksightloginSubscription = {
   __typename: "Quicksightlogin";
   id: string;
   awsaccountId: string;
+  username: string;
+  region: string;
   qenv?: {
     __typename: "QuicksightEnv";
     name: string;
@@ -7460,6 +7702,24 @@ export type OnUpdateQuicksightloginSubscription = {
     _deleted?: boolean | null;
     _lastChangedAt: number;
   } | null;
+  xmlinput?: {
+    __typename: "ModelxmlinputConnection";
+    items: Array<{
+      __typename: "xmlinput";
+      id: string;
+      sheetname: string;
+      xaxis: string;
+      yaxis: string;
+      charttype: string;
+      qsid: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null>;
+    nextToken?: string | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -7471,6 +7731,8 @@ export type OnDeleteQuicksightloginSubscription = {
   __typename: "Quicksightlogin";
   id: string;
   awsaccountId: string;
+  username: string;
+  region: string;
   qenv?: {
     __typename: "QuicksightEnv";
     name: string;
@@ -7492,6 +7754,24 @@ export type OnDeleteQuicksightloginSubscription = {
     _version: number;
     _deleted?: boolean | null;
     _lastChangedAt: number;
+  } | null;
+  xmlinput?: {
+    __typename: "ModelxmlinputConnection";
+    items: Array<{
+      __typename: "xmlinput";
+      id: string;
+      sheetname: string;
+      xaxis: string;
+      yaxis: string;
+      charttype: string;
+      qsid: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null>;
+    nextToken?: string | null;
   } | null;
   createdAt: string;
   updatedAt: string;
@@ -10155,10 +10435,35 @@ export type OnCreateXmlinputSubscription = {
   sheetname: string;
   xaxis: string;
   yaxis: string;
-  dimensional: string;
-  numerical: string;
-  formula: string;
   charttype: string;
+  qsid: string;
+  quicksight?: {
+    __typename: "Quicksightlogin";
+    id: string;
+    awsaccountId: string;
+    username: string;
+    region: string;
+    qenv?: {
+      __typename: "QuicksightEnv";
+      name: string;
+      Qpid: string;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    xmlinput?: {
+      __typename: "ModelxmlinputConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -10172,10 +10477,35 @@ export type OnUpdateXmlinputSubscription = {
   sheetname: string;
   xaxis: string;
   yaxis: string;
-  dimensional: string;
-  numerical: string;
-  formula: string;
   charttype: string;
+  qsid: string;
+  quicksight?: {
+    __typename: "Quicksightlogin";
+    id: string;
+    awsaccountId: string;
+    username: string;
+    region: string;
+    qenv?: {
+      __typename: "QuicksightEnv";
+      name: string;
+      Qpid: string;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    xmlinput?: {
+      __typename: "ModelxmlinputConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -10189,10 +10519,35 @@ export type OnDeleteXmlinputSubscription = {
   sheetname: string;
   xaxis: string;
   yaxis: string;
-  dimensional: string;
-  numerical: string;
-  formula: string;
   charttype: string;
+  qsid: string;
+  quicksight?: {
+    __typename: "Quicksightlogin";
+    id: string;
+    awsaccountId: string;
+    username: string;
+    region: string;
+    qenv?: {
+      __typename: "QuicksightEnv";
+      name: string;
+      Qpid: string;
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    xmlinput?: {
+      __typename: "ModelxmlinputConnection";
+      nextToken?: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -10372,6 +10727,8 @@ export class APIService {
           __typename
           id
           awsaccountId
+          username
+          region
           qenv {
             __typename
             name
@@ -10393,6 +10750,24 @@ export class APIService {
             _version
             _deleted
             _lastChangedAt
+          }
+          xmlinput {
+            __typename
+            items {
+              __typename
+              id
+              sheetname
+              xaxis
+              yaxis
+              charttype
+              qsid
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            nextToken
           }
           createdAt
           updatedAt
@@ -10421,6 +10796,8 @@ export class APIService {
           __typename
           id
           awsaccountId
+          username
+          region
           qenv {
             __typename
             name
@@ -10442,6 +10819,24 @@ export class APIService {
             _version
             _deleted
             _lastChangedAt
+          }
+          xmlinput {
+            __typename
+            items {
+              __typename
+              id
+              sheetname
+              xaxis
+              yaxis
+              charttype
+              qsid
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            nextToken
           }
           createdAt
           updatedAt
@@ -10470,6 +10865,8 @@ export class APIService {
           __typename
           id
           awsaccountId
+          username
+          region
           qenv {
             __typename
             name
@@ -10491,6 +10888,24 @@ export class APIService {
             _version
             _deleted
             _lastChangedAt
+          }
+          xmlinput {
+            __typename
+            items {
+              __typename
+              id
+              sheetname
+              xaxis
+              yaxis
+              charttype
+              qsid
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            nextToken
           }
           createdAt
           updatedAt
@@ -14394,10 +14809,35 @@ export class APIService {
           sheetname
           xaxis
           yaxis
-          dimensional
-          numerical
-          formula
           charttype
+          qsid
+          quicksight {
+            __typename
+            id
+            awsaccountId
+            username
+            region
+            qenv {
+              __typename
+              name
+              Qpid
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            xmlinput {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
           createdAt
           updatedAt
           _version
@@ -14427,10 +14867,35 @@ export class APIService {
           sheetname
           xaxis
           yaxis
-          dimensional
-          numerical
-          formula
           charttype
+          qsid
+          quicksight {
+            __typename
+            id
+            awsaccountId
+            username
+            region
+            qenv {
+              __typename
+              name
+              Qpid
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            xmlinput {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
           createdAt
           updatedAt
           _version
@@ -14460,10 +14925,35 @@ export class APIService {
           sheetname
           xaxis
           yaxis
-          dimensional
-          numerical
-          formula
           charttype
+          qsid
+          quicksight {
+            __typename
+            id
+            awsaccountId
+            username
+            region
+            qenv {
+              __typename
+              name
+              Qpid
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            xmlinput {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
           createdAt
           updatedAt
           _version
@@ -14766,6 +15256,8 @@ export class APIService {
           __typename
           id
           awsaccountId
+          username
+          region
           qenv {
             __typename
             name
@@ -14787,6 +15279,24 @@ export class APIService {
             _version
             _deleted
             _lastChangedAt
+          }
+          xmlinput {
+            __typename
+            items {
+              __typename
+              id
+              sheetname
+              xaxis
+              yaxis
+              charttype
+              qsid
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            nextToken
           }
           createdAt
           updatedAt
@@ -14815,6 +15325,8 @@ export class APIService {
             __typename
             id
             awsaccountId
+            username
+            region
             qenv {
               __typename
               name
@@ -14825,6 +15337,10 @@ export class APIService {
               _version
               _deleted
               _lastChangedAt
+            }
+            xmlinput {
+              __typename
+              nextToken
             }
             createdAt
             updatedAt
@@ -14864,6 +15380,8 @@ export class APIService {
             __typename
             id
             awsaccountId
+            username
+            region
             qenv {
               __typename
               name
@@ -14874,6 +15392,10 @@ export class APIService {
               _version
               _deleted
               _lastChangedAt
+            }
+            xmlinput {
+              __typename
+              nextToken
             }
             createdAt
             updatedAt
@@ -18544,10 +19066,35 @@ export class APIService {
           sheetname
           xaxis
           yaxis
-          dimensional
-          numerical
-          formula
           charttype
+          qsid
+          quicksight {
+            __typename
+            id
+            awsaccountId
+            username
+            region
+            qenv {
+              __typename
+              name
+              Qpid
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            xmlinput {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
           createdAt
           updatedAt
           _version
@@ -18577,10 +19124,20 @@ export class APIService {
             sheetname
             xaxis
             yaxis
-            dimensional
-            numerical
-            formula
             charttype
+            qsid
+            quicksight {
+              __typename
+              id
+              awsaccountId
+              username
+              region
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
             createdAt
             updatedAt
             _version
@@ -18621,10 +19178,20 @@ export class APIService {
             sheetname
             xaxis
             yaxis
-            dimensional
-            numerical
-            formula
             charttype
+            qsid
+            quicksight {
+              __typename
+              id
+              awsaccountId
+              username
+              region
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
             createdAt
             updatedAt
             _version
@@ -18805,6 +19372,8 @@ export class APIService {
           __typename
           id
           awsaccountId
+          username
+          region
           qenv {
             __typename
             name
@@ -18826,6 +19395,24 @@ export class APIService {
             _version
             _deleted
             _lastChangedAt
+          }
+          xmlinput {
+            __typename
+            items {
+              __typename
+              id
+              sheetname
+              xaxis
+              yaxis
+              charttype
+              qsid
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            nextToken
           }
           createdAt
           updatedAt
@@ -18852,6 +19439,8 @@ export class APIService {
           __typename
           id
           awsaccountId
+          username
+          region
           qenv {
             __typename
             name
@@ -18873,6 +19462,24 @@ export class APIService {
             _version
             _deleted
             _lastChangedAt
+          }
+          xmlinput {
+            __typename
+            items {
+              __typename
+              id
+              sheetname
+              xaxis
+              yaxis
+              charttype
+              qsid
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            nextToken
           }
           createdAt
           updatedAt
@@ -18899,6 +19506,8 @@ export class APIService {
           __typename
           id
           awsaccountId
+          username
+          region
           qenv {
             __typename
             name
@@ -18920,6 +19529,24 @@ export class APIService {
             _version
             _deleted
             _lastChangedAt
+          }
+          xmlinput {
+            __typename
+            items {
+              __typename
+              id
+              sheetname
+              xaxis
+              yaxis
+              charttype
+              qsid
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            nextToken
           }
           createdAt
           updatedAt
@@ -22441,10 +23068,35 @@ export class APIService {
           sheetname
           xaxis
           yaxis
-          dimensional
-          numerical
-          formula
           charttype
+          qsid
+          quicksight {
+            __typename
+            id
+            awsaccountId
+            username
+            region
+            qenv {
+              __typename
+              name
+              Qpid
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            xmlinput {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
           createdAt
           updatedAt
           _version
@@ -22468,10 +23120,35 @@ export class APIService {
           sheetname
           xaxis
           yaxis
-          dimensional
-          numerical
-          formula
           charttype
+          qsid
+          quicksight {
+            __typename
+            id
+            awsaccountId
+            username
+            region
+            qenv {
+              __typename
+              name
+              Qpid
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            xmlinput {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
           createdAt
           updatedAt
           _version
@@ -22495,10 +23172,35 @@ export class APIService {
           sheetname
           xaxis
           yaxis
-          dimensional
-          numerical
-          formula
           charttype
+          qsid
+          quicksight {
+            __typename
+            id
+            awsaccountId
+            username
+            region
+            qenv {
+              __typename
+              name
+              Qpid
+              id
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            xmlinput {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
           createdAt
           updatedAt
           _version
