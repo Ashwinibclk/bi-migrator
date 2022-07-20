@@ -289,6 +289,8 @@ export declare class xmlinput {
   readonly yaxis: string;
   readonly charttype: string;
   readonly quicksight?: Quicksightlogin | null;
+  readonly title?: string | null;
+  readonly formula?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<xmlinput, xmlinputMetaData>);

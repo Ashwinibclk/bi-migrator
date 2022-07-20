@@ -872,6 +872,20 @@ export const schema = {
                         "targetName": "qsid"
                     }
                 },
+                "title": {
+                    "name": "title",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "formula": {
+                    "name": "formula",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -2014,5 +2028,5 @@ export const schema = {
             }
         }
     },
-    "version": "ae85bfddb4edadf052f441030cd2bbb2"
+    "version": "0dee12f0abd3976cb42fd8e7a77d74bd"
 };

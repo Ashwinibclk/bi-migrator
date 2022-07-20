@@ -150,6 +150,8 @@ mutation CreateQuicksightlogin(
         yaxis
         charttype
         qsid
+        title
+        formula
         createdAt
         updatedAt
         _version
@@ -202,6 +204,8 @@ mutation UpdateQuicksightlogin(
         yaxis
         charttype
         qsid
+        title
+        formula
         createdAt
         updatedAt
         _version
@@ -254,6 +258,8 @@ mutation DeleteQuicksightlogin(
         yaxis
         charttype
         qsid
+        title
+        formula
         createdAt
         updatedAt
         _version
@@ -2977,6 +2983,8 @@ mutation CreateXmlinput(
       _deleted
       _lastChangedAt
     }
+    title
+    formula
     createdAt
     updatedAt
     _version
@@ -3019,6 +3027,8 @@ mutation UpdateXmlinput(
       _deleted
       _lastChangedAt
     }
+    title
+    formula
     createdAt
     updatedAt
     _version
@@ -3061,6 +3071,8 @@ mutation DeleteXmlinput(
       _deleted
       _lastChangedAt
     }
+    title
+    formula
     createdAt
     updatedAt
     _version

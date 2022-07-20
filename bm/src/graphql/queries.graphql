@@ -223,6 +223,8 @@ query GetQuicksightlogin($id: ID!) {
         yaxis
         charttype
         qsid
+        title
+        formula
         createdAt
         updatedAt
         _version
@@ -2770,6 +2772,8 @@ query GetXmlinput($id: ID!) {
       _deleted
       _lastChangedAt
     }
+    title
+    formula
     createdAt
     updatedAt
     _version
@@ -2801,6 +2805,8 @@ query ListXmlinputs(
         _deleted
         _lastChangedAt
       }
+      title
+      formula
       createdAt
       updatedAt
       _version
@@ -2841,6 +2847,8 @@ query SyncXmlinputs(
         _deleted
         _lastChangedAt
       }
+      title
+      formula
       createdAt
       updatedAt
       _version

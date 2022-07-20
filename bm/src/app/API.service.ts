@@ -429,6 +429,8 @@ export type xmlinput = {
   charttype: string;
   qsid: string;
   quicksight?: Quicksightlogin | null;
+  title?: string | null;
+  formula?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -1445,6 +1447,8 @@ export type CreateXmlinputInput = {
   yaxis: string;
   charttype: string;
   qsid: string;
+  title?: string | null;
+  formula?: string | null;
   _version?: number | null;
 };
 
@@ -1454,6 +1458,8 @@ export type ModelXmlinputConditionInput = {
   yaxis?: ModelStringInput | null;
   charttype?: ModelStringInput | null;
   qsid?: ModelIDInput | null;
+  title?: ModelStringInput | null;
+  formula?: ModelStringInput | null;
   and?: Array<ModelXmlinputConditionInput | null> | null;
   or?: Array<ModelXmlinputConditionInput | null> | null;
   not?: ModelXmlinputConditionInput | null;
@@ -1466,6 +1472,8 @@ export type UpdateXmlinputInput = {
   yaxis?: string | null;
   charttype?: string | null;
   qsid?: string | null;
+  title?: string | null;
+  formula?: string | null;
   _version?: number | null;
 };
 
@@ -1885,6 +1893,8 @@ export type ModelXmlinputFilterInput = {
   yaxis?: ModelStringInput | null;
   charttype?: ModelStringInput | null;
   qsid?: ModelIDInput | null;
+  title?: ModelStringInput | null;
+  formula?: ModelStringInput | null;
   and?: Array<ModelXmlinputFilterInput | null> | null;
   or?: Array<ModelXmlinputFilterInput | null> | null;
   not?: ModelXmlinputFilterInput | null;
@@ -2046,6 +2056,8 @@ export type CreateQuicksightloginMutation = {
       yaxis: string;
       charttype: string;
       qsid: string;
+      title?: string | null;
+      formula?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -2099,6 +2111,8 @@ export type UpdateQuicksightloginMutation = {
       yaxis: string;
       charttype: string;
       qsid: string;
+      title?: string | null;
+      formula?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -2152,6 +2166,8 @@ export type DeleteQuicksightloginMutation = {
       yaxis: string;
       charttype: string;
       qsid: string;
+      title?: string | null;
+      formula?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -4851,6 +4867,8 @@ export type CreateXmlinputMutation = {
     _deleted?: boolean | null;
     _lastChangedAt: number;
   } | null;
+  title?: string | null;
+  formula?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -4893,6 +4911,8 @@ export type UpdateXmlinputMutation = {
     _deleted?: boolean | null;
     _lastChangedAt: number;
   } | null;
+  title?: string | null;
+  formula?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -4935,6 +4955,8 @@ export type DeleteXmlinputMutation = {
     _deleted?: boolean | null;
     _lastChangedAt: number;
   } | null;
+  title?: string | null;
+  formula?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -5104,6 +5126,8 @@ export type GetQuicksightloginQuery = {
       yaxis: string;
       charttype: string;
       qsid: string;
+      title?: string | null;
+      formula?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -7439,6 +7463,8 @@ export type GetXmlinputQuery = {
     _deleted?: boolean | null;
     _lastChangedAt: number;
   } | null;
+  title?: string | null;
+  formula?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -7468,6 +7494,8 @@ export type ListXmlinputsQuery = {
       _deleted?: boolean | null;
       _lastChangedAt: number;
     } | null;
+    title?: string | null;
+    formula?: string | null;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -7500,6 +7528,8 @@ export type SyncXmlinputsQuery = {
       _deleted?: boolean | null;
       _lastChangedAt: number;
     } | null;
+    title?: string | null;
+    formula?: string | null;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -7659,6 +7689,8 @@ export type OnCreateQuicksightloginSubscription = {
       yaxis: string;
       charttype: string;
       qsid: string;
+      title?: string | null;
+      formula?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -7712,6 +7744,8 @@ export type OnUpdateQuicksightloginSubscription = {
       yaxis: string;
       charttype: string;
       qsid: string;
+      title?: string | null;
+      formula?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -7765,6 +7799,8 @@ export type OnDeleteQuicksightloginSubscription = {
       yaxis: string;
       charttype: string;
       qsid: string;
+      title?: string | null;
+      formula?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -10464,6 +10500,8 @@ export type OnCreateXmlinputSubscription = {
     _deleted?: boolean | null;
     _lastChangedAt: number;
   } | null;
+  title?: string | null;
+  formula?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -10506,6 +10544,8 @@ export type OnUpdateXmlinputSubscription = {
     _deleted?: boolean | null;
     _lastChangedAt: number;
   } | null;
+  title?: string | null;
+  formula?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -10548,6 +10588,8 @@ export type OnDeleteXmlinputSubscription = {
     _deleted?: boolean | null;
     _lastChangedAt: number;
   } | null;
+  title?: string | null;
+  formula?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -10761,6 +10803,8 @@ export class APIService {
               yaxis
               charttype
               qsid
+              title
+              formula
               createdAt
               updatedAt
               _version
@@ -10830,6 +10874,8 @@ export class APIService {
               yaxis
               charttype
               qsid
+              title
+              formula
               createdAt
               updatedAt
               _version
@@ -10899,6 +10945,8 @@ export class APIService {
               yaxis
               charttype
               qsid
+              title
+              formula
               createdAt
               updatedAt
               _version
@@ -14838,6 +14886,8 @@ export class APIService {
             _deleted
             _lastChangedAt
           }
+          title
+          formula
           createdAt
           updatedAt
           _version
@@ -14896,6 +14946,8 @@ export class APIService {
             _deleted
             _lastChangedAt
           }
+          title
+          formula
           createdAt
           updatedAt
           _version
@@ -14954,6 +15006,8 @@ export class APIService {
             _deleted
             _lastChangedAt
           }
+          title
+          formula
           createdAt
           updatedAt
           _version
@@ -15290,6 +15344,8 @@ export class APIService {
               yaxis
               charttype
               qsid
+              title
+              formula
               createdAt
               updatedAt
               _version
@@ -19095,6 +19151,8 @@ export class APIService {
             _deleted
             _lastChangedAt
           }
+          title
+          formula
           createdAt
           updatedAt
           _version
@@ -19138,6 +19196,8 @@ export class APIService {
               _deleted
               _lastChangedAt
             }
+            title
+            formula
             createdAt
             updatedAt
             _version
@@ -19192,6 +19252,8 @@ export class APIService {
               _deleted
               _lastChangedAt
             }
+            title
+            formula
             createdAt
             updatedAt
             _version
@@ -19406,6 +19468,8 @@ export class APIService {
               yaxis
               charttype
               qsid
+              title
+              formula
               createdAt
               updatedAt
               _version
@@ -19473,6 +19537,8 @@ export class APIService {
               yaxis
               charttype
               qsid
+              title
+              formula
               createdAt
               updatedAt
               _version
@@ -19540,6 +19606,8 @@ export class APIService {
               yaxis
               charttype
               qsid
+              title
+              formula
               createdAt
               updatedAt
               _version
@@ -23097,6 +23165,8 @@ export class APIService {
             _deleted
             _lastChangedAt
           }
+          title
+          formula
           createdAt
           updatedAt
           _version
@@ -23149,6 +23219,8 @@ export class APIService {
             _deleted
             _lastChangedAt
           }
+          title
+          formula
           createdAt
           updatedAt
           _version
@@ -23201,6 +23273,8 @@ export class APIService {
             _deleted
             _lastChangedAt
           }
+          title
+          formula
           createdAt
           updatedAt
           _version

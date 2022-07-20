@@ -138,6 +138,8 @@ subscription OnCreateQuicksightlogin {
         yaxis
         charttype
         qsid
+        title
+        formula
         createdAt
         updatedAt
         _version
@@ -187,6 +189,8 @@ subscription OnUpdateQuicksightlogin {
         yaxis
         charttype
         qsid
+        title
+        formula
         createdAt
         updatedAt
         _version
@@ -236,6 +240,8 @@ subscription OnDeleteQuicksightlogin {
         yaxis
         charttype
         qsid
+        title
+        formula
         createdAt
         updatedAt
         _version
@@ -2731,6 +2737,8 @@ subscription OnCreateXmlinput {
       _deleted
       _lastChangedAt
     }
+    title
+    formula
     createdAt
     updatedAt
     _version
@@ -2770,6 +2778,8 @@ subscription OnUpdateXmlinput {
       _deleted
       _lastChangedAt
     }
+    title
+    formula
     createdAt
     updatedAt
     _version
@@ -2809,6 +2819,8 @@ subscription OnDeleteXmlinput {
       _deleted
       _lastChangedAt
     }
+    title
+    formula
     createdAt
     updatedAt
     _version

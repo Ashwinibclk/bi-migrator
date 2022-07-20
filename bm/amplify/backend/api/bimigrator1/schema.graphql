@@ -268,5 +268,7 @@ type xmlinput @model{
   charttype:String!
   qsid:ID! 
   quicksight:Quicksightlogin @belongsTo(fields:["qsid"])
+  title:String
+  formula:String
 }
 
