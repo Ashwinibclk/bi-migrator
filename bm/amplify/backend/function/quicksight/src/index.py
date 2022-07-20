@@ -41,7 +41,7 @@ def lambda_handler(event, context):
                         }
 
             })
-        if(df[i].dtype == "int64" | "int8" | "int16" | "int32" | "uint8" | "uint16" | "uint32" | "uint64"):
+        elif(df[i].dtype == "int64" ):
             logtab.append(
             {
                  "CastColumnTypeOperation": {
@@ -50,7 +50,7 @@ def lambda_handler(event, context):
                         }
 
             })
-        if(df[i].dtype == "datetime64[ns]"):
+        elif(df[i].dtype == "datetime64"):
             logtab.append(
             {
                  "CastColumnTypeOperation": {
@@ -59,7 +59,7 @@ def lambda_handler(event, context):
                         }
 
             })
-        if(df[i].dtype == "float64" | "float32" | "float16" | "float8"):
+        elif(df[i].dtype == "float64"):
             logtab.append(
             {
                  "CastColumnTypeOperation": {
@@ -68,7 +68,7 @@ def lambda_handler(event, context):
                         }
 
             })
-        if(df[i].dtype == "str"):
+        else:
             logtab.append(
             {
                  "CastColumnTypeOperation": {
@@ -318,7 +318,36 @@ def lambda_handler(event, context):
             'DisableUseAsImportedSource': False
         }
     )
+    cat=[]
+    for i in range(len(logtab)):
+        if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==y and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="INTEGER"):
+            cat.append({
+            'NumericalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']}}
+        })
+        if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==y and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="DATETIME"):
+            cat.append({
+            'DateDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']}}
+        })
+        if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==y and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="STRING"):
+            cat.append({
+            'CategoricalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']}}
+        })
 
+        val=[]
+    for i in range(len(logtab)):
+        if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="INTEGER"):
+            val.append({
+            'NumericalMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']}}
+        })
+        if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="DATETIME"):
+            val.append({
+            'DateMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']}}
+        })
+        if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="STRING"):
+            val.append({
+            'CategoricalMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']}}
+        })
+    print(val)
     qs.create_analysis(
         AwsAccountId=event['awsaccountId'],
         AnalysisId="analysis" + response['Item']['id']['S'],
@@ -339,7 +368,10 @@ def lambda_handler(event, context):
         ],
 
         SourceEntity={'Definition': {'DataSetIdentifierDeclarations': [{'Identifier': 'tabpro2', 'DataSetArn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':dataset/' + "dataset" + response['Item']['id']['S']}], 'Sheets': [{'SheetId': '46cc5963-fbfb-4619-b27c-839ec7cfdf22','Title': title if title!='' else 'tabsheet1', 'Name': r1['Item']['sheetname']['S'], 'Visuals': [{r1['Item']['charttype']['S']+'ChartVisual': {'VisualId': '75c186b9-7be4-4607-9901-4ef09e5f2502', 'Title': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'Assets as code (preview feature) exposes analysis definition in JSON format via describe-analysis-definition method. '}}, 'Subtitle': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'This opens up several possibilities - Storing in external code repository, development of migration tools, backup & recovery, automated dashboard creation etc. 1) Launch analysis view. 2) Launch code editor from right sidebar. 3) Explore analysis definition. 4)Change orientation (ln 117) to VERTICAL and upload. 5)Change Bars Arrangement (ln 118) to CLUSTERED and upload. 6)Try duplicating a visual (and its layout; ids need to be unique).Note - All visual types and features not supported yet.'}}, 'ChartConfiguration': {
-            'FieldWells': {chart+'ChartAggregatedFieldWells': {'Category': [{'CategoricalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']}}}], 'Values': [{'CategoricalMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.2.1647725256871', 'Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['xaxis']['S']}, 'AggregationFunction': 'COUNT'}}]}}}}}]}], 'DefaultConfiguration': {'DefaultLayoutConfiguration': {'Grid': {'ResizeOption': 'FIXED', 'OptimizedViewPortWidth': 1600}}}}}
+            'FieldWells': {r1['Item']['charttype']['S']+'ChartAggregatedFieldWells':  {
+                'Category': cat, 
+                'Values':val}}}}}]}], 
+                'DefaultConfiguration': {'DefaultLayoutConfiguration': {'Grid': {'ResizeOption': 'FIXED', 'OptimizedViewPortWidth': 1600}}}}}
     )
 
     qs.create_dashboard(
