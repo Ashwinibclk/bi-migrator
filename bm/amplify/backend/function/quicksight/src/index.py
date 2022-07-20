@@ -23,6 +23,7 @@ def lambda_handler(event, context):
     Name = next(csvreader)
     print(Name)
     inpcol = []
+    logtab = []
     for i in Name:
         inpcol.append(
             {
@@ -31,29 +32,54 @@ def lambda_handler(event, context):
 
             })
         print(df[i].dtype)
-        """if(df[i].dtype == "object"):
-            inpcol.append(
+        if(df[i].dtype == "object"):
+            logtab.append(
             {
-                'Name': i,
-                'Type': 'STRING'
+                 "CastColumnTypeOperation": {
+                            "ColumnName": i,
+                            "NewColumnType": "STRING"
+                        }
 
             })
-        if(df[i].dtype == "int64"):
-            inpcol.append(
+        if(df[i].dtype == "int64" | "int8" | "int16" | "int32" | "uint8" | "uint16" | "uint32" | "uint64"):
+            logtab.append(
             {
-                'Name': i,
-                'Type': 'INTEGER'
+                 "CastColumnTypeOperation": {
+                            "ColumnName": i,
+                            "NewColumnType": "INTEGER"
+                        }
+
+            })
+        if(df[i].dtype == "datetime64[ns]"):
+            logtab.append(
+            {
+                 "CastColumnTypeOperation": {
+                            "ColumnName": i,
+                            "NewColumnType": "DATETIME"
+                        }
+
+            })
+        if(df[i].dtype == "float64" | "float32" | "float16" | "float8"):
+            logtab.append(
+            {
+                 "CastColumnTypeOperation": {
+                            "ColumnName": i,
+                            "NewColumnType": "DECIMAL"
+                        }
 
             })
         if(df[i].dtype == "str"):
-            inpcol.append(
+            logtab.append(
             {
-                'Name': i,
-                'Type': 'STRING'
+                 "CastColumnTypeOperation": {
+                            "ColumnName": i,
+                            "NewColumnType": "STRING"
+                        }
 
-            })"""
+            })
        
     print(inpcol)
+    print(logtab)
     dictionary = {"entries": [
         {"url": "s3://bim-project/"+event['pname']+".csv", "mandatory":"true"}, ]}
     json_object = json.dumps(dictionary, indent=4)
@@ -110,13 +136,13 @@ def lambda_handler(event, context):
 
 
 # get calculated fields
-    """for j in tree.findall('datasources'):
+    for j in tree.findall('datasources'):
         for a in j.findall('datasource'):
             for b in a.findall('connection'):
                 for c in b.findall('calculations'):
                     for d in c[0].iter('calculation'):
                         calculatedfields = d.get('formula')
-                        print(calculatedfields)"""
+                        print(calculatedfields)
 
     
 
@@ -265,6 +291,15 @@ def lambda_handler(event, context):
                 }
             }
         },
+        LogicalTableMap= {
+            'qs-test-data-1': {
+                'Alias': response['Item']['name']['S'],
+                'DataTransforms': logtab,
+                'Source':{
+                    'PhysicalTableId': "qs-test-data-1"
+                }
+            }
+         },
         ImportMode='SPICE',
         Permissions=[
             {
