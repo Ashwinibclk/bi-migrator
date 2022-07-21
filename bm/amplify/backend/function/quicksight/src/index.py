@@ -364,7 +364,8 @@ def lambda_handler(event, context):
             'CategoricalMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['xaxis']['S']},'AggregationFunction':'COUNT'}
         })
     print(val)
-    qs.create_analysis(
+    if(r1['Item']['charttype']['S']=="Area"):
+        qs.create_analysis(
         AwsAccountId=event['awsaccountId'],
         AnalysisId="analysis" + response['Item']['id']['S'],
         Name=event['pname'],
@@ -382,6 +383,64 @@ def lambda_handler(event, context):
                 ]
             },
         ],
+       
+
+        SourceEntity={'Definition': {'DataSetIdentifierDeclarations': [{'Identifier': 'tabpro2', 'DataSetArn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':dataset/' + "dataset" + response['Item']['id']['S']}], 'Sheets': [{'SheetId': '46cc5963-fbfb-4619-b27c-839ec7cfdf22','Title': r1['Item']['title']['S'] if r1['Item']['title']['S']!='' else 'tabsheet1', 'Name': r1['Item']['sheetname']['S'], 'Visuals': [{'LineChartVisual': {'VisualId': '75c186b9-7be4-4607-9901-4ef09e5f2502', 'Title': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'Assets as code (preview feature) exposes analysis definition in JSON format via describe-analysis-definition method. '}}, 'Subtitle': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'This opens up several possibilities - Storing in external code repository, development of migration tools, backup & recovery, automated dashboard creation etc. 1) Launch analysis view. 2) Launch code editor from right sidebar. 3) Explore analysis definition. 4)Change orientation (ln 117) to VERTICAL and upload. 5)Change Bars Arrangement (ln 118) to CLUSTERED and upload. 6)Try duplicating a visual (and its layout; ids need to be unique).Note - All visual types and features not supported yet.'}}, 'ChartConfiguration': {
+            'FieldWells': {'LineChartAggregatedFieldWells':  {
+                'Category': cat, 
+                'Values':val}},'Type':"AREA"}}}]}], 
+                'DefaultConfiguration': {'DefaultLayoutConfiguration': {'Grid': {'ResizeOption': 'FIXED', 'OptimizedViewPortWidth': 1600}}}}}
+    )
+
+        qs.create_dashboard(
+        AwsAccountId=event['awsaccountId'],
+        DashboardId="dashboard"+response['Item']['id']['S'],
+        Name=event['pname'],
+        Permissions=[
+            {
+                'Principal':  'arn:aws:quicksight:'+event['region']+":"+event['awsaccountId']+':user/default/'+event['username'],
+                'Actions': [
+                    "quicksight:DescribeDashboard",
+                    "quicksight:ListDashboardVersions",
+                    "quicksight:UpdateDashboardPermissions",
+                    "quicksight:QueryDashboard",
+                    "quicksight:UpdateDashboard",
+                    "quicksight:DeleteDashboard",
+                    "quicksight:DescribeDashboardPermissions",
+                    "quicksight:UpdateDashboardPublishedVersion"
+                ]
+            },
+        ],
+
+         SourceEntity={'Definition': {'DataSetIdentifierDeclarations': [{'Identifier': 'tabpro2', 'DataSetArn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':dataset/' + "dataset" + response['Item']['id']['S']}], 'Sheets': [{'SheetId': '46cc5963-fbfb-4619-b27c-839ec7cfdf22','Title': title if title!='' else 'tabsheet1', 'Name': r1['Item']['sheetname']['S'], 'Visuals': [{'LineChartVisual': {'VisualId': '75c186b9-7be4-4607-9901-4ef09e5f2502', 'Title': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'Assets as code (preview feature) exposes analysis definition in JSON format via describe-analysis-definition method. '}}, 'Subtitle': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'This opens up several possibilities - Storing in external code repository, development of migration tools, backup & recovery, automated dashboard creation etc. 1) Launch analysis view. 2) Launch code editor from right sidebar. 3) Explore analysis definition. 4)Change orientation (ln 117) to VERTICAL and upload. 5)Change Bars Arrangement (ln 118) to CLUSTERED and upload. 6)Try duplicating a visual (and its layout; ids need to be unique).Note - All visual types and features not supported yet.'}}, 'ChartConfiguration': {
+            'FieldWells': {'LineChartAggregatedFieldWells':  {
+                'Category': cat, 
+                'Values':val}},'Type':"AREA"}}}]}], 
+                'DefaultConfiguration': {'DefaultLayoutConfiguration': {'Grid': {'ResizeOption': 'FIXED', 'OptimizedViewPortWidth': 1600}}}}}
+
+       
+)
+    
+    if(r1['Item']['charttype']['S']!="Area"):
+        qs.create_analysis(
+        AwsAccountId=event['awsaccountId'],
+        AnalysisId="analysis" + response['Item']['id']['S'],
+        Name=event['pname'],
+        Permissions=[
+            {
+                'Principal':  'arn:aws:quicksight:'+event['region']+":"+event['awsaccountId']+':user/default/'+event['username'],
+                'Actions': [
+                    "quicksight:RestoreAnalysis",
+                    "quicksight:UpdateAnalysisPermissions",
+                    "quicksight:DeleteAnalysis",
+                    "quicksight:DescribeAnalysisPermissions",
+                    "quicksight:QueryAnalysis",
+                    "quicksight:DescribeAnalysis",
+                    "quicksight:UpdateAnalysis"
+                ]
+            },
+        ],
+       
 
         SourceEntity={'Definition': {'DataSetIdentifierDeclarations': [{'Identifier': 'tabpro2', 'DataSetArn': 'arn:aws:quicksight:'+event['region']+':'+event['awsaccountId']+':dataset/' + "dataset" + response['Item']['id']['S']}], 'Sheets': [{'SheetId': '46cc5963-fbfb-4619-b27c-839ec7cfdf22','Title': r1['Item']['title']['S'] if r1['Item']['title']['S']!='' else 'tabsheet1', 'Name': r1['Item']['sheetname']['S'], 'Visuals': [{r1['Item']['charttype']['S']+'ChartVisual': {'VisualId': '75c186b9-7be4-4607-9901-4ef09e5f2502', 'Title': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'Assets as code (preview feature) exposes analysis definition in JSON format via describe-analysis-definition method. '}}, 'Subtitle': {'Visibility': 'VISIBLE', 'FormatText': {'PlainText': 'This opens up several possibilities - Storing in external code repository, development of migration tools, backup & recovery, automated dashboard creation etc. 1) Launch analysis view. 2) Launch code editor from right sidebar. 3) Explore analysis definition. 4)Change orientation (ln 117) to VERTICAL and upload. 5)Change Bars Arrangement (ln 118) to CLUSTERED and upload. 6)Try duplicating a visual (and its layout; ids need to be unique).Note - All visual types and features not supported yet.'}}, 'ChartConfiguration': {
             'FieldWells': {r1['Item']['charttype']['S']+'ChartAggregatedFieldWells':  {
@@ -390,7 +449,7 @@ def lambda_handler(event, context):
                 'DefaultConfiguration': {'DefaultLayoutConfiguration': {'Grid': {'ResizeOption': 'FIXED', 'OptimizedViewPortWidth': 1600}}}}}
     )
 
-    qs.create_dashboard(
+        qs.create_dashboard(
         AwsAccountId=event['awsaccountId'],
         DashboardId="dashboard"+response['Item']['id']['S'],
         Name=event['pname'],
