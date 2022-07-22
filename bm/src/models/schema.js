@@ -886,6 +886,20 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "aggregationfun": {
+                    "name": "aggregationfun",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "percentileval": {
+                    "name": "percentileval",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -2028,5 +2042,5 @@ export const schema = {
             }
         }
     },
-    "version": "0dee12f0abd3976cb42fd8e7a77d74bd"
+    "version": "ad69133eac10f738e6198bc626e294b1"
 };

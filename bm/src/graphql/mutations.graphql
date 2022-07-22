@@ -152,6 +152,8 @@ mutation CreateQuicksightlogin(
         qsid
         title
         formula
+        aggregationfun
+        percentileval
         createdAt
         updatedAt
         _version
@@ -206,6 +208,8 @@ mutation UpdateQuicksightlogin(
         qsid
         title
         formula
+        aggregationfun
+        percentileval
         createdAt
         updatedAt
         _version
@@ -260,6 +264,8 @@ mutation DeleteQuicksightlogin(
         qsid
         title
         formula
+        aggregationfun
+        percentileval
         createdAt
         updatedAt
         _version
@@ -2985,6 +2991,8 @@ mutation CreateXmlinput(
     }
     title
     formula
+    aggregationfun
+    percentileval
     createdAt
     updatedAt
     _version
@@ -3029,6 +3037,8 @@ mutation UpdateXmlinput(
     }
     title
     formula
+    aggregationfun
+    percentileval
     createdAt
     updatedAt
     _version
@@ -3073,6 +3083,8 @@ mutation DeleteXmlinput(
     }
     title
     formula
+    aggregationfun
+    percentileval
     createdAt
     updatedAt
     _version

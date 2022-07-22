@@ -431,6 +431,8 @@ export type xmlinput = {
   quicksight?: Quicksightlogin | null;
   title?: string | null;
   formula?: string | null;
+  aggregationfun?: string | null;
+  percentileval?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -1449,6 +1451,8 @@ export type CreateXmlinputInput = {
   qsid: string;
   title?: string | null;
   formula?: string | null;
+  aggregationfun?: string | null;
+  percentileval?: string | null;
   _version?: number | null;
 };
 
@@ -1460,6 +1464,8 @@ export type ModelXmlinputConditionInput = {
   qsid?: ModelIDInput | null;
   title?: ModelStringInput | null;
   formula?: ModelStringInput | null;
+  aggregationfun?: ModelStringInput | null;
+  percentileval?: ModelStringInput | null;
   and?: Array<ModelXmlinputConditionInput | null> | null;
   or?: Array<ModelXmlinputConditionInput | null> | null;
   not?: ModelXmlinputConditionInput | null;
@@ -1474,6 +1480,8 @@ export type UpdateXmlinputInput = {
   qsid?: string | null;
   title?: string | null;
   formula?: string | null;
+  aggregationfun?: string | null;
+  percentileval?: string | null;
   _version?: number | null;
 };
 
@@ -1895,6 +1903,8 @@ export type ModelXmlinputFilterInput = {
   qsid?: ModelIDInput | null;
   title?: ModelStringInput | null;
   formula?: ModelStringInput | null;
+  aggregationfun?: ModelStringInput | null;
+  percentileval?: ModelStringInput | null;
   and?: Array<ModelXmlinputFilterInput | null> | null;
   or?: Array<ModelXmlinputFilterInput | null> | null;
   not?: ModelXmlinputFilterInput | null;
@@ -2058,6 +2068,8 @@ export type CreateQuicksightloginMutation = {
       qsid: string;
       title?: string | null;
       formula?: string | null;
+      aggregationfun?: string | null;
+      percentileval?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -2113,6 +2125,8 @@ export type UpdateQuicksightloginMutation = {
       qsid: string;
       title?: string | null;
       formula?: string | null;
+      aggregationfun?: string | null;
+      percentileval?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -2168,6 +2182,8 @@ export type DeleteQuicksightloginMutation = {
       qsid: string;
       title?: string | null;
       formula?: string | null;
+      aggregationfun?: string | null;
+      percentileval?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -4869,6 +4885,8 @@ export type CreateXmlinputMutation = {
   } | null;
   title?: string | null;
   formula?: string | null;
+  aggregationfun?: string | null;
+  percentileval?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -4913,6 +4931,8 @@ export type UpdateXmlinputMutation = {
   } | null;
   title?: string | null;
   formula?: string | null;
+  aggregationfun?: string | null;
+  percentileval?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -4957,6 +4977,8 @@ export type DeleteXmlinputMutation = {
   } | null;
   title?: string | null;
   formula?: string | null;
+  aggregationfun?: string | null;
+  percentileval?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -5128,6 +5150,8 @@ export type GetQuicksightloginQuery = {
       qsid: string;
       title?: string | null;
       formula?: string | null;
+      aggregationfun?: string | null;
+      percentileval?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -7465,6 +7489,8 @@ export type GetXmlinputQuery = {
   } | null;
   title?: string | null;
   formula?: string | null;
+  aggregationfun?: string | null;
+  percentileval?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -7496,6 +7522,8 @@ export type ListXmlinputsQuery = {
     } | null;
     title?: string | null;
     formula?: string | null;
+    aggregationfun?: string | null;
+    percentileval?: string | null;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -7530,6 +7558,8 @@ export type SyncXmlinputsQuery = {
     } | null;
     title?: string | null;
     formula?: string | null;
+    aggregationfun?: string | null;
+    percentileval?: string | null;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -7691,6 +7721,8 @@ export type OnCreateQuicksightloginSubscription = {
       qsid: string;
       title?: string | null;
       formula?: string | null;
+      aggregationfun?: string | null;
+      percentileval?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -7746,6 +7778,8 @@ export type OnUpdateQuicksightloginSubscription = {
       qsid: string;
       title?: string | null;
       formula?: string | null;
+      aggregationfun?: string | null;
+      percentileval?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -7801,6 +7835,8 @@ export type OnDeleteQuicksightloginSubscription = {
       qsid: string;
       title?: string | null;
       formula?: string | null;
+      aggregationfun?: string | null;
+      percentileval?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -10502,6 +10538,8 @@ export type OnCreateXmlinputSubscription = {
   } | null;
   title?: string | null;
   formula?: string | null;
+  aggregationfun?: string | null;
+  percentileval?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -10546,6 +10584,8 @@ export type OnUpdateXmlinputSubscription = {
   } | null;
   title?: string | null;
   formula?: string | null;
+  aggregationfun?: string | null;
+  percentileval?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -10590,6 +10630,8 @@ export type OnDeleteXmlinputSubscription = {
   } | null;
   title?: string | null;
   formula?: string | null;
+  aggregationfun?: string | null;
+  percentileval?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -10805,6 +10847,8 @@ export class APIService {
               qsid
               title
               formula
+              aggregationfun
+              percentileval
               createdAt
               updatedAt
               _version
@@ -10876,6 +10920,8 @@ export class APIService {
               qsid
               title
               formula
+              aggregationfun
+              percentileval
               createdAt
               updatedAt
               _version
@@ -10947,6 +10993,8 @@ export class APIService {
               qsid
               title
               formula
+              aggregationfun
+              percentileval
               createdAt
               updatedAt
               _version
@@ -14888,6 +14936,8 @@ export class APIService {
           }
           title
           formula
+          aggregationfun
+          percentileval
           createdAt
           updatedAt
           _version
@@ -14948,6 +14998,8 @@ export class APIService {
           }
           title
           formula
+          aggregationfun
+          percentileval
           createdAt
           updatedAt
           _version
@@ -15008,6 +15060,8 @@ export class APIService {
           }
           title
           formula
+          aggregationfun
+          percentileval
           createdAt
           updatedAt
           _version
@@ -15346,6 +15400,8 @@ export class APIService {
               qsid
               title
               formula
+              aggregationfun
+              percentileval
               createdAt
               updatedAt
               _version
@@ -19153,6 +19209,8 @@ export class APIService {
           }
           title
           formula
+          aggregationfun
+          percentileval
           createdAt
           updatedAt
           _version
@@ -19198,6 +19256,8 @@ export class APIService {
             }
             title
             formula
+            aggregationfun
+            percentileval
             createdAt
             updatedAt
             _version
@@ -19254,6 +19314,8 @@ export class APIService {
             }
             title
             formula
+            aggregationfun
+            percentileval
             createdAt
             updatedAt
             _version
@@ -19470,6 +19532,8 @@ export class APIService {
               qsid
               title
               formula
+              aggregationfun
+              percentileval
               createdAt
               updatedAt
               _version
@@ -19539,6 +19603,8 @@ export class APIService {
               qsid
               title
               formula
+              aggregationfun
+              percentileval
               createdAt
               updatedAt
               _version
@@ -19608,6 +19674,8 @@ export class APIService {
               qsid
               title
               formula
+              aggregationfun
+              percentileval
               createdAt
               updatedAt
               _version
@@ -23167,6 +23235,8 @@ export class APIService {
           }
           title
           formula
+          aggregationfun
+          percentileval
           createdAt
           updatedAt
           _version
@@ -23221,6 +23291,8 @@ export class APIService {
           }
           title
           formula
+          aggregationfun
+          percentileval
           createdAt
           updatedAt
           _version
@@ -23275,6 +23347,8 @@ export class APIService {
           }
           title
           formula
+          aggregationfun
+          percentileval
           createdAt
           updatedAt
           _version

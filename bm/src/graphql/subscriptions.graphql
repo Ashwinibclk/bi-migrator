@@ -140,6 +140,8 @@ subscription OnCreateQuicksightlogin {
         qsid
         title
         formula
+        aggregationfun
+        percentileval
         createdAt
         updatedAt
         _version
@@ -191,6 +193,8 @@ subscription OnUpdateQuicksightlogin {
         qsid
         title
         formula
+        aggregationfun
+        percentileval
         createdAt
         updatedAt
         _version
@@ -242,6 +246,8 @@ subscription OnDeleteQuicksightlogin {
         qsid
         title
         formula
+        aggregationfun
+        percentileval
         createdAt
         updatedAt
         _version
@@ -2739,6 +2745,8 @@ subscription OnCreateXmlinput {
     }
     title
     formula
+    aggregationfun
+    percentileval
     createdAt
     updatedAt
     _version
@@ -2780,6 +2788,8 @@ subscription OnUpdateXmlinput {
     }
     title
     formula
+    aggregationfun
+    percentileval
     createdAt
     updatedAt
     _version
@@ -2821,6 +2831,8 @@ subscription OnDeleteXmlinput {
     }
     title
     formula
+    aggregationfun
+    percentileval
     createdAt
     updatedAt
     _version

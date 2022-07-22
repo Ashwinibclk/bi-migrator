@@ -225,6 +225,8 @@ query GetQuicksightlogin($id: ID!) {
         qsid
         title
         formula
+        aggregationfun
+        percentileval
         createdAt
         updatedAt
         _version
@@ -2774,6 +2776,8 @@ query GetXmlinput($id: ID!) {
     }
     title
     formula
+    aggregationfun
+    percentileval
     createdAt
     updatedAt
     _version
@@ -2807,6 +2811,8 @@ query ListXmlinputs(
       }
       title
       formula
+      aggregationfun
+      percentileval
       createdAt
       updatedAt
       _version
@@ -2849,6 +2855,8 @@ query SyncXmlinputs(
       }
       title
       formula
+      aggregationfun
+      percentileval
       createdAt
       updatedAt
       _version

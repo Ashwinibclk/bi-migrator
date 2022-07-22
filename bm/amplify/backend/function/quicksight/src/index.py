@@ -14,6 +14,8 @@ qs = boto3.client('qs')
 axis = []
 title = ''
 calculatedfields=''
+aggf=''
+pc=''
 
 def lambda_handler(event, context):
     s3.Bucket(
@@ -110,6 +112,33 @@ def lambda_handler(event, context):
                             global chart
                             chart = d.get('class')
                             print(chart)
+
+
+    for i in tree.findall('worksheets'):
+        for j in i.findall('worksheet'):
+            for a in j.findall('table'):
+                for b in a.findall('view'):
+                    for d in b.findall('datasource-dependencies'):
+                        for e in d.findall('column-instance'):
+                            global aggf
+                            aggf = e.get('derivation')
+                            print(aggf)
+                            if(aggf=="Avg"):
+                                aggf="Average"
+                            if(aggf=="CountD"):
+                                aggf="DISTINCT_COUNT"
+
+    for i in tree.findall('worksheets'):
+        for j in i.findall('worksheet'):
+            for a in j.findall('table'):
+                for b in a.findall('view'):
+                    for d in b.findall('datasource-dependencies'):
+                        for e in d.findall('column-instance'):
+                            global pc
+                            pc = e.get('aggregation-param')
+                            print(pc)
+                            if(pc==None):
+                                pc="0"
 
     XML_worksheets = tree.findall('worksheets')
     print(XML_worksheets)
@@ -221,6 +250,12 @@ def lambda_handler(event, context):
                     },
                     'formula':{
                         'S':calculatedfields
+                    },
+                    'aggregationfun':{
+                        'S':aggf
+                    },
+                    'percentileval':{
+                        'S':pc
                     }
 
 
@@ -351,9 +386,13 @@ def lambda_handler(event, context):
                 "Expression": r1['Item']['formula']['S'],
                 "FieldId": 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-18.1.1647725256871' }
             })
-        if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="INTEGER"):
+        if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="INTEGER" and aggf!="Percentile"):
             val.append({
-            'NumericalMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['xaxis']['S']}}
+            'NumericalMeasureField': {"AggregationFunction": {"SimpleNumericalAggregation":r1['Item']['aggregationfun']['S'].upper()},'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['xaxis']['S']}}
+        })
+        if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="INTEGER" and aggf=="Percentile"):
+            val.append({
+            'NumericalMeasureField': {"AggregationFunction": {"PercentileAggregation": {"PercentileValue": int(r1['Item']['percentileval']['S']) },},'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['xaxis']['S']}}
         })
         if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="DATETIME"):
             val.append({
@@ -478,6 +517,9 @@ def lambda_handler(event, context):
        
 )
     
+ 
+
+
     durl = client_qs.get_dashboard_embed_url(
         AwsAccountId=event['awsaccountId'],
         DashboardId="dashboard" + response['Item']['id']['S'],
@@ -489,6 +531,28 @@ def lambda_handler(event, context):
         ResetDisabled=True | False
     )
     call('rm -rf /tmp/*', shell=True)
+
+    client_qs.create_folder_membership(
+    AwsAccountId='519510601754',
+    FolderId=response['Item']['id']['S'],
+    MemberId="dataset" + response['Item']['id']['S'],
+    MemberType='DATASET'
+)
+
+    client_qs.create_folder_membership(
+    AwsAccountId='519510601754',
+    FolderId=response['Item']['id']['S'],
+    MemberId="analysis" + response['Item']['id']['S'],
+    MemberType='ANALYSIS'
+)
+
+    client_qs.create_folder_membership(
+    AwsAccountId='519510601754',
+    FolderId=response['Item']['id']['S'],
+    MemberId="dashboard" + response['Item']['id']['S'],
+    MemberType='DASHBOARD'
+)
+
 
     response = {
         'statusCode': 200,

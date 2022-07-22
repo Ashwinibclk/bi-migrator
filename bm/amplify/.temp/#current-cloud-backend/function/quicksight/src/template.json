@@ -1,0 +1,16 @@
+{
+    "AwsAccountId": "519510601754",
+    "TemplateId": "templateref1",
+    "Name": "templateref1",
+    "DataSetReferences": [        {
+            "DataSetPlaceholder": "test",
+            "DataSetArn": "arn:aws:quicksight:us-east-1:519510601754:dataset/dataset8c1f782b-ca2f-4e03-8dae-1b36b27c3a95"
+        }
+    ],
+    "SourceEntity": {
+        "SourceAnalysis": {
+            "Arn": "arn:aws:quicksight:us-east-1:519510601754:analysis/analysisc9518936-dc1a-4971-b869-c58737b48fe0"
+        }
+    },
+    "VersionDescription": "Version-0"
+}
