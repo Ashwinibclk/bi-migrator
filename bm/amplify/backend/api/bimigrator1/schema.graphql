@@ -272,5 +272,7 @@ type xmlinput @model{
   formula:String
   aggregationfun:String
   percentileval:String
+  xrole:String
+  yrole:String
 }
 

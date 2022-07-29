@@ -12,10 +12,12 @@ client_qs = boto3.client('quicksight')
 s3 = boto3.resource("s3")
 qs = boto3.client('qs')
 axis = []
+role= []
 title = ''
 calculatedfields=''
 aggf=''
 pc=''
+
 
 def lambda_handler(event, context):
     s3.Bucket(
@@ -156,11 +158,15 @@ def lambda_handler(event, context):
                     for d in b.findall('datasource-dependencies'):
                         for e in d.findall('column'):
                             name = e.get('name')
+                            roles = e.get('role')
+                            role.append(roles)
                             axis.append(name)
                             print(name)
-                        global x,y
-                        x = axis[0][1:-1]
-                        y = axis[1][1:-1]
+                        global x,y,xrole,yrole
+                        y = axis[0][1:-1]
+                        x = axis[1][1:-1]
+                        yrole = role[0]
+                        xrole = role[1]
                         print(x)
                         print(y)
 
@@ -256,6 +262,12 @@ def lambda_handler(event, context):
                     },
                     'percentileval':{
                         'S':pc
+                    },
+                    'xrole':{
+                        'S':xrole
+                    },
+                    'yrole':{
+                        'S':yrole
                     }
 
 
@@ -363,46 +375,116 @@ def lambda_handler(event, context):
         }
     )
     cat=[]
-    for i in range(len(logtab)):
-        if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==y and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="INTEGER"):
-            cat.append({
+    val=[]
+    if(r1['Item']['xrole']['S']=="measure" and r1['Item']['yrole']['S']=="dimension"):
+        for i in range(len(logtab)):
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==y and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="INTEGER"):
+                cat.append({
             'NumericalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']}}
         })
-        if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==y and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="DATETIME"):
-            cat.append({
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==y and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="DATETIME"):
+                cat.append({
             'DateDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']}}
         })
-        if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==y and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="STRING"):
-            cat.append({
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==y and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="STRING"):
+                cat.append({
             'CategoricalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']}}
         })
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==y and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="DECIMAL"):
+                cat.append({
+            'NumericalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']}}
+        })
 
-        val=[]
-    for i in range(len(logtab)):
-        if(r1['Item']['formula']['S']):
-            val.append( 
+        
+        for i in range(len(logtab)):
+            if(r1['Item']['formula']['S']):
+                val.append( 
                 {
                 "CalculatedMeasureField": {
                 "Expression": r1['Item']['formula']['S'],
                 "FieldId": 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-18.1.1647725256871' }
             })
-        if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="INTEGER" and aggf!="Percentile"):
-            val.append({
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="INTEGER" and aggf!="Percentile"):
+                val.append({
             'NumericalMeasureField': {"AggregationFunction": {"SimpleNumericalAggregation":r1['Item']['aggregationfun']['S'].upper()},'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['xaxis']['S']}}
         })
-        if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="INTEGER" and aggf=="Percentile"):
-            val.append({
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="INTEGER" and aggf=="Percentile"):
+                val.append({
             'NumericalMeasureField': {"AggregationFunction": {"PercentileAggregation": {"PercentileValue": int(r1['Item']['percentileval']['S']) },},'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['xaxis']['S']}}
         })
-        if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="DATETIME"):
-            val.append({
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="DATETIME"):
+                val.append({
             'DateMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['xaxis']['S']}}
         })
-        if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="STRING"):
-            val.append({
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="STRING"):
+                val.append({
             'CategoricalMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['xaxis']['S']},'AggregationFunction':'COUNT'}
         })
-    print(val)
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="DECIMAL" and aggf!="Percentile"):
+                val.append({
+            'NumericalMeasureField': {"AggregationFunction": {"SimpleNumericalAggregation":r1['Item']['aggregationfun']['S'].upper()},'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['xaxis']['S']}}
+        })
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="DECIMAL" and aggf=="Percentile"):
+                val.append({
+            'NumericalMeasureField': {"AggregationFunction": {"PercentileAggregation": {"PercentileValue": int(r1['Item']['percentileval']['S']) },},'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['xaxis']['S']}}
+        })
+        print(val)
+
+    if(r1['Item']['xrole']['S']=="dimension" and r1['Item']['yrole']['S']=="measure"):
+        for i in range(len(logtab)):
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="INTEGER"):
+                cat.append({
+            'NumericalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['xaxis']['S']}}
+        })
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="DATETIME"):
+                cat.append({
+            'DateDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['xaxis']['S']}}
+        })
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="STRING"):
+                cat.append({
+            'CategoricalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['xaxis']['S']}}
+        })
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==x and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="DECIMAL"):
+                cat.append({
+            'NumericalDimensionField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-14.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['xaxis']['S']}}
+        })
+
+        
+        for i in range(len(logtab)):
+            if(r1['Item']['formula']['S']):
+                val.append( 
+                {
+                "CalculatedMeasureField": {
+                "Expression": r1['Item']['formula']['S'],
+                "FieldId": 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-18.1.1647725256871' }
+            })
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==y and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="INTEGER" and aggf!="Percentile"):
+                val.append({
+            'NumericalMeasureField': {"AggregationFunction": {"SimpleNumericalAggregation":r1['Item']['aggregationfun']['S'].upper()},'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']}}
+        })
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==y and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="INTEGER" and aggf=="Percentile"):
+                val.append({
+            'NumericalMeasureField': {"AggregationFunction": {"PercentileAggregation": {"PercentileValue": int(r1['Item']['percentileval']['S']) },},'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']}}
+        })
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==y and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="DATETIME"):
+                val.append({
+            'DateMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']}}
+        })
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==y and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="STRING"):
+                val.append({
+            'CategoricalMeasureField': {'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']},'AggregationFunction':'COUNT'}
+        })
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==y and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="DECIMAL" and aggf!="Percentile"):
+                val.append({
+            'NumericalMeasureField': {"AggregationFunction": {"SimpleNumericalAggregation":r1['Item']['aggregationfun']['S'].upper()},'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']}}
+        })
+            if(logtab[i]["CastColumnTypeOperation"]["ColumnName"]==y and logtab[i]["CastColumnTypeOperation"]["NewColumnType"]=="DECIMAL" and aggf=="Percentile"):
+                val.append({
+            'NumericalMeasureField': {"AggregationFunction": {"PercentileAggregation": {"PercentileValue": int(r1['Item']['percentileval']['S']) },},'FieldId': 'a1b2b743-7b8d-4366-8611-274639d87a61.ColumnId-16.1.1647725256871','Column': {'DataSetIdentifier': 'tabpro2', 'ColumnName': r1['Item']['yaxis']['S']}}
+        })
+        print(val)
+
+    
     if(r1['Item']['charttype']['S']=="Area"):
         qs.create_analysis(
         AwsAccountId=event['awsaccountId'],

@@ -900,6 +900,20 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "xrole": {
+                    "name": "xrole",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "yrole": {
+                    "name": "yrole",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -2042,5 +2056,5 @@ export const schema = {
             }
         }
     },
-    "version": "ad69133eac10f738e6198bc626e294b1"
+    "version": "b13d4a7adb3a9e5fbdb78802fdb2d29a"
 };

@@ -293,6 +293,8 @@ export declare class xmlinput {
   readonly formula?: string | null;
   readonly aggregationfun?: string | null;
   readonly percentileval?: string | null;
+  readonly xrole?: string | null;
+  readonly yrole?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<xmlinput, xmlinputMetaData>);

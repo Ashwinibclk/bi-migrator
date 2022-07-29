@@ -227,6 +227,8 @@ query GetQuicksightlogin($id: ID!) {
         formula
         aggregationfun
         percentileval
+        xrole
+        yrole
         createdAt
         updatedAt
         _version
@@ -2778,6 +2780,8 @@ query GetXmlinput($id: ID!) {
     formula
     aggregationfun
     percentileval
+    xrole
+    yrole
     createdAt
     updatedAt
     _version
@@ -2813,6 +2817,8 @@ query ListXmlinputs(
       formula
       aggregationfun
       percentileval
+      xrole
+      yrole
       createdAt
       updatedAt
       _version
@@ -2857,6 +2863,8 @@ query SyncXmlinputs(
       formula
       aggregationfun
       percentileval
+      xrole
+      yrole
       createdAt
       updatedAt
       _version

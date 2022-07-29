@@ -433,6 +433,8 @@ export type xmlinput = {
   formula?: string | null;
   aggregationfun?: string | null;
   percentileval?: string | null;
+  xrole?: string | null;
+  yrole?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -1453,6 +1455,8 @@ export type CreateXmlinputInput = {
   formula?: string | null;
   aggregationfun?: string | null;
   percentileval?: string | null;
+  xrole?: string | null;
+  yrole?: string | null;
   _version?: number | null;
 };
 
@@ -1466,6 +1470,8 @@ export type ModelXmlinputConditionInput = {
   formula?: ModelStringInput | null;
   aggregationfun?: ModelStringInput | null;
   percentileval?: ModelStringInput | null;
+  xrole?: ModelStringInput | null;
+  yrole?: ModelStringInput | null;
   and?: Array<ModelXmlinputConditionInput | null> | null;
   or?: Array<ModelXmlinputConditionInput | null> | null;
   not?: ModelXmlinputConditionInput | null;
@@ -1482,6 +1488,8 @@ export type UpdateXmlinputInput = {
   formula?: string | null;
   aggregationfun?: string | null;
   percentileval?: string | null;
+  xrole?: string | null;
+  yrole?: string | null;
   _version?: number | null;
 };
 
@@ -1905,6 +1913,8 @@ export type ModelXmlinputFilterInput = {
   formula?: ModelStringInput | null;
   aggregationfun?: ModelStringInput | null;
   percentileval?: ModelStringInput | null;
+  xrole?: ModelStringInput | null;
+  yrole?: ModelStringInput | null;
   and?: Array<ModelXmlinputFilterInput | null> | null;
   or?: Array<ModelXmlinputFilterInput | null> | null;
   not?: ModelXmlinputFilterInput | null;
@@ -2070,6 +2080,8 @@ export type CreateQuicksightloginMutation = {
       formula?: string | null;
       aggregationfun?: string | null;
       percentileval?: string | null;
+      xrole?: string | null;
+      yrole?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -2127,6 +2139,8 @@ export type UpdateQuicksightloginMutation = {
       formula?: string | null;
       aggregationfun?: string | null;
       percentileval?: string | null;
+      xrole?: string | null;
+      yrole?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -2184,6 +2198,8 @@ export type DeleteQuicksightloginMutation = {
       formula?: string | null;
       aggregationfun?: string | null;
       percentileval?: string | null;
+      xrole?: string | null;
+      yrole?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -4887,6 +4903,8 @@ export type CreateXmlinputMutation = {
   formula?: string | null;
   aggregationfun?: string | null;
   percentileval?: string | null;
+  xrole?: string | null;
+  yrole?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -4933,6 +4951,8 @@ export type UpdateXmlinputMutation = {
   formula?: string | null;
   aggregationfun?: string | null;
   percentileval?: string | null;
+  xrole?: string | null;
+  yrole?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -4979,6 +4999,8 @@ export type DeleteXmlinputMutation = {
   formula?: string | null;
   aggregationfun?: string | null;
   percentileval?: string | null;
+  xrole?: string | null;
+  yrole?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -5152,6 +5174,8 @@ export type GetQuicksightloginQuery = {
       formula?: string | null;
       aggregationfun?: string | null;
       percentileval?: string | null;
+      xrole?: string | null;
+      yrole?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -7491,6 +7515,8 @@ export type GetXmlinputQuery = {
   formula?: string | null;
   aggregationfun?: string | null;
   percentileval?: string | null;
+  xrole?: string | null;
+  yrole?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -7524,6 +7550,8 @@ export type ListXmlinputsQuery = {
     formula?: string | null;
     aggregationfun?: string | null;
     percentileval?: string | null;
+    xrole?: string | null;
+    yrole?: string | null;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -7560,6 +7588,8 @@ export type SyncXmlinputsQuery = {
     formula?: string | null;
     aggregationfun?: string | null;
     percentileval?: string | null;
+    xrole?: string | null;
+    yrole?: string | null;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -7723,6 +7753,8 @@ export type OnCreateQuicksightloginSubscription = {
       formula?: string | null;
       aggregationfun?: string | null;
       percentileval?: string | null;
+      xrole?: string | null;
+      yrole?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -7780,6 +7812,8 @@ export type OnUpdateQuicksightloginSubscription = {
       formula?: string | null;
       aggregationfun?: string | null;
       percentileval?: string | null;
+      xrole?: string | null;
+      yrole?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -7837,6 +7871,8 @@ export type OnDeleteQuicksightloginSubscription = {
       formula?: string | null;
       aggregationfun?: string | null;
       percentileval?: string | null;
+      xrole?: string | null;
+      yrole?: string | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -10540,6 +10576,8 @@ export type OnCreateXmlinputSubscription = {
   formula?: string | null;
   aggregationfun?: string | null;
   percentileval?: string | null;
+  xrole?: string | null;
+  yrole?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -10586,6 +10624,8 @@ export type OnUpdateXmlinputSubscription = {
   formula?: string | null;
   aggregationfun?: string | null;
   percentileval?: string | null;
+  xrole?: string | null;
+  yrole?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -10632,6 +10672,8 @@ export type OnDeleteXmlinputSubscription = {
   formula?: string | null;
   aggregationfun?: string | null;
   percentileval?: string | null;
+  xrole?: string | null;
+  yrole?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -10849,6 +10891,8 @@ export class APIService {
               formula
               aggregationfun
               percentileval
+              xrole
+              yrole
               createdAt
               updatedAt
               _version
@@ -10922,6 +10966,8 @@ export class APIService {
               formula
               aggregationfun
               percentileval
+              xrole
+              yrole
               createdAt
               updatedAt
               _version
@@ -10995,6 +11041,8 @@ export class APIService {
               formula
               aggregationfun
               percentileval
+              xrole
+              yrole
               createdAt
               updatedAt
               _version
@@ -14938,6 +14986,8 @@ export class APIService {
           formula
           aggregationfun
           percentileval
+          xrole
+          yrole
           createdAt
           updatedAt
           _version
@@ -15000,6 +15050,8 @@ export class APIService {
           formula
           aggregationfun
           percentileval
+          xrole
+          yrole
           createdAt
           updatedAt
           _version
@@ -15062,6 +15114,8 @@ export class APIService {
           formula
           aggregationfun
           percentileval
+          xrole
+          yrole
           createdAt
           updatedAt
           _version
@@ -15402,6 +15456,8 @@ export class APIService {
               formula
               aggregationfun
               percentileval
+              xrole
+              yrole
               createdAt
               updatedAt
               _version
@@ -19211,6 +19267,8 @@ export class APIService {
           formula
           aggregationfun
           percentileval
+          xrole
+          yrole
           createdAt
           updatedAt
           _version
@@ -19258,6 +19316,8 @@ export class APIService {
             formula
             aggregationfun
             percentileval
+            xrole
+            yrole
             createdAt
             updatedAt
             _version
@@ -19316,6 +19376,8 @@ export class APIService {
             formula
             aggregationfun
             percentileval
+            xrole
+            yrole
             createdAt
             updatedAt
             _version
@@ -19534,6 +19596,8 @@ export class APIService {
               formula
               aggregationfun
               percentileval
+              xrole
+              yrole
               createdAt
               updatedAt
               _version
@@ -19605,6 +19669,8 @@ export class APIService {
               formula
               aggregationfun
               percentileval
+              xrole
+              yrole
               createdAt
               updatedAt
               _version
@@ -19676,6 +19742,8 @@ export class APIService {
               formula
               aggregationfun
               percentileval
+              xrole
+              yrole
               createdAt
               updatedAt
               _version
@@ -23237,6 +23305,8 @@ export class APIService {
           formula
           aggregationfun
           percentileval
+          xrole
+          yrole
           createdAt
           updatedAt
           _version
@@ -23293,6 +23363,8 @@ export class APIService {
           formula
           aggregationfun
           percentileval
+          xrole
+          yrole
           createdAt
           updatedAt
           _version
@@ -23349,6 +23421,8 @@ export class APIService {
           formula
           aggregationfun
           percentileval
+          xrole
+          yrole
           createdAt
           updatedAt
           _version

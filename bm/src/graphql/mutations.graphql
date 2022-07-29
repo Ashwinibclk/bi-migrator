@@ -154,6 +154,8 @@ mutation CreateQuicksightlogin(
         formula
         aggregationfun
         percentileval
+        xrole
+        yrole
         createdAt
         updatedAt
         _version
@@ -210,6 +212,8 @@ mutation UpdateQuicksightlogin(
         formula
         aggregationfun
         percentileval
+        xrole
+        yrole
         createdAt
         updatedAt
         _version
@@ -266,6 +270,8 @@ mutation DeleteQuicksightlogin(
         formula
         aggregationfun
         percentileval
+        xrole
+        yrole
         createdAt
         updatedAt
         _version
@@ -2993,6 +2999,8 @@ mutation CreateXmlinput(
     formula
     aggregationfun
     percentileval
+    xrole
+    yrole
     createdAt
     updatedAt
     _version
@@ -3039,6 +3047,8 @@ mutation UpdateXmlinput(
     formula
     aggregationfun
     percentileval
+    xrole
+    yrole
     createdAt
     updatedAt
     _version
@@ -3085,6 +3095,8 @@ mutation DeleteXmlinput(
     formula
     aggregationfun
     percentileval
+    xrole
+    yrole
     createdAt
     updatedAt
     _version
